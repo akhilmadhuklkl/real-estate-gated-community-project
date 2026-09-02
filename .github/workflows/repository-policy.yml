@@ -1,0 +1,19 @@
+name: Repository policy
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  terminology-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check repository terminology
+        shell: pwsh
+        run: ./scripts/check-repository-terminology.ps1
