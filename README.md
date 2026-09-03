@@ -59,6 +59,8 @@ The approved navigation structure and visitor flows are documented in [`docs/inf
 
 The working creative concept and implementation guidance are documented in [`docs/design/visual-direction.md`](docs/design/visual-direction.md).
 
+Reusable tokens and component contracts are maintained in [`design-system/tokens.json`](design-system/tokens.json) and [`docs/design/design-system.md`](docs/design/design-system.md).
+
 ## Disclaimer
 
 This project is under active development. Property details, pricing, availability, legal information, imagery, and contact information must be verified and approved before production publication.
