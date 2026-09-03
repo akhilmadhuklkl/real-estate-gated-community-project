@@ -57,6 +57,8 @@ The working inventory and owner decision checklist are maintained in [`docs/cont
 
 The approved navigation structure and visitor flows are documented in [`docs/information-architecture/sitemap-and-user-journeys.md`](docs/information-architecture/sitemap-and-user-journeys.md).
 
+The working creative concept and implementation guidance are documented in [`docs/design/visual-direction.md`](docs/design/visual-direction.md).
+
 ## Disclaimer
 
 This project is under active development. Property details, pricing, availability, legal information, imagery, and contact information must be verified and approved before production publication.
