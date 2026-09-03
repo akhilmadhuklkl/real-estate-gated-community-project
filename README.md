@@ -51,7 +51,9 @@ The defining feature will be a conversational property-exploration interface. Wh
 
 ## Current status
 
-Project planning and repository initialization are complete. The next milestone is the Phase 1 design system and responsive homepage prototype.
+Project planning and the product brief are complete. The approved-content collection task is in progress, with observed reference material separated from content that has publication evidence.
+
+The working inventory and owner decision checklist are maintained in [`docs/content/content-register.md`](docs/content/content-register.md).
 
 ## Disclaimer
 
