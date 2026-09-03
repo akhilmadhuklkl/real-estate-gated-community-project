@@ -6,6 +6,8 @@
 **Register created:** 3 September 2026  
 **Reference reviewed:** [Glitz Homes](http://www.glitzhomes.co.in/)
 
+**Temporary-use decision:** On 3 September 2026, AKHIL authorized use of material downloaded from the reference website for local development and prototype work while official materials are pending. This does not establish ownership, publication rights, accuracy, or production approval.
+
 ## Purpose
 
 This register separates material observed on the current reference website from content that is approved for publication in the new application. An observed item is not considered accurate, current, licensed, or publishable until its owner supplies approval evidence.
@@ -15,6 +17,7 @@ This register separates material observed on the current reference website from 
 | State | Meaning |
 | --- | --- |
 | Observed | Present on the reference website; not yet approved for reuse. |
+| Temporary development reference | May be used in local and preview builds with source labelling; must not be treated as production-approved. |
 | Awaiting evidence | Requires an authoritative document, owner confirmation, or publication-rights evidence. |
 | Approved | Owner has confirmed accuracy and publication rights, with evidence recorded. |
 | Rejected | Must not be published. |
@@ -44,18 +47,18 @@ This register separates material observed on the current reference website from 
 
 ## Asset inventory
 
-The URLs below record provenance only. Assets must not be copied into the repository until publication rights and the current approved master files are supplied.
+The assets below have been copied into `public/reference/glitz-pride/` for temporary development use under the owner's decision recorded above. They must be replaced or formally approved before production publication.
 
 | ID | Asset | Reference location | Current state | Required evidence |
 | --- | --- | --- | --- | --- |
-| AST-001 | Brand logo | `assets/images/glitz_logo.png` | Awaiting evidence | Original vector file, brand guidance, rights holder, and reuse approval. |
-| AST-002 | Homepage hero media | Homepage slider background, not exposed with descriptive alternative text. | Awaiting evidence | Original high-resolution files, captions, photographer or creator rights, and mobile crops. |
-| AST-003 | About illustration | `assets/images/glits_45.png` | Awaiting evidence | Source file, purpose, and reuse approval. |
-| AST-004 | About photograph | `assets/images/about_img.jpg` | Awaiting evidence | High-resolution source, caption, rights, and approval. |
-| AST-005 | Project gallery | `assets/images/projects/project.jpg` and `project_02.jpg` through `project_05.jpg` | Awaiting evidence | Originals, captions, media category, dates, depicted villa or area, and rights. |
+| AST-001 | Brand logo | `assets/images/glitz_logo.png` | Temporary development reference | Original vector file, brand guidance, rights holder, and reuse approval. |
+| AST-002 | Homepage hero media | `assets/images/banner_01.jpg` and `banner_02.jpg` | Temporary development reference | Original high-resolution files, captions, photographer or creator rights, and mobile crops. |
+| AST-003 | About illustration | `assets/images/glits_45.png` | Temporary development reference | Source file, purpose, and reuse approval. |
+| AST-004 | About photograph | `assets/images/about_img.jpg` | Temporary development reference | High-resolution source, caption, rights, and approval. |
+| AST-005 | Project gallery | `assets/images/projects/project.jpg` and `project_02.jpg` through `project_05.jpg` | Temporary development reference | Originals, captions, media category, dates, depicted villa or area, and rights. |
 | AST-006 | Amenity icons | `assets/images/icon_05.png` through `icon_11.png` | Awaiting evidence | Vector originals and reuse approval, or authorization to replace with a new icon system. |
-| AST-007 | Static location map | `assets/images/map.jpg` | Awaiting evidence | Verified coordinates and permission; replace with an accessible map experience where approved. |
-| AST-008 | Project brochure | `Glitz_Brochure.pdf` | Awaiting evidence | Latest approved master, effective date, owner, legal review, and supersession policy. |
+| AST-007 | Static location map | `assets/images/map.jpg` | Temporary development reference | Verified coordinates and permission; replace with an accessible map experience where approved. |
+| AST-008 | Project brochure | `Glitz_Brochure.pdf` | Temporary development reference | Latest approved master, effective date, owner, legal review, and supersession policy. |
 
 ## Information still required
 
@@ -78,7 +81,7 @@ Complete this table whenever an item becomes approved, rejected, or superseded.
 
 | Record ID | Item IDs | Decision | Evidence location | Approved by | Decision date | Review or expiry date | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| APR-001 | — | Pending | — | AKHIL | — | — | Initial approval evidence has not yet been supplied. |
+| APR-001 | AST-001–AST-005, AST-007–AST-008 | Temporary development use | Owner instruction and `public/reference/glitz-pride/README.md` | AKHIL | 2026-09-03 | Before production release | Replace with official material or obtain written publication approval. |
 
 ## Completion rule for T0004
 
