@@ -1,4 +1,4 @@
-# Verdant Gates concept demo
+# Glitz Pride concept demo
 
 An isolated, presentation-only mockup for a premium gated villa community. It includes illustrative property content and a deterministic assistant demonstration that runs entirely in the browser.
 
