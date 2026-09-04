@@ -18,7 +18,6 @@
     <nav aria-label="Main navigation">
       <a href="#residences">Residences</a><a href="#lifestyle">Lifestyle</a><a href="#location">Location</a>
     </nav>
-    <button class="nav-cta" data-open-chat>Ask the concierge <span>↗</span></button>
   </header>
 
   <main id="top">
@@ -31,7 +30,6 @@
         <p class="intro">An intimate gated collection of contemporary villas, shaped around green courtyards, warm community and quiet everyday luxury.</p>
         <div class="hero-actions">
           <a class="button light" href="#residences">Explore the villas</a>
-          <button class="text-button" data-open-chat>Ask about this community <span>→</span></button>
         </div>
       </div>
       <div class="hero-stat"><strong>24</strong><span>concept villas<br>across 5.2 acres</span></div>
@@ -56,9 +54,9 @@
         <p>Three illustrative home styles balance generous interiors, shaded outdoor rooms and everyday privacy.</p>
       </div>
       <div class="villa-grid">
-        <article class="villa-card"><img src="assets/project-01.jpg" alt="Sample contemporary villa exterior"><div><span>01 · Concept data</span><h3>The Grove</h3><p>3 bedroom courtyard villa</p><dl><dt>Built area</dt><dd>2,180 sq ft</dd><dt>From</dt><dd>₹1.48 Cr*</dd></dl><button data-question="Tell me about The Grove villa">Explore with assistant →</button></div></article>
-        <article class="villa-card"><img src="assets/project-02.jpg" alt="Sample premium villa exterior"><div><span>02 · Concept data</span><h3>The Courtyard</h3><p>4 bedroom garden villa</p><dl><dt>Built area</dt><dd>2,720 sq ft</dd><dt>From</dt><dd>₹1.82 Cr*</dd></dl><button data-question="Compare The Courtyard with the other villas">Compare with assistant →</button></div></article>
-        <article class="villa-card"><img src="assets/project-03.jpg" alt="Sample spacious villa exterior"><div><span>03 · Concept data</span><h3>The Canopy</h3><p>4 bedroom signature villa</p><dl><dt>Built area</dt><dd>3,150 sq ft</dd><dt>From</dt><dd>₹2.16 Cr*</dd></dl><button data-question="Is The Canopy suitable for a family of five?">Ask if it fits you →</button></div></article>
+        <article class="villa-card"><img src="assets/project-01.jpg" alt="Sample contemporary villa exterior"><div><span>01 · Concept data</span><h3>The Grove</h3><p>3 bedroom courtyard villa</p><dl><dt>Built area</dt><dd>2,180 sq ft</dd><dt>From</dt><dd>₹1.48 Cr*</dd></dl></div></article>
+        <article class="villa-card"><img src="assets/project-02.jpg" alt="Sample premium villa exterior"><div><span>02 · Concept data</span><h3>The Courtyard</h3><p>4 bedroom garden villa</p><dl><dt>Built area</dt><dd>2,720 sq ft</dd><dt>From</dt><dd>₹1.82 Cr*</dd></dl></div></article>
+        <article class="villa-card"><img src="assets/project-03.jpg" alt="Sample spacious villa exterior"><div><span>03 · Concept data</span><h3>The Canopy</h3><p>4 bedroom signature villa</p><dl><dt>Built area</dt><dd>3,150 sq ft</dd><dt>From</dt><dd>₹2.16 Cr*</dd></dl></div></article>
       </div>
       <p class="fine-print">*Illustrative pricing only. Not an offer for sale.</p>
     </section>
@@ -69,17 +67,22 @@
     </section>
 
     <section class="location" id="location">
-      <div><p class="eyebrow dark">Well connected</p><h2>Everything within<br><em>easy reach.</em></h2><p>For demonstration, the map and drive-time estimates below are placeholders. Confirmed landmarks and routes will be added after owner review.</p><div class="drive-times"><span><strong>08 min</strong>Everyday essentials</span><span><strong>15 min</strong>Schools & healthcare</span><span><strong>25 min</strong>City centre</span></div><button class="button dark" data-question="Show me the location and nearby landmarks">Explore location with assistant</button></div>
+      <div><p class="eyebrow dark">Well connected</p><h2>Everything within<br><em>easy reach.</em></h2><p>For demonstration, the map and drive-time estimates below are placeholders. Confirmed landmarks and routes will be added after owner review.</p><div class="drive-times"><span><strong>08 min</strong>Everyday essentials</span><span><strong>15 min</strong>Schools & healthcare</span><span><strong>25 min</strong>City centre</span></div></div>
       <div class="map-card"><img src="assets/location-map.jpg" alt="Illustrative location map"><span>ILLUSTRATIVE MAP</span></div>
     </section>
 
     <section class="assistant-showcase">
-      <div><p class="eyebrow">Your personal property guide</p><h2>Ask naturally.<br><em>Explore visually.</em></h2><p>The demo assistant answers common buyer questions and changes the visual preview beside the conversation—without sending or storing any information.</p><button class="button light" data-open-chat>Try the assistant</button></div>
+      <div><p class="eyebrow">Your personal property guide</p><h2>Ask naturally.<br><em>Explore visually.</em></h2><p>The demo assistant answers common buyer questions and changes the visual preview beside the conversation—without sending or storing any information. Use the floating GP guide whenever a question comes to mind.</p></div>
       <div class="mini-chat"><div class="mini-head"><span class="pulse"></span>Community assistant <small>DEMO</small></div><div class="bubble user">Which home works for a family of five?</div><div class="bubble bot">The <strong>Courtyard</strong> is a comfortable match: four bedrooms, a private garden and flexible family lounge.</div><div class="source">↳ Based on illustrative villa records</div></div>
     </section>
   </main>
 
-  <footer><div class="brand footer-brand"><span>GP</span><strong>Glitz Pride</strong></div><p>Private concept presentation · No enquiries are submitted from this demo.</p><button data-open-chat>Open assistant ↑</button></footer>
+  <footer><div class="brand footer-brand"><span>GP</span><strong>Glitz Pride</strong></div><p>Private concept presentation · No enquiries are submitted from this demo.</p></footer>
+
+  <button class="assistant-launcher" data-open-chat aria-label="Open Glitz Pride assistant" aria-expanded="false">
+    <span class="launcher-label"><strong>Ask Glitz</strong><small>Property guide</small></span>
+    <span class="launcher-bubble" aria-hidden="true"><i class="spark spark-one">✦</i><span>GP</span><i class="spark spark-two">✧</i></span>
+  </button>
 
   <div class="chat-backdrop" id="chatBackdrop" hidden></div>
   <aside class="chat-drawer" id="chatDrawer" aria-hidden="true" aria-label="Demo community assistant">
