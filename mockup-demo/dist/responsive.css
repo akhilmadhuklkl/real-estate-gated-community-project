@@ -37,3 +37,48 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
 @media (max-height:620px) and (orientation:landscape){
   .notice{display:none}.nav{height:58px}.hero{height:calc(100svh - 58px);min-height:440px}.hero-copy{top:48%}h1{font-size:52px}.intro{margin:14px 0 18px}.hero-stat,.scroll{display:none}.chat-drawer{height:100svh}.chat-layout{height:calc(100svh - 64px);grid-template-columns:58% 42%;display:grid}.conversation{height:100%;min-height:0}.answer-preview{height:100%;display:grid;grid-template-columns:1fr;grid-template-rows:44% 56%}
 }
+
+/* Landing-page overlay navigation and action composition */
+.hero{height:calc(100vh - 28px)}
+.hero-brand{position:absolute;z-index:2;top:34px;left:5vw;color:white}
+.hero-brand span{border-color:rgba(242,220,169,.9);background:rgba(9,28,21,.24);backdrop-filter:blur(8px)}
+.hero-brand strong{font-size:20px;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.hero-actions{gap:20px}
+.hero-action-line{width:54px;height:1px;background:rgba(255,255,255,.72);flex:0 0 auto}
+.hero-stat{position:static;display:flex;gap:12px;align-items:center}
+.hero-stat strong{font-size:38px}
+.scroll{gap:10px}
+.scroll-arrow{width:auto;height:auto;background:none;font-size:18px;line-height:1;opacity:0;transform:translateY(-5px);transition:opacity .25s ease}
+.scroll:hover .scroll-arrow,.scroll:focus-visible .scroll-arrow{opacity:1;animation:story-arrow-bob 1.8s ease-in-out infinite}
+@keyframes story-arrow-bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(5px)}}
+
+@media (min-width:1440px){
+  .hero-brand{left:max(5vw,calc((100vw - 1540px)/2 + 60px))}
+}
+
+@media (max-width:640px){
+  .hero{height:calc(100svh - 28px)}
+  .hero-brand{top:22px;left:6vw}
+  .hero-brand span{width:36px;height:36px}
+  .hero-brand strong{font-size:17px}
+  .hero-actions{flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap}
+  .hero-action-line{width:28px}
+  .hero-stat{display:flex}
+  .hero-stat strong{font-size:30px}
+  .hero-stat span{font-size:8px}
+  .scroll{display:flex;left:6vw;bottom:28px}
+  .scroll-arrow{opacity:.8;animation:story-arrow-bob 1.8s ease-in-out infinite}
+}
+
+@media (max-width:390px){
+  .hero-action-line{display:none}
+  .hero-actions{gap:10px}
+  .hero-stat strong{font-size:27px}
+}
+
+@media (max-height:620px) and (orientation:landscape){
+  .hero{height:100svh}
+  .hero-brand{top:18px}
+  .hero-stat{display:flex}
+  .scroll{display:none}
+}
