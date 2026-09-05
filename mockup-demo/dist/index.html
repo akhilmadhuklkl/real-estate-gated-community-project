@@ -32,15 +32,20 @@
     </section>
 
     <section class="story" id="story">
-      <div>
+      <div class="story-intro">
         <p class="eyebrow dark">The vision</p>
         <h2>Close to the city.<br><em>Closer to nature.</em></h2>
+        <figure class="vision-slideshow" aria-label="A rotating preview of the villa community">
+          <img class="vision-slide active" src="assets/project-01-villa-only.png" alt="" aria-hidden="true">
+          <img class="vision-slide" src="assets/project-02.jpg" alt="" aria-hidden="true">
+          <img class="vision-slide" src="assets/project-03.jpg" alt="" aria-hidden="true">
+        </figure>
       </div>
       <div class="story-copy">
         <p>Glitz Pride is presented here as a private concept to demonstrate how a premium villa community could be experienced online—calm, clear and personal from the very first visit.</p>
         <p>Every detail shown here is sample content awaiting confirmation from the property owner.</p>
         <div class="metrics"><div><strong>65%</strong><span>open landscape</span></div><div><strong>1,500–4,500</strong><span>sq ft tailored range</span></div><div><strong>12+</strong><span>shared amenities</span></div></div>
-        <a class="section-link" href="vision.html">Discover the complete vision <span>→</span></a>
+        <a class="section-link vision-button" href="vision.html">Discover the complete vision <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -95,6 +100,7 @@
     </div>
   </aside>
   <div class="toast" id="toast" role="status">Demo only — no information was sent.</div>
+  <script src="slideshow.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
