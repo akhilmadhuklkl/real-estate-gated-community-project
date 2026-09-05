@@ -175,3 +175,12 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
 @media (prefers-reduced-motion:reduce){
   .section-next:hover .next-arrow,.section-next:focus-visible .next-arrow{animation:none}
 }
+
+/* Official brochure assets and source access */
+.villa-card img[src*="floor"],.detail-card img[src*="floor"]{object-fit:contain;background:#747675;padding:8px}
+.brochure-link{color:#fff;text-decoration:none;font-size:10px;font-weight:600;letter-spacing:.7px;border-bottom:1px solid rgba(255,255,255,.55);padding:7px 0}
+.brochure-link:hover,.brochure-link:focus-visible{color:#f1d9a9;border-color:#f1d9a9}
+
+@media (max-width:640px){
+  .brochure-link{font-size:10px}
+}
