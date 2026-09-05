@@ -48,7 +48,7 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
 .hero-stat{position:static;display:flex;gap:12px;align-items:center}
 .hero-stat strong{font-size:38px}
 .scroll{gap:10px}
-.scroll-arrow{width:auto;height:auto;background:none;font-size:18px;line-height:1;opacity:0;transform:translateX(5px);transition:opacity .25s ease}
+.scroll .scroll-arrow{width:auto;height:auto;background:none;font-size:18px;line-height:1;opacity:0;transform:translateX(5px);transition:opacity .25s ease}
 .scroll:hover .scroll-arrow,.scroll:focus-visible .scroll-arrow{opacity:1;animation:story-arrow-bob 1.8s ease-in-out infinite}
 @keyframes story-arrow-bob{0%,100%{transform:translateX(5px)}50%{transform:translateX(-3px)}}
 
