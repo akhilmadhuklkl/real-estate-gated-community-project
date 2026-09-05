@@ -84,11 +84,13 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
 /* Full-screen section rhythm and vision slideshow */
 .story,.residences,.lifestyle,.location,.assistant-showcase{min-height:100svh}
 .story,.location{align-items:center;padding-top:clamp(64px,9vh,100px);padding-bottom:clamp(64px,9vh,100px)}
-.story-intro{display:flex;flex-direction:column;gap:clamp(24px,4vh,38px)}
-.story-intro>.eyebrow,.story-intro>h2{margin-bottom:0}
-.vision-slideshow{position:relative;width:min(100%,610px);height:clamp(220px,31vh,330px);margin:0;overflow:hidden;isolation:isolate;-webkit-mask-image:radial-gradient(ellipse 76% 78% at center,#000 56%,rgba(0,0,0,.96) 68%,transparent 100%);mask-image:radial-gradient(ellipse 76% 78% at center,#000 56%,rgba(0,0,0,.96) 68%,transparent 100%)}
-.vision-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.045);transition:opacity 1.35s ease,transform 5.8s ease;filter:saturate(.82) contrast(.96)}
+.story-intro{display:flex;min-width:0}
+.vision-slideshow{position:relative;width:min(100%,610px);height:clamp(440px,68vh,560px);margin:0;overflow:hidden;isolation:isolate}
+.vision-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.045);transition:opacity 1.35s ease,transform 5.8s ease;filter:saturate(.82) contrast(.96);-webkit-mask-image:radial-gradient(ellipse 78% 82% at center,#000 58%,rgba(0,0,0,.96) 72%,transparent 100%);mask-image:radial-gradient(ellipse 78% 82% at center,#000 58%,rgba(0,0,0,.96) 72%,transparent 100%)}
 .vision-slide.active{opacity:1;transform:scale(1)}
+.vision-overlay{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,4vw,46px);background:linear-gradient(180deg,rgba(8,29,20,.62),transparent 33%),linear-gradient(0deg,rgba(8,29,20,.8),transparent 54%);color:white;pointer-events:none}
+.vision-overlay .eyebrow{margin:0;color:#f0d6bb}
+.vision-overlay h2{max-width:540px;color:white;font-size:clamp(42px,4.7vw,68px);letter-spacing:-2.2px;text-shadow:0 3px 24px rgba(0,0,0,.42)}
 .vision-button{display:inline-flex;margin-top:32px;padding:14px 18px;border:0;background:#c7dacd;color:var(--forest);gap:10px;transition:background-color .25s ease,transform .25s ease,box-shadow .25s ease}
 .vision-button:hover,.vision-button:focus-visible{gap:10px;background:#b5cfbe;transform:translateY(-2px);box-shadow:0 12px 26px rgba(23,55,43,.13)}
 .vision-button span{opacity:0;transform:translateX(-4px)}
@@ -111,8 +113,7 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
 
 @media (max-width:900px){
   .story,.location{padding-top:76px;padding-bottom:76px}
-  .story-intro{gap:28px}
-  .vision-slideshow{width:100%;height:clamp(260px,48vw,390px)}
+  .vision-slideshow{width:100%;height:clamp(360px,64vw,470px)}
   .residences{padding-top:76px;padding-bottom:76px}
   .residences .villa-card img{height:100%;min-height:310px}
 }
@@ -120,8 +121,9 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
 @media (max-width:640px){
   .story,.residences,.location{min-height:100svh;padding-top:64px;padding-bottom:64px}
   .story{gap:24px;padding-top:40px;padding-bottom:40px}
-  .story-intro{gap:16px}
-  .vision-slideshow{height:clamp(180px,52vw,220px)}
+  .vision-slideshow{height:clamp(250px,68vw,310px)}
+  .vision-overlay{padding:24px}
+  .vision-overlay h2{font-size:clamp(30px,9vw,38px);letter-spacing:-1.4px}
   .story .metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:22px;padding-top:20px}
   .story .metrics div:last-child{grid-column:auto;margin-top:0}
   .story .metrics strong{font-size:24px}
