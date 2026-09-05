@@ -158,3 +158,20 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
   .creative-cta:hover .cta-arrow,.creative-cta:focus-visible .cta-arrow{animation:none}
   .assistant-launcher .launcher-label{transition:none}
 }
+
+/* Bottom-left section-to-section journey */
+.story,.residences,.lifestyle,.location,.assistant-showcase{position:relative}
+.story-copy .vision-button{display:flex;width:max-content;margin-left:auto}
+.section-next{position:absolute;left:5vw;bottom:24px;z-index:4;display:inline-flex;align-items:center;gap:10px;color:var(--forest);text-decoration:none;font-size:9px;font-weight:600;letter-spacing:1.7px;text-transform:uppercase}
+.section-next.on-dark{color:white;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.section-next .next-arrow{width:1em;height:auto;background:none;opacity:0;color:currentColor;transform:translateX(5px)}
+.section-next:hover .next-arrow,.section-next:focus-visible .next-arrow{opacity:1;animation:story-arrow-bob 1.8s ease-in-out infinite}
+
+@media (max-width:640px){
+  .story-copy .vision-button{margin-left:auto}
+  .section-next{left:6vw;bottom:18px;font-size:8px;letter-spacing:1.35px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .section-next:hover .next-arrow,.section-next:focus-visible .next-arrow{animation:none}
+}
