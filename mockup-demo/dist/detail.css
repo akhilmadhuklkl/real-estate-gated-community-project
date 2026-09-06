@@ -1,3 +1,45 @@
 .detail-hero{min-height:520px;display:grid;grid-template-columns:48% 52%;background:var(--forest);color:white}.detail-hero-copy{padding:90px 7vw;align-self:center}.detail-hero h1{font-size:clamp(54px,7vw,96px)}.detail-hero p:not(.eyebrow){max-width:520px;color:#cad6d0;font:16px/1.75 "Playfair Display",serif}.detail-hero-image{min-height:520px;background-size:cover;background-position:center;position:relative}.detail-hero-image::after{content:"CONCEPT PREVIEW";position:absolute;right:20px;bottom:20px;background:rgba(18,47,36,.86);padding:9px 12px;font-size:8px;letter-spacing:1.5px}.detail-main{padding:95px 8vw}.detail-intro{display:grid;grid-template-columns:1fr 1fr;gap:9vw;margin-bottom:70px}.detail-intro p{font:17px/1.8 "Playfair Display",serif;color:#56625c}.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.detail-card{background:var(--ivory);padding:28px;min-height:210px}.detail-card small{color:var(--clay);font-size:8px;letter-spacing:1.4px}.detail-card h3{font:28px "Playfair Display";margin:12px 0}.detail-card p{color:var(--muted);font-size:11px;line-height:1.7}.detail-card img{width:100%;height:230px;object-fit:cover;margin:-28px -28px 22px;width:calc(100% + 56px);max-width:none}.detail-banner{display:grid;grid-template-columns:55% 45%;margin-top:80px;background:var(--clay);color:white}.detail-banner img{width:100%;height:420px;object-fit:cover}.detail-banner div{padding:55px;align-self:center}.detail-banner h2{font-size:48px}.detail-banner p{color:#f4ddd3;line-height:1.75}.back-link{display:inline-flex;margin-top:25px;color:inherit;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:6px;font-size:10px}.detail-nav-current{color:var(--clay)!important}.concept-note{padding:12px 8vw;background:#eadfca;color:var(--forest);font-size:9px;text-align:center;letter-spacing:.7px}.feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}.feature-list span{border-top:1px solid rgba(255,255,255,.25);padding-top:10px;font-size:10px}.page-footer{margin-top:0}
 @media(max-width:900px){.detail-hero{grid-template-columns:1fr}.detail-hero-copy{padding:72px 7vw}.detail-hero-image{min-height:440px;order:-1}.detail-main{padding:75px 7vw}.detail-intro{gap:35px}.detail-grid{grid-template-columns:1fr}.detail-card{min-height:0}.detail-card img{height:46vw;min-height:250px}.detail-banner{grid-template-columns:1fr}.detail-banner img{height:50vw;min-height:330px}}
 @media(max-width:640px){.detail-hero{min-height:0}.detail-hero-copy{padding:60px 6vw}.detail-hero h1{font-size:49px}.detail-hero-image{min-height:330px}.detail-main{padding:65px 6vw}.detail-intro{grid-template-columns:1fr;margin-bottom:45px}.detail-grid{gap:12px}.detail-card{padding:23px}.detail-card img{margin:-23px -23px 20px;width:calc(100% + 46px);height:62vw}.detail-banner{margin-top:55px}.detail-banner div{padding:40px 25px}.detail-banner h2{font-size:39px}.feature-list{grid-template-columns:1fr}.concept-note{padding-inline:6vw;line-height:1.5}}
+
+/* Detail-page responsive quality pass */
+.detail-main{max-width:1600px;margin-inline:auto}
+.detail-card small{font-size:10px;line-height:1.4}
+.detail-card p{font-size:13px;line-height:1.65}
+.back-link{font-size:11px}
+.concept-note{font-size:10px;line-height:1.45}
+.feature-list span{font-size:11px;line-height:1.45}
+
+@media (min-width:641px) and (max-width:900px){
+  .detail-hero{grid-template-columns:46% 54%;min-height:calc(100svh - 116px)}
+  .detail-hero-copy{padding:60px 6vw}
+  .detail-hero-image{order:0;min-height:0}
+  .detail-hero h1{font-size:clamp(52px,7vw,68px)}
+  .detail-main{padding:70px 6vw}
+  .detail-intro{grid-template-columns:1fr 1fr;gap:5vw;margin-bottom:52px}
+  .detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .detail-card:last-child:nth-child(odd){grid-column:1/-1}
+  .detail-card img{height:34vw;min-height:230px}
+  .detail-banner{margin-top:60px}
+  .detail-banner img{height:44vw;min-height:320px}
+}
+
+@media (max-width:640px){
+  .detail-hero-copy{padding:48px 6vw 54px}
+  .detail-hero h1{font-size:clamp(45px,13vw,52px)}
+  .detail-hero p:not(.eyebrow){font-size:15px;line-height:1.62}
+  .detail-hero-image{min-height:clamp(270px,72vw,330px)}
+  .detail-main{padding:52px 6vw 64px}
+  .detail-intro{margin-bottom:34px;gap:18px}
+  .detail-intro p{font-size:15px;line-height:1.65}
+  .detail-grid{gap:14px}
+  .detail-card{padding:21px}
+  .detail-card img{margin:-21px -21px 18px;width:calc(100% + 42px);height:clamp(210px,56vw,270px);min-height:0}
+  .detail-card h3{font-size:27px;margin:9px 0}
+  .detail-banner{margin-top:42px}
+  .detail-banner img{height:clamp(240px,64vw,310px);min-height:0}
+  .detail-banner div{padding:34px 23px 38px}
+  .detail-banner h2{font-size:38px}
+  .feature-list{gap:9px}
+  .concept-note{font-size:9px}
+}

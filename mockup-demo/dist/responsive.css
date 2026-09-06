@@ -184,3 +184,179 @@ img{max-width:100%}button,a{-webkit-tap-highlight-color:transparent}.hero-copy,.
 @media (max-width:640px){
   .brochure-link{font-size:10px}
 }
+
+/* Responsive quality pass: consistent viewport rhythm, readable type and touch-safe layouts */
+:root{--notice-height:32px;--muted:#5d6862;--clay:#985038}
+html{scroll-padding-top:0}
+body{overflow-x:clip}
+.notice{height:var(--notice-height);min-height:var(--notice-height);padding:0 3vw;font-size:10px;line-height:1.25;letter-spacing:1.7px}
+.hero{height:calc(100svh - var(--notice-height));min-height:680px;max-height:none}
+.eyebrow{font-size:11px}
+.intro{font-size:15px}
+.button,.section-link,.brochure-link{font-size:11px}
+.section-next{font-size:10px}
+.villa-card span,.preview-content small{font-size:10px}
+.villa-card p{font-size:13px;line-height:1.55}
+.villa-card dt{font-size:10px}
+.fine-print{font-size:10px;line-height:1.55}
+.amenities span{font-size:11px;line-height:1.35}
+.carousel-hint{display:none}
+.villa-grid:focus-visible{outline:3px solid rgba(23,55,43,.32);outline-offset:5px}
+.assistant-showcase .eyebrow{color:#fff4d9}
+
+@media (min-width:901px){
+  .story,.residences,.location,.assistant-showcase{min-height:100svh}
+  .lifestyle{height:100svh;min-height:720px;overflow:hidden}
+  .lifestyle-image{height:100%;min-height:0;overflow:hidden}
+  .lifestyle-image img{position:absolute;inset:0;width:100%;height:100%}
+  .lifestyle-copy{padding:clamp(42px,5vh,66px) clamp(48px,6vw,92px)}
+  .lifestyle-copy h2{font-size:clamp(52px,4.7vw,72px)}
+  .lifestyle-copy p:not(.eyebrow){margin:20px 0;font-size:15px;line-height:1.65}
+  .lifestyle .amenities span{padding:11px 0}
+  .lifestyle .section-link{margin-top:20px}
+  .lifestyle .lifestyle-image>span{bottom:58px}
+}
+
+@media (min-width:641px) and (max-width:900px){
+  :root{--notice-height:38px}
+  .notice{font-size:10px;padding-inline:4vw}
+  .hero{height:calc(100svh - var(--notice-height));min-height:700px;max-height:none}
+  .story{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:5vw;padding:58px 6vw;min-height:100svh}
+  .vision-slideshow{height:min(58vw,560px)}
+  .vision-overlay{padding:30px}
+  .vision-overlay h2{font-size:clamp(38px,5.6vw,50px)}
+  .story-copy>p{font-size:16px;line-height:1.62}
+  .story .metrics{gap:10px}
+  .story .metrics strong{font-size:29px}
+  .story .metrics span{font-size:9px}
+
+  .residences{min-height:100svh;padding:52px 6vw 64px;overflow:hidden;justify-content:center}
+  .residences .section-heading{margin:0 0 22px}
+  .carousel-hint{display:block;margin:0 0 12px;color:var(--muted);font-size:11px;letter-spacing:.4px}
+  .villa-grid{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;margin:0 -6vw;padding:0 6vw 12px;scrollbar-width:none}
+  .villa-grid::-webkit-scrollbar{display:none}
+  .villa-card{display:grid;grid-template-columns:45% 55%;flex:0 0 auto;width:min(86vw,700px);scroll-snap-align:start;scroll-snap-stop:always}
+  .residences .villa-card img{height:100%;min-height:330px;max-height:none}
+  .residences .villa-card>div{padding:26px}
+  .residences .section-link-centered{margin-top:12px}
+  .residences .fine-print{margin-top:8px;max-width:70ch}
+
+  .lifestyle{min-height:100svh;grid-template-columns:1fr;grid-template-rows:minmax(320px,42svh) auto}
+  .lifestyle-image{height:auto;min-height:0;max-height:none}
+  .lifestyle-copy{padding:42px 7vw 70px}
+  .lifestyle-copy p:not(.eyebrow){margin:18px 0}
+  .lifestyle .amenities span{padding:11px 0}
+
+  .location{grid-template-columns:1fr 1fr;gap:5vw;min-height:100svh;padding:64px 6vw;align-items:center}
+  .location h2{font-size:clamp(48px,7vw,62px)}
+  .map-card img{height:min(54svh,540px)}
+  .assistant-showcase{grid-template-columns:1fr 1fr;gap:6vw;min-height:100svh;padding:70px 7vw}
+}
+
+@media (max-width:640px){
+  :root{--notice-height:44px}
+  .notice{height:var(--notice-height);min-height:var(--notice-height);padding:5px 4vw;font-size:9px;line-height:1.25;letter-spacing:1px}
+  .hero{height:calc(100svh - var(--notice-height));min-height:620px;max-height:none}
+  .hero-brand{top:20px}
+  .hero-copy{top:48%;left:6vw;right:6vw}
+  .hero-copy .eyebrow{font-size:10px;line-height:1.45;letter-spacing:2.3px}
+  h1{font-size:clamp(48px,14vw,58px);line-height:.95}
+  h2{font-size:clamp(40px,11vw,47px);line-height:.98}
+  .intro{max-width:100%;font-size:14px;line-height:1.58}
+  .hero-actions{gap:11px;flex-wrap:nowrap}
+  .hero-stat strong{font-size:28px}
+  .hero-stat span{font-size:9px;line-height:1.35;letter-spacing:.8px}
+  .scroll{bottom:22px;font-size:9px}
+
+  .story{min-height:100svh;gap:20px;padding:34px 6vw 58px}
+  .vision-slideshow{height:clamp(245px,67vw,300px)}
+  .vision-overlay{padding:22px}
+  .vision-overlay h2{font-size:clamp(31px,9vw,38px)}
+  .story-copy>p{font-size:15px;line-height:1.62;margin:0 0 14px}
+  .story-copy>p+p{font-size:12px;line-height:1.58}
+  .story .metrics{margin-top:18px;padding-top:17px}
+  .story .metrics strong{font-size:23px}
+  .story .metrics span{font-size:8px;line-height:1.35}
+  .story-copy .vision-button{margin-top:16px}
+
+  .residences{min-height:100svh;padding:28px 6vw 52px;overflow:hidden;justify-content:center}
+  .residences .section-heading{margin:0 0 14px}
+  .residences .section-heading h2{font-size:clamp(42px,12vw,50px)}
+  .section-heading>p{margin-top:14px;font-size:14px;line-height:1.55}
+  .carousel-hint{display:block;margin:0 0 7px;color:var(--muted);font-size:11px;letter-spacing:.35px}
+  .villa-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;margin:0 -6vw;padding:0 6vw 10px;scrollbar-width:none}
+  .villa-grid::-webkit-scrollbar{display:none}
+  .villa-card{display:block;flex:0 0 auto;width:min(82vw,360px);scroll-snap-align:start;scroll-snap-stop:always}
+  .residences .villa-card img{height:clamp(185px,52vw,220px);min-height:0;max-height:none}
+  .residences .villa-card>div{padding:17px 19px 18px}
+  .residences .villa-card h3{font-size:29px;margin:6px 0 3px}
+  .residences .villa-card p{margin-bottom:13px}
+  .residences .villa-card dl{padding-top:12px}
+  .residences .villa-card dd{font-size:16px}
+  .residences .section-link-centered{left:auto;transform:none;margin:10px auto 0}
+  .residences .fine-print{display:none}
+
+  .lifestyle{min-height:100svh;grid-template-columns:1fr;grid-template-rows:clamp(235px,31svh,280px) auto}
+  .lifestyle-image{height:auto;min-height:0;max-height:none}
+  .lifestyle-copy{padding:34px 6vw 62px}
+  .lifestyle-copy h2{font-size:clamp(39px,11vw,46px)}
+  .lifestyle-copy p:not(.eyebrow){margin:17px 0;font-size:15px;line-height:1.55}
+  .lifestyle .amenities span{padding:9px 0;font-size:10px}
+  .lifestyle .section-link{margin-top:16px}
+
+  .location{min-height:100svh;padding:38px 6vw 62px;gap:22px;align-content:center}
+  .location h2{font-size:clamp(43px,12vw,50px)}
+  .location>div>p{font-size:15px;line-height:1.58}
+  .drive-times{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:20px 0}
+  .drive-times strong{font-size:21px}
+  .drive-times span{font-size:8px;line-height:1.35}
+  .location .section-link{margin-top:6px}
+  .map-card img{height:clamp(220px,29svh,270px);min-height:0;max-height:none}
+
+  .assistant-showcase{min-height:100svh;padding:52px 6vw 62px;gap:30px}
+  .assistant-showcase h2{font-size:clamp(40px,11vw,47px)}
+  .assistant-showcase>div>p:not(.eyebrow){font-size:15px;line-height:1.6}
+  .mini-chat{margin-top:0}
+
+  .assistant-launcher{right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:52px;height:52px}
+  .assistant-launcher .launcher-bubble,.assistant-launcher::before{width:52px;height:52px}
+  .assistant-launcher .launcher-bubble{flex-basis:52px}
+  .assistant-launcher .launcher-label{right:0;padding-right:66px;transform-origin:calc(100% - 26px) center}
+  .section-next{bottom:16px;font-size:9px;letter-spacing:1.2px}
+  footer{padding:28px 6vw;gap:14px}
+}
+
+@media (max-width:374px){
+  .hero-copy{top:47%}
+  .hero-copy h1{font-size:46px}
+  .intro{font-size:13px;margin:16px 0 20px}
+  .button{padding:13px 15px}
+  .hero-stat strong{font-size:25px}
+  .story{padding-top:28px}
+  .vision-slideshow{height:235px}
+  .residences{padding:20px 6vw 42px}
+  .residences .section-heading h2{font-size:40px}
+  .lifestyle-copy{padding-top:30px}
+}
+
+@media (min-width:901px) and (max-height:800px){
+  .residences{padding-top:28px;padding-bottom:28px}
+  .residences .section-heading{margin-bottom:18px}
+  .residences .section-link-centered{margin-top:16px}
+}
+
+@media (hover:none){
+  .creative-cta .cta-arrow{opacity:1;transform:none}
+  .section-next .next-arrow{opacity:1;transform:none}
+  .scroll .scroll-arrow{opacity:1;transform:none}
+}
+
+@media (max-height:700px) and (orientation:landscape){
+  :root{--notice-height:0px}
+  .notice{display:none}
+  .hero{height:100svh;min-height:500px}
+  .hero-copy{top:50%;max-width:600px}
+  .hero-copy h1{font-size:52px}
+  .intro{max-width:540px;margin:14px 0 18px}
+  .story,.residences,.location,.assistant-showcase{min-height:620px}
+}
