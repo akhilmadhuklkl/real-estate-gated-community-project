@@ -1,0 +1,8 @@
+.next
+node_modules
+mockup-demo
+playwright-report
+test-results
+public/reference
+project-assets
+pnpm-lock.yaml
