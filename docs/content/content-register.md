@@ -2,7 +2,7 @@
 
 **Task:** T0004 — Collect approved content  
 **Owner:** AKHIL  
-**Status:** In Progress  
+**Status:** On Hold
 **Register created:** 3 September 2026  
 **Reference reviewed:** [Glitz Homes](http://www.glitzhomes.co.in/)
 
@@ -58,7 +58,7 @@ The assets below have been copied into `public/reference/glitz-pride/` for tempo
 | AST-005 | Project gallery | `assets/images/projects/project.jpg` and `project_02.jpg` through `project_05.jpg` | Temporary development reference | Originals, captions, media category, dates, depicted villa or area, and rights. |
 | AST-006 | Amenity icons | `assets/images/icon_05.png` through `icon_11.png` | Awaiting evidence | Vector originals and reuse approval, or authorization to replace with a new icon system. |
 | AST-007 | Static location map | `assets/images/map.jpg` | Temporary development reference | Verified coordinates and permission; replace with an accessible map experience where approved. |
-| AST-008 | Project brochure | `Glitz_Brochure.pdf` | Temporary development reference | Latest approved master, effective date, owner, legal review, and supersession policy. |
+| AST-008 | Project brochure | `project-assets/official/Glitz_Brochure.pdf` | Official development source; awaiting publication approval | Confirm effective date, owner, publication rights, legal review, and supersession policy. |
 
 ## Information still required
 
@@ -82,6 +82,7 @@ Complete this table whenever an item becomes approved, rejected, or superseded.
 | Record ID | Item IDs | Decision | Evidence location | Approved by | Decision date | Review or expiry date | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | APR-001 | AST-001–AST-005, AST-007–AST-008 | Temporary development use | Owner instruction and `public/reference/glitz-pride/README.md` | AKHIL | 2026-09-03 | Before production release | Replace with official material or obtain written publication approval. |
+| APR-002 | AST-008 | Accepted as the official development brochure; publication approval remains pending | `project-assets/official/Glitz_Brochure.pdf` | AKHIL | 2026-10-03 | Before production release | Use as the authoritative source for T0008 modeling. Do not treat its 2018 content as current without owner verification. |
 
 ## Completion rule for T0004
 

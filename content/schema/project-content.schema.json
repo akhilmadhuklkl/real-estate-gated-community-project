@@ -1,0 +1,308 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glitzpride.example/schema/project-content.schema.json",
+  "title": "Gated community project content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "project",
+    "branding",
+    "villaTypes",
+    "amenities",
+    "specifications",
+    "location",
+    "contacts",
+    "media",
+    "documents",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "project": { "$ref": "#/$defs/project" },
+    "branding": { "$ref": "#/$defs/branding" },
+    "villaTypes": { "type": "array", "items": { "$ref": "#/$defs/villaType" } },
+    "amenities": { "type": "array", "items": { "$ref": "#/$defs/amenity" } },
+    "specifications": { "type": "array", "items": { "$ref": "#/$defs/specification" } },
+    "location": { "$ref": "#/$defs/location" },
+    "contacts": { "type": "array", "items": { "$ref": "#/$defs/contact" } },
+    "media": { "type": "array", "items": { "$ref": "#/$defs/media" } },
+    "documents": { "type": "array", "items": { "$ref": "#/$defs/document" } },
+    "governance": { "$ref": "#/$defs/governance" }
+  },
+  "$defs": {
+    "approvalState": {
+      "type": "string",
+      "enum": ["observed", "development-reference", "awaiting-approval", "approved", "rejected", "superseded"]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "sourceType", "locator", "retrievedOn"],
+      "properties": {
+        "sourceId": { "type": "string", "minLength": 1 },
+        "sourceType": { "type": "string", "enum": ["brochure", "owner-confirmation", "website", "dataset", "other"] },
+        "locator": { "type": "string", "minLength": 1 },
+        "retrievedOn": { "type": "string", "format": "date" },
+        "note": { "type": "string" }
+      }
+    },
+    "governedFields": {
+      "type": "object",
+      "required": ["approvalState", "evidence"],
+      "properties": {
+        "approvalState": { "$ref": "#/$defs/approvalState" },
+        "evidence": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidence" } },
+        "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+        "approvedBy": { "type": ["string", "null"] },
+        "publicationNote": { "type": "string" }
+      }
+    },
+    "project": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name", "developer", "category", "summary", "approvalState", "evidence"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+            "name": { "type": "string" },
+            "developer": { "type": "string" },
+            "category": { "type": "string" },
+            "summary": { "type": "string" },
+            "architect": { "type": ["string", "null"] },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "branding": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["publicName", "tagline", "approvalState", "evidence"],
+          "properties": {
+            "publicName": { "type": "string" },
+            "tagline": { "type": "string" },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "villaType": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name", "floorAreasSqFt", "totalAreaSqFt", "approvalState", "evidence"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^villa-[a-z0-9-]+$" },
+            "name": { "type": "string" },
+            "floorAreasSqFt": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["floor", "area"],
+                "properties": {
+                  "floor": { "type": "string" },
+                  "area": { "type": "number", "exclusiveMinimum": 0 }
+                }
+              }
+            },
+            "totalAreaSqFt": { "type": "number", "exclusiveMinimum": 0 },
+            "bedrooms": { "type": ["integer", "null"], "minimum": 0 },
+            "bathrooms": { "type": ["integer", "null"], "minimum": 0 },
+            "availability": { "type": "string", "enum": ["unknown", "available", "limited", "unavailable"] },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "amenity": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "name", "deliveryState", "approvalState", "evidence"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^amenity-[a-z0-9-]+$" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "deliveryState": { "type": "string", "enum": ["unknown", "proposed", "under-construction", "delivered"] },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "specification": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "category", "details", "approvalState", "evidence"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^spec-[a-z0-9-]+$" },
+            "category": { "type": "string" },
+            "details": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "location": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["address", "coordinates", "landmarks", "approvalState", "evidence"],
+          "properties": {
+            "address": { "type": "string" },
+            "coordinates": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["latitude", "longitude"],
+              "properties": {
+                "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+                "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+              }
+            },
+            "landmarks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["name", "distanceKm"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "distanceKm": { "type": "number", "minimum": 0 },
+                  "category": { "type": "string" }
+                }
+              }
+            },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "contact": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "region", "organization", "channels", "approvalState", "evidence"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^contact-[a-z0-9-]+$" },
+            "region": { "type": "string" },
+            "organization": { "type": "string" },
+            "address": { "type": ["string", "null"] },
+            "channels": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["type", "value"],
+                "properties": {
+                  "type": { "type": "string", "enum": ["phone", "mobile", "email", "website", "whatsapp"] },
+                  "value": { "type": "string" }
+                }
+              }
+            },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "media": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "path", "alt", "approvalState", "evidence"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^media-[a-z0-9-]+$" },
+            "kind": { "type": "string", "enum": ["image", "floor-plan", "map", "logo", "document-preview", "video"] },
+            "path": { "type": "string" },
+            "alt": { "type": "string" },
+            "caption": { "type": "string" },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "document": {
+      "allOf": [
+        { "$ref": "#/$defs/governedFields" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "title", "path", "documentDate", "approvalState", "evidence"],
+          "properties": {
+            "id": { "type": "string", "pattern": "^document-[a-z0-9-]+$" },
+            "title": { "type": "string" },
+            "path": { "type": "string" },
+            "documentDate": { "type": ["string", "null"], "format": "date" },
+            "approvalState": { "$ref": "#/$defs/approvalState" },
+            "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+            "lastReviewedOn": { "type": ["string", "null"], "format": "date" },
+            "approvedBy": { "type": ["string", "null"] },
+            "publicationNote": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["defaultApprovalState", "publicationRule", "unconfirmedValuePolicy", "uiReference"],
+      "properties": {
+        "defaultApprovalState": { "$ref": "#/$defs/approvalState" },
+        "publicationRule": { "type": "string" },
+        "unconfirmedValuePolicy": { "type": "string" },
+        "uiReference": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": {
+    "id": "glitz-pride",
+    "name": "Glitz Pride",
+    "developer": "Glitz Homes",
+    "category": "Boutique gated villa community",
+    "summary": "A nature-led gated villa community presented around architectural design, natural light, ventilation, landscaping, and shared amenities.",
+    "architect": "Lijo. Reny. Architects",
+    "approvalState": "awaiting-approval",
+    "evidence": [
+      { "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Pages 3-6", "retrievedOn": "2026-10-03" }
+    ],
+    "lastReviewedOn": "2026-10-03",
+    "approvedBy": null,
+    "publicationNote": "Brochure-backed development record. Confirm current accuracy and publication rights before production use."
+  },
+  "branding": {
+    "publicName": "Glitz Pride",
+    "tagline": "Nature's Pet. Owner's Pride.",
+    "approvalState": "awaiting-approval",
+    "evidence": [
+      { "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Pages 1 and 4", "retrievedOn": "2026-10-03" }
+    ],
+    "lastReviewedOn": "2026-10-03",
+    "approvedBy": null,
+    "publicationNote": "Displayed in the official brochure but not yet cleared for production publication."
+  },
+  "villaTypes": [
+    {
+      "id": "villa-brochure-plan-01",
+      "name": "Brochure villa plan",
+      "floorAreasSqFt": [
+        { "floor": "Ground floor", "area": 1410 },
+        { "floor": "First floor", "area": 810 }
+      ],
+      "totalAreaSqFt": 2220,
+      "bedrooms": null,
+      "bathrooms": null,
+      "availability": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [
+        { "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03", "note": "Total area is the arithmetic sum of the two printed floor areas." }
+      ],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "The brochure does not state a villa type name, bedroom count, bathroom count, price, or availability."
+    }
+  ],
+  "amenities": [
+    {
+      "id": "amenity-vegetable-garden",
+      "name": "Vegetable garden",
+      "description": "A vegetable garden is labelled in the brochure site rendering.",
+      "deliveryState": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Pages 4 and 6", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm location and delivery state."
+    },
+    {
+      "id": "amenity-guest-parking",
+      "name": "Wide guest parking area",
+      "description": "A guest parking area is labelled in the brochure site rendering.",
+      "deliveryState": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 4", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm capacity, access rules, and delivery state."
+    },
+    {
+      "id": "amenity-club-house",
+      "name": "Club house",
+      "description": "A club house is labelled in the brochure site rendering.",
+      "deliveryState": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 4", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm facilities, naming, and delivery state."
+    },
+    {
+      "id": "amenity-children-play-area",
+      "name": "Children play area",
+      "description": "A children's play area is labelled in the brochure site rendering.",
+      "deliveryState": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 4", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm equipment, location, and delivery state."
+    },
+    {
+      "id": "amenity-health-club",
+      "name": "Health club",
+      "description": "A health club is labelled in the brochure site rendering.",
+      "deliveryState": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 4", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm facilities and delivery state."
+    },
+    {
+      "id": "amenity-shuttle-court",
+      "name": "Shuttle court",
+      "description": "The brochure uses the label 'Shuttle court'.",
+      "deliveryState": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 4", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm whether the intended facility is a shuttle badminton court and confirm delivery state."
+    },
+    {
+      "id": "amenity-security",
+      "name": "Security and surveillance",
+      "description": "The brochure claims high security standards and surveillance systems.",
+      "deliveryState": "unknown",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 4", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Obtain installed-system specifications before making production claims."
+    }
+  ],
+  "specifications": [
+    {
+      "id": "spec-bathroom-fittings",
+      "category": "Bathroom sanitary and accessory fittings",
+      "details": ["TOTO bathroom accessories", "Geberit concealed cistern", "Glass shower enclosure with Hansgrohe fittings"],
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm current brands, models, substitutions, and contractual specification."
+    },
+    {
+      "id": "spec-doors-windows",
+      "category": "Door frames and shutters",
+      "details": ["Teak wood door frames and shutters", "Domal aluminium front sliding door"],
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm current material and product specification."
+    },
+    {
+      "id": "spec-paint-waterproofing",
+      "category": "Painting and waterproofing",
+      "details": ["Acrylic putty and two-coat emulsion for interior walls", "Two-coat emulsion for external walls", "Waterproofing for slope slabs and sunken toilet slabs"],
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm current construction specification."
+    },
+    {
+      "id": "spec-flooring",
+      "category": "Flooring",
+      "details": ["Granite lapato for the sit-out, kitchen, and living room", "Kajaria 4x2 flooring for bedrooms"],
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm spelling, product size units, current brand, and substitution policy."
+    },
+    {
+      "id": "spec-brick-masonry",
+      "category": "Brick masonry",
+      "details": ["Semi-wire-cut bricks in cement mortar", "Brochure states a 1:6 mortar ratio"],
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm the construction specification and terminology before publication."
+    }
+  ],
+  "location": {
+    "address": "Amala Nagar, Anugraha Road, adjacent to Peramangalam Police Station, Thrissur, Kerala",
+    "coordinates": { "latitude": 10.567917, "longitude": 76.160444 },
+    "landmarks": [
+      { "name": "Thrissur City", "distanceKm": 6, "category": "city" },
+      { "name": "Sobha City", "distanceKm": 3, "category": "shopping" },
+      { "name": "Lulu Convention Centre", "distanceKm": 4, "category": "events" },
+      { "name": "Vilangankunnu", "distanceKm": 2, "category": "landmark" },
+      { "name": "Civil Station Ayyanthole", "distanceKm": 5, "category": "government" },
+      { "name": "West Fort Hightech Hospital", "distanceKm": 5.5, "category": "healthcare" },
+      { "name": "Amala Medical College", "distanceKm": 1, "category": "healthcare" },
+      { "name": "Government Medical College", "distanceKm": 5, "category": "healthcare" },
+      { "name": "IES Education City", "distanceKm": 2.5, "category": "education" },
+      { "name": "Devamatha CMI School", "distanceKm": 7, "category": "education" },
+      { "name": "Government Engineering College", "distanceKm": 8, "category": "education" },
+      { "name": "Paramekkavu Vidya Mandir", "distanceKm": 6, "category": "education" },
+      { "name": "Railway Station", "distanceKm": 7.5, "category": "transport" },
+      { "name": "Cochin International Airport", "distanceKm": 60, "category": "transport" },
+      { "name": "Calicut International Airport", "distanceKm": 90, "category": "transport" },
+      { "name": "Proposed Hub", "distanceKm": 5, "category": "unconfirmed" },
+      { "name": "Vadakkunathan Temple", "distanceKm": 8, "category": "place-of-worship" },
+      { "name": "Guruvayoor Temple", "distanceKm": 15, "category": "place-of-worship" }
+    ],
+    "approvalState": "awaiting-approval",
+    "evidence": [
+      { "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 8", "retrievedOn": "2026-10-03" }
+    ],
+    "lastReviewedOn": "2026-10-03",
+    "approvedBy": null,
+    "publicationNote": "Verify coordinates, current road access, landmark names, distances, and measurement method before publication."
+  },
+  "contacts": [
+    {
+      "id": "contact-kerala-office",
+      "region": "Kerala",
+      "organization": "Glitz Homes",
+      "address": "1st Floor, City Centre, Round West, Thrissur 680001",
+      "channels": [
+        { "type": "email", "value": "info@glitzhomes.co.in" },
+        { "type": "mobile", "value": "+91 954 451 9000" },
+        { "type": "mobile", "value": "+91 960 555 9400" },
+        { "type": "website", "value": "http://www.glitzhomes.co.in/" }
+      ],
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 9", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm every channel, monitoring owner, hours, consent wording, and publication permission."
+    },
+    {
+      "id": "contact-dubai-office",
+      "region": "Dubai",
+      "organization": "Alseef Group",
+      "address": null,
+      "channels": [
+        { "type": "phone", "value": "+971 4 3322999" },
+        { "type": "mobile", "value": "+971 52 7972228" }
+      ],
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 9", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm organizational relationship, current channels, hours, and publication permission."
+    }
+  ],
+  "media": [
+    {
+      "id": "media-site-rendering",
+      "kind": "image",
+      "path": "mockup-demo/dist/assets/brochure-aerial.jpg",
+      "alt": "Brochure rendering of the gated villa community layout",
+      "caption": "3D rendering from the official development brochure.",
+      "approvalState": "development-reference",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 4", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Keep in previews until publication rights are confirmed."
+    },
+    {
+      "id": "media-villa-rendering",
+      "kind": "image",
+      "path": "mockup-demo/dist/assets/brochure-villa.jpg",
+      "alt": "Brochure rendering of a Glitz Pride villa exterior",
+      "caption": "3D rendering from the official development brochure.",
+      "approvalState": "development-reference",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Pages 5 and 6", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Keep in previews until publication rights are confirmed."
+    },
+    {
+      "id": "media-ground-floor-plan",
+      "kind": "floor-plan",
+      "path": "mockup-demo/dist/assets/brochure-ground-floor.jpg",
+      "alt": "Ground-floor brochure plan labelled 1,410 square feet",
+      "caption": "Ground-floor 3D rendering from the official development brochure.",
+      "approvalState": "development-reference",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm plan identity, scale, dimensions, disclaimers, and publication rights."
+    },
+    {
+      "id": "media-first-floor-plan",
+      "kind": "floor-plan",
+      "path": "mockup-demo/dist/assets/brochure-first-floor.jpg",
+      "alt": "First-floor brochure plan labelled 810 square feet",
+      "caption": "First-floor 3D rendering from the official development brochure.",
+      "approvalState": "development-reference",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 7", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Confirm plan identity, scale, dimensions, disclaimers, and publication rights."
+    },
+    {
+      "id": "media-location-map",
+      "kind": "map",
+      "path": "mockup-demo/dist/assets/brochure-location-map.jpg",
+      "alt": "Illustrative brochure map showing Glitz Pride near Amala Nagar and Peramangalam",
+      "caption": "Location illustration from the official development brochure.",
+      "approvalState": "development-reference",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "Page 8", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Use as an illustration only; verify geography and provide an accessible map alternative."
+    }
+  ],
+  "documents": [
+    {
+      "id": "document-glitz-brochure",
+      "title": "Glitz Pride official development brochure",
+      "path": "project-assets/official/Glitz_Brochure.pdf",
+      "documentDate": "2018-12-27",
+      "approvalState": "awaiting-approval",
+      "evidence": [{ "sourceId": "document-glitz-brochure", "sourceType": "brochure", "locator": "PDF metadata and pages 1-9", "retrievedOn": "2026-10-03" }],
+      "lastReviewedOn": "2026-10-03",
+      "approvedBy": null,
+      "publicationNote": "Accepted as the official development source for modeling. Confirm that it is current and cleared for production publication."
+    }
+  ],
+  "governance": {
+    "defaultApprovalState": "awaiting-approval",
+    "publicationRule": "Only records marked approved may appear in a production publication.",
+    "unconfirmedValuePolicy": "Use null or an explicit unknown state. Do not invent or infer missing commercial, legal, availability, room-count, or contact information.",
+    "uiReference": "mockup-demo is preserved as the visual and interaction reference only. Production components must be implemented separately."
+  }
+}
