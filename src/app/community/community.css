@@ -1,0 +1,303 @@
+.community-page {
+  background: var(--ivory-50);
+}
+.community-hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  padding-top: calc(var(--notice-height) + var(--header-height));
+  background: var(--ivory-100);
+}
+.community-hero__image {
+  position: relative;
+  min-height: calc(100svh - var(--notice-height) - var(--header-height));
+  overflow: hidden;
+}
+.community-hero__image img {
+  object-fit: cover;
+}
+.community-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(4rem, 8vw, 8rem);
+}
+.community-hero__copy h1 {
+  max-width: 9ch;
+  color: var(--forest-900);
+}
+.community-hero__copy > p:not(.eyebrow) {
+  max-width: 34rem;
+  margin: 1.6rem 0 2rem;
+  color: var(--stone-600);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+.community-intro {
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+.community-intro__lead {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: end;
+}
+.community-intro__lead h2 {
+  max-width: 11ch;
+}
+.community-intro__lead > p {
+  margin: 0;
+  color: var(--stone-600);
+  line-height: 1.8;
+}
+.principle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: clamp(4rem, 7vw, 7rem);
+  background: var(--stone-300);
+}
+.principle-card {
+  min-height: 22rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: var(--ivory-50);
+}
+.principle-card > span {
+  color: var(--terracotta-400);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.principle-card h3 {
+  margin: 3.5rem 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 500;
+  line-height: 1;
+}
+.principle-card p {
+  margin: 0;
+  color: var(--stone-600);
+  line-height: 1.7;
+}
+.landscape-story {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  background: var(--forest-900);
+  color: var(--white);
+}
+.landscape-story__image {
+  position: relative;
+  min-height: 100svh;
+}
+.landscape-story__image img {
+  object-fit: cover;
+}
+.landscape-story__image > span {
+  position: absolute;
+  inset: auto 1.5rem 1.5rem;
+  padding: 0.6rem 0.75rem;
+  background: rgba(13, 36, 27, 0.82);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.landscape-story__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(4rem, 7vw, 7rem);
+}
+.landscape-story__copy h2 {
+  max-width: 9ch;
+}
+.landscape-story__copy > p:not(.eyebrow) {
+  max-width: 33rem;
+  color: var(--ivory-100);
+  line-height: 1.8;
+}
+.landscape-story__copy dl {
+  margin: 2rem 0 0;
+}
+.landscape-story__copy dl div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+.landscape-story__copy dt {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.landscape-story__copy dd {
+  margin: 0;
+  color: var(--ivory-100);
+}
+.shared-life {
+  padding: clamp(6rem, 10vw, 10rem) 0;
+  background: var(--white);
+}
+.shared-life__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(3rem, 9vw, 9rem);
+}
+.shared-life__heading {
+  position: sticky;
+  top: calc(var(--notice-height) + var(--header-height) + 2rem);
+  align-self: start;
+}
+.shared-life__heading h2 {
+  max-width: 9ch;
+}
+.shared-life__heading > p:not(.eyebrow) {
+  max-width: 31rem;
+  color: var(--stone-600);
+  line-height: 1.75;
+}
+.shared-life__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--stone-300);
+}
+.shared-life__list li {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  padding: 1.7rem 0;
+  border-bottom: 1px solid var(--stone-300);
+}
+.shared-life__list li > span {
+  color: var(--terracotta-400);
+  font-size: 0.62rem;
+}
+.shared-life__list h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 500;
+}
+.shared-life__list p {
+  margin: 0;
+  color: var(--stone-600);
+  line-height: 1.65;
+}
+.community-security {
+  padding: clamp(6rem, 10vw, 10rem) 0;
+  background: var(--forest-700);
+  color: var(--white);
+}
+.community-security__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
+}
+.community-security h2 {
+  max-width: 9ch;
+}
+.community-security__grid > div:last-child > p:first-child {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.45;
+}
+.community-security__note {
+  margin: 1.5rem 0 2rem;
+  color: var(--ivory-100);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+.community-next {
+  padding: clamp(6rem, 10vw, 10rem) 0;
+  text-align: center;
+}
+.community-next h2 {
+  max-width: 13ch;
+  margin: 0 auto 2.5rem;
+}
+.community-next .action-link {
+  margin-inline: auto;
+}
+@media (max-width: 56rem) {
+  .community-hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: 52svh auto;
+  }
+  .community-hero__image {
+    min-height: 0;
+    order: 2;
+  }
+  .community-hero__copy {
+    padding: 4rem 1.5rem;
+  }
+  .community-intro__lead,
+  .shared-life__grid,
+  .community-security__grid {
+    grid-template-columns: 1fr;
+  }
+  .principle-grid {
+    grid-template-columns: 1fr;
+  }
+  .principle-card {
+    min-height: 17rem;
+  }
+  .principle-card h3 {
+    margin-top: 2.5rem;
+  }
+  .landscape-story {
+    grid-template-columns: 1fr;
+    grid-template-rows: 42svh auto;
+  }
+  .landscape-story__image {
+    min-height: 0;
+  }
+  .landscape-story__copy {
+    padding: 4rem 1.5rem;
+  }
+  .shared-life__heading {
+    position: static;
+  }
+  .community-security__grid {
+    gap: 2rem;
+  }
+}
+@media (max-width: 34rem) {
+  .community-hero {
+    grid-template-rows: 42svh auto;
+  }
+  .community-hero__copy {
+    padding-block: 3rem 4rem;
+  }
+  .community-hero__copy h1 {
+    font-size: clamp(3.4rem, 16vw, 5rem);
+  }
+  .community-intro {
+    padding-block: 5rem;
+  }
+  .community-intro__lead h2,
+  .landscape-story__copy h2,
+  .shared-life__heading h2,
+  .community-security h2,
+  .community-next h2 {
+    font-size: clamp(2.9rem, 14vw, 4rem);
+  }
+  .principle-grid {
+    margin-top: 3rem;
+  }
+  .principle-card {
+    min-height: 15rem;
+    padding: 2rem;
+  }
+  .landscape-story__copy dl div {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .shared-life__list h3 {
+    font-size: 1.7rem;
+  }
+}

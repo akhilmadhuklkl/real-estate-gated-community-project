@@ -50,14 +50,19 @@ test("opens the mobile navigation", async ({ page }, testInfo) => {
   ).toBeVisible();
 });
 
-test("uses the shared shell on planned routes", async ({ page }) => {
+test("renders the production community story", async ({ page }) => {
   await page.goto("/community");
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "A quieter way to belong.",
+      name: /Nature's pet/,
     }),
   ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Thoughtful from ground to garden/ }),
+  ).toBeVisible();
+  await expect(page.getByText("Lijo. Reny. Architects").first()).toBeVisible();
+  await expect(page.getByText(/Installed systems/)).toBeVisible();
   await expect(
     page.getByRole("banner").getByRole("link", { name: "Glitz Pride home" }),
   ).toBeVisible();
