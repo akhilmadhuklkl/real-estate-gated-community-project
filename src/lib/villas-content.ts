@@ -32,6 +32,27 @@ export const villaCatalogue: VillaCatalogueItem[] = project.villaTypes.map(
   }),
 );
 
+export const villaDetailMedia = [
+  {
+    src: "/media/glitz-pride/villa.jpg",
+    alt: "Brochure rendering of the villa exterior",
+  },
+  {
+    src: "/media/glitz-pride/villas.jpg",
+    alt: "Brochure rendering of villas in the landscaped community",
+  },
+  {
+    src: "/media/glitz-pride/entry.jpg",
+    alt: "Brochure rendering of the gated community entrance",
+  },
+];
+
+export const villaSpecifications = project.specifications;
+
+export function getVillaById(id: string) {
+  return villaCatalogue.find((villa) => villa.id === id);
+}
+
 export function filterVillas(
   villas: VillaCatalogueItem[],
   query: string,

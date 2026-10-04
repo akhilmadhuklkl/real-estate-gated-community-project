@@ -35,6 +35,15 @@ const projectSummarySchema = z.object({
       deliveryState: z.string(),
     }),
   ),
+  specifications: z.array(
+    z.object({
+      id: z.string(),
+      category: z.string(),
+      details: z.array(z.string()),
+      approvalState: z.string(),
+      publicationNote: z.string(),
+    }),
+  ),
   location: z.object({
     address: z.string(),
     landmarks: z.array(

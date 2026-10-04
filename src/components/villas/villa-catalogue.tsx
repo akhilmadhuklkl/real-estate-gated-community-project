@@ -116,8 +116,8 @@ export function VillaCatalogue({ villas }: { villas: VillaCatalogueItem[] }) {
                     {villa.publicationNote}
                   </p>
                   <div className="villa-card-full__actions">
-                    <Link href="/contact#schedule-visit">
-                      Request details <span aria-hidden="true">→</span>
+                    <Link href={`/villas/${villa.id}`}>
+                      View villa details <span aria-hidden="true">→</span>
                     </Link>
                     <button
                       type="button"

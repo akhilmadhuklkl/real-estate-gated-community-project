@@ -85,3 +85,19 @@ test("filters and selects the governed villa catalogue", async ({ page }) => {
     page.getByRole("button", { name: "Compare villas" }),
   ).toBeDisabled();
 });
+
+test("renders the brochure-backed villa detail", async ({ page }) => {
+  await page.goto("/villas/villa-brochure-plan-01");
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Brochure villa plan" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Two considered levels." }),
+  ).toBeVisible();
+  await expect(page.getByText("Ground floor · 1,410 sq ft")).toBeVisible();
+  await expect(
+    page.getByRole("heading", {
+      name: "Material choices, clearly referenced.",
+    }),
+  ).toBeVisible();
+});
