@@ -12,7 +12,21 @@ const projectSummarySchema = z.object({
     architect: z.string().optional(),
     approvalState: z.string(),
   }),
-  villaTypes: z.array(z.object({ id: z.string(), totalAreaSqFt: z.number() })),
+  villaTypes: z.array(
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      floorAreasSqFt: z.array(
+        z.object({ floor: z.string(), area: z.number() }),
+      ),
+      totalAreaSqFt: z.number(),
+      bedrooms: z.number().nullable(),
+      bathrooms: z.number().nullable(),
+      availability: z.string(),
+      approvalState: z.string(),
+      publicationNote: z.string(),
+    }),
+  ),
   amenities: z.array(
     z.object({
       id: z.string(),
