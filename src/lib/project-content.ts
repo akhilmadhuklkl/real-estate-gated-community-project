@@ -15,7 +15,13 @@ const projectSummarySchema = z.object({
   amenities: z.array(z.object({ id: z.string(), name: z.string() })),
   location: z.object({
     address: z.string(),
-    landmarks: z.array(z.object({ name: z.string(), distanceKm: z.number() })),
+    landmarks: z.array(
+      z.object({
+        name: z.string(),
+        distanceKm: z.number(),
+        category: z.string(),
+      }),
+    ),
   }),
 });
 

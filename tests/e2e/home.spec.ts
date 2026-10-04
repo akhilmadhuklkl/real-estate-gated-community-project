@@ -9,6 +9,27 @@ test("shows the shared production shell", async ({ page }) => {
     page.getByRole("link", { name: /Explore the villas/ }),
   ).toBeVisible();
   await expect(page.getByRole("contentinfo")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Made for the way/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Everything within/ }),
+  ).toBeVisible();
+});
+
+test("keeps the homepage within the viewport", async ({ page }) => {
+  await page.goto("/");
+  const sizes = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    content: document.documentElement.scrollWidth,
+  }));
+  expect(sizes.content).toBeLessThanOrEqual(sizes.viewport);
+  await expect(
+    page.getByRole("link", { name: /View all residence details/ }),
+  ).toHaveAttribute("href", "/villas");
+  await expect(
+    page.getByRole("link", { name: /View location details/ }),
+  ).toHaveAttribute("href", "/location");
 });
 
 test("opens the mobile navigation", async ({ page }, testInfo) => {
