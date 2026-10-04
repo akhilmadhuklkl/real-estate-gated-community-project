@@ -33,6 +33,8 @@ const projectSummarySchema = z.object({
       name: z.string(),
       description: z.string(),
       deliveryState: z.string(),
+      approvalState: z.string(),
+      publicationNote: z.string(),
     }),
   ),
   specifications: z.array(

@@ -101,3 +101,20 @@ test("renders the brochure-backed villa detail", async ({ page }) => {
     }),
   ).toBeVisible();
 });
+
+test("renders the brochure-backed amenities experience", async ({ page }) => {
+  await page.goto("/amenities");
+  await expect(
+    page.getByRole("heading", { level: 1, name: /Room for the rituals/ }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Vegetable garden" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Security and surveillance" }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Delivery state: confirmation pending").first(),
+  ).toBeVisible();
+  await expect(page.getByText("brochure-listed amenities")).toBeVisible();
+});
