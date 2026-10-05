@@ -118,3 +118,19 @@ test("renders the brochure-backed amenities experience", async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByText("brochure-listed amenities")).toBeVisible();
 });
+
+test("operates the accessible master plan viewer", async ({ page }) => {
+  await page.goto("/master-plan");
+  await expect(
+    page.getByRole("heading", { level: 1, name: /A place designed/ }),
+  ).toBeVisible();
+  await expect(page.getByText("plot availability")).toBeVisible();
+  await page.getByRole("button", { name: "Show Shuttle court" }).click();
+  await expect(
+    page.getByRole("heading", { level: 2, name: "Shuttle court" }),
+  ).toBeVisible();
+  await expect(page.getByText(/intended sport/)).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /View amenity details/ }),
+  ).toHaveAttribute("href", "/amenities#amenity-list");
+});

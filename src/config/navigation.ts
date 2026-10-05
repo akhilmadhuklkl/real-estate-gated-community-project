@@ -3,6 +3,7 @@ export const primaryNavigation = [
   { label: "Community", href: "/community" },
   { label: "Villas", href: "/villas" },
   { label: "Amenities", href: "/amenities" },
+  { label: "Master plan", href: "/master-plan" },
   { label: "Gallery", href: "/gallery" },
   { label: "Location", href: "/location" },
   { label: "Contact", href: "/contact" },

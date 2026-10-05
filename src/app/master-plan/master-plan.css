@@ -1,0 +1,334 @@
+.master-plan-page {
+  background: var(--ivory-50);
+}
+.master-plan-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--white);
+}
+.master-plan-hero__image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.master-plan-hero__image img {
+  object-fit: cover;
+}
+.master-plan-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(7, 25, 18, 0.88), rgba(7, 25, 18, 0.2) 70%),
+    linear-gradient(0deg, rgba(7, 25, 18, 0.7), transparent 62%);
+}
+.master-plan-hero__copy {
+  padding-block: calc(var(--notice-height) + var(--header-height) + 8rem) 4.5rem;
+}
+.master-plan-hero h1 {
+  max-width: 11ch;
+}
+.master-plan-hero h1 em {
+  display: block;
+}
+.master-plan-hero__copy > p:not(.eyebrow) {
+  max-width: 38rem;
+  margin: 1.5rem 0 2rem;
+  line-height: 1.75;
+}
+.master-plan-intro {
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+.master-plan-intro__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 9vw, 9rem);
+}
+.master-plan-intro h2 {
+  max-width: 12ch;
+}
+.master-plan-intro__grid > div:last-child > p {
+  color: var(--stone-600);
+  line-height: 1.8;
+}
+.master-plan-intro dl {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 3rem 0 0;
+}
+.master-plan-intro dl div {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--stone-300);
+}
+.master-plan-intro dt {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+}
+.master-plan-intro dd {
+  margin: 0.4rem 0 0;
+  color: var(--stone-600);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.interactive-plan {
+  padding: clamp(6rem, 9vw, 9rem) 0;
+  background: var(--white);
+}
+.interactive-plan__header {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  align-items: end;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+.interactive-plan__header h2 {
+  max-width: 10ch;
+}
+.interactive-plan__header > p {
+  color: var(--stone-600);
+  line-height: 1.75;
+}
+.plan-viewer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(21rem, 0.65fr);
+}
+.plan-viewer__canvas {
+  position: relative;
+  min-height: 45rem;
+  overflow: hidden;
+  background: var(--forest-900);
+}
+.plan-viewer__canvas > img {
+  object-fit: cover;
+}
+.plan-viewer__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(5, 21, 15, 0.26), transparent 35%);
+  pointer-events: none;
+}
+.plan-hotspot {
+  position: absolute;
+  width: 2.8rem;
+  height: 2.8rem;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 50%;
+  background: rgba(12, 51, 38, 0.83);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 0 0.45rem rgba(255, 255, 255, 0.16);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.plan-hotspot:hover,
+.plan-hotspot:focus-visible,
+.plan-hotspot[data-active="true"] {
+  transform: translate(-50%, -50%) scale(1.16);
+  background: var(--terracotta-400);
+  box-shadow: 0 0 0 0.55rem rgba(255, 255, 255, 0.28);
+  outline: none;
+}
+.plan-hotspot span {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+.plan-viewer__image-note {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  background: rgba(7, 25, 18, 0.85);
+  color: white;
+  font-size: 0.57rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.plan-detail {
+  display: flex;
+  flex-direction: column;
+  min-height: 45rem;
+  padding: clamp(2rem, 4vw, 4rem);
+  background: var(--forest-700);
+  color: white;
+}
+.plan-detail__index {
+  display: flex;
+  justify-content: space-between;
+  color: var(--terracotta-300);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.plan-detail h2 {
+  margin: auto 0 1.5rem;
+  font-size: clamp(2.4rem, 3.2vw, 3.4rem);
+  overflow-wrap: anywhere;
+}
+.plan-detail > p {
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.78);
+}
+.plan-detail .plan-detail__note {
+  padding: 1rem;
+  border-left: 2px solid var(--terracotta-300);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.75rem;
+}
+.plan-detail > a {
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.plan-index {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--stone-300);
+}
+.plan-index li {
+  border-right: 1px solid var(--stone-300);
+  border-bottom: 1px solid var(--stone-300);
+}
+.plan-index button {
+  width: 100%;
+  min-height: 6.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 1rem;
+  align-items: center;
+  padding: 1.2rem;
+  border: 0;
+  background: var(--ivory-50);
+  color: var(--forest-900);
+  text-align: left;
+  cursor: pointer;
+}
+.plan-index button:hover,
+.plan-index button:focus-visible,
+.plan-index button[data-active="true"] {
+  background: var(--ivory-100);
+  outline: 2px solid var(--forest-700);
+  outline-offset: -2px;
+}
+.plan-index button > span:first-child {
+  grid-row: 1/3;
+  color: var(--terracotta-400);
+  font-size: 0.65rem;
+}
+.plan-index button > span:nth-child(2) {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+.plan-index small {
+  color: var(--stone-600);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.plan-confirmation {
+  padding: clamp(6rem, 9vw, 9rem) 0;
+}
+.plan-confirmation__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 9vw, 9rem);
+  align-items: end;
+}
+.plan-confirmation h2 {
+  max-width: 10ch;
+}
+.plan-confirmation__grid > div:last-child > p {
+  margin-bottom: 2rem;
+  color: var(--stone-600);
+  line-height: 1.8;
+}
+.master-plan-next {
+  padding: clamp(5rem, 8vw, 8rem) 0;
+  background: var(--forest-700);
+  color: white;
+}
+.master-plan-next .page-shell {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.master-plan-next h2 {
+  max-width: 12ch;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+}
+@media (max-width: 62rem) {
+  .plan-viewer {
+    grid-template-columns: 1fr;
+  }
+  .plan-viewer__canvas {
+    min-height: 64vw;
+  }
+  .plan-detail {
+    min-height: 25rem;
+  }
+  .plan-index {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 50rem) {
+  .master-plan-intro__grid,
+  .interactive-plan__header,
+  .plan-confirmation__grid {
+    grid-template-columns: 1fr;
+  }
+  .master-plan-next .page-shell {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 34rem) {
+  .master-plan-hero h1 {
+    font-size: clamp(3.2rem, 15vw, 5rem);
+  }
+  .master-plan-hero__copy {
+    padding-bottom: 3rem;
+  }
+  .master-plan-intro dl,
+  .plan-index {
+    grid-template-columns: 1fr;
+  }
+  .plan-viewer__canvas {
+    min-height: 72vw;
+  }
+  .plan-hotspot {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .plan-viewer__image-note {
+    display: none;
+  }
+  .master-plan-intro h2,
+  .interactive-plan h2,
+  .plan-confirmation h2 {
+    font-size: clamp(2.8rem, 13vw, 4rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .plan-hotspot {
+    transition: none;
+  }
+}
