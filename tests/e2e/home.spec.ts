@@ -134,3 +134,23 @@ test("operates the accessible master plan viewer", async ({ page }) => {
     page.getByRole("link", { name: /View amenity details/ }),
   ).toHaveAttribute("href", "/amenities#amenity-list");
 });
+
+test("filters and opens the governed media gallery", async ({ page }) => {
+  await page.goto("/gallery");
+  await expect(
+    page.getByRole("heading", { level: 1, name: /A closer look/ }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Floor plans" }).click();
+  await expect(page.getByText("Showing 2 of 8")).toBeVisible();
+  await page
+    .getByRole("button", { name: "Open Ground-floor planning reference" })
+    .click();
+  await expect(
+    page.getByRole("dialog").getByRole("heading", {
+      name: "Ground-floor planning reference",
+    }),
+  ).toBeVisible();
+  await expect(page.getByText("Revision date not supplied")).toBeVisible();
+  await page.getByRole("button", { name: /Close/ }).click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+});
