@@ -48,6 +48,10 @@ const projectSummarySchema = z.object({
   ),
   location: z.object({
     address: z.string(),
+    coordinates: z.object({
+      latitude: z.number(),
+      longitude: z.number(),
+    }),
     landmarks: z.array(
       z.object({
         name: z.string(),
@@ -55,6 +59,8 @@ const projectSummarySchema = z.object({
         category: z.string(),
       }),
     ),
+    approvalState: z.string(),
+    publicationNote: z.string(),
   }),
 });
 

@@ -1,0 +1,382 @@
+.location-page {
+  background: var(--ivory-50);
+}
+.location-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  align-items: end;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--white);
+}
+.location-hero > img {
+  z-index: -2;
+  object-fit: cover;
+  filter: saturate(0.72) contrast(1.08);
+}
+.location-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 27, 19, 0.92),
+      rgba(7, 27, 19, 0.46) 56%,
+      rgba(7, 27, 19, 0.12)
+    ),
+    linear-gradient(0deg, rgba(7, 27, 19, 0.65), transparent 68%);
+}
+.location-hero__copy {
+  padding-block: calc(var(--notice-height) + var(--header-height) + 8rem) 4.5rem;
+}
+.location-hero h1 {
+  max-width: 10ch;
+}
+.location-hero h1 em {
+  display: block;
+}
+.location-hero__copy > p:not(.eyebrow) {
+  max-width: 41rem;
+  margin: 1.5rem 0 2rem;
+  line-height: 1.75;
+}
+.location-overview {
+  padding: clamp(6rem, 10vw, 10rem) 0;
+}
+.location-overview__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(20rem, 0.8fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
+}
+.location-overview__map {
+  position: relative;
+  min-height: clamp(30rem, 60vw, 46rem);
+  overflow: hidden;
+  background: var(--ivory-100);
+}
+.location-overview__map img {
+  object-fit: contain;
+}
+.location-overview__map > span {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  padding: 0.65rem 0.8rem;
+  background: rgba(13, 36, 27, 0.9);
+  color: var(--white);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.location-overview__copy h2 {
+  max-width: 9ch;
+  font-size: clamp(3rem, 6vw, 5rem);
+}
+.location-overview address {
+  margin: 2rem 0;
+  color: var(--stone-600);
+  font-style: normal;
+  line-height: 1.8;
+}
+.location-overview dl {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 0 2rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--stone-300);
+}
+.location-overview dl div {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 1rem;
+}
+.location-overview dt {
+  color: var(--stone-600);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.location-overview dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.location-directions-link {
+  min-height: 2.75rem;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--forest-700);
+  background: var(--forest-700);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.location-directions-link:hover,
+.location-directions-link:focus-visible {
+  background: var(--forest-950);
+}
+.location-overview__note {
+  margin-top: 1.25rem;
+  color: var(--stone-600);
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+.nearest {
+  padding: clamp(6rem, 9vw, 9rem) 0;
+  background: var(--forest-950);
+  color: var(--white);
+}
+.nearest__header,
+.landmarks__header {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  gap: 3rem;
+  align-items: end;
+  margin-bottom: 4rem;
+}
+.nearest__header h2,
+.landmarks__header h2 {
+  max-width: 11ch;
+}
+.nearest__header > p {
+  color: var(--stone-300);
+  line-height: 1.75;
+}
+.nearest__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+.nearest article {
+  min-height: 24rem;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.nearest article > p {
+  margin: 0;
+  color: var(--terracotta-400);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.nearest article > strong {
+  margin: auto 0 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 0.8;
+}
+.nearest article > strong small {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.nearest h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1;
+}
+.nearest article > span {
+  margin-top: 1rem;
+  color: var(--stone-300);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.landmarks {
+  padding: clamp(6rem, 9vw, 9rem) 0;
+  background: var(--white);
+}
+.landmarks__header > p {
+  color: var(--stone-600);
+  line-height: 1.75;
+}
+.location-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--stone-300);
+}
+.location-filter button {
+  min-height: 2.6rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--stone-300);
+  background: transparent;
+  color: var(--forest-900);
+  cursor: pointer;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+.location-filter button:hover,
+.location-filter button:focus-visible,
+.location-filter button[aria-pressed="true"] {
+  border-color: var(--forest-700);
+  background: var(--forest-700);
+  color: var(--white);
+}
+.location-results {
+  margin: 1rem 0 2rem;
+  color: var(--stone-600);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.landmark-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--stone-300);
+  border-left: 1px solid var(--stone-300);
+}
+.landmark-card {
+  min-height: 10rem;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-right: 1px solid var(--stone-300);
+  border-bottom: 1px solid var(--stone-300);
+}
+.landmark-card__number {
+  align-self: start;
+  color: var(--terracotta-400);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+.landmark-card p {
+  margin: 0 0 0.45rem;
+  color: var(--stone-600);
+  font-size: 0.63rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.landmark-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+.landmark-card > strong {
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 500;
+}
+.landmark-card > strong small {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+.landmark-card__warning {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--terracotta-400);
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+.location-confirmation {
+  padding: clamp(6rem, 9vw, 9rem) 0;
+  background: var(--ivory-100);
+}
+.location-confirmation__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 9vw, 9rem);
+  align-items: end;
+}
+.location-confirmation h2 {
+  max-width: 10ch;
+}
+.location-confirmation__grid > div:last-child > p {
+  margin-bottom: 2rem;
+  color: var(--stone-600);
+  line-height: 1.8;
+}
+.location-next {
+  padding: clamp(5rem, 8vw, 8rem) 0;
+  background: var(--forest-700);
+  color: var(--white);
+}
+.location-next .page-shell {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.location-next h2 {
+  max-width: 12ch;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+}
+@media (max-width: 58rem) {
+  .location-overview__grid,
+  .nearest__header,
+  .landmarks__header,
+  .location-confirmation__grid {
+    grid-template-columns: 1fr;
+  }
+  .nearest__grid {
+    grid-template-columns: 1fr;
+  }
+  .nearest article {
+    min-height: 18rem;
+  }
+}
+@media (max-width: 47.99rem) {
+  .location-hero h1 {
+    font-size: clamp(3.4rem, 16vw, 5rem);
+  }
+  .location-hero__copy {
+    padding-bottom: 3rem;
+  }
+  .location-overview__map {
+    min-height: 80vw;
+  }
+  .landmark-list {
+    grid-template-columns: 1fr;
+  }
+  .location-next .page-shell {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+@media (max-width: 30rem) {
+  .location-overview dl div {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+  .landmark-card {
+    grid-template-columns: 2rem 1fr;
+  }
+  .landmark-card > strong {
+    grid-column: 2;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .location-filter button {
+    transition: none;
+  }
+}

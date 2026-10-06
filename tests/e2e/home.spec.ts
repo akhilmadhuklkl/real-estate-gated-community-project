@@ -154,3 +154,23 @@ test("filters and opens the governed media gallery", async ({ page }) => {
   await page.getByRole("button", { name: /Close/ }).click();
   await expect(page.getByRole("dialog")).toHaveCount(0);
 });
+
+test("filters the source-backed location directory", async ({ page }) => {
+  await page.goto("/location");
+  await expect(
+    page.getByRole("heading", { level: 1, name: /Everything within/ }),
+  ).toBeVisible();
+  await expect(page.getByText("Owner verification pending")).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Open directions/ }),
+  ).toHaveAttribute("href", /google\.com\/maps\/dir/);
+  await page.getByRole("button", { name: "Healthcare" }).click();
+  await expect(page.getByText("Showing 3 of 18")).toBeVisible();
+  const landmarkList = page.getByRole("list");
+  await expect(
+    landmarkList.getByRole("heading", { name: "Amala Medical College" }),
+  ).toBeVisible();
+  await expect(
+    landmarkList.getByRole("heading", { name: "IES Education City" }),
+  ).toHaveCount(0);
+});
