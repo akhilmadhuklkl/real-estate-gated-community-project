@@ -1,0 +1,12 @@
+---
+description: Monitor account usage throughout every project task
+alwaysApply: true
+---
+
+# Usage Monitoring
+
+- Check the current account usage before starting each tracker task.
+- Check it again after major implementation and verification milestones during longer tasks.
+- Tell Akhil the remaining percentage when it materially affects whether the task can be completed and verified safely.
+- At 35% remaining or lower, recommend whether to finish the current task, reduce its scope, or continue in a later session.
+- Never sacrifice testing, tracker updates, source control safety, or work quality merely to finish within the remaining allowance.
