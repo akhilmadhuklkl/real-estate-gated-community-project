@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { ActionLink } from "@/components/shared/action-link";
 import { PageShell } from "@/components/shared/page-shell";
 import { communityContent } from "@/lib/community-content";
 import { project } from "@/lib/project-content";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./community.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Community",
   description:
     "Explore the brochure-backed architectural, landscape and shared-life vision for Glitz Pride.",
-};
+  path: "/community",
+  image: "/media/glitz-pride/villas.jpg",
+});
 
 export default function CommunityPage() {
   return (

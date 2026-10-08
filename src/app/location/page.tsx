@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { LandmarkDirectory } from "@/components/location/landmark-directory";
 import { ActionLink } from "@/components/shared/action-link";
 import { PageShell } from "@/components/shared/page-shell";
 import { locationContent, nearestLandmarks } from "@/lib/location-content";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./location.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Location",
   description:
     "Explore brochure-backed distances, a location illustration and clear directions context for Glitz Pride near Thrissur.",
-};
+  path: "/location",
+  image: "/media/glitz-pride/location-map.jpg",
+});
 
 export default function LocationPage() {
   return (

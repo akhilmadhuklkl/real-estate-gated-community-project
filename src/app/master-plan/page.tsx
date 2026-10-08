@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { MasterPlanViewer } from "@/components/master-plan/master-plan-viewer";
 import { ActionLink } from "@/components/shared/action-link";
 import { PageShell } from "@/components/shared/page-shell";
 import { masterPlanPoints } from "@/lib/master-plan-content";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./master-plan.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Master plan",
   description:
     "Explore an accessible, brochure-backed aerial reference for the Glitz Pride villa community.",
-};
+  path: "/master-plan",
+});
 
 export default function MasterPlanPage() {
   return (

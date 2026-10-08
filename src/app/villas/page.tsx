@@ -1,16 +1,18 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { VillaCatalogue } from "@/components/villas/villa-catalogue";
 import { PageShell } from "@/components/shared/page-shell";
 import { villaCatalogue } from "@/lib/villas-content";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./villas.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Villas",
   description: "Explore brochure-backed Glitz Pride villa plans and areas.",
-};
+  path: "/villas",
+  image: "/media/glitz-pride/villa.jpg",
+});
 
 export default function VillasPage() {
   return (

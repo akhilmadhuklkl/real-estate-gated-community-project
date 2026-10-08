@@ -1,18 +1,20 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { MediaGallery } from "@/components/gallery/media-gallery";
 import { ActionLink } from "@/components/shared/action-link";
 import { PageShell } from "@/components/shared/page-shell";
 import { galleryItems, pendingCollections } from "@/lib/gallery-content";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./gallery.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Gallery",
   description:
     "Browse brochure-derived Glitz Pride architecture, landscape, community and floor-plan media with clear source notes.",
-};
+  path: "/gallery",
+  image: "/media/glitz-pride/villas.jpg",
+});
 
 export default function GalleryPage() {
   return (

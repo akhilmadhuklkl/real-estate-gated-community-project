@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Privacy",
   description: "Privacy information for the private Glitz Pride preview.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

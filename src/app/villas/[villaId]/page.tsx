@@ -11,6 +11,7 @@ import {
   villaDetailMedia,
   villaSpecifications,
 } from "@/lib/villas-content";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./villa-detail.css";
 
@@ -23,10 +24,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const villa = getVillaById((await params).villaId);
   return villa
-    ? {
+    ? createPageMetadata({
         title: villa.name,
         description: `${villa.totalAreaSqFt.toLocaleString("en-IN")} sq ft brochure reference villa.`,
-      }
+        path: `/villas/${villa.id}`,
+        image: villa.image,
+      })
     : { title: "Villa not found" };
 }
 

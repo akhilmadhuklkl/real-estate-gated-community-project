@@ -1,5 +1,38 @@
 import { expect, test } from "@playwright/test";
 
+test("publishes safe technical SEO signals", async ({ page, request }) => {
+  await page.goto("/villas");
+
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "http://localhost:3000/villas",
+  );
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    "http://localhost:3000/media/glitz-pride/villa.jpg",
+  );
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+    "content",
+    /noindex/,
+  );
+  const structuredData = JSON.parse(
+    (await page.locator('script[type="application/ld+json"]').textContent()) ??
+      "{}",
+  ) as { "@graph"?: Array<{ "@type"?: string }> };
+  expect(structuredData["@graph"]?.map((item) => item["@type"])).toEqual([
+    "WebSite",
+    "Residence",
+  ]);
+
+  const robotsResponse = await request.get("/robots.txt");
+  expect(await robotsResponse.text()).toContain("Disallow: /");
+
+  const sitemapResponse = await request.get("/sitemap.xml");
+  const sitemapXml = await sitemapResponse.text();
+  expect(sitemapXml).toContain("/villas/villa-brochure-plan-01");
+  expect(sitemapXml).not.toContain("/api/");
+});
+
 test("shows the shared production shell", async ({ page }) => {
   await page.goto("/");
   await expect(

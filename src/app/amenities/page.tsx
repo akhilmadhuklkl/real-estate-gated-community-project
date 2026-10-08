@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { ActionLink } from "@/components/shared/action-link";
 import { PageShell } from "@/components/shared/page-shell";
 import { amenities, amenityImages } from "@/lib/amenities-content";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./amenities.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Amenities",
   description:
     "Explore the shared spaces listed in the official Glitz Pride development brochure.",
-};
+  path: "/amenities",
+  image: "/media/glitz-pride/greenery.jpg",
+});
 
 export default function AmenitiesPage() {
   return (

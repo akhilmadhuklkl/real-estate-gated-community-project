@@ -1,17 +1,19 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 
 import { EnquiryForm } from "@/components/contact/enquiry-form";
 import { TrackedContactAction } from "@/components/contact/tracked-contact-action";
 import { getContactActions } from "@/lib/contact-actions";
+import { createPageMetadata } from "@/lib/seo";
 
 import "./contact.css";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Contact and visits",
   description:
     "Ask a question or prepare a site-visit request for the Glitz Pride villa community.",
-};
+  path: "/contact",
+  image: "/reference/glitz-pride/about-photo.jpg",
+});
 
 export default function ContactPage() {
   const actions = getContactActions();
