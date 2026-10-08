@@ -174,3 +174,36 @@ test("filters the source-backed location directory", async ({ page }) => {
     landmarkList.getByRole("heading", { name: "IES Education City" }),
   ).toHaveCount(0);
 });
+
+test("validates and completes the preview enquiry flow", async ({ page }) => {
+  await page.goto("/contact");
+  await expect(
+    page.getByRole("heading", { level: 1, name: /Visit at your own pace/ }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: "Prepare enquiry" }).click();
+  await expect(page.locator(".form-alert--error")).toContainText(
+    "Please correct the highlighted fields",
+  );
+
+  await page.getByLabel("Full name").fill("Akhil");
+  await page.getByLabel("Email address").fill("akhil@example.com");
+  await page.getByLabel(/I agree to send/).check();
+  await page.waitForTimeout(3_000);
+  await page.getByRole("button", { name: "Prepare enquiry" }).click();
+
+  await expect(page.getByRole("status")).toContainText(
+    "This private preview validates the flow",
+  );
+  await expect(page.getByRole("status")).toContainText(/GP-\d{8}-[A-Z0-9]{8}/);
+});
+
+test("reveals visit-specific fields", async ({ page }) => {
+  await page.goto("/contact#schedule-visit");
+  await page.getByLabel("Plan a site visit").check();
+  await expect(page.getByLabel("Preferred visit date")).toBeVisible();
+  await expect(page.getByLabel("Preferred time")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Prepare visit request" }),
+  ).toBeVisible();
+});
