@@ -207,3 +207,70 @@ test("reveals visit-specific fields", async ({ page }) => {
     page.getByRole("button", { name: "Prepare visit request" }),
   ).toBeVisible();
 });
+
+test("offers brochure-backed contact actions without exposing unapproved WhatsApp routing", async ({
+  page,
+}) => {
+  await page.goto("/contact#contact-actions-title");
+
+  const sizes = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    content: document.documentElement.scrollWidth,
+  }));
+  expect(sizes.content).toBeLessThanOrEqual(sizes.viewport);
+  const headingTop = await page
+    .getByRole("heading", { name: "Details when you need them." })
+    .evaluate((heading) => heading.getBoundingClientRect().top);
+  expect(headingTop).toBeGreaterThanOrEqual(75);
+
+  const brochure = page.getByRole("link", { name: /Download brochure/ });
+  await expect(brochure).toHaveAttribute(
+    "href",
+    "/reference/glitz-pride/brochure.pdf",
+  );
+  await expect(brochure).toHaveAttribute(
+    "download",
+    "Glitz-Pride-Brochure.pdf",
+  );
+  await expect(
+    page.getByRole("link", { name: "+91 954 451 9000" }),
+  ).toHaveAttribute("href", "tel:+919544519000");
+  await expect(
+    page.getByRole("link", { name: "info@glitzhomes.co.in" }),
+  ).toHaveAttribute("href", /mailto:info@glitzhomes\.co\.in/);
+  await expect(page.getByText("Awaiting owner confirmation")).toHaveAttribute(
+    "aria-disabled",
+    "true",
+  );
+  await expect(page.getByRole("link", { name: /Open WhatsApp/ })).toHaveCount(
+    0,
+  );
+});
+
+test("emits a non-personal contact action event", async ({ page }) => {
+  await page.goto("/contact");
+  await page.evaluate(() => {
+    (
+      window as Window & { capturedContactAction?: unknown }
+    ).capturedContactAction = null;
+    window.addEventListener("glitz:contact-action", (event) => {
+      (
+        window as Window & { capturedContactAction?: unknown }
+      ).capturedContactAction = (event as CustomEvent).detail;
+    });
+  });
+
+  await page.getByRole("link", { name: /Download brochure/ }).click();
+
+  const event = await page.evaluate(
+    () =>
+      (window as Window & { capturedContactAction?: unknown })
+        .capturedContactAction,
+  );
+  expect(event).toEqual({
+    event: "contact_action",
+    action: "brochure",
+    label: "official_brochure",
+    location: "contact_action_panel",
+  });
+});
