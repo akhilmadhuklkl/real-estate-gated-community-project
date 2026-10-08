@@ -15,6 +15,14 @@ export type VillaCatalogueItem = {
   imageAlt: string;
 };
 
+export const MAX_COMPARISON_VILLAS = 3;
+
+export type VillaComparisonRow = {
+  id: string;
+  label: string;
+  values: string[];
+};
+
 export const villaCatalogue: VillaCatalogueItem[] = project.villaTypes.map(
   (villa) => ({
     id: villa.id,
@@ -73,4 +81,70 @@ export function filterVillas(
       (area === "2500-plus" && villa.totalAreaSqFt >= 2500);
     return matchesQuery && matchesArea;
   });
+}
+
+function readableState(value: string) {
+  if (value === "unknown") return "To confirm";
+  return value
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+export function buildVillaComparisonRows(
+  villas: VillaCatalogueItem[],
+): VillaComparisonRow[] {
+  return [
+    {
+      id: "total-area",
+      label: "Total area",
+      values: villas.map(
+        (villa) => `${villa.totalAreaSqFt.toLocaleString("en-IN")} sq ft`,
+      ),
+    },
+    {
+      id: "levels",
+      label: "Levels",
+      values: villas.map((villa) => villa.levels.toString()),
+    },
+    {
+      id: "bedrooms",
+      label: "Bedrooms",
+      values: villas.map((villa) => villa.bedrooms?.toString() ?? "To confirm"),
+    },
+    {
+      id: "bathrooms",
+      label: "Bathrooms",
+      values: villas.map(
+        (villa) => villa.bathrooms?.toString() ?? "To confirm",
+      ),
+    },
+    {
+      id: "floor-plan",
+      label: "Floor-plan areas",
+      values: villas.map((villa) =>
+        villa.floorAreas
+          .map(
+            (floor) =>
+              `${floor.floor}: ${floor.area.toLocaleString("en-IN")} sq ft`,
+          )
+          .join(" · "),
+      ),
+    },
+    {
+      id: "features",
+      label: "Plan-specific features",
+      values: villas.map(() => "Not supplied in the current source"),
+    },
+    {
+      id: "availability",
+      label: "Availability",
+      values: villas.map((villa) => readableState(villa.availability)),
+    },
+    {
+      id: "source-status",
+      label: "Content status",
+      values: villas.map((villa) => readableState(villa.approvalState)),
+    },
+  ];
 }

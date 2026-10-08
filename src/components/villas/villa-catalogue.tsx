@@ -2,9 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { type RefObject, useMemo, useRef, useState } from "react";
 
-import { filterVillas, type VillaCatalogueItem } from "@/lib/villas-content";
+import {
+  buildVillaComparisonRows,
+  filterVillas,
+  MAX_COMPARISON_VILLAS,
+  type VillaCatalogueItem,
+} from "@/lib/villas-content";
 
 type AreaFilter = "all" | "under-2500" | "2500-plus";
 
@@ -12,18 +17,26 @@ export function VillaCatalogue({ villas }: { villas: VillaCatalogueItem[] }) {
   const [query, setQuery] = useState("");
   const [area, setArea] = useState<AreaFilter>("all");
   const [selected, setSelected] = useState<string[]>([]);
+  const comparisonDialog = useRef<HTMLDialogElement>(null);
   const filtered = useMemo(
     () => filterVillas(villas, query, area),
     [villas, query, area],
   );
 
   function toggleComparison(id: string) {
-    setSelected((current) =>
-      current.includes(id)
-        ? current.filter((item) => item !== id)
-        : [...current, id],
-    );
+    setSelected((current) => {
+      if (current.includes(id)) {
+        return current.filter((item) => item !== id);
+      }
+      if (current.length >= MAX_COMPARISON_VILLAS) return current;
+      return [...current, id];
+    });
   }
+
+  const selectedVillas = selected
+    .map((id) => villas.find((villa) => villa.id === id))
+    .filter((villa): villa is VillaCatalogueItem => Boolean(villa));
+  const atComparisonLimit = selected.length >= MAX_COMPARISON_VILLAS;
 
   return (
     <div className="villa-explorer">
@@ -122,6 +135,8 @@ export function VillaCatalogue({ villas }: { villas: VillaCatalogueItem[] }) {
                     <button
                       type="button"
                       aria-pressed={isSelected}
+                      disabled={!isSelected && atComparisonLimit}
+                      aria-describedby="comparison-limit-note"
                       onClick={() => toggleComparison(villa.id)}
                     >
                       {isSelected
@@ -153,18 +168,120 @@ export function VillaCatalogue({ villas }: { villas: VillaCatalogueItem[] }) {
       {selected.length > 0 ? (
         <aside className="compare-tray" data-visible="true" aria-live="polite">
           <div>
-            <strong>{selected.length} selected</strong>
+            <strong>
+              {selected.length} of {MAX_COMPARISON_VILLAS} selected
+            </strong>
             <span>
               {selected.length < 2
                 ? "Add another approved villa when available."
-                : "Ready to compare."}
+                : "Review the selected plans side by side."}
             </span>
           </div>
-          <button type="button" disabled={selected.length < 2}>
-            Compare villas
+          <button
+            type="button"
+            onClick={() => comparisonDialog.current?.showModal()}
+          >
+            Review comparison
           </button>
         </aside>
       ) : null}
+
+      <p className="sr-only" id="comparison-limit-note">
+        You can compare up to {MAX_COMPARISON_VILLAS} villas.
+      </p>
+
+      <VillaComparisonDialog
+        dialogRef={comparisonDialog}
+        selectedVillas={selectedVillas}
+        onRemove={toggleComparison}
+      />
     </div>
+  );
+}
+
+function VillaComparisonDialog({
+  dialogRef,
+  selectedVillas,
+  onRemove,
+}: {
+  dialogRef: RefObject<HTMLDialogElement | null>;
+  selectedVillas: VillaCatalogueItem[];
+  onRemove: (id: string) => void;
+}) {
+  const rows = buildVillaComparisonRows(selectedVillas);
+  const emptySlots = MAX_COMPARISON_VILLAS - selectedVillas.length;
+
+  return (
+    <dialog
+      className="comparison-dialog"
+      ref={dialogRef}
+      aria-labelledby="comparison-title"
+    >
+      <div className="comparison-dialog__header">
+        <div>
+          <p className="eyebrow">Side-by-side review</p>
+          <h2 id="comparison-title">Villa comparison</h2>
+          <p>
+            Compare source-backed facts only. Unknown room counts, features,
+            prices, and availability remain clearly unconfirmed.
+          </p>
+        </div>
+        <form method="dialog">
+          <button type="submit" aria-label="Close villa comparison">
+            Close
+          </button>
+        </form>
+      </div>
+
+      <div className="comparison-table-scroll">
+        <table className="comparison-table">
+          <thead>
+            <tr>
+              <th scope="col">Detail</th>
+              {selectedVillas.map((villa) => (
+                <th scope="col" key={villa.id}>
+                  <span>{villa.name}</span>
+                  <button type="button" onClick={() => onRemove(villa.id)}>
+                    Remove
+                  </button>
+                </th>
+              ))}
+              {Array.from({ length: emptySlots }, (_, index) => (
+                <th scope="col" key={`empty-${index}`}>
+                  <span>Open comparison slot</span>
+                  <small>Awaiting another governed villa plan</small>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.id}>
+                <th scope="row">{row.label}</th>
+                {row.values.map((value, index) => (
+                  <td key={`${row.id}-${selectedVillas[index].id}`}>{value}</td>
+                ))}
+                {Array.from({ length: emptySlots }, (_, index) => (
+                  <td
+                    key={`${row.id}-empty-${index}`}
+                    aria-label="No villa selected"
+                  >
+                    —
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="comparison-dialog__footer">
+        <p>
+          No recommendation or ranking is generated. Confirm all details before
+          making a purchase decision.
+        </p>
+        <Link href="/contact#schedule-visit">Ask about these villas</Link>
+      </div>
+    </dialog>
   );
 }

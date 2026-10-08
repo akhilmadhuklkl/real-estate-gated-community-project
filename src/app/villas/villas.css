@@ -215,6 +215,10 @@
   background: var(--forest-700);
   color: var(--white);
 }
+.villa-card-full__actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 .villa-empty {
   margin-top: 1.5rem;
   padding: 5rem 2rem;
@@ -255,6 +259,142 @@
 .compare-tray button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+.comparison-dialog {
+  width: min(calc(100% - 3rem), 82rem);
+  max-width: none;
+  max-height: min(88svh, 58rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: var(--ivory-50);
+  color: var(--forest-950);
+  box-shadow: 0 2rem 6rem rgba(13, 36, 27, 0.35);
+}
+.comparison-dialog::backdrop {
+  background: rgba(8, 23, 17, 0.76);
+  backdrop-filter: blur(0.35rem);
+}
+.comparison-dialog__header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: start;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--stone-300);
+  background: var(--ivory-50);
+}
+.comparison-dialog__header h2 {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+}
+.comparison-dialog__header > div > p:last-child {
+  max-width: 46rem;
+  margin: 1.25rem 0 0;
+  color: var(--stone-600);
+  line-height: 1.7;
+}
+.comparison-dialog__header button,
+.comparison-table thead button,
+.comparison-dialog__footer a {
+  min-height: 2.7rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--forest-700);
+  background: transparent;
+  color: var(--forest-900);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.comparison-dialog__header button:hover,
+.comparison-dialog__header button:focus-visible,
+.comparison-table thead button:hover,
+.comparison-table thead button:focus-visible,
+.comparison-dialog__footer a:hover,
+.comparison-dialog__footer a:focus-visible {
+  background: var(--forest-700);
+  color: var(--white);
+}
+.comparison-table-scroll {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+.comparison-table {
+  width: 100%;
+  min-width: 60rem;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.comparison-table th,
+.comparison-table td {
+  padding: 1.25rem;
+  border-right: 1px solid var(--stone-300);
+  border-bottom: 1px solid var(--stone-300);
+  text-align: left;
+  vertical-align: top;
+}
+.comparison-table th:first-child {
+  width: 13rem;
+}
+.comparison-table thead th {
+  background: var(--forest-900);
+  color: var(--white);
+}
+.comparison-table thead th:first-child {
+  background: var(--forest-950);
+}
+.comparison-table thead span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.05;
+}
+.comparison-table thead small {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--stone-300);
+  font-size: 0.65rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+.comparison-table thead button {
+  min-height: 2.2rem;
+  margin-top: 1rem;
+  padding: 0.55rem 0.7rem;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--white);
+}
+.comparison-table tbody th {
+  background: var(--ivory-100);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.comparison-table tbody td {
+  color: var(--stone-600);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.comparison-dialog__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
+}
+.comparison-dialog__footer p {
+  max-width: 44rem;
+  margin: 0;
+  color: var(--stone-600);
+  font-size: 0.7rem;
+  line-height: 1.6;
 }
 .plan-preview {
   padding: clamp(6rem, 9vw, 9rem) 0;
@@ -374,6 +514,23 @@
   }
   .compare-tray button {
     width: 100%;
+  }
+  .comparison-dialog {
+    width: calc(100% - 1rem);
+    max-height: calc(100svh - 1rem);
+  }
+  .comparison-dialog__header {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .comparison-dialog__header form,
+  .comparison-dialog__header button,
+  .comparison-dialog__footer a {
+    width: 100%;
+  }
+  .comparison-dialog__footer {
+    align-items: stretch;
+    flex-direction: column;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -80,10 +80,17 @@ test("filters and selects the governed villa catalogue", async ({ page }) => {
   ).toBeVisible();
   await page.getByRole("button", { name: "Clear filters" }).click();
   await page.getByRole("button", { name: "Add to comparison" }).click();
-  await expect(page.getByText("1 selected")).toBeVisible();
-  await expect(
-    page.getByRole("button", { name: "Compare villas" }),
-  ).toBeDisabled();
+  await expect(page.getByText("1 of 3 selected")).toBeVisible();
+  await page.getByRole("button", { name: "Review comparison" }).click();
+  const comparison = page.getByRole("dialog", { name: "Villa comparison" });
+  await expect(comparison).toBeVisible();
+  await expect(comparison.getByText("2,220 sq ft")).toBeVisible();
+  await expect(comparison.getByText("To confirm").first()).toBeVisible();
+  await expect(comparison.getByText("Open comparison slot")).toHaveCount(2);
+  await comparison
+    .getByRole("button", { name: "Close villa comparison" })
+    .click();
+  await expect(comparison).not.toBeVisible();
 });
 
 test("renders the brochure-backed villa detail", async ({ page }) => {
