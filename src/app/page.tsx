@@ -35,9 +35,10 @@ export default function HomePage() {
           src="/media/glitz-pride/hero-villa.png"
           alt="Villa-led concept rendering for Glitz Pride"
           fill
-          priority
+          preload
           sizes="100vw"
           className="home-hero__image"
+          quality={75}
         />
         <div className="home-hero__shade" />
         <PageShell className="home-hero__content">

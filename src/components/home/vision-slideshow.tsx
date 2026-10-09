@@ -32,18 +32,17 @@ export function VisionSlideshow() {
 
   return (
     <figure className="vision-visual" aria-label="Villa design gallery">
-      {slides.map((slide, index) => (
-        <Image
-          key={slide.src}
-          src={slide.src}
-          alt={slide.alt}
-          fill
-          sizes="(max-width: 800px) 100vw, 46vw"
-          className="vision-visual__image"
-          data-active={index === active || undefined}
-          priority={index === 0}
-        />
-      ))}
+      <Image
+        key={slides[active].src}
+        src={slides[active].src}
+        alt={slides[active].alt}
+        fill
+        sizes="(max-width: 800px) 100vw, 46vw"
+        className="vision-visual__image"
+        data-active="true"
+        priority={active === 0}
+        quality={70}
+      />
       <div className="vision-visual__shade" />
       <figcaption className="vision-visual__content">
         <span className="eyebrow">The vision</span>

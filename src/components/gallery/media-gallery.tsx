@@ -53,7 +53,7 @@ export function MediaGallery() {
       </p>
 
       <div className="gallery-grid">
-        {filteredItems.map((item, index) => (
+        {filteredItems.map((item) => (
           <article
             className="gallery-card"
             data-orientation={item.orientation}
@@ -72,8 +72,8 @@ export function MediaGallery() {
                   src={item.src}
                   alt={item.alt}
                   fill
-                  priority={index < 2}
                   sizes="(max-width: 640px) 100vw, (max-width: 1050px) 50vw, 33vw"
+                  quality={70}
                 />
                 <span className="gallery-card__open" aria-hidden="true">
                   View larger <span>↗</span>

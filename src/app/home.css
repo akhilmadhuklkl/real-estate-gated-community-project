@@ -4,6 +4,8 @@
 .home-section {
   position: relative;
   min-height: 100svh;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100svh;
   scroll-margin-top: var(--notice-height);
   overflow: hidden;
 }

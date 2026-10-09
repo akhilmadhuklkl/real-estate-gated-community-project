@@ -19,8 +19,8 @@ export function MasterPlanViewer() {
           src="/media/glitz-pride/hero-villa.png"
           alt="Illustrative aerial brochure rendering of the villa community"
           fill
-          priority
           sizes="(max-width: 900px) 100vw, 72vw"
+          quality={70}
         />
         <div className="plan-viewer__shade" />
         {masterPlanPoints.map((point) => (
