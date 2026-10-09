@@ -117,7 +117,7 @@
 .amenity-card__meta {
   display: flex;
   justify-content: space-between;
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   font-size: 0.6rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -210,6 +210,9 @@
   padding: clamp(5rem, 8vw, 8rem) 0;
   background: var(--forest-700);
   color: white;
+}
+.amenities-next .eyebrow {
+  color: var(--terracotta-200);
 }
 .amenities-next .page-shell {
   display: flex;

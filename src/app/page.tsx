@@ -119,7 +119,12 @@ export default function HomePage() {
               life from quieter moments.
             </p>
           </header>
-          <div className="residence-grid">
+          <div
+            className="residence-grid"
+            role="region"
+            aria-label="Villa and floor-plan gallery. Scroll horizontally to view more."
+            tabIndex={0}
+          >
             {residenceCards.map((card) => (
               <article className="residence-card" key={card.title}>
                 <div className="residence-card__image">

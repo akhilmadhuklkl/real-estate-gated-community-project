@@ -130,7 +130,12 @@
 
 .contact-action-card__number,
 .contact-action-card__label {
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
+}
+
+.contact-action-card--feature .contact-action-card__number,
+.contact-action-card--feature .contact-action-card__label {
+  color: var(--terracotta-200);
 }
 
 .contact-action-card__label {
@@ -180,7 +185,7 @@
 
 .contact-action-link:hover,
 .contact-action-link:focus-visible {
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   text-decoration-color: currentColor;
 }
 
@@ -311,7 +316,7 @@
 }
 
 .form-field label > span > span {
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
 }
 
 .form-field label small {
@@ -387,6 +392,8 @@
 
 .consent-control a {
   color: var(--forest-900);
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.1em;
   text-underline-offset: 0.2rem;
 }
 
@@ -457,7 +464,7 @@
 }
 
 .contact-assurance span {
-  color: var(--terracotta-400);
+  color: var(--terracotta-200);
   font-size: 0.65rem;
   letter-spacing: 0.16em;
 }

@@ -168,7 +168,7 @@
   background: var(--ivory-50);
 }
 .villa-materials article > span {
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   font-size: 0.6rem;
 }
 .villa-materials h3 {
@@ -185,6 +185,9 @@
   padding: clamp(5rem, 8vw, 8rem) 0;
   background: var(--forest-700);
   color: white;
+}
+.villa-detail__enquiry .eyebrow {
+  color: var(--terracotta-200);
 }
 .villa-detail__enquiry .page-shell {
   display: flex;

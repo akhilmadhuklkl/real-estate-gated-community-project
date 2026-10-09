@@ -149,6 +149,10 @@
   color: var(--stone-300);
   line-height: 1.75;
 }
+.nearest .eyebrow,
+.location-next .eyebrow {
+  color: var(--terracotta-200);
+}
 .nearest__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -262,7 +266,7 @@
 }
 .landmark-card__number {
   align-self: start;
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
 }
@@ -294,7 +298,7 @@
 .landmark-card__warning {
   display: block;
   margin-top: 0.6rem;
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   font-size: 0.68rem;
   line-height: 1.5;
 }

@@ -7,7 +7,10 @@
   --forest-500: #3f735d;
   --ivory-50: #f7f3ea;
   --ivory-100: #f1ebdd;
+  --terracotta-200: #f6cfbd;
+  --terracotta-300: #e3a68b;
   --terracotta-400: #c47b5e;
+  --terracotta-700: #8a432f;
   --stone-300: #c4c8bf;
   --stone-600: #666c63;
   --white: #ffffff;
@@ -42,6 +45,11 @@ a {
 }
 button {
   font: inherit;
+}
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--terracotta-200);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--forest-950);
 }
 em {
   font-weight: 400;
@@ -208,7 +216,7 @@ em {
 }
 .eyebrow {
   margin: 0 0 1rem;
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -360,6 +368,9 @@ h2 {
 .site-footer {
   background: var(--forest-950);
   color: var(--ivory-50);
+}
+.site-footer .eyebrow {
+  color: var(--terracotta-200);
 }
 .site-footer__lead {
   display: grid;

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { primaryNavigation } from "@/config/navigation";
 import { BrandMark } from "./brand-mark";
@@ -10,12 +10,25 @@ import { BrandMark } from "./brand-mark";
 export function SiteHeader() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.body.dataset.menuOpen = isOpen ? "true" : "false";
     return () => {
       delete document.body.dataset.menuOpen;
     };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setIsOpen(false);
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
   }, [isOpen]);
 
   return (
@@ -37,6 +50,7 @@ export function SiteHeader() {
           Schedule a visit
         </Link>
         <button
+          ref={menuButtonRef}
           className="menu-button"
           type="button"
           aria-controls="mobile-navigation"

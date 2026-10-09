@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import {
   galleryCategories,
@@ -10,6 +10,8 @@ import {
 } from "@/lib/gallery-content";
 
 export function MediaGallery() {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const lastTriggerRef = useRef<HTMLButtonElement>(null);
   const [category, setCategory] = useState("all");
   const [activeItem, setActiveItem] = useState<GalleryItem | null>(null);
   const filteredItems =
@@ -19,18 +21,16 @@ export function MediaGallery() {
 
   useEffect(() => {
     if (!activeItem) return;
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setActiveItem(null);
-    };
+    const dialog = dialogRef.current;
+    if (dialog && !dialog.open) dialog.showModal();
     document.body.dataset.galleryOpen = "true";
-    window.addEventListener("keydown", closeOnEscape);
 
     return () => {
       delete document.body.dataset.galleryOpen;
-      window.removeEventListener("keydown", closeOnEscape);
     };
   }, [activeItem]);
+
+  const closeDialog = () => dialogRef.current?.close();
 
   return (
     <>
@@ -61,7 +61,10 @@ export function MediaGallery() {
           >
             <button
               type="button"
-              onClick={() => setActiveItem(item)}
+              onClick={(event) => {
+                lastTriggerRef.current = event.currentTarget;
+                setActiveItem(item);
+              }}
               aria-label={`Open ${item.title}`}
             >
               <span className="gallery-card__image">
@@ -87,20 +90,23 @@ export function MediaGallery() {
       </div>
 
       {activeItem ? (
-        <div
+        <dialog
+          ref={dialogRef}
           className="gallery-lightbox"
-          role="dialog"
-          aria-modal="true"
           aria-labelledby="gallery-lightbox-title"
+          onClose={() => {
+            setActiveItem(null);
+            window.requestAnimationFrame(() => lastTriggerRef.current?.focus());
+          }}
           onMouseDown={(event) => {
-            if (event.target === event.currentTarget) setActiveItem(null);
+            if (event.target === event.currentTarget) closeDialog();
           }}
         >
           <div className="gallery-lightbox__panel">
             <button
               className="gallery-lightbox__close"
               type="button"
-              onClick={() => setActiveItem(null)}
+              onClick={closeDialog}
               autoFocus
             >
               Close <span aria-hidden="true">×</span>
@@ -129,7 +135,7 @@ export function MediaGallery() {
               <p>{activeItem.note}</p>
             </div>
           </div>
-        </div>
+        </dialog>
       ) : null}
     </>
   );

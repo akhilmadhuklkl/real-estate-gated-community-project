@@ -217,8 +217,17 @@ body[data-gallery-open="true"] {
   inset: 0;
   z-index: 100;
   display: grid;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  border: 0;
   place-items: center;
   padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(6, 20, 14, 0.92);
+}
+.gallery-lightbox::backdrop {
   background: rgba(6, 20, 14, 0.92);
 }
 .gallery-lightbox__panel {
@@ -313,7 +322,7 @@ body[data-gallery-open="true"] {
   border-bottom: 1px solid var(--stone-300);
 }
 .gallery-pending article > span {
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   font-size: 0.65rem;
   letter-spacing: 0.12em;
 }
@@ -333,6 +342,9 @@ body[data-gallery-open="true"] {
   padding: clamp(5rem, 8vw, 8rem) 0;
   background: var(--forest-700);
   color: var(--white);
+}
+.gallery-next .eyebrow {
+  color: var(--terracotta-200);
 }
 .gallery-next .page-shell {
   display: flex;

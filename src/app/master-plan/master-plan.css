@@ -135,7 +135,7 @@
 .plan-hotspot:focus-visible,
 .plan-hotspot[data-active="true"] {
   transform: translate(-50%, -50%) scale(1.16);
-  background: var(--terracotta-400);
+  background: var(--terracotta-700);
   box-shadow: 0 0 0 0.55rem rgba(255, 255, 255, 0.28);
   outline: none;
 }
@@ -165,7 +165,7 @@
 .plan-detail__index {
   display: flex;
   justify-content: space-between;
-  color: var(--terracotta-300);
+  color: var(--terracotta-200);
   font-size: 0.62rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -231,7 +231,7 @@
 }
 .plan-index button > span:first-child {
   grid-row: 1/3;
-  color: var(--terracotta-400);
+  color: var(--terracotta-700);
   font-size: 0.65rem;
 }
 .plan-index button > span:nth-child(2) {
@@ -264,6 +264,9 @@
   padding: clamp(5rem, 8vw, 8rem) 0;
   background: var(--forest-700);
   color: white;
+}
+.master-plan-next .eyebrow {
+  color: var(--terracotta-200);
 }
 .master-plan-next .page-shell {
   display: flex;
