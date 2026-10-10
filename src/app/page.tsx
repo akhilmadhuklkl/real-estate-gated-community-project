@@ -76,7 +76,7 @@ export default function HomePage() {
             </p>
             <p>
               Every detail shown here is brochure-backed reference content
-              awaiting confirmation before production publication.
+              published with clear notes where current confirmation is needed.
             </p>
             <dl className="home-metrics">
               <div>

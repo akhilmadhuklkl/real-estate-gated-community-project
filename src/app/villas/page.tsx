@@ -72,7 +72,7 @@ export default function VillasPage() {
             <p>
               The brochure presents 1,410 sq ft on the ground floor and 810 sq
               ft on the first floor. Plan identity, scale, dimensions and
-              publication clearance remain subject to confirmation.
+              current project status remain subject to confirmation.
             </p>
           </div>
           <figure>

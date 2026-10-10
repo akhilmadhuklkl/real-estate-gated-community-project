@@ -51,7 +51,7 @@ The defining feature will be a conversational property-exploration interface. Wh
 
 ## Current status
 
-The Phase 1 responsive application is a verified release candidate. Public production publication remains gated by owner approval of the project material, final contact and privacy decisions, the production domain and hosting account, and business acceptance on representative physical devices.
+The Phase 1 responsive application was publicly released on 10 October 2026 after owner approval of the qualified presentation. The public site keeps unverified property details clearly labelled and does not enable analytics, external enquiry delivery, or WhatsApp routing without separate approval.
 
 The release process, environment settings, monitoring baseline, backup position, rollback triggers, and outstanding approvals are documented in [`docs/operations/phase-1-release-runbook.md`](docs/operations/phase-1-release-runbook.md).
 
@@ -65,4 +65,4 @@ Reusable tokens and component contracts are maintained in [`design-system/tokens
 
 ## Disclaimer
 
-This project is under active development. Property details, pricing, availability, legal information, imagery, and contact information must be verified and approved before production publication.
+This project remains under active development. The current qualified presentation is approved for publication, but pricing, availability, legal information, installed features, imagery context, and contact-routing details must still be verified before they are presented as current facts.

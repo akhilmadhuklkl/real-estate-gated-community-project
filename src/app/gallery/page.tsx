@@ -35,8 +35,8 @@ export default function GalleryPage() {
           </h1>
           <p>
             Explore {galleryItems.length} visuals drawn from the official
-            brochure. Every image is labelled by source and remains subject to
-            owner confirmation before production publication.
+            brochure. Every image is labelled by source and published as part of
+            the owner-approved, qualified Phase 1 presentation.
           </p>
           <ActionLink href="#media-gallery" inverse>
             Browse the collection
@@ -69,8 +69,8 @@ export default function GalleryPage() {
                 <dd>media categories</dd>
               </div>
               <div>
-                <dt>Pending</dt>
-                <dd>publication approval</dd>
+                <dt>Qualified</dt>
+                <dd>publication state</dd>
               </div>
             </dl>
           </div>

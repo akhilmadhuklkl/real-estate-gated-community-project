@@ -37,7 +37,7 @@ export function SiteFooter() {
       </div>
       <div className="site-footer__legal shell">
         <p>
-          Development preview. Confirm all project details before publication.
+          Confirm current project details directly before making a decision.
         </p>
         <p>© {new Date().getFullYear()} Glitz Pride</p>
       </div>

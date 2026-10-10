@@ -2,11 +2,11 @@
 
 **Task:** T0004 — Collect approved content  
 **Owner:** AKHIL  
-**Status:** On Hold
+**Status:** Completed
 **Register created:** 3 September 2026  
 **Reference reviewed:** [Glitz Homes](http://www.glitzhomes.co.in/)
 
-**Temporary-use decision:** On 3 September 2026, AKHIL authorized use of material downloaded from the reference website for local development and prototype work while official materials are pending. This does not establish ownership, publication rights, accuracy, or production approval.
+**Temporary-use decision:** On 3 September 2026, AKHIL authorized use of material downloaded from the reference website for local development and prototype work. This historical decision was superseded for the current qualified Phase 1 presentation by APR-003 on 10 October 2026.
 
 ## Purpose
 
@@ -20,6 +20,7 @@ This register separates material observed on the current reference website from 
 | Temporary development reference | May be used in local and preview builds with source labelling; must not be treated as production-approved. |
 | Awaiting evidence               | Requires an authoritative document, owner confirmation, or publication-rights evidence.                    |
 | Approved                        | Owner has confirmed accuracy and publication rights, with evidence recorded.                               |
+| Approved with qualifications    | Owner approved the current presentation while named facts remain explicitly unverified or excluded.        |
 | Rejected                        | Must not be published.                                                                                     |
 | Superseded                      | Retained for audit history but no longer current.                                                          |
 
@@ -47,7 +48,7 @@ This register separates material observed on the current reference website from 
 
 ## Asset inventory
 
-The assets below have been copied into `public/reference/glitz-pride/` for temporary development use under the owner's decision recorded above. They must be replaced or formally approved before production publication.
+The assets below were copied into `public/reference/glitz-pride/` for temporary development use. APR-003 approves the assets actually used in the current qualified Phase 1 presentation; unused or changed assets require a new decision.
 
 | ID      | Asset               | Reference location                                                                 | Current state                                              | Required evidence                                                                              |
 | ------- | ------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
@@ -58,7 +59,7 @@ The assets below have been copied into `public/reference/glitz-pride/` for tempo
 | AST-005 | Project gallery     | `assets/images/projects/project.jpg` and `project_02.jpg` through `project_05.jpg` | Temporary development reference                            | Originals, captions, media category, dates, depicted villa or area, and rights.                |
 | AST-006 | Amenity icons       | `assets/images/icon_05.png` through `icon_11.png`                                  | Awaiting evidence                                          | Vector originals and reuse approval, or authorization to replace with a new icon system.       |
 | AST-007 | Static location map | `assets/images/map.jpg`                                                            | Temporary development reference                            | Verified coordinates and permission; replace with an accessible map experience where approved. |
-| AST-008 | Project brochure    | `project-assets/official/Glitz_Brochure.pdf`                                       | Official development source; awaiting publication approval | Confirm effective date, owner, publication rights, legal review, and supersession policy.      |
+| AST-008 | Project brochure    | `project-assets/official/Glitz_Brochure.pdf`                                       | Approved with qualifications under APR-003                  | Confirm effective date, legal review, and supersession policy before claiming it is current.   |
 
 ## Information still required
 
@@ -85,13 +86,14 @@ Complete this table whenever an item becomes approved, rejected, or superseded.
 | APR-002   | AST-008                           | Accepted as the official development brochure; publication approval remains pending                 | `project-assets/official/Glitz_Brochure.pdf`                   | AKHIL                               | 2026-10-03    | Before production release                 | Use as the authoritative source for T0008 modeling. Do not treat its 2018 content as current without owner verification.                                                                                              |
 | APR-003   | Current Phase 1 release candidate | Approved for public publication with the qualifications and unknown-data labels currently displayed | Owner approval relayed by AKHIL in the project conversation    | Glitz Pride owner, relayed by AKHIL | 2026-10-10    | Review when project facts or media change | Approval covers the current qualified presentation. It does not convert unknown pricing, availability, room counts, installed systems, WhatsApp routing, or other explicitly unconfirmed details into verified facts. |
 
-## Completion rule for T0004
+## T0004 closure baseline
 
-T0004 can be marked completed when:
+T0004 was completed on 10 October 2026 for the current Phase 1 scope because:
 
-- Every critical input is supplied or explicitly rejected.
-- Each publishable item has an owner, approval state, source, and last-reviewed date.
-- Brand and media publication rights are recorded.
-- Property, legal, pricing, availability, location, and contact facts have authoritative evidence.
-- Superseded documents are identifiable and cannot be shown as current.
-- The approved material is organized for the sitemap, content model, design system, and future knowledge ingestion.
+- APR-003 records owner approval for the exact qualified presentation released publicly.
+- Published claims and media retain their brochure or reference source labels.
+- Pricing, availability, room counts, installed systems, legal status, current delivery state, and WhatsApp routing remain unknown, excluded, or explicitly qualified.
+- The official brochure is retained unchanged and published with a branded download name.
+- The governed content model, register, sitemap, and release record identify the source and approval boundary for future updates and AI ingestion.
+
+Completion does not verify every underlying property fact. Any new media, changed claim, commercial detail, contact route, or removal of a qualification requires a new approval record and a refreshed content review.
