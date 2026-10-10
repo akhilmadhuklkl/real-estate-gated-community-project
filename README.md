@@ -51,7 +51,9 @@ The defining feature will be a conversational property-exploration interface. Wh
 
 ## Current status
 
-Project planning and the product brief are complete. The approved-content collection task is in progress, with observed reference material separated from content that has publication evidence.
+The Phase 1 responsive application is a verified release candidate. Public production publication remains gated by owner approval of the project material, final contact and privacy decisions, the production domain and hosting account, and business acceptance on representative physical devices.
+
+The release process, environment settings, monitoring baseline, backup position, rollback triggers, and outstanding approvals are documented in [`docs/operations/phase-1-release-runbook.md`](docs/operations/phase-1-release-runbook.md).
 
 The working inventory and owner decision checklist are maintained in [`docs/content/content-register.md`](docs/content/content-register.md).
 
