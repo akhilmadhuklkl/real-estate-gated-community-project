@@ -1,5 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const localBaseUrl = "http://127.0.0.1:3000";
+const baseURL = process.env.BASE_URL ?? localBaseUrl;
+
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
@@ -8,14 +11,16 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: "html",
   use: {
-    baseURL: "http://127.0.0.1:3000",
+    baseURL,
     trace: "on-first-retry",
   },
-  webServer: {
-    command: "pnpm dev",
-    url: "http://127.0.0.1:3000",
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: process.env.BASE_URL
+    ? undefined
+    : {
+        command: "pnpm dev",
+        url: localBaseUrl,
+        reuseExistingServer: !process.env.CI,
+      },
   projects: [
     { name: "desktop-chromium", use: { ...devices["Desktop Chrome"] } },
     { name: "mobile-chromium", use: { ...devices["Pixel 7"] } },
