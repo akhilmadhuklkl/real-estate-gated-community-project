@@ -2,16 +2,17 @@
 
 ## Release position
 
-Phase 1 is a verified release candidate. Public production publication remains gated by written owner approval and the decisions listed below. Until those decisions are complete, deployments must remain non-indexable and must not replace the preserved mockup.
+Phase 1 was publicly released on 10 October 2026 after owner approval was relayed by AKHIL. The production application uses a separate Vercel project and does not replace or modify the preserved mockup.
 
-## Required launch approvals
+## Recorded launch decisions
 
-- Written approval to publish the official brochure, project name, imagery, plan references, address, and contact details.
-- Confirmation of the production domain and the hosting account that owns the deployment.
-- Confirmation that the listed telephone numbers and email mailbox are monitored and approved for public enquiries.
-- Approval of the privacy notice, enquiry handling process, retention period, and response owner.
-- A decision on analytics and cookie consent. No analytics should be enabled by default.
-- Final business acceptance of the release candidate on representative physical devices.
+- Owner publication approval for the qualified Phase 1 candidate was relayed by AKHIL on 10 October 2026.
+- The canonical production origin is `https://glitz-pride-community.vercel.app` in the separate `glitz-pride-community` Vercel project.
+- Search indexing is enabled. Canonical metadata, `robots.txt`, and `sitemap.xml` use the production origin.
+- Analytics remains disabled, so no analytics cookie-consent flow is active.
+- WhatsApp remains disabled until a verified routing number is approved.
+- The enquiry endpoint remains preview-only and does not transmit or persist personal data.
+- Existing qualifications and unknown labels remain visible until the owner supplies confirmed project details.
 
 ## Environment configuration
 
@@ -59,16 +60,16 @@ Phase 1 does not persist enquiries or user accounts. The form validates requests
 
 Rollback immediately for repeated health-check failures, inaccessible primary routes, broken brochure delivery, failed enquiry validation, unsafe indexing behavior, or publication of unapproved content. Pause contact promotion while the issue is investigated.
 
-## Release record template
+## Release record
 
-| Field                | Value   |
-| -------------------- | ------- |
-| Release date         | Pending |
-| Approved by          | Pending |
-| Commit               | Pending |
-| Candidate deployment | Pending |
-| Production URL       | Pending |
-| Health check         | Pending |
-| Browser regression   | Pending |
-| Rollback deployment  | Pending |
-| Analytics decision   | Pending |
+| Field                | Value                                                                                                                                       |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Release date         | 10 October 2026                                                                                                                             |
+| Approved by          | Owner approval relayed by AKHIL                                                                                                             |
+| Commit               | `4721e0b`                                                                                                                                  |
+| Candidate deployment | `dpl_BcQLdbEK6jsGERiiskXCUuMma2W8`                                                                                                        |
+| Production URL       | `https://glitz-pride-community.vercel.app`                                                                                                  |
+| Health check         | Passed publicly with HTTP 200, `status: ok`, and phase `phase-1-mvp`                                                                        |
+| Browser regression   | 56 passed across desktop and mobile; 2 intentional platform-specific skips                                                                 |
+| Rollback deployment  | Initial production release; no earlier production baseline. Redeploy commit `4721e0b` if the active deployment must be reconstructed.     |
+| Analytics decision   | Disabled                                                                                                                                   |
