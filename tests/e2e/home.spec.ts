@@ -1,19 +1,22 @@
 import { expect, test } from "@playwright/test";
 
 test("publishes safe technical SEO signals", async ({ page, request }) => {
+  const deploymentOrigin = process.env.BASE_URL ?? "http://localhost:3000";
+  const isPublicDeployment = Boolean(process.env.BASE_URL);
+
   await page.goto("/villas");
 
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
-    "http://localhost:3000/villas",
+    new URL("/villas", deploymentOrigin).toString(),
   );
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
-    "http://localhost:3000/media/glitz-pride/villa.jpg",
+    new URL("/media/glitz-pride/villa.jpg", deploymentOrigin).toString(),
   );
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
-    /noindex/,
+    isPublicDeployment ? /index/ : /noindex/,
   );
   const structuredData = JSON.parse(
     (await page.locator('script[type="application/ld+json"]').textContent()) ??
@@ -25,7 +28,9 @@ test("publishes safe technical SEO signals", async ({ page, request }) => {
   ]);
 
   const robotsResponse = await request.get("/robots.txt");
-  expect(await robotsResponse.text()).toContain("Disallow: /");
+  expect(await robotsResponse.text()).toContain(
+    isPublicDeployment ? "Allow: /" : "Disallow: /",
+  );
 
   const sitemapResponse = await request.get("/sitemap.xml");
   const sitemapXml = await sitemapResponse.text();
