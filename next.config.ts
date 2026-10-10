@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/reference/glitz-pride/brochure.pdf",
+        headers: [
+          {
+            key: "Content-Disposition",
+            value: 'attachment; filename="Glitz-Pride-Brochure.pdf"',
+          },
+        ],
+      },
+      {
         source: "/media/:path*",
         headers: [
           {

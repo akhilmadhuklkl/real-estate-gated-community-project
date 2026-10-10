@@ -2,17 +2,18 @@ import { expect, test } from "@playwright/test";
 
 test("publishes safe technical SEO signals", async ({ page, request }) => {
   const deploymentOrigin = process.env.BASE_URL ?? "http://localhost:3000";
+  const canonicalOrigin = process.env.EXPECTED_SITE_URL ?? deploymentOrigin;
   const isPublicDeployment = Boolean(process.env.BASE_URL);
 
   await page.goto("/villas");
 
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
-    new URL("/villas", deploymentOrigin).toString(),
+    new URL("/villas", canonicalOrigin).toString(),
   );
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
-    new URL("/media/glitz-pride/villa.jpg", deploymentOrigin).toString(),
+    new URL("/media/glitz-pride/villa.jpg", canonicalOrigin).toString(),
   );
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
     "content",
