@@ -57,6 +57,8 @@ The release process, environment settings, monitoring baseline, backup position,
 
 The working inventory and owner decision checklist are maintained in [`docs/content/content-register.md`](docs/content/content-register.md).
 
+The Phase 2 concierge behavioural scope, supported questions, guardrails, preview mapping, escalation rules, and evaluation gates are defined in [`docs/ai/concierge-use-cases.md`](docs/ai/concierge-use-cases.md).
+
 The approved navigation structure and visitor flows are documented in [`docs/information-architecture/sitemap-and-user-journeys.md`](docs/information-architecture/sitemap-and-user-journeys.md).
 
 The working creative concept and implementation guidance are documented in [`docs/design/visual-direction.md`](docs/design/visual-direction.md).
