@@ -51,7 +51,7 @@ The defining feature will be a conversational property-exploration interface. Wh
 
 ## Current status
 
-The Phase 1 responsive application was publicly released on 10 October 2026 after owner approval of the qualified presentation. The public site keeps unverified property details clearly labelled and does not enable analytics, external enquiry delivery, or WhatsApp routing without separate approval.
+The Phase 1 responsive application was publicly released on 10 October 2026 after owner approval of the qualified presentation. The public site keeps unverified property details clearly labelled. Analytics and external enquiry delivery remain disabled; the separately confirmed WhatsApp contact action is enabled without collecting or forwarding form data.
 
 The release process, environment settings, monitoring baseline, backup position, rollback triggers, and outstanding approvals are documented in [`docs/operations/phase-1-release-runbook.md`](docs/operations/phase-1-release-runbook.md).
 

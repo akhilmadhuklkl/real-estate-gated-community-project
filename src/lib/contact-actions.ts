@@ -98,6 +98,6 @@ export function getContactActions() {
           href: null,
         },
     verificationNote:
-      "These office details are reproduced from the official brochure and remain subject to owner confirmation.",
+      "The call and email details are reproduced from the official brochure. The WhatsApp destination was separately confirmed by AKHIL on 11 October 2026.",
   };
 }

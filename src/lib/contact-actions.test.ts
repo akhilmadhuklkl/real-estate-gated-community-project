@@ -29,13 +29,13 @@ describe("contact actions", () => {
   });
 
   it("creates a WhatsApp link only from configured values", () => {
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER = "+91 954 451 9000";
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER = "+91 98954 68235";
     process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE =
-      "Please share the villa details.";
+      "Hello, I would like to know more about Glitz Pride.";
 
     expect(getContactActions().whatsapp).toEqual({
       enabled: true,
-      href: "https://wa.me/919544519000?text=Please%20share%20the%20villa%20details.",
+      href: "https://wa.me/919895468235?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20Glitz%20Pride.",
     });
   });
 });

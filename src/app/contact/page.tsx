@@ -48,15 +48,15 @@ export default function ContactPage() {
           </div>
           <div className="contact-introduction__copy">
             <p>
-              The official brochure lists contact channels, but their current
-              owners, operating hours, publication permission, and request
-              routing have not yet been confirmed.
+              The official brochure supplies the published call and email
+              details. A separate WhatsApp destination is now available for a
+              simple project enquiry; operating hours and response times are not
+              claimed.
             </p>
             <p>
-              This private-preview flow validates your request and demonstrates
-              every form state. It does not store, email, or forward personal
-              details until an approved recipient and retention policy are
-              configured.
+              The enquiry form validates your request and demonstrates every
+              form state. It does not store, email, or forward personal details
+              until an approved recipient and retention policy are configured.
             </p>
           </div>
         </div>
@@ -145,9 +145,9 @@ export default function ContactPage() {
                 <p className="contact-action-card__label">WhatsApp</p>
                 <h3>Continue in a familiar conversation.</h3>
                 <p>
-                  The brochure does not identify a WhatsApp contact. This action
-                  will activate after the owner confirms the number and opening
-                  message.
+                  Open the confirmed WhatsApp destination with a neutral Glitz
+                  Pride enquiry message. Nothing is sent until you choose to
+                  send it in WhatsApp.
                 </p>
               </div>
               {actions.whatsapp.enabled ? (

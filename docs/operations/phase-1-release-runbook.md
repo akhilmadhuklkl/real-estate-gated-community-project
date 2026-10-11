@@ -10,18 +10,18 @@ Phase 1 was publicly released on 10 October 2026 after owner approval was relaye
 - The canonical production origin is `https://glitz-pride-community.vercel.app` in the separate `glitz-pride-community` Vercel project.
 - Search indexing is enabled. Canonical metadata, `robots.txt`, and `sitemap.xml` use the production origin.
 - Analytics remains disabled, so no analytics cookie-consent flow is active.
-- WhatsApp remains disabled until a verified routing number is approved.
+- WhatsApp is enabled for the destination confirmed by AKHIL on 11 October 2026, using the neutral project-enquiry message recorded below.
 - The enquiry endpoint remains preview-only and does not transmit or persist personal data.
 - Existing qualifications and unknown labels remain visible until the owner supplies confirmed project details.
 
 ## Environment configuration
 
-| Variable                       | Preview value             | Production value                  | Purpose                                            |
-| ------------------------------ | ------------------------- | --------------------------------- | -------------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`         | Preview deployment origin | Approved canonical HTTPS origin   | Canonical links, social metadata, and sitemap URLs |
-| `NEXT_PUBLIC_SITE_INDEXABLE`   | `false`                   | `true` only after launch approval | Search indexing and sitemap publication            |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER`  | Empty                     | Approved digits-only destination  | Enables the WhatsApp contact action                |
-| `NEXT_PUBLIC_WHATSAPP_MESSAGE` | Approved preview text     | Approved production text          | Prefilled non-sensitive enquiry message            |
+| Variable                       | Preview value             | Production value                                      | Purpose                                            |
+| ------------------------------ | ------------------------- | ----------------------------------------------------- | -------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`         | Preview deployment origin | Approved canonical HTTPS origin                       | Canonical links, social metadata, and sitemap URLs |
+| `NEXT_PUBLIC_SITE_INDEXABLE`   | `false`                   | `true` only after launch approval                     | Search indexing and sitemap publication            |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER`  | Empty unless being tested | `919895468235`                                        | Enables the confirmed WhatsApp contact action      |
+| `NEXT_PUBLIC_WHATSAPP_MESSAGE` | Neutral project enquiry   | `Hello, I would like to know more about Glitz Pride.` | Prefilled non-sensitive enquiry message            |
 
 These variables are public browser configuration and must not contain credentials or private data. Any future secret must use a server-only variable configured directly in the hosting environment.
 
@@ -62,14 +62,14 @@ Rollback immediately for repeated health-check failures, inaccessible primary ro
 
 ## Release record
 
-| Field                | Value                                                                                                                                       |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Release date         | 10 October 2026                                                                                                                             |
-| Approved by          | Owner approval relayed by AKHIL                                                                                                             |
-| Commit               | `4721e0b`                                                                                                                                  |
-| Candidate deployment | `dpl_BcQLdbEK6jsGERiiskXCUuMma2W8`                                                                                                        |
-| Production URL       | `https://glitz-pride-community.vercel.app`                                                                                                  |
-| Health check         | Passed publicly with HTTP 200, `status: ok`, and phase `phase-1-mvp`                                                                        |
-| Browser regression   | 56 passed across desktop and mobile; 2 intentional platform-specific skips                                                                 |
-| Rollback deployment  | Initial production release; no earlier production baseline. Redeploy commit `4721e0b` if the active deployment must be reconstructed.     |
-| Analytics decision   | Disabled                                                                                                                                   |
+| Field                | Value                                                                                                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Release date         | 10 October 2026                                                                                                                       |
+| Approved by          | Owner approval relayed by AKHIL                                                                                                       |
+| Commit               | `4721e0b`                                                                                                                             |
+| Candidate deployment | `dpl_BcQLdbEK6jsGERiiskXCUuMma2W8`                                                                                                    |
+| Production URL       | `https://glitz-pride-community.vercel.app`                                                                                            |
+| Health check         | Passed publicly with HTTP 200, `status: ok`, and phase `phase-1-mvp`                                                                  |
+| Browser regression   | 56 passed across desktop and mobile; 2 intentional platform-specific skips                                                            |
+| Rollback deployment  | Initial production release; no earlier production baseline. Redeploy commit `4721e0b` if the active deployment must be reconstructed. |
+| Analytics decision   | Disabled                                                                                                                              |

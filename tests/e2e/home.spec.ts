@@ -254,7 +254,7 @@ test("reveals visit-specific fields", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("offers brochure-backed contact actions without exposing unapproved WhatsApp routing", async ({
+test("offers brochure-backed contact actions and the approved WhatsApp route", async ({
   page,
 }) => {
   await page.goto("/contact#contact-actions-title");
@@ -284,13 +284,12 @@ test("offers brochure-backed contact actions without exposing unapproved WhatsAp
   await expect(
     page.getByRole("link", { name: "info@glitzhomes.co.in" }),
   ).toHaveAttribute("href", /mailto:info@glitzhomes\.co\.in/);
-  await expect(page.getByText("Awaiting owner confirmation")).toHaveAttribute(
-    "aria-disabled",
-    "true",
+  const whatsapp = page.getByRole("link", { name: /Open WhatsApp/ });
+  await expect(whatsapp).toHaveAttribute(
+    "href",
+    "https://wa.me/919895468235?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20Glitz%20Pride.",
   );
-  await expect(page.getByRole("link", { name: /Open WhatsApp/ })).toHaveCount(
-    0,
-  );
+  await expect(whatsapp).toHaveAttribute("target", "_blank");
 });
 
 test("emits a non-personal contact action event", async ({ page }) => {
