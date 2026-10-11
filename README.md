@@ -57,7 +57,7 @@ The release process, environment settings, monitoring baseline, backup position,
 
 The working inventory and owner decision checklist are maintained in [`docs/content/content-register.md`](docs/content/content-register.md).
 
-The Phase 2 concierge behavioural scope, supported questions, guardrails, preview mapping, escalation rules, and evaluation gates are defined in [`docs/ai/concierge-use-cases.md`](docs/ai/concierge-use-cases.md).
+The Phase 2 concierge behavioural scope, supported questions, guardrails, preview mapping, escalation rules, and evaluation gates are defined in [`docs/ai/concierge-use-cases.md`](docs/ai/concierge-use-cases.md). Its 96 governed capability families expand into exactly 500 executable positive and negative cases in [`docs/ai/concierge-evaluation-catalogue.json`](docs/ai/concierge-evaluation-catalogue.json).
 
 The approved navigation structure and visitor flows are documented in [`docs/information-architecture/sitemap-and-user-journeys.md`](docs/information-architecture/sitemap-and-user-journeys.md).
 

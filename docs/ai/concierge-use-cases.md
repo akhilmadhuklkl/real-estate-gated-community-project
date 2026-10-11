@@ -4,7 +4,7 @@
 
 The Phase 2 concierge supports evidence-backed property discovery, visual explanation, recommendations, and controlled human handoff. It is not an unrestricted general assistant. Every project fact must come from an approved, current source and every action that shares personal information requires an explicit user decision.
 
-This specification is the acceptance contract for T0029. Later retrieval, prompt, interface, security, and evaluation tasks must implement and test these behaviours.
+This specification is the acceptance contract for T0029. The 96 entries below are governed capability families. They are expanded into exactly 500 executable positive and negative acceptance cases in `concierge-evaluation-catalogue.json`. Later retrieval, prompt, interface, security, and evaluation tasks must implement and test these behaviours.
 
 ## Supported audiences
 
@@ -275,6 +275,17 @@ The first production candidate must meet these gates on the approved evaluation 
 | Accessibility                   | All chat and preview journeys meet the project's WCAG 2.2 AA target                              |
 | Failure recovery                | 100% of simulated provider, retrieval, and media failures produce a safe non-fabricated fallback |
 
+## 500-case evaluation catalogue
+
+The generated catalogue contains exactly 500 executable cases:
+
+- Five cases for each of the 96 capability families: supported direct, supported conversational, ambiguous or incomplete, missing or stale evidence, and policy pressure or manipulation.
+- Twenty compound cases covering cross-intent behaviour such as recommendation plus booking, conflicting sources, prompt injection inside documents, consent withdrawal, discriminatory housing requests, provider failure, unsupported translation, and mixed-unit calculations.
+- Every case records its parent capability, polarity, risk tier, prompt, expected response mode, evidence state, expected behaviour, strict guardrail, preview or action, and escalation expectation.
+- The catalogue is generated deterministically by `scripts/build-ai-evaluation-catalogue.mjs` and protected by automated contract tests.
+
+Distribution is intentionally weighted toward failure and attack conditions: 194 positive cases and 306 negative cases. This ensures that safe refusal, uncertainty, privacy, and recovery behaviour receive more coverage than ordinary successful answers.
+
 ## Evaluation-set requirements
 
 - Each use case receives at least three phrasings: direct, conversational, and ambiguous or adversarial.
@@ -286,4 +297,4 @@ The first production candidate must meet these gates on the approved evaluation 
 
 ## T0029 completion evidence
 
-T0029 is complete when this specification is approved as the behavioural scope for Phase 2 and its automated contract test passes. T0030 will then catalogue and approve the knowledge sources needed to answer these use cases.
+T0029 is complete when this specification and its 500-case evaluation catalogue are approved as the behavioural scope for Phase 2 and their automated contract tests pass. T0030 will then catalogue and approve the knowledge sources needed to answer these use cases.
