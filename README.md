@@ -61,6 +61,8 @@ The Phase 2 concierge behavioural scope, supported questions, guardrails, previe
 
 The approved retrieval boundary, source ownership, review cadence, allowed uses, blocked uses, conflict handling, and missing authoritative sources are defined in [`docs/ai/knowledge-source-register.md`](docs/ai/knowledge-source-register.md) and the machine-readable [`content/data/ai-knowledge-sources.json`](content/data/ai-knowledge-sources.json).
 
+The governed document, chunk, entity, claim, citation, permission, lifecycle, embedding-state, and audit contracts are defined in [`docs/ai/knowledge-schema.md`](docs/ai/knowledge-schema.md) and [`content/schema/ai-knowledge-package.schema.json`](content/schema/ai-knowledge-package.schema.json).
+
 The approved navigation structure and visitor flows are documented in [`docs/information-architecture/sitemap-and-user-journeys.md`](docs/information-architecture/sitemap-and-user-journeys.md).
 
 The working creative concept and implementation guidance are documented in [`docs/design/visual-direction.md`](docs/design/visual-direction.md).

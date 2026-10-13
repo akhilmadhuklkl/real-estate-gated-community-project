@@ -1,0 +1,464 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glitz-pride-community.vercel.app/schemas/ai-knowledge-package.schema.json",
+  "title": "Glitz Pride governed AI knowledge package",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packageId",
+    "projectId",
+    "generatedAt",
+    "documents",
+    "chunks",
+    "entities",
+    "claims",
+    "auditEvents"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "packageId": { "type": "string", "pattern": "^kp-[a-z0-9-]+$" },
+    "projectId": { "type": "string", "const": "glitz-pride" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "documents": { "type": "array", "items": { "$ref": "#/$defs/document" } },
+    "chunks": { "type": "array", "items": { "$ref": "#/$defs/chunk" } },
+    "entities": { "type": "array", "items": { "$ref": "#/$defs/entity" } },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } },
+    "auditEvents": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/auditEvent" }
+    }
+  },
+  "$defs": {
+    "lifecycleState": {
+      "enum": [
+        "draft",
+        "pending-review",
+        "approved",
+        "active",
+        "suspended",
+        "superseded",
+        "expired",
+        "rejected"
+      ]
+    },
+    "classification": {
+      "enum": ["public", "internal", "confidential", "restricted"]
+    },
+    "riskTier": { "enum": ["R0", "R1", "R2", "R3", "R4"] },
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "isReferenceLanguage", "translationState"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+        "isReferenceLanguage": { "type": "boolean" },
+        "translationState": {
+          "enum": [
+            "original",
+            "machine-unreviewed",
+            "human-reviewed",
+            "approved"
+          ]
+        },
+        "translatedFromId": { "type": ["string", "null"] }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "audiences",
+        "allowedActions",
+        "consentRequired"
+      ],
+      "properties": {
+        "classification": { "$ref": "#/$defs/classification" },
+        "audiences": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "public",
+              "assistant",
+              "content-admin",
+              "sales-authorized",
+              "privacy-authorized"
+            ]
+          }
+        },
+        "allowedActions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "retrieve",
+              "summarize",
+              "quote",
+              "render-preview",
+              "download",
+              "admin-review"
+            ]
+          }
+        },
+        "consentRequired": { "type": "boolean" },
+        "purposeRestriction": { "type": ["string", "null"] }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "owner",
+        "steward",
+        "approvedBy",
+        "approvedAt",
+        "validFrom",
+        "validUntil",
+        "reviewedAt",
+        "reviewCadenceDays",
+        "retrievalEligible",
+        "qualification"
+      ],
+      "properties": {
+        "state": { "$ref": "#/$defs/lifecycleState" },
+        "owner": { "type": "string", "minLength": 1 },
+        "steward": { "type": "string", "const": "AKHIL" },
+        "approvedBy": { "type": ["string", "null"] },
+        "approvedAt": { "type": ["string", "null"], "format": "date-time" },
+        "validFrom": { "type": ["string", "null"], "format": "date-time" },
+        "validUntil": { "type": ["string", "null"], "format": "date-time" },
+        "reviewedAt": { "type": ["string", "null"], "format": "date-time" },
+        "reviewCadenceDays": { "type": ["integer", "null"], "minimum": 1 },
+        "retrievalEligible": { "type": "boolean" },
+        "qualification": { "type": ["string", "null"] },
+        "supersedesId": { "type": ["string", "null"] }
+      }
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "documentId",
+        "chunkId",
+        "locator",
+        "contentHash",
+        "retrievedOn"
+      ],
+      "properties": {
+        "sourceId": { "type": "string", "pattern": "^KS-[0-9]{3}$" },
+        "documentId": { "type": "string", "pattern": "^doc-[a-z0-9-]+$" },
+        "chunkId": { "type": "string", "pattern": "^chk-[a-z0-9-]+$" },
+        "locator": { "type": "string", "minLength": 1 },
+        "contentHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "retrievedOn": { "type": "string", "format": "date" }
+      }
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "sourceId",
+        "title",
+        "documentType",
+        "revision",
+        "contentHash",
+        "canonicalLocation",
+        "language",
+        "permissions",
+        "governance",
+        "ingestion"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^doc-[a-z0-9-]+$" },
+        "sourceId": { "type": "string", "pattern": "^KS-[0-9]{3}$" },
+        "title": { "type": "string", "minLength": 1 },
+        "documentType": {
+          "enum": [
+            "brochure",
+            "plan",
+            "specification",
+            "legal-record",
+            "faq",
+            "contact-directory",
+            "pricing-feed",
+            "inventory-feed",
+            "policy",
+            "web-page",
+            "structured-data",
+            "other"
+          ]
+        },
+        "revision": { "type": "string", "minLength": 1 },
+        "contentHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "canonicalLocation": { "type": "string", "minLength": 1 },
+        "mimeType": { "type": ["string", "null"] },
+        "effectiveDate": { "type": ["string", "null"], "format": "date" },
+        "language": { "$ref": "#/$defs/language" },
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "governance": { "$ref": "#/$defs/governance" },
+        "ingestion": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "parser",
+            "parserVersion",
+            "ingestedAt",
+            "status",
+            "warnings"
+          ],
+          "properties": {
+            "parser": { "type": "string", "minLength": 1 },
+            "parserVersion": { "type": "string", "minLength": 1 },
+            "ingestedAt": { "type": "string", "format": "date-time" },
+            "status": {
+              "enum": [
+                "accepted",
+                "accepted-with-warnings",
+                "quarantined",
+                "rejected"
+              ]
+            },
+            "warnings": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "pageStart",
+        "pageEnd",
+        "sectionPath",
+        "characterStart",
+        "characterEnd"
+      ],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "pageStart": { "type": ["integer", "null"], "minimum": 1 },
+        "pageEnd": { "type": ["integer", "null"], "minimum": 1 },
+        "sectionPath": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "characterStart": { "type": ["integer", "null"], "minimum": 0 },
+        "characterEnd": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "chunk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "documentId",
+        "sourceId",
+        "ordinal",
+        "text",
+        "contentHash",
+        "locator",
+        "language",
+        "topics",
+        "entityIds",
+        "claimIds",
+        "permissions",
+        "governance",
+        "embedding"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^chk-[a-z0-9-]+$" },
+        "documentId": { "type": "string", "pattern": "^doc-[a-z0-9-]+$" },
+        "sourceId": { "type": "string", "pattern": "^KS-[0-9]{3}$" },
+        "ordinal": { "type": "integer", "minimum": 0 },
+        "text": { "type": "string", "minLength": 1 },
+        "contentHash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "locator": { "$ref": "#/$defs/locator" },
+        "language": { "$ref": "#/$defs/language" },
+        "topics": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "entityIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^ent-[a-z0-9-]+$" }
+        },
+        "claimIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^clm-[a-z0-9-]+$" }
+        },
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "governance": { "$ref": "#/$defs/governance" },
+        "embedding": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "model", "dimensions", "embeddedAt"],
+          "properties": {
+            "status": {
+              "enum": ["not-requested", "pending", "ready", "failed", "deleted"]
+            },
+            "model": { "type": ["string", "null"] },
+            "dimensions": { "type": ["integer", "null"], "minimum": 1 },
+            "embeddedAt": { "type": ["string", "null"], "format": "date-time" }
+          }
+        }
+      }
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "canonicalName",
+        "aliases",
+        "attributes",
+        "sourceIds",
+        "riskTier",
+        "permissions",
+        "governance"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^ent-[a-z0-9-]+$" },
+        "type": {
+          "enum": [
+            "project",
+            "villa",
+            "amenity",
+            "specification",
+            "location",
+            "landmark",
+            "contact",
+            "organization",
+            "document",
+            "policy"
+          ]
+        },
+        "canonicalName": { "type": "string", "minLength": 1 },
+        "aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "attributes": { "type": "object" },
+        "sourceIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^KS-[0-9]{3}$" }
+        },
+        "riskTier": { "$ref": "#/$defs/riskTier" },
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "governance": { "$ref": "#/$defs/governance" }
+      }
+    },
+    "claimValue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "value", "unit"],
+      "properties": {
+        "type": {
+          "enum": [
+            "string",
+            "number",
+            "boolean",
+            "date",
+            "entity-reference",
+            "unknown"
+          ]
+        },
+        "value": { "type": ["string", "number", "boolean", "null"] },
+        "unit": { "type": ["string", "null"] }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "subjectEntityId",
+        "predicate",
+        "value",
+        "status",
+        "riskTier",
+        "validFrom",
+        "validUntil",
+        "citations",
+        "permissions",
+        "governance"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^clm-[a-z0-9-]+$" },
+        "subjectEntityId": { "type": "string", "pattern": "^ent-[a-z0-9-]+$" },
+        "predicate": { "type": "string", "pattern": "^[a-z][a-z0-9.]*$" },
+        "value": { "$ref": "#/$defs/claimValue" },
+        "status": {
+          "enum": [
+            "supported",
+            "qualified",
+            "conflicting",
+            "unknown",
+            "retracted"
+          ]
+        },
+        "riskTier": { "$ref": "#/$defs/riskTier" },
+        "validFrom": { "type": ["string", "null"], "format": "date-time" },
+        "validUntil": { "type": ["string", "null"], "format": "date-time" },
+        "citations": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/citation" }
+        },
+        "permissions": { "$ref": "#/$defs/permissions" },
+        "governance": { "$ref": "#/$defs/governance" }
+      }
+    },
+    "auditEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "occurredAt",
+        "actor",
+        "action",
+        "recordType",
+        "recordId",
+        "reason",
+        "beforeHash",
+        "afterHash"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^evt-[a-z0-9-]+$" },
+        "occurredAt": { "type": "string", "format": "date-time" },
+        "actor": { "type": "string", "minLength": 1 },
+        "action": {
+          "enum": [
+            "created",
+            "reviewed",
+            "approved",
+            "activated",
+            "suspended",
+            "superseded",
+            "expired",
+            "rejected",
+            "corrected",
+            "deleted-from-index"
+          ]
+        },
+        "recordType": { "enum": ["document", "chunk", "entity", "claim"] },
+        "recordId": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 1 },
+        "beforeHash": { "type": ["string", "null"] },
+        "afterHash": { "type": ["string", "null"] }
+      }
+    }
+  }
+}
