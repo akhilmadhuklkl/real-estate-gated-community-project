@@ -17,6 +17,8 @@
     "test:e2e": "playwright test",
     "test:performance": "playwright test --config=playwright.performance.config.ts",
     "test:responsive": "playwright test --config=playwright.responsive.config.ts",
+    "ingest:knowledge": "python scripts/ingest_ai_knowledge.py --repo .",
+    "ingest:knowledge:check": "python scripts/ingest_ai_knowledge.py --repo . --as-of 2026-10-13 --check",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"*.{json,ts,mjs,yaml}\" \"docs/architecture/**/*.md\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"*.{json,ts,mjs,yaml}\" \"docs/architecture/**/*.md\"",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"

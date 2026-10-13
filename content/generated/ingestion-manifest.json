@@ -1,0 +1,23 @@
+{
+  "acceptedSourceCount": 2,
+  "chunkCount": 19,
+  "generatedAt": "2026-10-13T00:00:00.000Z",
+  "packageHash": "sha256:933a4725ad6acbe5584f76b284c2d847145ba725f3e64ab0fb9d10bd990aa5ad",
+  "pipelineVersion": "1.0.0",
+  "quarantinedSourceCount": 21,
+  "registerHash": "sha256:8b2a72eeb446e7c03cbf0a15283e0f8c2b26b61cad83aebf09d9bfae5698097b",
+  "versions": [
+    {
+      "contentHash": "sha256:9a3770926a29570de8fe832282c3028cd107c3dcc7312fe6d17f6b75bbdab308",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "revision": "2018-12-27",
+      "sourceId": "KS-001"
+    },
+    {
+      "contentHash": "sha256:33f94ddf042612ed13e08d6ea470d6d4b51833ff292a2b6d0ea269e2e1fa0cb4",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "revision": "2026-10-03",
+      "sourceId": "KS-002"
+    }
+  ]
+}

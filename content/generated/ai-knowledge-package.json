@@ -1,0 +1,1386 @@
+{
+  "auditEvents": [
+    {
+      "action": "activated",
+      "actor": "AKHIL",
+      "afterHash": "sha256:9a3770926a29570de8fe832282c3028cd107c3dcc7312fe6d17f6b75bbdab308",
+      "beforeHash": null,
+      "id": "evt-ks-001-activated-9a377092",
+      "occurredAt": "2026-10-13T00:00:00.000Z",
+      "reason": "Approved local source passed format, path, parser, and text-quality gates.",
+      "recordId": "doc-ks-001-9a3770926a29",
+      "recordType": "document"
+    },
+    {
+      "action": "activated",
+      "actor": "AKHIL",
+      "afterHash": "sha256:33f94ddf042612ed13e08d6ea470d6d4b51833ff292a2b6d0ea269e2e1fa0cb4",
+      "beforeHash": null,
+      "id": "evt-ks-002-activated-33f94ddf",
+      "occurredAt": "2026-10-13T00:00:00.000Z",
+      "reason": "Approved local source passed format, path, parser, and text-quality gates.",
+      "recordId": "doc-ks-002-33f94ddf0426",
+      "recordType": "document"
+    }
+  ],
+  "chunks": [
+    {
+      "claimIds": [],
+      "contentHash": "sha256:65446b652facd54c05800de67864d77ca0af25a294a4286d415702c3aa7e40b9",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-001-65446b652fac",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 28,
+        "characterStart": 0,
+        "label": "Page 1",
+        "pageEnd": 1,
+        "pageStart": 1,
+        "sectionPath": []
+      },
+      "ordinal": 0,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "NATURE’S PET. OWNER’S PRIDE.",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:0e6b0e7fe3dcfad12125dccab785762b76292f9ad82a46b75826ce3107b7c36a",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-002-0e6b0e7fe3dc",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 440,
+        "characterStart": 0,
+        "label": "Page 2",
+        "pageEnd": 2,
+        "pageStart": 2,
+        "sectionPath": []
+      },
+      "ordinal": 1,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "Life is a journey where the destination remains unknown. We move ahead with no real manual for success. And as we travel, we fall and we get up stronger, creating memories and nurturing experiences. And then in that one moment, we look back at ourselves and see how far we’ve come and we are filled with a certain indescribable feeling. We’re filled with Pride! And it’s in that moment we know we have arrived. We have made it. We are home!",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:e21cff0810cc1e8d2f59e4235f81e9b2351c3e735358aa3f8f79511717a3a8c8",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-003-e21cff0810cc",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 469,
+        "characterStart": 0,
+        "label": "Page 3",
+        "pageEnd": 3,
+        "pageStart": 3,
+        "sectionPath": []
+      },
+      "ordinal": 2,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "Every house is made from similar material. Brick for some, stone for the others. But what separates a roof over ones’ head from a space that makes you feel you belong is what Glitz Homes is all about. Having set up in the heart of Thrissur, Kerala, India, Glitz Homes’ sole purpose is to create homes for the millennium. Today, they have some of the most beautiful projects underway transforming the concept of the home altogether. BUILDING HOUSES. CREATING LIFESTYLES.",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:e9a506cc668182123d961cbfb26843f3430bcaf7aa5fc09a5fcf1dbb98583999",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-004-e9a506cc6681",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 835,
+        "characterStart": 0,
+        "label": "Page 4",
+        "pageEnd": 4,
+        "pageStart": 4,
+        "sectionPath": []
+      },
+      "ordinal": 3,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "Glitz Pride is a one-of-its-kind luxury boutique gated villa community that epitomizes architectural perfection. This green space has been painstakingly designed to create a lifestyle that is in perfect harmony with the earth. On the outside, it instantly separates you from the toils of the everyday with its calm and peaceful aura. And as you enter your abode, this aura radiates within, inviting the joy of outdoors, indoors with maximum ventilation from natural air and lighting. Added rugged features like brick walls and high ceilings only further enhance the rustic, natural design. WELCOME TO NATURE’S PET. OWNER’S PRIDE. HIGHEST SECURITY STANDARDS CLUB HOUSE CHILDREN PLAY AREA HEALTH CLUB SHUTTLE COURT WIDE GUEST PARKING AREA VEGETABLE GARDEN STATE-OF-THE-ART SURVEILLANCE SYSTEMS BOUTIQUE GATED VILLA COMMUNITY 3D rendering",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:69e156689389ad66941398a911158a530ec86b3c84d42f4ecb7573f81b0857b3",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-005-69e156689389",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 1387,
+        "characterStart": 0,
+        "label": "Page 5",
+        "pageEnd": 5,
+        "pageStart": 5,
+        "sectionPath": []
+      },
+      "ordinal": 4,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "Lijo. Reny. Architects is an artistic duo that has transformed the landscape of Kerala with its award-wining architectural designs. Their influence is visible all over the state and their contributions to the world of architecture is unparalleled. For this duo, experimentation and breaking out-of-the-box along with a very keen sense of nature and a deep respect for all it offers has led them to create designs not only in architecture but also in the field of art where their contemporary installations draw massive appeal. ART IS ALL AROUND US AND YET IT TAKES AN ARTIST TO BRING IT TO LIFE. And from the dust it arose. And it stood tall as the pride of the land and everyone looked at it and knew its magnificence would tell stories for eons to come. And that’s power an artist truly wields. To not just build a structure but to create one that exudes beauty and balance. It is this vast experience and influence that they bring to Glitz Pride. Having designed this project meticulously, their design acumen, artistic appeal and practical balance is visible in every brick and stone. Awards won by the studio include: ‘Monsoon Architecture Award’, ‘NDTV Design & Architecture Awards’, ‘All India Stone Architectural Awards’, ‘JK State Young Architect of the Year Award’ and several IIA State awards. INTRODUCING THE DESIGNERS BEHIND EVERY DETAIL. LIJO. RENY. ARCHITECTS 3D rendering",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:245fd91995500ba8a20c74fa665a32e8c729de4b2932611e5358458589207633",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-006-245fd9199550",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 590,
+        "characterStart": 0,
+        "label": "Page 6",
+        "pageEnd": 6,
+        "pageStart": 6,
+        "sectionPath": []
+      },
+      "ordinal": 5,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "When you stand amongst the rawness of what the earth has to offer, you are mesmerized. You look with awe and great respect at the space around you. And just as mother nature fiercely protects her own, you will find solitude and refuge under her foliage. And you will be filled with pride to be one with the magnificence of nature at your doorstep. In what will be your home! WHEN YOU LOOK OUT YONDER, THE EARTH LOOKS BACK AT YOU AND IN THAT MOMENT, YOU KNOW YOU ARE ONE! ALL YEAR LUSH GREENERY • PICTURESQUE LANDSCAPING • VEGETABLE GARDEN • SIGNATURE STYLING WITH INDOOR PLANTS 3D rendering",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:3e2e7a77ffcae9b6238efc1767ea61d1c9147c99d34e40b0ed75ea4b4ea8267e",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-007-3e2e7a77ffca",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 1905,
+        "characterStart": 0,
+        "label": "Page 7",
+        "pageEnd": 7,
+        "pageStart": 7,
+        "sectionPath": []
+      },
+      "ordinal": 6,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "GROUND FLOOR Area: 1410 sq.ft. FIRST FLOOR Area: 810 sq.ft. WHEN EVERY BRICK AND HINGE STAND PROUD YOU KNOW YOUR HOME IS SPECIAL BECAUSE EVERY DETAIL SHINES. Our stunning designs are ably supported by our impeccable attention to detail. You will find that it is the smallest things that separate the great from the mediocre and that is why we have left no brick unturned to give you a home that revels in the finest fittings imported specially from Germany for your kitchen and other rooms. And as you walk by the walls, the elegant pieces selected to adorn your home balance beautifully with practical and user-friendly accessories. Bathroom – Sanitary and Accessory Fittings All bathroom accessories are of the highest quality with the most stylish designs from TOTO , one of the world’s leading suppliers of bathroom products. Sanitary fittings include the GEBERIT concealed cistern. The bathroom also comes with a Glass Shower Enclosure with fittings by HANSGROHE, one of the world’s largest shower head, hand shower and faucet suppliers. Door Frames and Shutters Only the best and strongest wood is used throughout the house with teak wood used for all door frames and shutters. This includes the front, internal and bathroom doors as well as the doors for the ventilator and windows. The front sliding door is made from DOMAL ALUMINUM. Painting and Water Proofing An acrylic Putty with 2 coat emulsion finish will be applied on all Interior walls while a 2 coat emulsion will be applied on all external walls. Water proofing will also be done for the slope slabs and the sunken slabs for the toilets. Flooring The gorgeous sit-out kitchen cum living room will have a GRANITE LAPATRO while all the bedrooms will be laid out with KAJARIA 4X2. Brick Masonry The brick masonry will be based on semi wirecut bricks in cement mortar 1.6 for a superstructure that includes curing. 3D rendering 3D rendering",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:009cd0b48baedbc8742768658d40dea02bd7fa22db3e5ec56c609f1df92a958c",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-008-009cd0b48bae",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 727,
+        "characterStart": 0,
+        "label": "Page 8",
+        "pageEnd": 8,
+        "pageStart": 8,
+        "sectionPath": []
+      },
+      "ordinal": 7,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "LOCATION Glitz Pride is located strategically in one of the most convenient locations in close vicinity to major cities, schools, medical institutes, hospitals and supermarkets. Glitz Pride - Amala Nagar, Anugraha Road adjacent to Peramangalam Police station Distance from Glitz Pride to... KM Thrissur City 6 Sobha City 3 Lulu Convention Centre 4 Vilangankunnu 2 Civil Station Ayyanthole 5 West Fort Hightech Hospital 5.5 Amala Medical College 1 Govt.Medical College 5 IES Education City 2.5 Devamatha CMI School 7 Govt. Engineering College 8 Paramekkavu Vidya Mandir 6 Railway Station 7.5 Cochin International Airport 60 Calicut International Airport 90 Proposed Hub 5 Vadakkunathan Temple 8 Guruvayoor Temple 15 3D rendering",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:81f0405c67ead3d7b60627c225ed2d5f7531ce9ae856fa09c91c31639bd0356f",
+      "documentId": "doc-ks-001-9a3770926a29",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "chk-ks-001-009-81f0405c67ea",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 282,
+        "characterStart": 0,
+        "label": "Page 9",
+        "pageEnd": 9,
+        "pageStart": 9,
+        "sectionPath": []
+      },
+      "ordinal": 8,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-001",
+      "text": "KERALA GLITZ HOMES 1st floor, City Centre Round West,Thrissur. 680 001 Email: info@glitzhomes.co.in Mobile: +91 954 451 9000 +91 960 555 9400 For more information and bookings, please contact us on: DUBAI ALSEEF GROUP Tel: +971 4 3322999 Mobile: +971 52 7972228 www.glitzhomes.co.in",
+      "topics": [
+        "brochure"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:1ed894f2a8240caa646425899b25433d6f2c357b58884afc92f3b7fdd89f2833",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-001-1ed894f2a824",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 661,
+        "characterStart": 0,
+        "label": "JSON section: project",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "project"
+        ]
+      },
+      "ordinal": 0,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "{\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"architect\": \"Lijo. Reny. Architects\", \"category\": \"Boutique gated villa community\", \"developer\": \"Glitz Homes\", \"evidence\": [{\"locator\": \"Pages 3-6\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"glitz-pride\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Glitz Pride\", \"publicationNote\": \"Brochure-backed development record. Confirm current accuracy and publication rights before production use.\", \"summary\": \"A nature-led gated villa community presented around architectural design, natural light, ventilation, landscaping, and shared amenities.\"}",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:504b1a47c55efd204c6ccaadf4ed838d8ecb031cc1f7bc4a0b9fc6675c5ff717",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-002-504b1a47c55e",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 405,
+        "characterStart": 0,
+        "label": "JSON section: branding",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "branding"
+        ]
+      },
+      "ordinal": 1,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "{\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"evidence\": [{\"locator\": \"Pages 1 and 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"lastReviewedOn\": \"2026-10-03\", \"publicName\": \"Glitz Pride\", \"publicationNote\": \"Displayed in the official brochure but not yet cleared for production publication.\", \"tagline\": \"Nature's Pet. Owner's Pride.\"}",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:e12283b6d722432051b0d79a7e26a66147763b0a7fcd71100d1f567f8635f819",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-003-e12283b6d722",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 673,
+        "characterStart": 0,
+        "label": "JSON section: villaTypes",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "villaTypes"
+        ]
+      },
+      "ordinal": 2,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "[{\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"availability\": \"unknown\", \"bathrooms\": null, \"bedrooms\": null, \"evidence\": [{\"locator\": \"Page 7\", \"note\": \"Total area is the arithmetic sum of the two printed floor areas.\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"floorAreasSqFt\": [{\"area\": 1410, \"floor\": \"Ground floor\"}, {\"area\": 810, \"floor\": \"First floor\"}], \"id\": \"villa-brochure-plan-01\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Brochure villa plan\", \"publicationNote\": \"The brochure does not state a villa type name, bedroom count, bathroom count, price, or availability.\", \"totalAreaSqFt\": 2220}]",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:35d4edfc61ef057691bd1aa679ca17ebdce0bcc73dda7f65a906c929df325213",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-004-35d4edfc61ef",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 3276,
+        "characterStart": 0,
+        "label": "JSON section: amenities",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "amenities"
+        ]
+      },
+      "ordinal": 3,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "[{\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"deliveryState\": \"unknown\", \"description\": \"A vegetable garden is labelled in the brochure site rendering.\", \"evidence\": [{\"locator\": \"Pages 4 and 6\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"amenity-vegetable-garden\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Vegetable garden\", \"publicationNote\": \"Confirm location and delivery state.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"deliveryState\": \"unknown\", \"description\": \"A guest parking area is labelled in the brochure site rendering.\", \"evidence\": [{\"locator\": \"Page 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"amenity-guest-parking\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Wide guest parking area\", \"publicationNote\": \"Confirm capacity, access rules, and delivery state.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"deliveryState\": \"unknown\", \"description\": \"A club house is labelled in the brochure site rendering.\", \"evidence\": [{\"locator\": \"Page 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"amenity-club-house\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Club house\", \"publicationNote\": \"Confirm facilities, naming, and delivery state.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"deliveryState\": \"unknown\", \"description\": \"A children's play area is labelled in the brochure site rendering.\", \"evidence\": [{\"locator\": \"Page 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"amenity-children-play-area\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Children play area\", \"publicationNote\": \"Confirm equipment, location, and delivery state.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"deliveryState\": \"unknown\", \"description\": \"A health club is labelled in the brochure site rendering.\", \"evidence\": [{\"locator\": \"Page 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"amenity-health-club\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Health club\", \"publicationNote\": \"Confirm facilities and delivery state.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"deliveryState\": \"unknown\", \"description\": \"The brochure uses the label 'Shuttle court'.\", \"evidence\": [{\"locator\": \"Page 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"amenity-shuttle-court\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Shuttle court\", \"publicationNote\": \"Confirm whether the intended facility is a shuttle badminton court and confirm delivery state.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"deliveryState\": \"unknown\", \"description\": \"The brochure claims high security standards and surveillance systems.\", \"evidence\": [{\"locator\": \"Page 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"amenity-security\", \"lastReviewedOn\": \"2026-10-03\", \"name\": \"Security and surveillance\", \"publicationNote\": \"Obtain installed-system specifications before making production claims.\"}]",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:56dbd1de047c78da246aa7c08dbc131167d2c5c8ef9d8287c5b8c088e4a27f2c",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-005-56dbd1de047c",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 2468,
+        "characterStart": 0,
+        "label": "JSON section: specifications",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "specifications"
+        ]
+      },
+      "ordinal": 4,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "[{\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"category\": \"Bathroom sanitary and accessory fittings\", \"details\": [\"TOTO bathroom accessories\", \"Geberit concealed cistern\", \"Glass shower enclosure with Hansgrohe fittings\"], \"evidence\": [{\"locator\": \"Page 7\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"spec-bathroom-fittings\", \"lastReviewedOn\": \"2026-10-03\", \"publicationNote\": \"Confirm current brands, models, substitutions, and contractual specification.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"category\": \"Door frames and shutters\", \"details\": [\"Teak wood door frames and shutters\", \"Domal aluminium front sliding door\"], \"evidence\": [{\"locator\": \"Page 7\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"spec-doors-windows\", \"lastReviewedOn\": \"2026-10-03\", \"publicationNote\": \"Confirm current material and product specification.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"category\": \"Painting and waterproofing\", \"details\": [\"Acrylic putty and two-coat emulsion for interior walls\", \"Two-coat emulsion for external walls\", \"Waterproofing for slope slabs and sunken toilet slabs\"], \"evidence\": [{\"locator\": \"Page 7\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"spec-paint-waterproofing\", \"lastReviewedOn\": \"2026-10-03\", \"publicationNote\": \"Confirm current construction specification.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"category\": \"Flooring\", \"details\": [\"Granite lapato for the sit-out, kitchen, and living room\", \"Kajaria 4x2 flooring for bedrooms\"], \"evidence\": [{\"locator\": \"Page 7\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"spec-flooring\", \"lastReviewedOn\": \"2026-10-03\", \"publicationNote\": \"Confirm spelling, product size units, current brand, and substitution policy.\"}, {\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"category\": \"Brick masonry\", \"details\": [\"Semi-wire-cut bricks in cement mortar\", \"Brochure states a 1:6 mortar ratio\"], \"evidence\": [{\"locator\": \"Page 7\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"spec-brick-masonry\", \"lastReviewedOn\": \"2026-10-03\", \"publicationNote\": \"Confirm the construction specification and terminology before publication.\"}]",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:1e42c142b310989dc7473fbf71650f6b4eb28f38f426f1b768e8466941ac4227",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-006-1e42c142b310",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 1929,
+        "characterStart": 0,
+        "label": "JSON section: location",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "location"
+        ]
+      },
+      "ordinal": 5,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "{\"address\": \"Amala Nagar, Anugraha Road, adjacent to Peramangalam Police Station, Thrissur, Kerala\", \"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"coordinates\": {\"latitude\": 10.567917, \"longitude\": 76.160444}, \"evidence\": [{\"locator\": \"Page 8\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"landmarks\": [{\"category\": \"city\", \"distanceKm\": 6, \"name\": \"Thrissur City\"}, {\"category\": \"shopping\", \"distanceKm\": 3, \"name\": \"Sobha City\"}, {\"category\": \"events\", \"distanceKm\": 4, \"name\": \"Lulu Convention Centre\"}, {\"category\": \"landmark\", \"distanceKm\": 2, \"name\": \"Vilangankunnu\"}, {\"category\": \"government\", \"distanceKm\": 5, \"name\": \"Civil Station Ayyanthole\"}, {\"category\": \"healthcare\", \"distanceKm\": 5.5, \"name\": \"West Fort Hightech Hospital\"}, {\"category\": \"healthcare\", \"distanceKm\": 1, \"name\": \"Amala Medical College\"}, {\"category\": \"healthcare\", \"distanceKm\": 5, \"name\": \"Government Medical College\"}, {\"category\": \"education\", \"distanceKm\": 2.5, \"name\": \"IES Education City\"}, {\"category\": \"education\", \"distanceKm\": 7, \"name\": \"Devamatha CMI School\"}, {\"category\": \"education\", \"distanceKm\": 8, \"name\": \"Government Engineering College\"}, {\"category\": \"education\", \"distanceKm\": 6, \"name\": \"Paramekkavu Vidya Mandir\"}, {\"category\": \"transport\", \"distanceKm\": 7.5, \"name\": \"Railway Station\"}, {\"category\": \"transport\", \"distanceKm\": 60, \"name\": \"Cochin International Airport\"}, {\"category\": \"transport\", \"distanceKm\": 90, \"name\": \"Calicut International Airport\"}, {\"category\": \"unconfirmed\", \"distanceKm\": 5, \"name\": \"Proposed Hub\"}, {\"category\": \"place-of-worship\", \"distanceKm\": 8, \"name\": \"Vadakkunathan Temple\"}, {\"category\": \"place-of-worship\", \"distanceKm\": 15, \"name\": \"Guruvayoor Temple\"}], \"lastReviewedOn\": \"2026-10-03\", \"publicationNote\": \"Verify coordinates, current road access, landmark names, distances, and measurement method before publication.\"}",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:044cf2608b20bab5733acf7c10c63c215ea76082f1f41f0f70339f59242384bd",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-007-044cf2608b20",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 1254,
+        "characterStart": 0,
+        "label": "JSON section: contacts",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "contacts"
+        ]
+      },
+      "ordinal": 6,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "[{\"address\": \"1st Floor, City Centre, Round West, Thrissur 680001\", \"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"channels\": [{\"type\": \"email\", \"value\": \"info@glitzhomes.co.in\"}, {\"type\": \"mobile\", \"value\": \"+91 954 451 9000\"}, {\"type\": \"mobile\", \"value\": \"+91 960 555 9400\"}, {\"type\": \"website\", \"value\": \"http://www.glitzhomes.co.in/\"}], \"evidence\": [{\"locator\": \"Page 9\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"contact-kerala-office\", \"lastReviewedOn\": \"2026-10-03\", \"organization\": \"Glitz Homes\", \"publicationNote\": \"Confirm every channel, monitoring owner, hours, consent wording, and publication permission.\", \"region\": \"Kerala\"}, {\"address\": null, \"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"channels\": [{\"type\": \"phone\", \"value\": \"+971 4 3322999\"}, {\"type\": \"mobile\", \"value\": \"+971 52 7972228\"}], \"evidence\": [{\"locator\": \"Page 9\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"contact-dubai-office\", \"lastReviewedOn\": \"2026-10-03\", \"organization\": \"Alseef Group\", \"publicationNote\": \"Confirm organizational relationship, current channels, hours, and publication permission.\", \"region\": \"Dubai\"}]",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:c6ad0fd688fb5ac82822dda02fcd3f0a13662d150be9e272f1306f811d031b57",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-008-c6ad0fd688fb",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 2861,
+        "characterStart": 0,
+        "label": "JSON section: media",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "media"
+        ]
+      },
+      "ordinal": 7,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "[{\"alt\": \"Brochure rendering of the gated villa community layout\", \"approvalState\": \"development-reference\", \"approvedBy\": null, \"caption\": \"3D rendering from the official development brochure.\", \"evidence\": [{\"locator\": \"Page 4\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"media-site-rendering\", \"kind\": \"image\", \"lastReviewedOn\": \"2026-10-03\", \"path\": \"mockup-demo/dist/assets/brochure-aerial.jpg\", \"publicationNote\": \"Keep in previews until publication rights are confirmed.\"}, {\"alt\": \"Brochure rendering of a Glitz Pride villa exterior\", \"approvalState\": \"development-reference\", \"approvedBy\": null, \"caption\": \"3D rendering from the official development brochure.\", \"evidence\": [{\"locator\": \"Pages 5 and 6\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"media-villa-rendering\", \"kind\": \"image\", \"lastReviewedOn\": \"2026-10-03\", \"path\": \"mockup-demo/dist/assets/brochure-villa.jpg\", \"publicationNote\": \"Keep in previews until publication rights are confirmed.\"}, {\"alt\": \"Ground-floor brochure plan labelled 1,410 square feet\", \"approvalState\": \"development-reference\", \"approvedBy\": null, \"caption\": \"Ground-floor 3D rendering from the official development brochure.\", \"evidence\": [{\"locator\": \"Page 7\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"media-ground-floor-plan\", \"kind\": \"floor-plan\", \"lastReviewedOn\": \"2026-10-03\", \"path\": \"mockup-demo/dist/assets/brochure-ground-floor.jpg\", \"publicationNote\": \"Confirm plan identity, scale, dimensions, disclaimers, and publication rights.\"}, {\"alt\": \"First-floor brochure plan labelled 810 square feet\", \"approvalState\": \"development-reference\", \"approvedBy\": null, \"caption\": \"First-floor 3D rendering from the official development brochure.\", \"evidence\": [{\"locator\": \"Page 7\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"media-first-floor-plan\", \"kind\": \"floor-plan\", \"lastReviewedOn\": \"2026-10-03\", \"path\": \"mockup-demo/dist/assets/brochure-first-floor.jpg\", \"publicationNote\": \"Confirm plan identity, scale, dimensions, disclaimers, and publication rights.\"}, {\"alt\": \"Illustrative brochure map showing Glitz Pride near Amala Nagar and Peramangalam\", \"approvalState\": \"development-reference\", \"approvedBy\": null, \"caption\": \"Location illustration from the official development brochure.\", \"evidence\": [{\"locator\": \"Page 8\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"media-location-map\", \"kind\": \"map\", \"lastReviewedOn\": \"2026-10-03\", \"path\": \"mockup-demo/dist/assets/brochure-location-map.jpg\", \"publicationNote\": \"Use as an illustration only; verify geography and provide an accessible map alternative.\"}]",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:f55d9b96e0a94745bdfb7238faecf21041dd2f49bfc674badbf445fc7d58343c",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-009-f55d9b96e0a9",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 561,
+        "characterStart": 0,
+        "label": "JSON section: documents",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "documents"
+        ]
+      },
+      "ordinal": 8,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "[{\"approvalState\": \"awaiting-approval\", \"approvedBy\": null, \"documentDate\": \"2018-12-27\", \"evidence\": [{\"locator\": \"PDF metadata and pages 1-9\", \"retrievedOn\": \"2026-10-03\", \"sourceId\": \"document-glitz-brochure\", \"sourceType\": \"brochure\"}], \"id\": \"document-glitz-brochure\", \"lastReviewedOn\": \"2026-10-03\", \"path\": \"project-assets/official/Glitz_Brochure.pdf\", \"publicationNote\": \"Accepted as the official development source for modeling. Confirm that it is current and cleared for production publication.\", \"title\": \"Glitz Pride official development brochure\"}]",
+      "topics": [
+        "structured-project-data"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:dd45bf0a9307372ec2002afa1c9a7cb719755cca4d3837a9835e7fa99bd7e1d3",
+      "documentId": "doc-ks-002-33f94ddf0426",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "chk-ks-002-010-dd45bf0a9307",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 447,
+        "characterStart": 0,
+        "label": "JSON section: governance",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "governance"
+        ]
+      },
+      "ordinal": 9,
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-002",
+      "text": "{\"defaultApprovalState\": \"awaiting-approval\", \"publicationRule\": \"Only records marked approved may appear in a production publication.\", \"uiReference\": \"mockup-demo is preserved as the visual and interaction reference only. Production components must be implemented separately.\", \"unconfirmedValuePolicy\": \"Use null or an explicit unknown state. Do not invent or infer missing commercial, legal, availability, room-count, or contact information.\"}",
+      "topics": [
+        "structured-project-data"
+      ]
+    }
+  ],
+  "claims": [],
+  "documents": [
+    {
+      "canonicalLocation": "project-assets/official/Glitz_Brochure.pdf",
+      "contentHash": "sha256:9a3770926a29570de8fe832282c3028cd107c3dcc7312fe6d17f6b75bbdab308",
+      "documentType": "brochure",
+      "effectiveDate": "2018-12-27",
+      "governance": {
+        "approvedAt": "2026-10-10T00:00:00.000Z",
+        "approvedBy": "APR-003 in docs/content/content-register.md",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: project story, brochure-listed villa areas, brochure-listed amenities, brochure specifications, illustrative plans, illustrative location and landmark distances, brochure-listed contacts. Do not use for: live pricing, live availability, current construction status, legal or RERA status, contractual guarantee, installed-system guarantee, current operating hours.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2018-12-27T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z"
+      },
+      "id": "doc-ks-001-9a3770926a29",
+      "ingestion": {
+        "ingestedAt": "2026-10-13T00:00:00.000Z",
+        "parser": "pypdf",
+        "parserVersion": "1.0.0",
+        "status": "accepted-with-warnings",
+        "warnings": [
+          "Source qualifications must accompany every derived answer."
+        ]
+      },
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "mimeType": "application/pdf",
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "revision": "2018-12-27",
+      "sourceId": "KS-001",
+      "title": "Official Glitz Pride development brochure"
+    },
+    {
+      "canonicalLocation": "content/data/glitz-pride.json",
+      "contentHash": "sha256:33f94ddf042612ed13e08d6ea470d6d4b51833ff292a2b6d0ea269e2e1fa0cb4",
+      "documentType": "structured-data",
+      "effectiveDate": "2026-10-03",
+      "governance": {
+        "approvedAt": "2026-10-11T00:00:00.000Z",
+        "approvedBy": "Derived from KS-001 and governed by APR-003",
+        "owner": "Glitz Pride property owner",
+        "qualification": "Use only for: deterministic previews, brochure-backed retrieval, villa-area arithmetic, source locators, unknown-value handling. Do not use for: overriding KS-001, removing source qualifications, turning null or unknown fields into facts.",
+        "retrievalEligible": true,
+        "reviewCadenceDays": 30,
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-03T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z"
+      },
+      "id": "doc-ks-002-33f94ddf0426",
+      "ingestion": {
+        "ingestedAt": "2026-10-13T00:00:00.000Z",
+        "parser": "python-json",
+        "parserVersion": "1.0.0",
+        "status": "accepted-with-warnings",
+        "warnings": [
+          "Source qualifications must accompany every derived answer."
+        ]
+      },
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "mimeType": "application/json",
+      "permissions": {
+        "allowedActions": [
+          "retrieve",
+          "summarize",
+          "quote",
+          "render-preview",
+          "admin-review"
+        ],
+        "audiences": [
+          "public",
+          "assistant",
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "revision": "2026-10-03",
+      "sourceId": "KS-002",
+      "title": "Governed structured project content"
+    }
+  ],
+  "entities": [],
+  "generatedAt": "2026-10-13T00:00:00.000Z",
+  "packageId": "kp-ingestion-2026-10-13",
+  "projectId": "glitz-pride",
+  "schemaVersion": "1.0.0"
+}

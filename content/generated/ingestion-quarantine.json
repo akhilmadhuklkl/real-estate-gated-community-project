@@ -1,0 +1,216 @@
+{
+  "generatedAt": "2026-10-13T00:00:00.000Z",
+  "items": [
+    {
+      "decision": "approved",
+      "detail": "Initial pipeline supports governed PDF and JSON files.",
+      "format": "approval-record",
+      "location": "docs/content/content-register.md#owner-approval-record",
+      "reasonCode": "unsupported-format",
+      "requiresHumanReview": true,
+      "sourceId": "KS-003",
+      "title": "Owner approval for the qualified public presentation"
+    },
+    {
+      "decision": "approved",
+      "detail": "Initial pipeline supports governed PDF and JSON files.",
+      "format": "approval-record",
+      "location": "docs/content/content-register.md#owner-approval-record",
+      "reasonCode": "unsupported-format",
+      "requiresHumanReview": true,
+      "sourceId": "KS-004",
+      "title": "Approved WhatsApp destination"
+    },
+    {
+      "decision": "superseded",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "website",
+      "location": "http://www.glitzhomes.co.in/",
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-005",
+      "title": "Legacy Glitz Homes website"
+    },
+    {
+      "decision": "approved-with-qualifications",
+      "detail": "Initial pipeline supports governed PDF and JSON files.",
+      "format": "website",
+      "location": "https://glitz-pride-community.vercel.app/",
+      "reasonCode": "unsupported-format",
+      "requiresHumanReview": true,
+      "sourceId": "KS-006",
+      "title": "Current production website pages"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "documents-and-assets",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-007",
+      "title": "Brand identity and media-rights package"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "structured-data-and-approved-plans",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-008",
+      "title": "Current villa catalogue and approved floor plans"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "revision-controlled-document",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-009",
+      "title": "Current technical and contractual specifications"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "structured-data",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-010",
+      "title": "Amenity delivery and operating-status register"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "authenticated-structured-data",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-011",
+      "title": "Current pricing, charges, taxes, and offer feed"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "authenticated-structured-data",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-012",
+      "title": "Live villa inventory and reservation feed"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "official-records",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-013",
+      "title": "K-RERA registration, approvals, title, and legal records"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "revision-controlled-plan",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-014",
+      "title": "Sanctioned site plan and approved master plan"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "dated-progress-record",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-015",
+      "title": "Construction and completion progress register"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "structured-data",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-016",
+      "title": "Verified address, coordinates, and road-access record"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "structured-data-with-methodology",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-017",
+      "title": "Landmark distance and travel-time dataset"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "structured-data",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-018",
+      "title": "Approved professional contact directory"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "policy-and-schedule-feed",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-019",
+      "title": "Site-visit and booking policy"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "approved-policy",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-020",
+      "title": "Privacy notice, consent, retention, and deletion policy"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "structured-question-answer-data",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-021",
+      "title": "Owner-approved frequently asked questions"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "versioned-translation-memory",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-022",
+      "title": "Approved multilingual terminology and translations"
+    },
+    {
+      "decision": "pending",
+      "detail": "Only approved sources are eligible for ingestion.",
+      "format": "service-contract-and-api",
+      "location": null,
+      "reasonCode": "source-not-approved",
+      "requiresHumanReview": true,
+      "sourceId": "KS-023",
+      "title": "Approved external live-service integrations"
+    }
+  ],
+  "pipelineVersion": "1.0.0"
+}
