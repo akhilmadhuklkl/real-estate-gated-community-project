@@ -69,6 +69,8 @@ The governed embedding model, vector-index contract, hybrid semantic retrieval, 
 
 The retrieval question set, relevance metrics, negative-case checks, citation checks, and release thresholds are documented in [`docs/ai/retrieval-evaluation.md`](docs/ai/retrieval-evaluation.md).
 
+The grounded assistant service, Gemini provider boundary, evidence-only response rules, privacy filter, and deterministic citations are documented in [`docs/ai/assistant-service.md`](docs/ai/assistant-service.md).
+
 The approved navigation structure and visitor flows are documented in [`docs/information-architecture/sitemap-and-user-journeys.md`](docs/information-architecture/sitemap-and-user-journeys.md).
 
 The working creative concept and implementation guidance are documented in [`docs/design/visual-direction.md`](docs/design/visual-direction.md).
