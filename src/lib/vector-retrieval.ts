@@ -131,13 +131,14 @@ export async function retrieveEvidence(args: {
       "Query embedding dimensions do not match the stored index.",
     );
   }
-  return rankVectorRecords(embedding, args.index.records, args.filters);
+  return rankVectorRecords(embedding, args.index.records, args.filters, query);
 }
 
 export function rankVectorRecords(
   queryVector: number[],
   records: VectorRecord[],
   filters: RetrievalFilters = {},
+  queryText = "",
 ): RetrievalMatch[] {
   if (
     !queryVector.length ||
@@ -164,7 +165,8 @@ export function rankVectorRecords(
     )
     .map(({ vector, ...record }) => ({
       ...record,
-      score: cosineSimilarity(queryVector, vector),
+      score:
+        cosineSimilarity(queryVector, vector) + lexicalBoost(queryText, record),
     }))
     .filter(({ score }) => Number.isFinite(score) && score >= minimumScore)
     .sort(
@@ -172,4 +174,45 @@ export function rankVectorRecords(
         right.score - left.score || left.id.localeCompare(right.id),
     )
     .slice(0, topK);
+}
+
+const stopWords = new Set([
+  "the",
+  "this",
+  "that",
+  "what",
+  "which",
+  "who",
+  "how",
+  "are",
+  "is",
+  "does",
+  "there",
+  "and",
+  "for",
+  "from",
+  "into",
+  "with",
+]);
+
+function lexicalBoost(
+  query: string,
+  record: Omit<VectorRecord, "vector">,
+): number {
+  const tokenize = (value: string) =>
+    new Set(
+      value
+        .toLowerCase()
+        .match(/[a-z0-9]+/g)
+        ?.filter((token) => token.length > 2 && !stopWords.has(token)) ?? [],
+    );
+  const queryTokens = tokenize(query);
+  if (!queryTokens.size) return 0;
+  const evidenceTokens = tokenize(
+    `${record.topics.join(" ")} ${record.locator.label} ${record.locator.sectionPath.join(" ")} ${record.text}`,
+  );
+  const overlap = [...queryTokens].filter((token) =>
+    evidenceTokens.has(token),
+  ).length;
+  return 0.25 * (overlap / queryTokens.size);
 }

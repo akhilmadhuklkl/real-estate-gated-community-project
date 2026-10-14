@@ -36,7 +36,10 @@ const extractor = await pipeline("feature-extraction", model, { dtype: "q8" });
 let embeddings;
 try {
   const tensor = await extractor(
-    eligible.map(({ text }) => text),
+    eligible.map(
+      ({ text, topics, locator }) =>
+        `${topics.join(" ")} ${locator.label} ${locator.sectionPath.join(" ")} ${text}`,
+    ),
     { pooling: "mean", normalize: true },
   );
   embeddings = tensor.tolist();
