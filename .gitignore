@@ -27,5 +27,8 @@ Thumbs.db
 *.tsbuildinfo
 
 outputs/
+.cache/
 
 .vercel/
+
+.env*

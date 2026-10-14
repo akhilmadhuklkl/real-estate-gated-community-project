@@ -65,6 +65,8 @@ The governed document, chunk, entity, claim, citation, permission, lifecycle, em
 
 The deterministic ingestion workflow, supported formats, source gates, version manifest, and human-review quarantine process are documented in [`docs/ai/ingestion-pipeline.md`](docs/ai/ingestion-pipeline.md). Generated evidence artifacts are stored in [`content/generated`](content/generated).
 
+The governed embedding model, vector-index contract, exact cosine retrieval, metadata filters, and rebuild rules are documented in [`docs/ai/vector-retrieval.md`](docs/ai/vector-retrieval.md).
+
 The approved navigation structure and visitor flows are documented in [`docs/information-architecture/sitemap-and-user-journeys.md`](docs/information-architecture/sitemap-and-user-journeys.md).
 
 The working creative concept and implementation guidance are documented in [`docs/design/visual-direction.md`](docs/design/visual-direction.md).
