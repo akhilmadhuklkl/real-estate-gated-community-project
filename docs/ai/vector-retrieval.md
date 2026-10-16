@@ -12,7 +12,9 @@ T0033 adds a disposable semantic index over the governed ingestion package. The 
 
 ## Security and governance gates
 
-Before embedding, every chunk must be active, retrieval eligible, unexpired, qualified, visible to the assistant audience, permitted for retrieval, and free of consent requirements. Search applies allow-list metadata filters before ranking. Returned matches contain evidence text, immutable hashes, locators, and qualifications but never expose raw vectors to the assistant response.
+Before embedding, every chunk must be active, retrieval eligible, unexpired, qualified, visible to the assistant audience, permitted for retrieval, and free of consent requirements. Search applies allow-list metadata filters before ranking. Returned matches contain evidence text, immutable hashes, locators, qualifications, source title, effective date, review date, validity date, and an optional approved public route, but never expose raw vectors to the assistant response.
+
+The index builder derives citation metadata from the governed document rather than user text or model output. A route is emitted only for a public document that allows the `public` audience and `render-preview` action. The official brochure maps to its existing application route. Structured or restricted evidence remains citable by title and locator but receives a null route.
 
 The index is invalid when its `sourcePackageHash` differs from the ingestion manifest, or when query-vector dimensions differ from the stored dimensions. Model changes require a complete rebuild because vectors from different models or dimensions must never be mixed.
 

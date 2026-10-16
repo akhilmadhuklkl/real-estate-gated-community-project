@@ -32,6 +32,13 @@ export type VectorRecord = Omit<
 > & {
   vector: number[];
   qualification: string;
+  citation: {
+    sourceTitle: string;
+    effectiveDate: string | null;
+    reviewedAt: string;
+    validUntil: string | null;
+    href: string | null;
+  };
 };
 
 export type VectorIndex = {
@@ -71,6 +78,7 @@ export function isRetrievalEligible(
 
 export async function buildVectorIndex(args: {
   chunks: KnowledgeChunk[];
+  citationByDocumentId: Record<string, VectorRecord["citation"]>;
   model: string;
   sourcePackageHash: string;
   generatedAt: string;
@@ -79,6 +87,9 @@ export async function buildVectorIndex(args: {
   const eligible = args.chunks.filter((chunk) =>
     isRetrievalEligible(chunk, args.asOf),
   );
+  if (eligible.some((chunk) => !args.citationByDocumentId[chunk.documentId])) {
+    throw new Error("Every retrievable chunk requires citation metadata.");
+  }
   const { embeddings } = await embedMany({
     model: args.model,
     values: eligible.map(({ text }) => text),
@@ -109,6 +120,7 @@ export async function buildVectorIndex(args: {
       topics: chunk.topics,
       locator: chunk.locator,
       qualification: chunk.governance.qualification!,
+      citation: args.citationByDocumentId[chunk.documentId],
       vector: embeddings[index],
     })),
   };

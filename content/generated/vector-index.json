@@ -2,15 +2,22 @@
   "schemaVersion": "1.0.0",
   "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
   "dimensions": 384,
-  "generatedAt": "2026-10-14T00:00:00.000Z",
+  "generatedAt": "2026-10-16T00:00:00Z",
   "sourcePackageHash": "sha256:933a4725ad6acbe5584f76b284c2d847145ba725f3e64ab0fb9d10bd990aa5ad",
-  "indexHash": "sha256:ed2d65df77e9de175068582b7c6e863d7e0ebe77c86e29b0e0a21aaf351dab40",
+  "indexHash": "sha256:7db3660794c236faafb69b866077836fed705454f8e67f2d4aaac4da95c787b4",
   "usage": {
     "provider": "local",
     "submittedRecords": 19
   },
   "records": [
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-001-65446b652fac",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -158,6 +165,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-002-0e6b0e7fe3dc",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -305,6 +319,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-003-e21cff0810cc",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -452,6 +473,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-004-e9a506cc6681",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -599,6 +627,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-005-69e156689389",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -746,6 +781,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-006-245fd9199550",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -893,6 +935,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-007-3e2e7a77ffca",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -1040,6 +1089,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-008-009cd0b48bae",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -1187,6 +1243,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Official Glitz Pride development brochure",
+        "effectiveDate": "2018-12-27",
+        "reviewedAt": "2026-10-10T00:00:00.000Z",
+        "validUntil": "2027-01-08T00:00:00.000Z",
+        "href": "/reference/glitz-pride/brochure.pdf"
+      },
       "id": "chk-ks-001-009-81f0405c67ea",
       "documentId": "doc-ks-001-9a3770926a29",
       "sourceId": "KS-001",
@@ -1334,6 +1397,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-001-1ed894f2a824",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -1481,6 +1551,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-002-504b1a47c55e",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -1628,6 +1705,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-003-e12283b6d722",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -1775,6 +1859,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-004-35d4edfc61ef",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -1922,6 +2013,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-005-56dbd1de047c",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -2069,6 +2167,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-006-1e42c142b310",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -2216,6 +2321,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-007-044cf2608b20",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -2363,6 +2475,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-008-c6ad0fd688fb",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -2510,6 +2629,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-009-f55d9b96e0a9",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",
@@ -2657,6 +2783,13 @@
       ]
     },
     {
+      "citation": {
+        "sourceTitle": "Governed structured project content",
+        "effectiveDate": "2026-10-03",
+        "reviewedAt": "2026-10-11T00:00:00.000Z",
+        "validUntil": "2026-11-10T00:00:00.000Z",
+        "href": null
+      },
       "id": "chk-ks-002-010-dd45bf0a9307",
       "documentId": "doc-ks-002-33f94ddf0426",
       "sourceId": "KS-002",

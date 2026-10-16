@@ -38,6 +38,13 @@ const records: VectorRecord[] = [
     topics: ["villa"],
     locator: baseChunk.locator,
     qualification: "qualified",
+    citation: {
+      sourceTitle: "Official brochure",
+      effectiveDate: "2018-12-27",
+      reviewedAt: "2026-10-10T00:00:00Z",
+      validUntil: "2027-01-08T00:00:00Z",
+      href: "/reference/glitz-pride/brochure.pdf",
+    },
     vector: [1, 0],
   },
   {
@@ -54,6 +61,13 @@ const records: VectorRecord[] = [
       pageEnd: null,
     },
     qualification: "qualified",
+    citation: {
+      sourceTitle: "Governed structured project content",
+      effectiveDate: "2026-10-03",
+      reviewedAt: "2026-10-11T00:00:00Z",
+      validUntil: "2026-11-10T00:00:00Z",
+      href: null,
+    },
     vector: [0, 1],
   },
 ];
@@ -119,6 +133,8 @@ describe("vector retrieval governance", () => {
     const [match] = rankVectorRecords([1, 0], records);
     expect(match.locator.label).toBe("Page 1");
     expect(match.qualification).toBe("qualified");
+    expect(match.citation.sourceTitle).toBe("Official brochure");
+    expect(match.citation.href).toBe("/reference/glitz-pride/brochure.pdf");
     expect(match).not.toHaveProperty("vector");
   });
 
@@ -127,5 +143,13 @@ describe("vector retrieval governance", () => {
     expect(
       rankVectorRecords([1, 0], [{ ...records[0], vector: [Number.NaN, 0] }]),
     ).toEqual([]);
+  });
+
+  it("preserves restricted citation metadata without an opening link", () => {
+    const match = rankVectorRecords([0, 1], records)[0];
+    expect(match.citation.sourceTitle).toBe(
+      "Governed structured project content",
+    );
+    expect(match.citation.href).toBeNull();
   });
 });

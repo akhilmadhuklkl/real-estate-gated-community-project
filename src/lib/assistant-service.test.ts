@@ -5,6 +5,7 @@ import {
   buildGroundedPrompt,
   containsSensitivePersonalData,
   createAssistantService,
+  evidenceConfidence,
 } from "./assistant-service";
 import type { RetrievalMatch } from "./vector-retrieval";
 
@@ -22,6 +23,13 @@ const evidence: RetrievalMatch = {
     sectionPath: [],
   },
   qualification: "Brochure-listed amenities only.",
+  citation: {
+    sourceTitle: "Official Glitz Pride development brochure",
+    effectiveDate: "2018-12-27",
+    reviewedAt: "2026-10-10T00:00:00Z",
+    validUntil: "2027-01-08T00:00:00Z",
+    href: "/reference/glitz-pride/brochure.pdf",
+  },
   score: 0.81,
 };
 
@@ -46,10 +54,31 @@ describe("assistant service", () => {
       {
         evidenceId: "chk-amenities",
         sourceId: "KS-001",
-        locator: "Page 4",
+        documentId: "doc-brochure",
+        sourceTitle: "Official Glitz Pride development brochure",
+        locator: {
+          label: "Page 4",
+          pageStart: 4,
+          pageEnd: 4,
+          sectionPath: [],
+        },
+        effectiveDate: "2018-12-27",
+        reviewedAt: "2026-10-10T00:00:00Z",
+        validUntil: "2027-01-08T00:00:00Z",
         qualification: "Brochure-listed amenities only.",
+        href: "/reference/glitz-pride/brochure.pdf",
+        confidence: {
+          level: "high",
+          score: 0.81,
+          basis: "retrieval-score",
+        },
       },
     ]);
+    expect(answer.evidence).toEqual({
+      confidence: "high",
+      citationCount: 1,
+      minimumScore: ASSISTANT_MINIMUM_SCORE,
+    });
   });
 
   it("does not call the model when evidence is insufficient", async () => {
@@ -61,7 +90,21 @@ describe("assistant service", () => {
 
     expect(answer.status).toBe("insufficient-evidence");
     expect(answer.model).toBeNull();
+    expect(answer.evidence.confidence).toBe("none");
+    expect(answer.policy.humanHandoffRequired).toBe(true);
     expect(generate).not.toHaveBeenCalled();
+  });
+
+  it("does not attach citations when generation produces no supported answer", async () => {
+    const answer = await createAssistantService({
+      retrieve: vi.fn().mockResolvedValue([evidence]),
+      generate: vi.fn().mockResolvedValue("   "),
+    })("Which amenities are listed?");
+
+    expect(answer.status).toBe("insufficient-evidence");
+    expect(answer.citations).toEqual([]);
+    expect(answer.evidence.confidence).toBe("none");
+    expect(answer.policy.humanHandoffRequired).toBe(true);
   });
 
   it("blocks personal data before retrieval or generation", async () => {
@@ -158,7 +201,10 @@ describe("assistant service", () => {
     const prompt = buildGroundedPrompt("What amenities are listed?", [
       evidence,
     ]);
-    expect(prompt).toContain("[E1] Source: KS-001; Locator: Page 4");
+    expect(prompt).toContain(
+      "[E1] Source: Official Glitz Pride development brochure (KS-001); Locator: Page 4",
+    );
+    expect(prompt).toContain("Reviewed: 2026-10-10T00:00:00Z");
     expect(prompt).toContain("Qualification: Brochure-listed amenities only.");
   });
 
@@ -172,5 +218,12 @@ describe("assistant service", () => {
     expect(containsSensitivePersonalData("What villas are available?")).toBe(
       false,
     );
+  });
+
+  it("uses conservative, deterministic confidence boundaries", () => {
+    expect(evidenceConfidence(0.8)).toBe("high");
+    expect(evidenceConfidence(0.799)).toBe("moderate");
+    expect(evidenceConfidence(0.6)).toBe("moderate");
+    expect(evidenceConfidence(0.599)).toBe("limited");
   });
 });

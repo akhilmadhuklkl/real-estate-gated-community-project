@@ -22,9 +22,20 @@ const report = load<{
   checks: Record<string, boolean>;
   results: Array<{ id: string; kind: string; citationComplete: boolean }>;
 }>("content/evaluation/retrieval-evaluation-report.json");
-const index = load<{ indexHash: string; records: Array<{ id: string }> }>(
-  "content/generated/vector-index.json",
-);
+const index = load<{
+  indexHash: string;
+  records: Array<{
+    id: string;
+    sourceId: string;
+    citation: {
+      sourceTitle: string;
+      effectiveDate: string | null;
+      reviewedAt: string;
+      validUntil: string | null;
+      href: string | null;
+    };
+  }>;
+}>("content/generated/vector-index.json");
 
 describe("retrieval evaluation release gate", () => {
   it("covers positive and negative scenarios across all risk tiers", () => {
@@ -66,6 +77,23 @@ describe("retrieval evaluation release gate", () => {
     expect(
       report.results.every(({ citationComplete }) => citationComplete),
     ).toBe(true);
+  });
+
+  it("keeps citation titles, review dates, validity, and safe links on every record", () => {
+    for (const record of index.records) {
+      expect(record.citation.sourceTitle.length, record.id).toBeGreaterThan(0);
+      expect(record.citation.reviewedAt, record.id).toMatch(
+        /^\d{4}-\d{2}-\d{2}T/,
+      );
+      expect(record.citation.validUntil, record.id).toMatch(
+        /^\d{4}-\d{2}-\d{2}T/,
+      );
+      expect(record.citation.href, record.id).toBe(
+        record.sourceId === "KS-001"
+          ? "/reference/glitz-pride/brochure.pdf"
+          : null,
+      );
+    }
   });
 
   it("passes every declared release check", () => {

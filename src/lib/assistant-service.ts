@@ -24,8 +24,24 @@ const sensitivePatterns = [
 export type AssistantCitation = {
   evidenceId: string;
   sourceId: string;
-  locator: string;
+  documentId: string;
+  sourceTitle: string;
+  locator: {
+    label: string;
+    pageStart: number | null;
+    pageEnd: number | null;
+    sectionPath: string[];
+  };
+  effectiveDate: string | null;
+  reviewedAt: string;
+  validUntil: string | null;
   qualification: string;
+  href: string | null;
+  confidence: {
+    level: "high" | "moderate" | "limited";
+    score: number;
+    basis: "retrieval-score";
+  };
 };
 
 export type AssistantAnswer = {
@@ -44,6 +60,11 @@ export type AssistantAnswer = {
     reason: AssistantPolicyReason;
     riskTier: AssistantRiskTier;
     humanHandoffRequired: boolean;
+  };
+  evidence: {
+    confidence: "high" | "moderate" | "limited" | "none";
+    citationCount: number;
+    minimumScore: number;
   };
 };
 
@@ -84,6 +105,22 @@ function createSessionId(): string {
   return `session-${crypto.randomUUID()}`;
 }
 
+export function evidenceConfidence(
+  score: number,
+): "high" | "moderate" | "limited" {
+  if (score >= 0.8) return "high";
+  if (score >= 0.6) return "moderate";
+  return "limited";
+}
+
+function noEvidence() {
+  return {
+    confidence: "none" as const,
+    citationCount: 0,
+    minimumScore: ASSISTANT_MINIMUM_SCORE,
+  };
+}
+
 export function containsSensitivePersonalData(value: string): boolean {
   return sensitivePatterns.some((pattern) => pattern.test(value));
 }
@@ -96,7 +133,7 @@ export function buildGroundedPrompt(
   const sources = evidence
     .map(
       (item, index) =>
-        `[E${index + 1}] Source: ${item.sourceId}; Locator: ${item.locator.label}; Qualification: ${item.qualification}\n${item.text}`,
+        `[E${index + 1}] Source: ${item.citation.sourceTitle} (${item.sourceId}); Locator: ${item.locator.label}; Reviewed: ${item.citation.reviewedAt}; Qualification: ${item.qualification}\n${item.text}`,
     )
     .join("\n\n");
 
@@ -159,6 +196,7 @@ export function createAssistantService(dependencies: {
         citations: [],
         model: null,
         policy: defaultPolicy,
+        evidence: noEvidence(),
       };
     }
 
@@ -180,6 +218,7 @@ export function createAssistantService(dependencies: {
           reason: "private-data-request",
           riskTier: "R4",
         },
+        evidence: noEvidence(),
       };
     }
 
@@ -201,6 +240,7 @@ export function createAssistantService(dependencies: {
         citations: [],
         model: null,
         policy,
+        evidence: noEvidence(),
       };
     }
 
@@ -220,6 +260,7 @@ export function createAssistantService(dependencies: {
         citations: [],
         model: null,
         policy,
+        evidence: noEvidence(),
       };
     }
     if (!evidence.length) {
@@ -231,6 +272,7 @@ export function createAssistantService(dependencies: {
         citations: [],
         model: null,
         policy: { ...policy, humanHandoffRequired: true },
+        evidence: noEvidence(),
       };
     }
 
@@ -246,6 +288,19 @@ export function createAssistantService(dependencies: {
         citations: [],
         model: null,
         policy,
+        evidence: noEvidence(),
+      };
+    }
+    if (!answer.trim()) {
+      return {
+        sessionId,
+        status: "insufficient-evidence",
+        answer:
+          "A supported answer could not be produced from the approved project material. Please contact the project representative for confirmation.",
+        citations: [],
+        model: null,
+        policy: { ...policy, humanHandoffRequired: true },
+        evidence: noEvidence(),
       };
     }
     return {
@@ -255,11 +310,29 @@ export function createAssistantService(dependencies: {
       citations: evidence.map((item) => ({
         evidenceId: item.id,
         sourceId: item.sourceId,
-        locator: item.locator.label,
+        documentId: item.documentId,
+        sourceTitle: item.citation.sourceTitle,
+        locator: item.locator,
+        effectiveDate: item.citation.effectiveDate,
+        reviewedAt: item.citation.reviewedAt,
+        validUntil: item.citation.validUntil,
         qualification: item.qualification,
+        href: item.citation.href,
+        confidence: {
+          level: evidenceConfidence(item.score),
+          score: Number(item.score.toFixed(3)),
+          basis: "retrieval-score",
+        },
       })),
       model: dependencies.model ?? ASSISTANT_MODEL,
       policy,
+      evidence: {
+        confidence: evidenceConfidence(
+          Math.min(...evidence.map(({ score }) => score)),
+        ),
+        citationCount: evidence.length,
+        minimumScore: ASSISTANT_MINIMUM_SCORE,
+      },
     };
   };
 }

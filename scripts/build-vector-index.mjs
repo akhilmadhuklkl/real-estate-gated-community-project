@@ -17,6 +17,23 @@ const manifestPath = resolve(repo, "content/generated/ingestion-manifest.json");
 const outputPath = resolve(repo, "content/generated/vector-index.json");
 const knowledge = JSON.parse(await readFile(packagePath, "utf8"));
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+const documentsById = new Map(
+  knowledge.documents.map((document) => [document.id, document]),
+);
+
+const publicCitationHref = (document) => {
+  if (
+    document.permissions.classification !== "public" ||
+    !document.permissions.audiences.includes("public") ||
+    !document.permissions.allowedActions.includes("render-preview")
+  ) {
+    return null;
+  }
+  if (document.sourceId === "KS-001") {
+    return "/reference/glitz-pride/brochure.pdf";
+  }
+  return null;
+};
 
 const eligible = knowledge.chunks.filter((chunk) => {
   const validUntil = chunk.governance.validUntil;
@@ -66,6 +83,21 @@ const index = {
   indexHash: "",
   usage: { provider: "local", submittedRecords: eligible.length },
   records: eligible.map((chunk, index) => ({
+    ...(() => {
+      const document = documentsById.get(chunk.documentId);
+      if (!document) {
+        throw new Error(`Missing document metadata for ${chunk.documentId}.`);
+      }
+      return {
+        citation: {
+          sourceTitle: document.title,
+          effectiveDate: document.effectiveDate ?? null,
+          reviewedAt: document.governance.reviewedAt,
+          validUntil: document.governance.validUntil ?? null,
+          href: publicCitationHref(document),
+        },
+      };
+    })(),
     id: chunk.id,
     documentId: chunk.documentId,
     sourceId: chunk.sourceId,

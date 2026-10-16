@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "evaluatedAt": "2026-10-14T00:00:00.000Z",
-  "indexHash": "sha256:ed2d65df77e9de175068582b7c6e863d7e0ebe77c86e29b0e0a21aaf351dab40",
+  "indexHash": "sha256:7db3660794c236faafb69b866077836fed705454f8e67f2d4aaac4da95c787b4",
   "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
   "minimumSimilarity": 0.45,
   "metrics": {
@@ -119,9 +119,7 @@
             "label": "JSON section: project",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "project"
-            ]
+            "sectionPath": ["project"]
           },
           "score": 0.4970169334975925
         },
@@ -164,9 +162,7 @@
             "label": "JSON section: branding",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "branding"
-            ]
+            "sectionPath": ["branding"]
           },
           "score": 0.6717249214932193
         },
@@ -179,9 +175,7 @@
             "label": "JSON section: documents",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "documents"
-            ]
+            "sectionPath": ["documents"]
           },
           "score": 0.5912243566934595
         },
@@ -194,9 +188,7 @@
             "label": "JSON section: project",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "project"
-            ]
+            "sectionPath": ["project"]
           },
           "score": 0.48424178284306196
         }
@@ -226,9 +218,7 @@
             "label": "JSON section: project",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "project"
-            ]
+            "sectionPath": ["project"]
           },
           "score": 0.6087097701325901
         },
@@ -284,9 +274,7 @@
             "label": "JSON section: villaTypes",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "villaTypes"
-            ]
+            "sectionPath": ["villaTypes"]
           },
           "score": 0.571963148612542
         },
@@ -342,9 +330,7 @@
             "label": "JSON section: villaTypes",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "villaTypes"
-            ]
+            "sectionPath": ["villaTypes"]
           },
           "score": 0.39904200725207095
         },
@@ -400,9 +386,7 @@
             "label": "JSON section: villaTypes",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "villaTypes"
-            ]
+            "sectionPath": ["villaTypes"]
           },
           "score": 0.39817547758173566
         },
@@ -484,9 +468,7 @@
             "label": "JSON section: project",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "project"
-            ]
+            "sectionPath": ["project"]
           },
           "score": 0.5182228409696958
         }
@@ -598,9 +580,7 @@
             "label": "JSON section: amenities",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "amenities"
-            ]
+            "sectionPath": ["amenities"]
           },
           "score": 0.29494469606747187
         }
@@ -630,9 +610,7 @@
             "label": "JSON section: specifications",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "specifications"
-            ]
+            "sectionPath": ["specifications"]
           },
           "score": 0.4616220150099894
         },
@@ -645,9 +623,7 @@
             "label": "JSON section: villaTypes",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "villaTypes"
-            ]
+            "sectionPath": ["villaTypes"]
           },
           "score": 0.43323616292702605
         },
@@ -759,9 +735,7 @@
             "label": "JSON section: location",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "location"
-            ]
+            "sectionPath": ["location"]
           },
           "score": 0.3041941529621277
         },
@@ -817,9 +791,7 @@
             "label": "JSON section: location",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "location"
-            ]
+            "sectionPath": ["location"]
           },
           "score": 0.30543334562749563
         },
@@ -832,9 +804,7 @@
             "label": "JSON section: project",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "project"
-            ]
+            "sectionPath": ["project"]
           },
           "score": 0.25334902128433334
         }
@@ -877,9 +847,7 @@
             "label": "JSON section: branding",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "branding"
-            ]
+            "sectionPath": ["branding"]
           },
           "score": 0.4432505633199243
         },
@@ -892,9 +860,7 @@
             "label": "JSON section: governance",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "governance"
-            ]
+            "sectionPath": ["governance"]
           },
           "score": 0.43487418564204344
         }
@@ -924,9 +890,7 @@
             "label": "JSON section: media",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "media"
-            ]
+            "sectionPath": ["media"]
           },
           "score": 0.38099482719876787
         },
@@ -952,9 +916,7 @@
             "label": "JSON section: location",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "location"
-            ]
+            "sectionPath": ["location"]
           },
           "score": 0.3056556466505533
         }
@@ -970,9 +932,7 @@
       "kind": "positive",
       "riskTier": "R0",
       "query": "What is the date of the official brochure?",
-      "expectedChunkIds": [
-        "chk-ks-002-009-f55d9b96e0a9"
-      ],
+      "expectedChunkIds": ["chk-ks-002-009-f55d9b96e0a9"],
       "topMatches": [
         {
           "id": "chk-ks-002-009-f55d9b96e0a9",
@@ -983,9 +943,7 @@
             "label": "JSON section: documents",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "documents"
-            ]
+            "sectionPath": ["documents"]
           },
           "score": 0.600518586439326
         },
@@ -998,9 +956,7 @@
             "label": "JSON section: branding",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "branding"
-            ]
+            "sectionPath": ["branding"]
           },
           "score": 0.4727865215138739
         },
@@ -1013,9 +969,7 @@
             "label": "JSON section: media",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "media"
-            ]
+            "sectionPath": ["media"]
           },
           "score": 0.37910881093723375
         }
@@ -1031,9 +985,7 @@
       "kind": "positive",
       "riskTier": "R2",
       "query": "What should happen when a project value is unknown?",
-      "expectedChunkIds": [
-        "chk-ks-002-010-dd45bf0a9307"
-      ],
+      "expectedChunkIds": ["chk-ks-002-010-dd45bf0a9307"],
       "topMatches": [
         {
           "id": "chk-ks-002-010-dd45bf0a9307",
@@ -1044,9 +996,7 @@
             "label": "JSON section: governance",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "governance"
-            ]
+            "sectionPath": ["governance"]
           },
           "score": 0.5507337430254025
         },
@@ -1059,9 +1009,7 @@
             "label": "JSON section: documents",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "documents"
-            ]
+            "sectionPath": ["documents"]
           },
           "score": 0.43249825088553373
         },
@@ -1074,9 +1022,7 @@
             "label": "JSON section: branding",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "branding"
-            ]
+            "sectionPath": ["branding"]
           },
           "score": 0.4310461330635648
         }
@@ -1103,9 +1049,7 @@
             "label": "JSON section: villaTypes",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "villaTypes"
-            ]
+            "sectionPath": ["villaTypes"]
           },
           "score": 0.2530060138836886
         },
@@ -1171,9 +1115,7 @@
             "label": "JSON section: project",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "project"
-            ]
+            "sectionPath": ["project"]
           },
           "score": 0.27610112897830846
         },
@@ -1213,9 +1155,7 @@
             "label": "JSON section: documents",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "documents"
-            ]
+            "sectionPath": ["documents"]
           },
           "score": 0.43613590995148055
         },
@@ -1228,9 +1168,7 @@
             "label": "JSON section: contacts",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "contacts"
-            ]
+            "sectionPath": ["contacts"]
           },
           "score": 0.29438580785843704
         },
@@ -1243,9 +1181,7 @@
             "label": "JSON section: governance",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "governance"
-            ]
+            "sectionPath": ["governance"]
           },
           "score": 0.291853262218965
         }
@@ -1298,9 +1234,7 @@
             "label": "JSON section: documents",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "documents"
-            ]
+            "sectionPath": ["documents"]
           },
           "score": 0.14442886265536764
         }
@@ -1353,9 +1287,7 @@
             "label": "JSON section: project",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "project"
-            ]
+            "sectionPath": ["project"]
           },
           "score": 0.20556431376560744
         }
@@ -1382,9 +1314,7 @@
             "label": "JSON section: governance",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "governance"
-            ]
+            "sectionPath": ["governance"]
           },
           "score": 0.17043870708537182
         },
@@ -1410,9 +1340,7 @@
             "label": "JSON section: branding",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "branding"
-            ]
+            "sectionPath": ["branding"]
           },
           "score": 0.12800347282647695
         }
@@ -1492,9 +1420,7 @@
             "label": "JSON section: contacts",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "contacts"
-            ]
+            "sectionPath": ["contacts"]
           },
           "score": 0.16087794125568294
         },
@@ -1507,9 +1433,7 @@
             "label": "JSON section: villaTypes",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "villaTypes"
-            ]
+            "sectionPath": ["villaTypes"]
           },
           "score": 0.1589227028997524
         },
@@ -1522,9 +1446,7 @@
             "label": "JSON section: specifications",
             "pageEnd": null,
             "pageStart": null,
-            "sectionPath": [
-              "specifications"
-            ]
+            "sectionPath": ["specifications"]
           },
           "score": 0.15487074796421255
         }
