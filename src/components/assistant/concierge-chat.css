@@ -1,0 +1,300 @@
+.concierge-launcher {
+  position: fixed;
+  right: clamp(1rem, 2.4vw, 2rem);
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
+  width: 3.75rem;
+  height: 3.75rem;
+  padding: 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--ivory-100) 70%, transparent);
+  border-radius: 999px;
+  background: var(--forest-900);
+  color: var(--ivory-100);
+  box-shadow: 0 1rem 2.5rem rgb(4 26 20 / 30%);
+  cursor: pointer;
+  transition:
+    width 280ms ease,
+    background 220ms ease,
+    transform 220ms ease;
+}
+
+.concierge-launcher:hover,
+.concierge-launcher:focus-visible {
+  width: 12.5rem;
+  background: var(--forest-700);
+  transform: translateY(-0.15rem);
+}
+
+.concierge-launcher__mark {
+  display: grid;
+  flex: 0 0 3rem;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid rgb(232 211 154 / 70%);
+  border-radius: 50%;
+  color: #e8d39a;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+
+.concierge-launcher__label {
+  display: grid;
+  min-width: 8.3rem;
+  padding: 0 0.85rem 0 0.65rem;
+  text-align: left;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateX(0.4rem);
+  transition:
+    opacity 180ms ease 70ms,
+    transform 180ms ease 70ms;
+}
+
+.concierge-launcher:hover .concierge-launcher__label,
+.concierge-launcher:focus-visible .concierge-launcher__label {
+  opacity: 1;
+  transform: none;
+}
+
+.concierge-launcher__label strong {
+  font-size: 0.77rem;
+}
+.concierge-launcher__label small {
+  margin-top: 0.25rem;
+  color: rgb(255 255 255 / 68%);
+  font-size: 0.56rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.concierge-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  align-items: end;
+  background: rgb(5 23 18 / 54%);
+  backdrop-filter: blur(0.25rem);
+  animation: concierge-fade 180ms ease both;
+}
+
+.concierge-dialog {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(48rem, calc(100% - 2rem));
+  height: min(43rem, calc(100dvh - 3rem));
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  border: 1px solid rgb(31 73 59 / 16%);
+  border-radius: 1.5rem;
+  background: #f7f3e9;
+  box-shadow: 0 2rem 6rem rgb(4 26 20 / 32%);
+  animation: concierge-rise 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.concierge-dialog__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.4rem clamp(1.1rem, 3vw, 2rem);
+  border-bottom: 1px solid rgb(31 73 59 / 14%);
+  background: var(--forest-900);
+  color: var(--ivory-100);
+}
+
+.concierge-dialog__header h2 {
+  margin: 0.15rem 0 0.3rem;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(1.65rem, 4vw, 2.3rem);
+  font-weight: 500;
+}
+
+.concierge-dialog__header p {
+  margin: 0;
+  color: rgb(255 255 255 / 70%);
+  font-size: 0.8rem;
+}
+.concierge-eyebrow {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.concierge-close {
+  align-self: start;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.concierge-messages {
+  overflow-y: auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  overscroll-behavior: contain;
+}
+
+.concierge-message {
+  width: fit-content;
+  max-width: min(36rem, 88%);
+  margin-bottom: 0.85rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1.1rem 1.1rem 1.1rem 0.25rem;
+  background: #fff;
+  color: var(--forest-900);
+  box-shadow: 0 0.3rem 1.1rem rgb(4 26 20 / 7%);
+}
+
+.concierge-message--user {
+  margin-left: auto;
+  border-radius: 1.1rem 1.1rem 0.25rem 1.1rem;
+  background: var(--forest-700);
+  color: #fff;
+}
+
+.concierge-message p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+.concierge-message details {
+  margin-top: 0.7rem;
+  font-size: 0.75rem;
+}
+.concierge-message summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.concierge-message ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1rem;
+}
+.concierge-message li {
+  margin-top: 0.35rem;
+}
+.concierge-message li span {
+  display: block;
+  color: rgb(14 52 42 / 64%);
+}
+.concierge-message a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+}
+
+.concierge-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.concierge-suggestions button {
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgb(31 73 59 / 22%);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--forest-900);
+  cursor: pointer;
+}
+.concierge-suggestions button:hover {
+  background: rgb(31 73 59 / 8%);
+}
+.concierge-thinking {
+  color: rgb(14 52 42 / 68%);
+  font-size: 0.85rem;
+}
+
+.concierge-composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  padding: 1rem clamp(1rem, 3vw, 2rem) max(1rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgb(31 73 59 / 14%);
+  background: #fff;
+}
+
+.concierge-composer input {
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0 1rem;
+  border: 1px solid rgb(31 73 59 / 25%);
+  border-radius: 999px;
+  background: #fbfaf5;
+  color: var(--forest-900);
+  font: inherit;
+}
+
+.concierge-composer button {
+  min-height: 3rem;
+  padding: 0 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--forest-700);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.concierge-composer button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.concierge-composer p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: rgb(14 52 42 / 60%);
+  font-size: 0.68rem;
+}
+
+@keyframes concierge-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes concierge-rise {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+}
+
+@media (max-width: 40rem) {
+  .concierge-launcher:hover,
+  .concierge-launcher:focus-visible {
+    width: 3.75rem;
+  }
+  .concierge-launcher__label {
+    display: none;
+  }
+  .concierge-dialog {
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .concierge-message {
+    max-width: 92%;
+  }
+  .concierge-dialog__header {
+    padding-top: max(1.15rem, env(safe-area-inset-top));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .concierge-backdrop,
+  .concierge-dialog {
+    animation: none;
+  }
+  .concierge-launcher,
+  .concierge-launcher__label {
+    transition: none;
+  }
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
+import { ConciergeChat } from "@/components/assistant/concierge-chat";
 import { PreviewNotice } from "@/components/shared/preview-notice";
 import { SiteFooter } from "@/components/shared/site-footer";
 import { SiteHeader } from "@/components/shared/site-header";
@@ -13,6 +14,7 @@ import {
 } from "@/lib/seo";
 
 import "./globals.css";
+import "../components/assistant/concierge-chat.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(publicEnvironment.NEXT_PUBLIC_SITE_URL),
@@ -63,6 +65,7 @@ export default function RootLayout({
           {children}
         </div>
         <SiteFooter />
+        <ConciergeChat />
       </body>
     </html>
   );

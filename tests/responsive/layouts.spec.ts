@@ -84,3 +84,38 @@ test("compact navigation opens without clipping its actions", async ({
   }));
   expect(layout.documentWidth).toBeLessThanOrEqual(layout.viewportWidth + 1);
 });
+
+test("property guide opens without clipping its conversation surface", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Open Glitz Pride property guide" })
+    .click();
+  const dialog = page.getByRole("dialog", { name: "Property guide" });
+  await expect(dialog).toBeVisible();
+  await expect(page.getByLabel("Ask a property question")).toBeFocused();
+  await dialog.evaluate(async (element) => {
+    await Promise.all(
+      element.getAnimations().map((animation) => animation.finished),
+    );
+  });
+
+  const layout = await page.evaluate(() => {
+    const dialog = document.querySelector<HTMLElement>("#concierge-dialog");
+    const rect = dialog?.getBoundingClientRect();
+    return {
+      left: rect?.left ?? -1,
+      right: rect?.right ?? Number.POSITIVE_INFINITY,
+      top: rect?.top ?? -1,
+      bottom: rect?.bottom ?? Number.POSITIVE_INFINITY,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+    };
+  });
+
+  expect(layout.left).toBeGreaterThanOrEqual(-1);
+  expect(layout.right).toBeLessThanOrEqual(layout.viewportWidth + 1);
+  expect(layout.top).toBeGreaterThanOrEqual(-1);
+  expect(layout.bottom).toBeLessThanOrEqual(layout.viewportHeight + 1);
+});
