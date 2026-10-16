@@ -21,11 +21,13 @@ The server reads `GOOGLE_GENERATIVE_AI_API_KEY`. The value must never use a `NEX
 7. Preserve a caller-supplied session identifier or create a new opaque identifier.
 8. Translate retrieval and provider failures into safe retry responses without exposing internal errors.
 
-The prompt prohibits unsupported claims about pricing, availability, construction status, legal status, approvals, guarantees, and current contact validity. Evidence is marked as data rather than instructions to reduce prompt-injection risk.
+The versioned policy in `assistant-policy.ts` prohibits unsupported claims about pricing, availability, construction status, legal status, approvals, guarantees, and current contact validity. Evidence is marked as untrusted data rather than instructions. Deterministic R3 and R4 rules refuse or escalate the highest-risk requests before retrieval or generation.
 
 ## Service boundary
 
 `createAssistantService` accepts injected retrieval and generation functions. Production wiring will connect the existing local vector index and the Gemini generator. Tests use deterministic substitutes and therefore do not consume provider quota or require a secret.
+
+Every response includes the applied policy version, risk tier, reason code, and human-handoff requirement. This metadata is intended for evaluation and interface decisions; protected model instructions remain server-only.
 
 ## Operational limits
 
