@@ -14,6 +14,13 @@ export type LocationCategory = Exclude<
   "all"
 >;
 
+function landmarkId(name: string) {
+  return `landmark-${name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")}`;
+}
+
 const categoryPresentation: Record<
   string,
   { filterCategory: LocationCategory; label: string }
@@ -51,6 +58,7 @@ export const locationContent = {
 
       return {
         ...landmark,
+        id: landmarkId(landmark.name),
         ...presentation,
         number: String(index + 1).padStart(2, "0"),
         isUnconfirmed: landmark.category === "unconfirmed",
