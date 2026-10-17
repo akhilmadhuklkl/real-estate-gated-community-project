@@ -3,6 +3,10 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 
 import type { AssistantAnswer, AssistantTurn } from "@/lib/assistant-service";
+import {
+  assistantLanguageOptions,
+  type AssistantLanguage,
+} from "../../lib/assistant-language";
 import type { AssistantPreview } from "@/lib/assistant-preview";
 
 import { DynamicPreviewPanel } from "./dynamic-preview-panel";
@@ -36,6 +40,7 @@ export function ConciergeChat() {
   const [preview, setPreview] = useState<AssistantPreview | null>(null);
   const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [language, setLanguage] = useState<AssistantLanguage>("en");
   const launcherRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -73,7 +78,7 @@ export function ConciergeChat() {
     if (event.key !== "Tab") return;
     const focusable = Array.from(
       dialogRef.current?.querySelectorAll<HTMLElement>(
-        "button:not([disabled]), a[href], input:not([disabled])",
+        "button:not([disabled]), a[href], input:not([disabled]), select:not([disabled])",
       ) ?? [],
     );
     if (!focusable.length) return;
@@ -111,7 +116,12 @@ export function ConciergeChat() {
       const response = await fetch("/api/assistant", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: trimmed, sessionId, history }),
+        body: JSON.stringify({
+          question: trimmed,
+          sessionId,
+          history,
+          language,
+        }),
       });
       const result = (await response.json()) as AssistantAnswer & {
         error?: string;
@@ -149,6 +159,10 @@ export function ConciergeChat() {
     void ask(question);
   }
 
+  const selectedLanguage =
+    assistantLanguageOptions.find(({ code }) => code === language) ??
+    assistantLanguageOptions[0];
+
   return (
     <>
       <button
@@ -182,6 +196,11 @@ export function ConciergeChat() {
               .filter(Boolean)
               .join(" ")}
             role="dialog"
+            dir={
+              selectedLanguage.approvalState === "approved"
+                ? selectedLanguage.direction
+                : "ltr"
+            }
             aria-modal="true"
             aria-labelledby="concierge-title"
             onKeyDown={handleDialogKeyDown}
@@ -193,14 +212,35 @@ export function ConciergeChat() {
                 <h2 id="concierge-title">Property guide</h2>
                 <p>Answers grounded in approved project information.</p>
               </div>
-              <button
-                type="button"
-                className="concierge-close"
-                onClick={close}
-                aria-label="Close property guide"
-              >
-                ×
-              </button>
+              <div className="concierge-dialog__controls">
+                <label>
+                  <span>Language</span>
+                  <select
+                    value={language}
+                    onChange={(event) =>
+                      setLanguage(event.target.value as AssistantLanguage)
+                    }
+                    disabled={loading}
+                  >
+                    {assistantLanguageOptions.map((option) => (
+                      <option key={option.code} value={option.code}>
+                        {option.nativeLabel}
+                        {option.approvalState === "pending"
+                          ? " — awaiting approval"
+                          : ""}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <button
+                  type="button"
+                  className="concierge-close"
+                  onClick={close}
+                  aria-label="Close property guide"
+                >
+                  ×
+                </button>
+              </div>
             </header>
 
             <div className="concierge-workspace">

@@ -129,6 +129,25 @@ describe("vector retrieval governance", () => {
     expect(rankVectorRecords([1, 0], records, { topK: 1 })).toHaveLength(1);
   });
 
+  it("filters evidence by language and treats legacy records as English", () => {
+    const malayalamRecord: VectorRecord = {
+      ...records[0],
+      id: "chk-villa-ml",
+      language: { code: "ml", translationState: "approved" },
+    };
+
+    expect(
+      rankVectorRecords([1, 0], [...records, malayalamRecord], {
+        languageCodes: ["ml"],
+      }).map(({ id }) => id),
+    ).toEqual(["chk-villa-ml"]);
+    expect(
+      rankVectorRecords([1, 0], [...records, malayalamRecord], {
+        languageCodes: ["en"],
+      }).map(({ id }) => id),
+    ).toEqual(["chk-villa", "chk-location"]);
+  });
+
   it("returns citations and qualifications without exposing vectors", () => {
     const [match] = rankVectorRecords([1, 0], records);
     expect(match.locator.label).toBe("Page 1");

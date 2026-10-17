@@ -9,6 +9,11 @@ import {
   type AssistantPolicyReason,
   type AssistantRiskTier,
 } from "./assistant-policy";
+import {
+  languageUnavailableMessage,
+  resolveAssistantLanguage,
+  type AssistantLanguage,
+} from "./assistant-language";
 import type { RetrievalMatch } from "./vector-retrieval";
 
 export const ASSISTANT_MODEL = "gemini-3.8-flash";
@@ -72,6 +77,7 @@ export type AssistantRetriever = (args: {
   query: string;
   minimumScore: number;
   topK: number;
+  language: AssistantLanguage;
 }) => Promise<RetrievalMatch[]>;
 
 export type AssistantGenerator = (args: {
@@ -89,6 +95,7 @@ export type AssistantRequest = {
   question: string;
   sessionId?: string;
   history?: AssistantTurn[];
+  language?: AssistantLanguage;
 };
 
 const historySchema = z
@@ -222,6 +229,27 @@ export function createAssistantService(dependencies: {
       };
     }
 
+    const requestedLanguage = resolveAssistantLanguage(
+      question,
+      typeof request === "string" ? "en" : request.language,
+    );
+    if (requestedLanguage.approvalState !== "approved") {
+      return {
+        sessionId,
+        status: "insufficient-evidence",
+        answer: languageUnavailableMessage(requestedLanguage),
+        citations: [],
+        model: null,
+        policy: {
+          ...defaultPolicy,
+          reason: "translation-not-approved",
+          riskTier: "R1",
+          humanHandoffRequired: true,
+        },
+        evidence: noEvidence(),
+      };
+    }
+
     const policyDecision = evaluateAssistantPolicy(question);
     const policy = {
       version: ASSISTANT_POLICY_VERSION,
@@ -250,6 +278,7 @@ export function createAssistantService(dependencies: {
         query: question,
         minimumScore: ASSISTANT_MINIMUM_SCORE,
         topK: 3,
+        language: requestedLanguage.code,
       });
     } catch {
       return {

@@ -7,6 +7,10 @@ export type KnowledgeChunk = {
   text: string;
   contentHash: string;
   topics: string[];
+  language?: {
+    code: string;
+    translationState: string;
+  };
   locator: {
     label: string;
     pageStart: number | null;
@@ -54,6 +58,7 @@ export type RetrievalFilters = {
   sourceIds?: string[];
   documentIds?: string[];
   topics?: string[];
+  languageCodes?: string[];
   minimumScore?: number;
   topK?: number;
 };
@@ -118,6 +123,7 @@ export async function buildVectorIndex(args: {
       text: chunk.text,
       contentHash: chunk.contentHash,
       topics: chunk.topics,
+      language: chunk.language,
       locator: chunk.locator,
       qualification: chunk.governance.qualification!,
       citation: args.citationByDocumentId[chunk.documentId],
@@ -161,6 +167,9 @@ export function rankVectorRecords(
   const sourceIds = filters.sourceIds ? new Set(filters.sourceIds) : null;
   const documentIds = filters.documentIds ? new Set(filters.documentIds) : null;
   const topics = filters.topics ? new Set(filters.topics) : null;
+  const languageCodes = filters.languageCodes
+    ? new Set(filters.languageCodes)
+    : null;
   const minimumScore = filters.minimumScore ?? 0;
   const topK = Math.min(Math.max(filters.topK ?? 5, 1), 20);
 
@@ -169,6 +178,10 @@ export function rankVectorRecords(
     .filter((record) => !documentIds || documentIds.has(record.documentId))
     .filter(
       (record) => !topics || record.topics.some((topic) => topics.has(topic)),
+    )
+    .filter(
+      (record) =>
+        !languageCodes || languageCodes.has(record.language?.code ?? "en"),
     )
     .filter(
       ({ vector }) =>

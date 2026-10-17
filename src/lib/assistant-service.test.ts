@@ -45,6 +45,7 @@ describe("assistant service", () => {
 
     expect(retrieve).toHaveBeenCalledWith({
       query: "Which amenities are listed?",
+      language: "en",
       minimumScore: ASSISTANT_MINIMUM_SCORE,
       topK: 3,
     });
@@ -121,6 +122,26 @@ describe("assistant service", () => {
       reason: "private-data-request",
       riskTier: "R4",
     });
+  });
+
+  it("fails closed when a requested translation is not approved", async () => {
+    const retrieve = vi.fn();
+    const generate = vi.fn();
+    const answer = await createAssistantService({ retrieve, generate })({
+      question: "വില്ലകളെക്കുറിച്ച് പറയാമോ?",
+      language: "ml",
+    });
+
+    expect(answer.status).toBe("insufficient-evidence");
+    expect(answer.policy).toMatchObject({
+      reason: "translation-not-approved",
+      riskTier: "R1",
+      humanHandoffRequired: true,
+    });
+    expect(answer.citations).toEqual([]);
+    expect(answer.model).toBeNull();
+    expect(retrieve).not.toHaveBeenCalled();
+    expect(generate).not.toHaveBeenCalled();
   });
 
   it("refuses instruction extraction before retrieval or generation", async () => {

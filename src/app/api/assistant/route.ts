@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { answerAssistantQuestion } from "@/lib/assistant-runtime";
+import { assistantLanguageSchema } from "@/lib/assistant-language";
 import { selectAssistantPreview } from "@/lib/assistant-preview";
 import {
   isRecommendationConversation,
@@ -14,6 +15,7 @@ export const maxDuration = 60;
 const requestSchema = z.object({
   question: z.string().trim().min(2).max(500),
   sessionId: z.string().trim().max(100).optional(),
+  language: assistantLanguageSchema.default("en"),
   history: z
     .array(
       z.object({

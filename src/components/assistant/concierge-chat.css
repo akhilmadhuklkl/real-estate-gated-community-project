@@ -154,6 +154,31 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
+.concierge-dialog__controls {
+  display: flex;
+  gap: 0.75rem;
+  align-items: start;
+}
+.concierge-dialog__controls label {
+  display: grid;
+  gap: 0.25rem;
+}
+.concierge-dialog__controls label > span {
+  color: rgb(255 255 255 / 68%);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.concierge-dialog__controls select {
+  max-width: 12rem;
+  padding: 0.55rem 1.8rem 0.55rem 0.7rem;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 999px;
+  background: var(--forest-950);
+  color: #fff;
+  font: inherit;
+  font-size: 0.72rem;
+}
 .concierge-close {
   align-self: start;
   width: 2.5rem;
@@ -708,6 +733,12 @@
   }
   .concierge-dialog__header {
     padding-top: max(1.15rem, env(safe-area-inset-top));
+  }
+  .concierge-dialog__controls {
+    gap: 0.45rem;
+  }
+  .concierge-dialog__controls select {
+    width: 7.8rem;
   }
   .concierge-mobile-preview-button {
     display: block;

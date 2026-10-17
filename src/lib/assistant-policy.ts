@@ -9,7 +9,8 @@ export type AssistantPolicyReason =
   | "high-stakes-professional-decision"
   | "investment-guarantee"
   | "private-data-request"
-  | "prompt-injection";
+  | "prompt-injection"
+  | "translation-not-approved";
 
 export type AssistantPolicyDecision = {
   action: "allow" | "escalate" | "refuse";

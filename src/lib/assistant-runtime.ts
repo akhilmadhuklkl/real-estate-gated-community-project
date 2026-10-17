@@ -41,12 +41,12 @@ export async function answerAssistantQuestion(request: AssistantRequest) {
 
   const service = createAssistantService({
     model: ASSISTANT_MODEL,
-    retrieve: async ({ query, minimumScore, topK }) => {
+    retrieve: async ({ query, minimumScore, topK, language }) => {
       const embedding = await embedQuestion(query);
       return rankVectorRecords(
         embedding,
         vectorIndex.records,
-        { minimumScore, topK },
+        { minimumScore, topK, languageCodes: [language] },
         query,
       );
     },

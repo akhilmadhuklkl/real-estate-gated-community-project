@@ -115,4 +115,47 @@ describe("ConciergeChat", () => {
       ),
     ).toBeInTheDocument();
   });
+
+  it("sends the selected language with the assistant request", async () => {
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue(
+      new Response(
+        JSON.stringify({
+          sessionId: "session-language",
+          status: "insufficient-evidence",
+          answer: "The selected language is awaiting approved translations.",
+          citations: [],
+          model: null,
+          policy: {
+            version: "1",
+            reason: "translation-not-approved",
+            riskTier: "R1",
+            humanHandoffRequired: true,
+          },
+          evidence: {
+            confidence: "none",
+            citationCount: 0,
+            minimumScore: 0.45,
+          },
+        }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    render(<ConciergeChat />);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Open Glitz Pride property guide" }),
+    );
+    fireEvent.change(screen.getByLabelText("Language"), {
+      target: { value: "ml" },
+    });
+    fireEvent.change(screen.getByLabelText("Ask a property question"), {
+      target: { value: "വില്ലകളെക്കുറിച്ച് പറയാമോ?" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /send/i }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledOnce());
+    const request = fetchMock.mock.calls[0][1] as RequestInit;
+    expect(JSON.parse(String(request.body))).toMatchObject({
+      language: "ml",
+    });
+  });
 });
