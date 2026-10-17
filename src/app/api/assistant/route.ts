@@ -3,6 +3,10 @@ import { z } from "zod";
 
 import { answerAssistantQuestion } from "@/lib/assistant-runtime";
 import { selectAssistantPreview } from "@/lib/assistant-preview";
+import {
+  isRecommendationConversation,
+  recommendationAnswer,
+} from "@/lib/villa-recommendations";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -34,12 +38,25 @@ export async function POST(request: Request) {
 
   try {
     const answer = await answerAssistantQuestion(parsed.data);
+    const userConversation = [
+      ...(parsed.data.history ?? [])
+        .filter(({ role }) => role === "user")
+        .map(({ text }) => text),
+      parsed.data.question,
+    ].join("\n");
+    const preview =
+      answer.status === "answered"
+        ? selectAssistantPreview(userConversation, answer.citations)
+        : null;
+    const recommendation =
+      preview?.kind === "recommendation" &&
+      isRecommendationConversation(userConversation)
+        ? recommendationAnswer(preview.recommendation)
+        : null;
     return NextResponse.json({
       ...answer,
-      preview:
-        answer.status === "answered"
-          ? selectAssistantPreview(parsed.data.question, answer.citations)
-          : null,
+      answer: recommendation ?? answer.answer,
+      preview,
     });
   } catch (error) {
     console.error("Assistant request failed", error);

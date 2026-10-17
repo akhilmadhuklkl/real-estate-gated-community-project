@@ -144,24 +144,50 @@ test("dynamic property preview stays within the conversation surface", async ({
           minimumScore: 0.45,
         },
         preview: {
-          id: "preview-villa-test",
+          id: "preview-recommendation-test",
           evidenceIds: ["chk-source-one"],
-          kind: "villa",
-          component: "villa-summary",
-          href: "/villas/villa-brochure-plan-01",
-          villa: {
-            id: "villa-brochure-plan-01",
-            name: "The Glitz Pride Villa",
-            totalAreaSqFt: 2180,
-            levels: 2,
-            floorAreas: [],
-            bedrooms: 3,
-            bathrooms: null,
-            availability: "unknown",
-            approvalState: "illustrative",
-            publicationNote: "Illustrative information requiring confirmation.",
-            image: "/media/glitz-pride/villa.jpg",
-            imageAlt: "Contemporary Glitz Pride villa",
+          kind: "recommendation",
+          component: "villa-recommendation",
+          href: "/contact",
+          recommendation: {
+            status: "single-approved-option",
+            villa: {
+              id: "villa-brochure-plan-01",
+              name: "The Glitz Pride Villa",
+              totalAreaSqFt: 2180,
+              levels: 2,
+              floorAreas: [],
+              bedrooms: null,
+              bathrooms: null,
+              availability: "unknown",
+              approvalState: "illustrative",
+              publicationNote:
+                "Illustrative information requiring confirmation.",
+              image: "/media/glitz-pride/villa.jpg",
+              imageAlt: "Contemporary Glitz Pride villa",
+            },
+            criteria: [
+              {
+                id: "minimum-area",
+                label: "Minimum area",
+                requested: "2,000 sq ft or more",
+                outcome: "match",
+                explanation: "The approved total plan is 2,180 sq ft.",
+              },
+              {
+                id: "bedrooms",
+                label: "Bedrooms",
+                requested: "At least 3",
+                outcome: "unknown",
+                explanation:
+                  "The approved catalogue does not confirm this value.",
+              },
+            ],
+            limitations: [
+              "The approved catalogue currently contains one villa plan, so this is an explained match—not a ranking across multiple options.",
+              "Catalogue presence does not confirm current price, availability, completion, contractual inclusion, or personal suitability.",
+            ],
+            clarification: null,
           },
         },
       }),
@@ -171,7 +197,9 @@ test("dynamic property preview stays within the conversation surface", async ({
   await page
     .getByRole("button", { name: "Open Glitz Pride property guide" })
     .click();
-  await page.getByLabel("Ask a property question").fill("Show the villa");
+  await page
+    .getByLabel("Ask a property question")
+    .fill("Recommend a villa above 2,000 sq ft");
   await page.getByRole("button", { name: /send/i }).click();
   const preview = page.getByRole("complementary", {
     name: "Visual property details",

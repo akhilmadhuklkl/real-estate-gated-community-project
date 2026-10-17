@@ -55,6 +55,25 @@ describe("assistant preview response schema", () => {
       },
       "document-link",
     ],
+    [
+      "recommendation",
+      {
+        kind: "recommendation",
+        ...base,
+        villaIds: ["villa-brochure-plan-01"],
+        preferences: {
+          householdSize: null,
+          minBedrooms: 3,
+          minAreaSqFt: null,
+          maxAreaSqFt: null,
+          preferredLevels: null,
+          requestedFeatures: [],
+          budgetMentioned: false,
+          availabilityRequested: false,
+        },
+      },
+      "villa-recommendation",
+    ],
   ])(
     "resolves the %s selector to a trusted component",
     (_, input, component) => {
@@ -163,6 +182,7 @@ describe("assistant preview intent selection", () => {
     ["How can I contact the team?", "contact"],
     ["Open the brochure", "document"],
     ["What villa configuration is available?", "villa"],
+    ["Recommend a 3 bedroom villa", "recommendation"],
   ])("selects a trusted %s preview", (question, kind) => {
     expect(selectAssistantPreview(question, [citation])?.kind).toBe(kind);
   });

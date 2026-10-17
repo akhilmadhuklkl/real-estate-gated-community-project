@@ -5,6 +5,10 @@ import { getContactActions } from "./contact-actions";
 import { galleryItems } from "./gallery-content";
 import { locationContent } from "./location-content";
 import {
+  collectRecommendationPreferences,
+  evaluateVillaRecommendation,
+} from "./villa-recommendations";
+import {
   buildVillaComparisonRows,
   getVillaById,
   MAX_COMPARISON_VILLAS,
@@ -71,6 +75,28 @@ const documentSelection = z
     page: z.number().int().min(1).max(9).nullable(),
   })
   .strict();
+const recommendationPreferences = z
+  .object({
+    householdSize: z.number().int().min(1).max(20).nullable(),
+    minBedrooms: z.number().int().min(1).max(20).nullable(),
+    minAreaSqFt: z.number().int().min(100).max(100000).nullable(),
+    maxAreaSqFt: z.number().int().min(100).max(100000).nullable(),
+    preferredLevels: z.number().int().min(1).max(10).nullable(),
+    requestedFeatures: z
+      .array(z.enum(["accessibility", "balcony", "garden", "parking"]))
+      .max(4),
+    budgetMentioned: z.boolean(),
+    availabilityRequested: z.boolean(),
+  })
+  .strict();
+const recommendationSelection = z
+  .object({
+    kind: z.literal("recommendation"),
+    ...base,
+    villaIds: z.array(z.string().min(1)).min(1).max(MAX_COMPARISON_VILLAS),
+    preferences: recommendationPreferences,
+  })
+  .strict();
 
 export const assistantPreviewSelectionSchema = z.discriminatedUnion("kind", [
   villaSelection,
@@ -80,6 +106,7 @@ export const assistantPreviewSelectionSchema = z.discriminatedUnion("kind", [
   comparisonSelection,
   contactSelection,
   documentSelection,
+  recommendationSelection,
 ]);
 
 export type AssistantPreviewSelection = z.infer<
@@ -141,6 +168,12 @@ export type AssistantPreview =
       href: string;
       page: number | null;
       downloadName: string;
+    })
+  | (PreviewBase & {
+      kind: "recommendation";
+      component: "villa-recommendation";
+      recommendation: ReturnType<typeof evaluateVillaRecommendation>;
+      href: "/contact";
     });
 
 function unique(values: string[], field: string) {
@@ -275,10 +308,26 @@ export function resolveAssistantPreview(
         downloadName: brochure.downloadName,
       };
     }
+    case "recommendation": {
+      unique(selection.villaIds, "villaIds");
+      const villas = selection.villaIds.map(requireVilla);
+      return {
+        ...previewBase,
+        kind: selection.kind,
+        component: "villa-recommendation",
+        recommendation: evaluateVillaRecommendation(
+          selection.preferences,
+          villas,
+        ),
+        href: "/contact",
+      };
+    }
   }
 }
 
 const intentPatterns = {
+  recommendation:
+    /\b(recommend|suggest|suitable|best|right (?:villa|home)|which (?:villa|home))\b/i,
   floorPlan: /\b(floor\s*plan|layout|ground floor|first floor)\b/i,
   gallery: /\b(gallery|photos?|images?|pictures?|visuals?|renderings?)\b/i,
   map: /\b(map|location|nearby|distance|hospital|school|college|city|reach|connected)\b/i,
@@ -297,7 +346,16 @@ export function selectAssistantPreview(
   const allowedEvidenceIds = new Set(evidenceIds);
   let selection: AssistantPreviewSelection | null = null;
 
-  if (intentPatterns.floorPlan.test(question)) {
+  if (intentPatterns.recommendation.test(question)) {
+    selection = {
+      kind: "recommendation",
+      evidenceIds,
+      villaIds: villaCatalogue
+        .slice(0, MAX_COMPARISON_VILLAS)
+        .map(({ id }) => id),
+      preferences: collectRecommendationPreferences(question),
+    };
+  } else if (intentPatterns.floorPlan.test(question)) {
     selection = {
       kind: "floor-plan",
       evidenceIds,

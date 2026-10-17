@@ -54,6 +54,25 @@ describe("DynamicPreviewPanel", () => {
       },
       "Project document",
     ],
+    [
+      "recommendation",
+      {
+        kind: "recommendation",
+        evidenceIds,
+        villaIds: ["villa-brochure-plan-01"],
+        preferences: {
+          householdSize: null,
+          minBedrooms: 3,
+          minAreaSqFt: 2000,
+          maxAreaSqFt: null,
+          preferredLevels: null,
+          requestedFeatures: [],
+          budgetMentioned: false,
+          availabilityRequested: false,
+        },
+      },
+      "Villa recommendation",
+    ],
   ])("renders the trusted %s component", (_, selection, label) => {
     const preview = resolveAssistantPreview(selection, allowedEvidenceIds);
     render(<DynamicPreviewPanel preview={preview} />);

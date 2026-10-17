@@ -565,6 +565,110 @@
   margin: 0.25rem 0 0;
   font-size: 0.7rem;
 }
+.assistant-preview__recommendation-villa {
+  display: grid;
+  grid-template-columns: minmax(6rem, 34%) 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.8rem;
+  background: #f7f3e9;
+}
+.assistant-preview__recommendation-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.assistant-preview__recommendation-villa p,
+.assistant-preview__recommendation-villa h4 {
+  margin: 0;
+}
+.assistant-preview__recommendation-villa p {
+  color: #a6593d;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.assistant-preview__recommendation-villa h4 {
+  margin-top: 0.35rem;
+  color: var(--forest-950);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+.assistant-preview__recommendation-villa span {
+  color: rgb(14 52 42 / 65%);
+  font-size: 0.72rem;
+}
+.assistant-preview__clarification {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-left: 0.2rem solid var(--forest-700);
+  background: #d9e4d7;
+  color: var(--forest-950);
+  line-height: 1.55;
+}
+.assistant-preview__criteria {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+.assistant-preview__criteria li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.7rem;
+  padding: 0.85rem;
+  border: 1px solid rgb(31 73 59 / 14%);
+  background: #f7f3e9;
+}
+.assistant-preview__criteria li > span {
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #d9e4d7;
+  color: var(--forest-900);
+  font-weight: 700;
+}
+.assistant-preview__criteria li[data-outcome="not-match"] > span {
+  background: #f0d5ca;
+  color: #8e3f2e;
+}
+.assistant-preview__criteria li[data-outcome="unknown"] > span {
+  background: #efe4bd;
+  color: #735c16;
+}
+.assistant-preview__criteria strong,
+.assistant-preview__criteria small {
+  display: block;
+}
+.assistant-preview__criteria small {
+  margin-top: 0.1rem;
+  color: #a6593d;
+}
+.assistant-preview__criteria p {
+  margin: 0.45rem 0 0;
+  color: rgb(14 52 42 / 68%);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+.assistant-preview__limitations {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgb(31 73 59 / 7%);
+}
+.assistant-preview__limitations h4 {
+  margin: 0 0 0.5rem;
+  color: var(--forest-950);
+}
+.assistant-preview__limitations ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: rgb(14 52 42 / 68%);
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
 
 @keyframes concierge-fade {
   from {

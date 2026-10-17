@@ -266,5 +266,77 @@ export function DynamicPreviewPanel({
         </section>
       );
     }
+    case "recommendation": {
+      const { recommendation } = preview;
+      return (
+        <section
+          className="assistant-preview__content assistant-preview__recommendation"
+          aria-label="Villa recommendation"
+        >
+          <PanelHeader
+            eyebrow="Preference match"
+            title={
+              recommendation.status === "needs-preferences"
+                ? "Tell us what matters"
+                : "An explained match"
+            }
+          />
+          {recommendation.villa ? (
+            <article className="assistant-preview__recommendation-villa">
+              <div className="assistant-preview__recommendation-image">
+                <PreviewImage
+                  src={recommendation.villa.image}
+                  alt={recommendation.villa.imageAlt}
+                />
+              </div>
+              <div>
+                <p>Only approved catalogue option</p>
+                <h4>{recommendation.villa.name}</h4>
+                <span>
+                  {recommendation.villa.totalAreaSqFt.toLocaleString("en-IN")}{" "}
+                  sq ft · {recommendation.villa.levels} levels
+                </span>
+              </div>
+            </article>
+          ) : null}
+          {recommendation.clarification ? (
+            <p className="assistant-preview__clarification">
+              {recommendation.clarification}
+            </p>
+          ) : null}
+          {recommendation.criteria.length ? (
+            <ul className="assistant-preview__criteria">
+              {recommendation.criteria.map((criterion) => (
+                <li key={criterion.id} data-outcome={criterion.outcome}>
+                  <span aria-hidden="true">
+                    {criterion.outcome === "match"
+                      ? "✓"
+                      : criterion.outcome === "not-match"
+                        ? "×"
+                        : "?"}
+                  </span>
+                  <div>
+                    <strong>{criterion.label}</strong>
+                    <small>{criterion.requested}</small>
+                    <p>{criterion.explanation}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <div className="assistant-preview__limitations">
+            <h4>Important limitations</h4>
+            <ul>
+              {recommendation.limitations.map((limitation) => (
+                <li key={limitation}>{limitation}</li>
+              ))}
+            </ul>
+          </div>
+          <Link className="assistant-preview__action" href={preview.href}>
+            Confirm changing details <span aria-hidden="true">→</span>
+          </Link>
+        </section>
+      );
+    }
   }
 }
