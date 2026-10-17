@@ -36,11 +36,12 @@ def language() -> dict[str, Any]:
     return {"code": "en", "isReferenceLanguage": True, "translationState": "original", "translatedFromId": None}
 
 
-def permissions() -> dict[str, Any]:
+def permissions(source: dict[str, Any]) -> dict[str, Any]:
+    translation_control = source["category"] == "translations"
     return {
         "classification": "public",
-        "audiences": ["public", "assistant", "content-admin"],
-        "allowedActions": ["retrieve", "summarize", "quote", "render-preview", "admin-review"],
+        "audiences": ["content-admin"] if translation_control else ["public", "assistant", "content-admin"],
+        "allowedActions": ["admin-review"] if translation_control else ["retrieve", "summarize", "quote", "render-preview", "admin-review"],
         "consentRequired": False,
         "purposeRestriction": "Qualified project-information assistance",
     }
@@ -67,7 +68,7 @@ def governance(source: dict[str, Any], as_of: date) -> dict[str, Any]:
         "validUntil": valid_until,
         "reviewedAt": f"{reviewed}T00:00:00.000Z" if reviewed else None,
         "reviewCadenceDays": cadence,
-        "retrievalEligible": True,
+        "retrievalEligible": source["category"] != "translations",
         "qualification": qualification_for(source),
         "supersedesId": None,
     }
@@ -161,7 +162,7 @@ def build(repo: Path, as_of: date) -> tuple[dict[str, Any], dict[str, Any], dict
             "mimeType": "application/pdf" if source["format"] == "pdf" else "application/json",
             "effectiveDate": source["effectiveDate"],
             "language": language(),
-            "permissions": permissions(),
+            "permissions": permissions(source),
             "governance": deepcopy(gov),
             "ingestion": {
                 "parser": "pypdf" if source["format"] == "pdf" else "python-json",
@@ -194,7 +195,7 @@ def build(repo: Path, as_of: date) -> tuple[dict[str, Any], dict[str, Any], dict
                 "topics": [source["category"]],
                 "entityIds": [],
                 "claimIds": [],
-                "permissions": permissions(),
+                "permissions": permissions(source),
                 "governance": deepcopy(gov),
                 "embedding": {"status": "not-requested", "model": None, "dimensions": None, "embeddedAt": None},
             })

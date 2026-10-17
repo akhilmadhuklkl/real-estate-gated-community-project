@@ -238,6 +238,66 @@
       "riskTier": "R2",
       "query": "Write Python code to sort a list.",
       "expectedChunkIds": []
+    },
+    {
+      "id": "RET-027",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "ഗ്ലിറ്റ്സ് പ്രൈഡിൽ ബ്രോഷറിൽ പറയുന്ന സൗകര്യങ്ങൾ ഏതൊക്കെയാണ്?",
+      "expectedChunkIds": [
+        "chk-ks-001-004-e9a506cc6681",
+        "chk-ks-002-004-35d4edfc61ef"
+      ]
+    },
+    {
+      "id": "RET-028",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "ഗ്ലിറ്റ്സ് പ്രൈഡ് എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+      "expectedChunkIds": [
+        "chk-ks-001-008-009cd0b48bae",
+        "chk-ks-002-006-1e42c142b310"
+      ]
+    },
+    {
+      "id": "RET-029",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "विला का कुल फ़्लोर एरिया कितना है?",
+      "expectedChunkIds": [
+        "chk-ks-001-007-3e2e7a77ffca",
+        "chk-ks-002-003-e12283b6d722"
+      ]
+    },
+    {
+      "id": "RET-030",
+      "kind": "positive",
+      "riskTier": "R0",
+      "query": "ग्लिट्ज़ प्राइड के आर्किटेक्ट कौन हैं?",
+      "expectedChunkIds": [
+        "chk-ks-001-005-69e156689389",
+        "chk-ks-002-001-1ed894f2a824"
+      ]
+    },
+    {
+      "id": "RET-031",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "أين يقع مشروع غليتز برايد؟",
+      "expectedChunkIds": [
+        "chk-ks-001-008-009cd0b48bae",
+        "chk-ks-002-006-1e42c142b310"
+      ]
+    },
+    {
+      "id": "RET-032",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "ما هي المرافق المذكورة في الكتيب؟",
+      "expectedChunkIds": [
+        "chk-ks-001-004-e9a506cc6681",
+        "chk-ks-002-004-35d4edfc61ef"
+      ]
     }
   ]
 }

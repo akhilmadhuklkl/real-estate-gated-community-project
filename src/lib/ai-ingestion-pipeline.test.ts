@@ -23,7 +23,7 @@ const knowledge = load<{
     text: string;
     contentHash: string;
     locator: { pageStart: number | null; label: string };
-    governance: { qualification: string };
+    governance: { retrievalEligible: boolean; qualification: string };
     permissions: { allowedActions: string[] };
     embedding: { status: string };
   }>;
@@ -46,12 +46,13 @@ const quarantine = load<{
 }>("content/generated/ingestion-quarantine.json");
 
 describe("governed ingestion artifacts", () => {
-  it("accepts only the two approved local source formats", () => {
+  it("accepts approved evidence and translation-control sources", () => {
     expect(knowledge.documents.map(({ sourceId }) => sourceId).sort()).toEqual([
       "KS-001",
       "KS-002",
+      "KS-022",
     ]);
-    expect(manifest.acceptedSourceCount).toBe(2);
+    expect(manifest.acceptedSourceCount).toBe(3);
     expect(manifest.quarantinedSourceCount).toBeGreaterThan(0);
   });
 
@@ -83,13 +84,14 @@ describe("governed ingestion artifacts", () => {
   it("propagates qualifications and retrieval permissions", () => {
     for (const record of [...knowledge.documents, ...knowledge.chunks]) {
       expect(record.governance.qualification.length).toBeGreaterThan(20);
-      expect(record.permissions.allowedActions).toContain("retrieve");
+      if (record.sourceId === "KS-022") {
+        expect(record.governance.retrievalEligible).toBe(false);
+        expect(record.permissions.allowedActions).toEqual(["admin-review"]);
+      } else {
+        expect(record.governance.retrievalEligible).toBe(true);
+        expect(record.permissions.allowedActions).toContain("retrieve");
+      }
     }
-    expect(
-      knowledge.documents.every(
-        ({ governance }) => governance.retrievalEligible,
-      ),
-    ).toBe(true);
   });
 
   it("quarantines non-approved and unsupported inputs for human review", () => {

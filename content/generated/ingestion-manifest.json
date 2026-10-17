@@ -1,11 +1,11 @@
 {
-  "acceptedSourceCount": 2,
-  "chunkCount": 19,
-  "generatedAt": "2026-10-13T00:00:00.000Z",
-  "packageHash": "sha256:933a4725ad6acbe5584f76b284c2d847145ba725f3e64ab0fb9d10bd990aa5ad",
+  "acceptedSourceCount": 3,
+  "chunkCount": 22,
+  "generatedAt": "2026-10-17T00:00:00.000Z",
+  "packageHash": "sha256:26e3ddaeb22a158ed7c597d420b5f32dbc70c2ff1c967d406694cf3863caf38a",
   "pipelineVersion": "1.0.0",
-  "quarantinedSourceCount": 21,
-  "registerHash": "sha256:8b2a72eeb446e7c03cbf0a15283e0f8c2b26b61cad83aebf09d9bfae5698097b",
+  "quarantinedSourceCount": 20,
+  "registerHash": "sha256:8ea322f4c2505a2f20e35b32b310dd19bf1e4964f9adbb3faa4c3981237c9fdb",
   "versions": [
     {
       "contentHash": "sha256:9a3770926a29570de8fe832282c3028cd107c3dcc7312fe6d17f6b75bbdab308",
@@ -18,6 +18,12 @@
       "documentId": "doc-ks-002-33f94ddf0426",
       "revision": "2026-10-03",
       "sourceId": "KS-002"
+    },
+    {
+      "contentHash": "sha256:d13f1a3ba470bbd823717f0ee7de5bdd2a3e8c48c8fe3f6f419c7f5b94cf573d",
+      "documentId": "doc-ks-022-d13f1a3ba470",
+      "revision": "2026-10-17",
+      "sourceId": "KS-022"
     }
   ]
 }

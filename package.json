@@ -18,7 +18,7 @@
     "test:performance": "playwright test --config=playwright.performance.config.ts",
     "test:responsive": "playwright test --config=playwright.responsive.config.ts",
     "ingest:knowledge": "python scripts/ingest_ai_knowledge.py --repo .",
-    "ingest:knowledge:check": "python scripts/ingest_ai_knowledge.py --repo . --as-of 2026-10-13 --check",
+    "ingest:knowledge:check": "python scripts/ingest_ai_knowledge.py --repo . --as-of 2026-10-17 --check",
     "index:knowledge": "node scripts/build-vector-index.mjs",
     "evaluate:retrieval": "node scripts/run-retrieval-evaluation.mjs",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"*.{json,ts,mjs,yaml}\" \"docs/architecture/**/*.md\"",

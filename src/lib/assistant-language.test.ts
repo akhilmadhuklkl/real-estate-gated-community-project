@@ -16,13 +16,14 @@ describe("assistant language support", () => {
     expect(detectAssistantLanguage("Tell me about the villas")).toBeNull();
   });
 
-  it("honours an explicit language selection", () => {
+  it("honours an explicit approved language selection", () => {
     expect(
       resolveAssistantLanguage("Tell me about villas", "hi"),
     ).toMatchObject({
       code: "hi",
       direction: "ltr",
-      approvalState: "pending",
+      approvalState: "approved",
+      reviewer: "AKHIL",
     });
   });
 
@@ -35,13 +36,16 @@ describe("assistant language support", () => {
     ).toBe("rtl");
   });
 
-  it("returns a transparent fallback message for pending translations", () => {
-    const malayalam = assistantLanguageOptions.find(
-      ({ code }) => code === "ml",
-    );
-    expect(malayalam).toBeDefined();
-    expect(languageUnavailableMessage(malayalam!)).toContain(
-      "not yet approved",
-    );
+  it("keeps the unavailable-language guard for future additions", () => {
+    expect(
+      languageUnavailableMessage({
+        code: "ml",
+        label: "Malayalam",
+        nativeLabel: "മലയാളം",
+        direction: "ltr",
+        approvalState: "pending",
+        reviewer: "AKHIL",
+      }),
+    ).toContain("not yet approved");
   });
 });

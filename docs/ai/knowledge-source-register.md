@@ -4,7 +4,7 @@
 
 T0030 establishes the authoritative-source boundary for the Glitz Pride property concierge. A source is not eligible for retrieval merely because it exists in the repository, appears on a website, or was used in the public interface. Only sources marked `approved` or `approved-with-qualifications` in `content/data/ai-knowledge-sources.json` may support an answer.
 
-The current approved corpus is deliberately small. The official brochure supports stable brochure-listed information with visible qualifications. APR-003 proves permission for the exact qualified public presentation but does not verify changing property facts. APR-004 approves only the current WhatsApp destination and neutral user-initiated message. Pricing, availability, legal status, current plans, construction progress, operational amenities, general contacts, privacy policy, visits, translations, and external live services remain blocked until their named owners supply evidence.
+The current approved corpus is deliberately small. The official brochure supports stable brochure-listed information with visible qualifications. APR-003 proves permission for the exact qualified public presentation but does not verify changing property facts. APR-004 approves only the current WhatsApp destination and neutral user-initiated message. KS-022 records AKHIL-reviewed Malayalam, Hindi, and Arabic response controls while English remains the canonical evidence language. Pricing, availability, legal status, current plans, construction progress, operational amenities, general contacts, privacy policy, visits, and external live services remain blocked until their named owners supply evidence.
 
 ## Authority order
 
@@ -39,8 +39,9 @@ A newer record does not automatically override a more authoritative record unles
 | KS-003 Owner publication approval          | Approved                     | Prove permission for the exact qualified Phase 1 presentation                                                                                 | Reapprove after any affected presentation change         |
 | KS-004 Approved WhatsApp destination       | Approved                     | User-initiated neutral project enquiry to the confirmed destination                                                                           | AKHIL; review every 90 days or after any routing change  |
 | KS-006 Current production pages            | Approved with qualifications | Navigation help, link previews, and explanation of visible qualified content                                                                  | AKHIL; review every 30 days and after deployment changes |
+| KS-022 Approved translations               | Approved with qualifications | Malayalam, Hindi, and Arabic responses grounded in canonical English evidence; localized fixed safety messages and interface direction        | AKHIL; review every 90 days and after source changes     |
 
-These five records do not provide five independent factual authorities. KS-002 and KS-006 derive from KS-001. KS-003 governs publication permission. KS-004 governs one contact route.
+These records do not provide independent factual authorities. KS-002 and KS-006 derive from KS-001. KS-003 governs publication permission. KS-004 governs one contact route. KS-022 governs response language and must not broaden the underlying evidence.
 
 ## Blocked source groups
 
@@ -56,7 +57,6 @@ These five records do not provide five independent factual authorities. KS-002 a
 | KS-018–KS-019 | Contacts, visits, and booking              | Confirmed professional directory and operational workflow                                  |
 | KS-020        | Privacy and retention                      | Approved controller, purposes, consent, processors, retention, rights, and request channel |
 | KS-021        | FAQs                                       | Owner-approved questions and answers linked to governing evidence                          |
-| KS-022        | Translations                               | Human-reviewed terminology, translations, and cross-language evaluations                   |
 | KS-023        | External live services                     | Approved provider, permissions, data flow, monitoring, and failure behaviour               |
 
 KS-005, the legacy website, is superseded and may be used only to audit where retained reference assets came from.

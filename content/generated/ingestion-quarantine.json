@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T00:00:00.000Z",
+  "generatedAt": "2026-10-17T00:00:00.000Z",
   "items": [
     {
       "decision": "approved",
@@ -190,16 +190,6 @@
       "requiresHumanReview": true,
       "sourceId": "KS-021",
       "title": "Owner-approved frequently asked questions"
-    },
-    {
-      "decision": "pending",
-      "detail": "Only approved sources are eligible for ingestion.",
-      "format": "versioned-translation-memory",
-      "location": null,
-      "reasonCode": "source-not-approved",
-      "requiresHumanReview": true,
-      "sourceId": "KS-022",
-      "title": "Approved multilingual terminology and translations"
     },
     {
       "decision": "pending",

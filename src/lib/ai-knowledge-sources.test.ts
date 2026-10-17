@@ -77,6 +77,7 @@ describe("AI knowledge-source approval register", () => {
       "KS-003",
       "KS-004",
       "KS-006",
+      "KS-022",
     ]);
 
     for (const source of retrievalEligible) {

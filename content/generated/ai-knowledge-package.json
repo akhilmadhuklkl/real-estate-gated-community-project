@@ -6,7 +6,7 @@
       "afterHash": "sha256:9a3770926a29570de8fe832282c3028cd107c3dcc7312fe6d17f6b75bbdab308",
       "beforeHash": null,
       "id": "evt-ks-001-activated-9a377092",
-      "occurredAt": "2026-10-13T00:00:00.000Z",
+      "occurredAt": "2026-10-17T00:00:00.000Z",
       "reason": "Approved local source passed format, path, parser, and text-quality gates.",
       "recordId": "doc-ks-001-9a3770926a29",
       "recordType": "document"
@@ -17,9 +17,20 @@
       "afterHash": "sha256:33f94ddf042612ed13e08d6ea470d6d4b51833ff292a2b6d0ea269e2e1fa0cb4",
       "beforeHash": null,
       "id": "evt-ks-002-activated-33f94ddf",
-      "occurredAt": "2026-10-13T00:00:00.000Z",
+      "occurredAt": "2026-10-17T00:00:00.000Z",
       "reason": "Approved local source passed format, path, parser, and text-quality gates.",
       "recordId": "doc-ks-002-33f94ddf0426",
+      "recordType": "document"
+    },
+    {
+      "action": "activated",
+      "actor": "AKHIL",
+      "afterHash": "sha256:d13f1a3ba470bbd823717f0ee7de5bdd2a3e8c48c8fe3f6f419c7f5b94cf573d",
+      "beforeHash": null,
+      "id": "evt-ks-022-activated-d13f1a3b",
+      "occurredAt": "2026-10-17T00:00:00.000Z",
+      "reason": "Approved local source passed format, path, parser, and text-quality gates.",
+      "recordId": "doc-ks-022-d13f1a3ba470",
       "recordType": "document"
     }
   ],
@@ -1259,6 +1270,186 @@
       "topics": [
         "structured-project-data"
       ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:94543f821d924a853ea80339cf1ffc301dd49539692ec179b092c6b1164f8fd5",
+      "documentId": "doc-ks-022-d13f1a3ba470",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-17T00:00:00.000Z",
+        "approvedBy": "AKHIL approval recorded 2026-10-17",
+        "owner": "AKHIL",
+        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "retrievalEligible": false,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-17T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-17T00:00:00.000Z",
+        "validUntil": "2027-01-15T00:00:00.000Z"
+      },
+      "id": "chk-ks-022-001-94543f821d92",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 26,
+        "characterStart": 0,
+        "label": "JSON section: approvedAt",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "approvedAt"
+        ]
+      },
+      "ordinal": 0,
+      "permissions": {
+        "allowedActions": [
+          "admin-review"
+        ],
+        "audiences": [
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-022",
+      "text": "\"2026-10-17T00:00:00.000Z\"",
+      "topics": [
+        "translations"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:fcbaa750989928da4aafc493bee5c79bfe9e4695c3989b3c4b0adf4bccfddd44",
+      "documentId": "doc-ks-022-d13f1a3ba470",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-17T00:00:00.000Z",
+        "approvedBy": "AKHIL approval recorded 2026-10-17",
+        "owner": "AKHIL",
+        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "retrievalEligible": false,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-17T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-17T00:00:00.000Z",
+        "validUntil": "2027-01-15T00:00:00.000Z"
+      },
+      "id": "chk-ks-022-002-fcbaa7509899",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 3029,
+        "characterStart": 0,
+        "label": "JSON section: languages",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "languages"
+        ]
+      },
+      "ordinal": 1,
+      "permissions": {
+        "allowedActions": [
+          "admin-review"
+        ],
+        "audiences": [
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-022",
+      "text": "{\"ar\": {\"direction\": \"rtl\", \"messages\": {\"humanConfirmation\": \"يتطلب هذا الطلب تأكيدًا من مختص مؤهل أو ممثل المشروع. لا يمكنني تقديم سوى حقائق العقار المعتمدة.\", \"insufficientEvidence\": \"هذه المعلومة غير مؤكدة في مواد المشروع المعتمدة. يرجى التواصل مع ممثل المشروع للحصول على تحديث.\", \"invalidQuestion\": \"يرجى طرح سؤال قصير ومحدد عن غليتز برايد.\", \"policyBoundary\": \"لا يمكنني المساعدة في هذا الطلب. يمكنني المساعدة بالمعلومات العامة المعتمدة عن غليتز برايد.\", \"removePersonalData\": \"لحماية الخصوصية، يرجى إزالة أرقام الهاتف وعناوين البريد الإلكتروني وأي معرّفات شخصية قبل طرح السؤال.\", \"serviceUnavailable\": \"دليل العقار غير متاح مؤقتًا. يرجى المحاولة بعد قليل أو التواصل مع ممثل المشروع.\", \"unsupportedAnswer\": \"تعذر إعداد إجابة مدعومة من مواد المشروع المعتمدة. يرجى التواصل مع ممثل المشروع للتأكيد.\"}, \"name\": \"Arabic\", \"nativeName\": \"العربية\", \"reviewer\": \"AKHIL\"}, \"hi\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"इस अनुरोध के लिए योग्य विशेषज्ञ या परियोजना प्रतिनिधि की पुष्टि आवश्यक है। मैं केवल स्वीकृत संपत्ति संबंधी तथ्य दे सकता हूँ।\", \"insufficientEvidence\": \"स्वीकृत परियोजना सामग्री में इस जानकारी की पुष्टि नहीं हुई है। नवीन जानकारी के लिए परियोजना प्रतिनिधि से संपर्क करें।\", \"invalidQuestion\": \"कृपया ग्लिट्ज़ प्राइड के बारे में एक छोटा और स्पष्ट प्रश्न पूछें।\", \"policyBoundary\": \"मैं इस अनुरोध में सहायता नहीं कर सकता। मैं ग्लिट्ज़ प्राइड की स्वीकृत सार्वजनिक जानकारी में सहायता कर सकता हूँ।\", \"removePersonalData\": \"गोपनीयता के लिए, प्रश्न पूछने से पहले फ़ोन नंबर, ईमेल पते या व्यक्तिगत पहचान संबंधी जानकारी हटा दें।\", \"serviceUnavailable\": \"प्रॉपर्टी गाइड अभी अस्थायी रूप से उपलब्ध नहीं है। कृपया थोड़ी देर बाद फिर प्रयास करें या परियोजना प्रतिनिधि से संपर्क करें।\", \"unsupportedAnswer\": \"स्वीकृत परियोजना सामग्री से समर्थित उत्तर तैयार नहीं किया जा सका। पुष्टि के लिए परियोजना प्रतिनिधि से संपर्क करें।\"}, \"name\": \"Hindi\", \"nativeName\": \"हिन्दी\", \"reviewer\": \"AKHIL\"}, \"ml\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"ഈ അഭ്യർത്ഥനയ്ക്ക് യോഗ്യനായ വിദഗ്ധന്റെയോ പ്രോജക്റ്റ് പ്രതിനിധിയുടെയോ സ്ഥിരീകരണം ആവശ്യമാണ്. അംഗീകരിച്ച പ്രോപ്പർട്ടി വിവരങ്ങൾ മാത്രമേ എനിക്ക് നൽകാനാകൂ.\", \"insufficientEvidence\": \"അംഗീകരിച്ച പ്രോജക്റ്റ് രേഖകളിൽ ഈ വിവരം സ്ഥിരീകരിച്ചിട്ടില്ല. പുതുക്കിയ വിവരങ്ങൾക്ക് പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുക.\", \"invalidQuestion\": \"ഗ്ലിറ്റ്സ് പ്രൈഡിനെക്കുറിച്ച് ചുരുക്കവും വ്യക്തവുമായ ഒരു ചോദ്യം ചോദിക്കൂ.\", \"policyBoundary\": \"ഈ അഭ്യർത്ഥനയിൽ എനിക്ക് സഹായിക്കാനാകില്ല. അംഗീകരിച്ച പൊതുവായ ഗ്ലിറ്റ്സ് പ്രൈഡ് വിവരങ്ങളിൽ ഞാൻ സഹായിക്കാം.\", \"removePersonalData\": \"സ്വകാര്യതയ്ക്കായി, ചോദ്യം ചോദിക്കുന്നതിന് മുമ്പ് ഫോൺ നമ്പറുകൾ, ഇമെയിൽ വിലാസങ്ങൾ, വ്യക്തിഗത തിരിച്ചറിയൽ വിവരങ്ങൾ എന്നിവ നീക്കം ചെയ്യുക.\", \"serviceUnavailable\": \"പ്രോപ്പർട്ടി ഗൈഡ് ഇപ്പോൾ താൽക്കാലികമായി ലഭ്യമല്ല. കുറച്ച് കഴിഞ്ഞ് വീണ്ടും ശ്രമിക്കുകയോ പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുകയോ ചെയ്യുക.\", \"unsupportedAnswer\": \"അംഗീകരിച്ച പ്രോജക്റ്റ് രേഖകളിൽ നിന്ന് പിന്തുണയുള്ള മറുപടി തയ്യാറാക്കാനായില്ല. സ്ഥിരീകരണത്തിനായി പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുക.\"}, \"name\": \"Malayalam\", \"nativeName\": \"മലയാളം\", \"reviewer\": \"AKHIL\"}}",
+      "topics": [
+        "translations"
+      ]
+    },
+    {
+      "claimIds": [],
+      "contentHash": "sha256:6ae88f1d4cc4e6c8b2ba427ad945cb9665d917446e4a6e1eb3b1004e328b7b6b",
+      "documentId": "doc-ks-022-d13f1a3ba470",
+      "embedding": {
+        "dimensions": null,
+        "embeddedAt": null,
+        "model": null,
+        "status": "not-requested"
+      },
+      "entityIds": [],
+      "governance": {
+        "approvedAt": "2026-10-17T00:00:00.000Z",
+        "approvedBy": "AKHIL approval recorded 2026-10-17",
+        "owner": "AKHIL",
+        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "retrievalEligible": false,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-17T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-17T00:00:00.000Z",
+        "validUntil": "2027-01-15T00:00:00.000Z"
+      },
+      "id": "chk-ks-022-003-6ae88f1d4cc4",
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "locator": {
+        "characterEnd": 174,
+        "characterStart": 0,
+        "label": "JSON section: guardrails",
+        "pageEnd": null,
+        "pageStart": null,
+        "sectionPath": [
+          "guardrails"
+        ]
+      },
+      "ordinal": 2,
+      "permissions": {
+        "allowedActions": [
+          "admin-review"
+        ],
+        "audiences": [
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "sourceId": "KS-022",
+      "text": "{\"canonicalEvidenceLanguage\": \"en\", \"preserveNamesNumbersUnitsAndCitations\": true, \"prohibitUnverifiedLegalCommercialTranslations\": true, \"requireTargetLanguageAnswer\": true}",
+      "topics": [
+        "translations"
+      ]
     }
   ],
   "claims": [],
@@ -1284,7 +1475,7 @@
       },
       "id": "doc-ks-001-9a3770926a29",
       "ingestion": {
-        "ingestedAt": "2026-10-13T00:00:00.000Z",
+        "ingestedAt": "2026-10-17T00:00:00.000Z",
         "parser": "pypdf",
         "parserVersion": "1.0.0",
         "status": "accepted-with-warnings",
@@ -1341,7 +1532,7 @@
       },
       "id": "doc-ks-002-33f94ddf0426",
       "ingestion": {
-        "ingestedAt": "2026-10-13T00:00:00.000Z",
+        "ingestedAt": "2026-10-17T00:00:00.000Z",
         "parser": "python-json",
         "parserVersion": "1.0.0",
         "status": "accepted-with-warnings",
@@ -1376,11 +1567,62 @@
       "revision": "2026-10-03",
       "sourceId": "KS-002",
       "title": "Governed structured project content"
+    },
+    {
+      "canonicalLocation": "content/data/approved-translations.json",
+      "contentHash": "sha256:d13f1a3ba470bbd823717f0ee7de5bdd2a3e8c48c8fe3f6f419c7f5b94cf573d",
+      "documentType": "structured-data",
+      "effectiveDate": "2026-10-17",
+      "governance": {
+        "approvedAt": "2026-10-17T00:00:00.000Z",
+        "approvedBy": "AKHIL approval recorded 2026-10-17",
+        "owner": "AKHIL",
+        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "retrievalEligible": false,
+        "reviewCadenceDays": 90,
+        "reviewedAt": "2026-10-17T00:00:00.000Z",
+        "state": "active",
+        "steward": "AKHIL",
+        "supersedesId": null,
+        "validFrom": "2026-10-17T00:00:00.000Z",
+        "validUntil": "2027-01-15T00:00:00.000Z"
+      },
+      "id": "doc-ks-022-d13f1a3ba470",
+      "ingestion": {
+        "ingestedAt": "2026-10-17T00:00:00.000Z",
+        "parser": "python-json",
+        "parserVersion": "1.0.0",
+        "status": "accepted-with-warnings",
+        "warnings": [
+          "Source qualifications must accompany every derived answer."
+        ]
+      },
+      "language": {
+        "code": "en",
+        "isReferenceLanguage": true,
+        "translatedFromId": null,
+        "translationState": "original"
+      },
+      "mimeType": "application/json",
+      "permissions": {
+        "allowedActions": [
+          "admin-review"
+        ],
+        "audiences": [
+          "content-admin"
+        ],
+        "classification": "public",
+        "consentRequired": false,
+        "purposeRestriction": "Qualified project-information assistance"
+      },
+      "revision": "2026-10-17",
+      "sourceId": "KS-022",
+      "title": "Approved multilingual terminology and translations"
     }
   ],
   "entities": [],
-  "generatedAt": "2026-10-13T00:00:00.000Z",
-  "packageId": "kp-ingestion-2026-10-13",
+  "generatedAt": "2026-10-17T00:00:00.000Z",
+  "packageId": "kp-ingestion-2026-10-17",
   "projectId": "glitz-pride",
   "schemaVersion": "1.0.0"
 }

@@ -10,8 +10,10 @@ import {
   type AssistantRiskTier,
 } from "./assistant-policy";
 import {
+  assistantMessage,
   languageUnavailableMessage,
   resolveAssistantLanguage,
+  targetLanguageInstruction,
   type AssistantLanguage,
 } from "./assistant-language";
 import type { RetrievalMatch } from "./vector-retrieval";
@@ -84,6 +86,12 @@ export type AssistantGenerator = (args: {
   question: string;
   evidence: RetrievalMatch[];
   history: AssistantTurn[];
+  language: AssistantLanguage;
+}) => Promise<string>;
+
+export type AssistantQueryTranslator = (args: {
+  question: string;
+  language: AssistantLanguage;
 }) => Promise<string>;
 
 export type AssistantTurn = {
@@ -136,6 +144,7 @@ export function buildGroundedPrompt(
   question: string,
   evidence: RetrievalMatch[],
   history: AssistantTurn[] = [],
+  language: AssistantLanguage = "en",
 ): string {
   const sources = evidence
     .map(
@@ -149,7 +158,7 @@ export function buildGroundedPrompt(
         .map((turn) => `${turn.role}: ${turn.text}`)
         .join("\n")}\n\n`
     : "";
-  return `${recentConversation}Question:\n${question}\n\nApproved evidence:\n${sources}`;
+  return `${targetLanguageInstruction(language)}\n\n${recentConversation}Question:\n${question}\n\nApproved evidence (canonical English source text):\n${sources}`;
 }
 
 export function createGeminiGenerator(apiKey: string): AssistantGenerator {
@@ -158,16 +167,41 @@ export function createGeminiGenerator(apiKey: string): AssistantGenerator {
   }
   const google = createGoogle({ apiKey });
 
-  return async ({ question, evidence, history }) => {
+  return async ({ question, evidence, history, language }) => {
     const { text } = await generateText({
       model: google(ASSISTANT_MODEL),
       instructions: ASSISTANT_SYSTEM_INSTRUCTIONS,
-      prompt: buildGroundedPrompt(question, evidence, history),
-      maxOutputTokens: 350,
+      prompt: buildGroundedPrompt(question, evidence, history, language),
+      maxOutputTokens: 1600,
       temperature: 0.2,
       telemetry: { isEnabled: false },
     });
     return text.trim();
+  };
+}
+
+export function createGeminiQueryTranslator(
+  apiKey: string,
+): AssistantQueryTranslator {
+  if (!apiKey.trim()) {
+    throw new Error("GOOGLE_GENERATIVE_AI_API_KEY is required.");
+  }
+  const google = createGoogle({ apiKey });
+
+  return async ({ question, language }) => {
+    if (language === "en") return question;
+    const { text } = await generateText({
+      model: google(ASSISTANT_MODEL),
+      instructions:
+        "Translate the property question into concise English for semantic retrieval. Return only the translation. Preserve proper names, numbers, units, negation, uncertainty, and requested time scope. Do not answer the question or add facts.",
+      prompt: question,
+      maxOutputTokens: 500,
+      temperature: 0,
+      telemetry: { isEnabled: false },
+    });
+    const translated = text.trim();
+    if (!translated) throw new Error("Query translation was empty.");
+    return translated;
   };
 }
 
@@ -209,6 +243,10 @@ export function createAssistantService(dependencies: {
 
     const question = parsed.data;
     const history = parsedHistory.data;
+    const requestedLanguage = resolveAssistantLanguage(
+      question,
+      typeof request === "string" ? "en" : request.language,
+    );
     if (
       containsSensitivePersonalData(question) ||
       history.some((turn) => containsSensitivePersonalData(turn.text))
@@ -216,8 +254,7 @@ export function createAssistantService(dependencies: {
       return {
         sessionId,
         status: "blocked",
-        answer:
-          "For privacy, please remove phone numbers, email addresses, or personal identifiers before asking your question.",
+        answer: assistantMessage(requestedLanguage.code, "removePersonalData"),
         citations: [],
         model: null,
         policy: {
@@ -229,10 +266,6 @@ export function createAssistantService(dependencies: {
       };
     }
 
-    const requestedLanguage = resolveAssistantLanguage(
-      question,
-      typeof request === "string" ? "en" : request.language,
-    );
     if (requestedLanguage.approvalState !== "approved") {
       return {
         sessionId,
@@ -264,7 +297,12 @@ export function createAssistantService(dependencies: {
           policyDecision.action === "escalate"
             ? "human-confirmation-required"
             : "blocked",
-        answer: policyDecision.response ?? "That request cannot be completed.",
+        answer: assistantMessage(
+          requestedLanguage.code,
+          policyDecision.action === "escalate"
+            ? "humanConfirmation"
+            : "policyBoundary",
+        ),
         citations: [],
         model: null,
         policy,
@@ -284,8 +322,7 @@ export function createAssistantService(dependencies: {
       return {
         sessionId,
         status: "service-unavailable",
-        answer:
-          "The property guide is temporarily unavailable. Please try again shortly or contact the project representative.",
+        answer: assistantMessage(requestedLanguage.code, "serviceUnavailable"),
         citations: [],
         model: null,
         policy,
@@ -296,8 +333,10 @@ export function createAssistantService(dependencies: {
       return {
         sessionId,
         status: "insufficient-evidence",
-        answer:
-          "That information is not confirmed in the approved project material. Please contact the project representative for an update.",
+        answer: assistantMessage(
+          requestedLanguage.code,
+          "insufficientEvidence",
+        ),
         citations: [],
         model: null,
         policy: { ...policy, humanHandoffRequired: true },
@@ -307,13 +346,17 @@ export function createAssistantService(dependencies: {
 
     let answer: string;
     try {
-      answer = await dependencies.generate({ question, evidence, history });
+      answer = await dependencies.generate({
+        question,
+        evidence,
+        history,
+        language: requestedLanguage.code,
+      });
     } catch {
       return {
         sessionId,
         status: "service-unavailable",
-        answer:
-          "The property guide could not complete that response. Please try again shortly or contact the project representative.",
+        answer: assistantMessage(requestedLanguage.code, "serviceUnavailable"),
         citations: [],
         model: null,
         policy,
@@ -324,8 +367,7 @@ export function createAssistantService(dependencies: {
       return {
         sessionId,
         status: "insufficient-evidence",
-        answer:
-          "A supported answer could not be produced from the approved project material. Please contact the project representative for confirmation.",
+        answer: assistantMessage(requestedLanguage.code, "unsupportedAnswer"),
         citations: [],
         model: null,
         policy: { ...policy, humanHandoffRequired: true },

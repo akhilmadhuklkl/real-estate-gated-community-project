@@ -5,12 +5,12 @@
   "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
   "minimumSimilarity": 0.45,
   "metrics": {
-    "totalCases": 26,
-    "positiveCases": 18,
+    "totalCases": 32,
+    "positiveCases": 24,
     "negativeCases": 8,
-    "hitAt1": 0.8333333333333334,
-    "hitAt3": 0.9444444444444444,
-    "meanReciprocalRank": 0.9027777777777778,
+    "hitAt1": 0.7083333333333334,
+    "hitAt3": 0.9166666666666666,
+    "meanReciprocalRank": 0.8136574074074073,
     "negativeRejectionRate": 1,
     "citationCompleteness": 1
   },
@@ -52,7 +52,7 @@
             "pageStart": 4,
             "sectionPath": []
           },
-          "score": 0.6591651509006515
+          "score": 0.646094603272432
         },
         {
           "id": "chk-ks-001-003-e21cff0810cc",
@@ -65,7 +65,7 @@
             "pageStart": 3,
             "sectionPath": []
           },
-          "score": 0.5083073593412674
+          "score": 0.5096526889557605
         },
         {
           "id": "chk-ks-001-005-69e156689389",
@@ -78,7 +78,7 @@
             "pageStart": 5,
             "sectionPath": []
           },
-          "score": 0.49484823623441887
+          "score": 0.4888959712259708
         }
       ],
       "firstRelevantRank": 1,
@@ -108,7 +108,7 @@
             "pageStart": 4,
             "sectionPath": []
           },
-          "score": 0.5577903612159352
+          "score": 0.5573996814232222
         },
         {
           "id": "chk-ks-002-001-1ed894f2a824",
@@ -123,7 +123,7 @@
               "project"
             ]
           },
-          "score": 0.4970169334975925
+          "score": 0.48656202289675765
         },
         {
           "id": "chk-ks-001-003-e21cff0810cc",
@@ -136,7 +136,7 @@
             "pageStart": 3,
             "sectionPath": []
           },
-          "score": 0.37929065835132375
+          "score": 0.3714538776385332
         }
       ],
       "firstRelevantRank": 2,
@@ -168,7 +168,7 @@
               "branding"
             ]
           },
-          "score": 0.6717249214932193
+          "score": 0.642469901227702
         },
         {
           "id": "chk-ks-002-009-f55d9b96e0a9",
@@ -183,22 +183,22 @@
               "documents"
             ]
           },
-          "score": 0.5912243566934595
+          "score": 0.5739929216838685
         },
         {
-          "id": "chk-ks-002-001-1ed894f2a824",
+          "id": "chk-ks-002-010-dd45bf0a9307",
           "sourceId": "KS-002",
           "locator": {
-            "characterEnd": 661,
+            "characterEnd": 447,
             "characterStart": 0,
-            "label": "JSON section: project",
+            "label": "JSON section: governance",
             "pageEnd": null,
             "pageStart": null,
             "sectionPath": [
-              "project"
+              "governance"
             ]
           },
-          "score": 0.48424178284306196
+          "score": 0.4730284091434921
         }
       ],
       "firstRelevantRank": 1,
@@ -230,7 +230,7 @@
               "project"
             ]
           },
-          "score": 0.6087097701325901
+          "score": 0.61073260258577
         },
         {
           "id": "chk-ks-001-005-69e156689389",
@@ -243,7 +243,7 @@
             "pageStart": 5,
             "sectionPath": []
           },
-          "score": 0.5487344967191615
+          "score": 0.5430622417308187
         },
         {
           "id": "chk-ks-001-003-e21cff0810cc",
@@ -256,7 +256,7 @@
             "pageStart": 3,
             "sectionPath": []
           },
-          "score": 0.35636361137128375
+          "score": 0.3576458943747612
         }
       ],
       "firstRelevantRank": 1,
@@ -288,7 +288,7 @@
               "villaTypes"
             ]
           },
-          "score": 0.571963148612542
+          "score": 0.576493970657799
         },
         {
           "id": "chk-ks-001-004-e9a506cc6681",
@@ -301,7 +301,7 @@
             "pageStart": 4,
             "sectionPath": []
           },
-          "score": 0.4179853345771971
+          "score": 0.41838058726688204
         },
         {
           "id": "chk-ks-001-009-81f0405c67ea",
@@ -314,7 +314,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.401203478761194
+          "score": 0.39569291648517435
         }
       ],
       "firstRelevantRank": 1,
@@ -346,7 +346,7 @@
               "villaTypes"
             ]
           },
-          "score": 0.39904200725207095
+          "score": 0.407212123304287
         },
         {
           "id": "chk-ks-001-009-81f0405c67ea",
@@ -359,7 +359,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.39062822530987934
+          "score": 0.3934372510713876
         },
         {
           "id": "chk-ks-001-007-3e2e7a77ffca",
@@ -372,7 +372,7 @@
             "pageStart": 7,
             "sectionPath": []
           },
-          "score": 0.31502951191306205
+          "score": 0.322388230272306
         }
       ],
       "firstRelevantRank": 1,
@@ -404,7 +404,7 @@
               "villaTypes"
             ]
           },
-          "score": 0.39817547758173566
+          "score": 0.3992943749665018
         },
         {
           "id": "chk-ks-001-009-81f0405c67ea",
@@ -417,7 +417,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.37001184864800085
+          "score": 0.36690807488644495
         },
         {
           "id": "chk-ks-001-007-3e2e7a77ffca",
@@ -430,7 +430,7 @@
             "pageStart": 7,
             "sectionPath": []
           },
-          "score": 0.3097493514826828
+          "score": 0.30397291987154224
         }
       ],
       "firstRelevantRank": 1,
@@ -450,32 +450,6 @@
       ],
       "topMatches": [
         {
-          "id": "chk-ks-001-006-245fd9199550",
-          "sourceId": "KS-001",
-          "locator": {
-            "characterEnd": 590,
-            "characterStart": 0,
-            "label": "Page 6",
-            "pageEnd": 6,
-            "pageStart": 6,
-            "sectionPath": []
-          },
-          "score": 0.5254507360649799
-        },
-        {
-          "id": "chk-ks-001-001-65446b652fac",
-          "sourceId": "KS-001",
-          "locator": {
-            "characterEnd": 28,
-            "characterStart": 0,
-            "label": "Page 1",
-            "pageEnd": 1,
-            "pageStart": 1,
-            "sectionPath": []
-          },
-          "score": 0.5226382853586163
-        },
-        {
           "id": "chk-ks-002-001-1ed894f2a824",
           "sourceId": "KS-002",
           "locator": {
@@ -488,12 +462,38 @@
               "project"
             ]
           },
-          "score": 0.5182228409696958
+          "score": 0.5629680366175978
+        },
+        {
+          "id": "chk-ks-001-006-245fd9199550",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 590,
+            "characterStart": 0,
+            "label": "Page 6",
+            "pageEnd": 6,
+            "pageStart": 6,
+            "sectionPath": []
+          },
+          "score": 0.5586485707019417
+        },
+        {
+          "id": "chk-ks-001-004-e9a506cc6681",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 835,
+            "characterStart": 0,
+            "label": "Page 4",
+            "pageEnd": 4,
+            "pageStart": 4,
+            "sectionPath": []
+          },
+          "score": 0.5351092804225291
         }
       ],
-      "firstRelevantRank": 4,
+      "firstRelevantRank": 3,
       "hitAt1": false,
-      "hitAt3": false,
+      "hitAt3": true,
       "rejected": false,
       "citationComplete": true
     },
@@ -518,7 +518,7 @@
             "pageStart": 6,
             "sectionPath": []
           },
-          "score": 0.6202927595231256
+          "score": 0.6115823551639108
         },
         {
           "id": "chk-ks-001-004-e9a506cc6681",
@@ -531,7 +531,7 @@
             "pageStart": 4,
             "sectionPath": []
           },
-          "score": 0.5279812933609183
+          "score": 0.5147025982641413
         },
         {
           "id": "chk-ks-001-001-65446b652fac",
@@ -544,7 +544,7 @@
             "pageStart": 1,
             "sectionPath": []
           },
-          "score": 0.4240508689981319
+          "score": 0.42036137027348464
         }
       ],
       "firstRelevantRank": 2,
@@ -574,20 +574,22 @@
             "pageStart": 4,
             "sectionPath": []
           },
-          "score": 0.32424002742667496
+          "score": 0.32868586944050004
         },
         {
-          "id": "chk-ks-001-008-009cd0b48bae",
-          "sourceId": "KS-001",
+          "id": "chk-ks-002-001-1ed894f2a824",
+          "sourceId": "KS-002",
           "locator": {
-            "characterEnd": 727,
+            "characterEnd": 661,
             "characterStart": 0,
-            "label": "Page 8",
-            "pageEnd": 8,
-            "pageStart": 8,
-            "sectionPath": []
+            "label": "JSON section: project",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "project"
+            ]
           },
-          "score": 0.312119907912697
+          "score": 0.3055619394775627
         },
         {
           "id": "chk-ks-002-004-35d4edfc61ef",
@@ -602,7 +604,7 @@
               "amenities"
             ]
           },
-          "score": 0.29494469606747187
+          "score": 0.300638228285251
         }
       ],
       "firstRelevantRank": 1,
@@ -634,7 +636,7 @@
               "specifications"
             ]
           },
-          "score": 0.4616220150099894
+          "score": 0.4687419722068515
         },
         {
           "id": "chk-ks-002-003-e12283b6d722",
@@ -649,7 +651,7 @@
               "villaTypes"
             ]
           },
-          "score": 0.43323616292702605
+          "score": 0.44918853610304593
         },
         {
           "id": "chk-ks-001-007-3e2e7a77ffca",
@@ -662,7 +664,7 @@
             "pageStart": 7,
             "sectionPath": []
           },
-          "score": 0.4097727241296331
+          "score": 0.4186068996567654
         }
       ],
       "firstRelevantRank": 1,
@@ -692,7 +694,7 @@
             "pageStart": 8,
             "sectionPath": []
           },
-          "score": 0.6316219413932789
+          "score": 0.61755547320754
         },
         {
           "id": "chk-ks-001-004-e9a506cc6681",
@@ -705,7 +707,7 @@
             "pageStart": 4,
             "sectionPath": []
           },
-          "score": 0.499931148815997
+          "score": 0.49166531122685947
         },
         {
           "id": "chk-ks-001-009-81f0405c67ea",
@@ -718,7 +720,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.42864066297893366
+          "score": 0.419921223021904
         }
       ],
       "firstRelevantRank": 1,
@@ -748,7 +750,7 @@
             "pageStart": 8,
             "sectionPath": []
           },
-          "score": 0.40535925588479493
+          "score": 0.4108252988752807
         },
         {
           "id": "chk-ks-002-006-1e42c142b310",
@@ -763,7 +765,7 @@
               "location"
             ]
           },
-          "score": 0.3041941529621277
+          "score": 0.3095799952597086
         },
         {
           "id": "chk-ks-001-009-81f0405c67ea",
@@ -776,7 +778,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.22908284916532007
+          "score": 0.23887464030257233
         }
       ],
       "firstRelevantRank": 1,
@@ -806,7 +808,7 @@
             "pageStart": 8,
             "sectionPath": []
           },
-          "score": 0.4768042260983636
+          "score": 0.4763267995587611
         },
         {
           "id": "chk-ks-002-006-1e42c142b310",
@@ -821,7 +823,7 @@
               "location"
             ]
           },
-          "score": 0.30543334562749563
+          "score": 0.3049521520134928
         },
         {
           "id": "chk-ks-002-001-1ed894f2a824",
@@ -836,7 +838,7 @@
               "project"
             ]
           },
-          "score": 0.25334902128433334
+          "score": 0.2491114762773034
         }
       ],
       "firstRelevantRank": 1,
@@ -866,7 +868,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.4510369354837954
+          "score": 0.4566192928973597
         },
         {
           "id": "chk-ks-002-002-504b1a47c55e",
@@ -881,22 +883,22 @@
               "branding"
             ]
           },
-          "score": 0.4432505633199243
+          "score": 0.4466341228050319
         },
         {
-          "id": "chk-ks-002-010-dd45bf0a9307",
+          "id": "chk-ks-002-009-f55d9b96e0a9",
           "sourceId": "KS-002",
           "locator": {
-            "characterEnd": 447,
+            "characterEnd": 561,
             "characterStart": 0,
-            "label": "JSON section: governance",
+            "label": "JSON section: documents",
             "pageEnd": null,
             "pageStart": null,
             "sectionPath": [
-              "governance"
+              "documents"
             ]
           },
-          "score": 0.43487418564204344
+          "score": 0.4339200015263124
         }
       ],
       "firstRelevantRank": 1,
@@ -928,7 +930,7 @@
               "media"
             ]
           },
-          "score": 0.38099482719876787
+          "score": 0.38331811016340717
         },
         {
           "id": "chk-ks-001-008-009cd0b48bae",
@@ -941,7 +943,7 @@
             "pageStart": 8,
             "sectionPath": []
           },
-          "score": 0.38040916961359106
+          "score": 0.3785453290568607
         },
         {
           "id": "chk-ks-002-006-1e42c142b310",
@@ -956,7 +958,7 @@
               "location"
             ]
           },
-          "score": 0.3056556466505533
+          "score": 0.30707231223738163
         }
       ],
       "firstRelevantRank": 1,
@@ -987,7 +989,7 @@
               "documents"
             ]
           },
-          "score": 0.600518586439326
+          "score": 0.6056280197655634
         },
         {
           "id": "chk-ks-002-002-504b1a47c55e",
@@ -1002,7 +1004,7 @@
               "branding"
             ]
           },
-          "score": 0.4727865215138739
+          "score": 0.4838521095010849
         },
         {
           "id": "chk-ks-002-008-c6ad0fd688fb",
@@ -1017,7 +1019,7 @@
               "media"
             ]
           },
-          "score": 0.37910881093723375
+          "score": 0.3801927290712074
         }
       ],
       "firstRelevantRank": 1,
@@ -1048,7 +1050,7 @@
               "governance"
             ]
           },
-          "score": 0.5507337430254025
+          "score": 0.5440336374789183
         },
         {
           "id": "chk-ks-002-009-f55d9b96e0a9",
@@ -1063,7 +1065,7 @@
               "documents"
             ]
           },
-          "score": 0.43249825088553373
+          "score": 0.4251012662595817
         },
         {
           "id": "chk-ks-002-002-504b1a47c55e",
@@ -1078,7 +1080,7 @@
               "branding"
             ]
           },
-          "score": 0.4310461330635648
+          "score": 0.42248782677728086
         }
       ],
       "firstRelevantRank": 1,
@@ -1107,7 +1109,7 @@
               "villaTypes"
             ]
           },
-          "score": 0.2530060138836886
+          "score": 0.2605447206358049
         },
         {
           "id": "chk-ks-001-009-81f0405c67ea",
@@ -1120,7 +1122,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.25107892321780867
+          "score": 0.25016433055843007
         },
         {
           "id": "chk-ks-001-004-e9a506cc6681",
@@ -1133,7 +1135,7 @@
             "pageStart": 4,
             "sectionPath": []
           },
-          "score": 0.1837749530956365
+          "score": 0.17819779988035742
         }
       ],
       "firstRelevantRank": null,
@@ -1160,7 +1162,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.3962107407107438
+          "score": 0.3797116593714957
         },
         {
           "id": "chk-ks-002-001-1ed894f2a824",
@@ -1175,20 +1177,20 @@
               "project"
             ]
           },
-          "score": 0.27610112897830846
+          "score": 0.27711136340274073
         },
         {
-          "id": "chk-ks-001-004-e9a506cc6681",
+          "id": "chk-ks-001-003-e21cff0810cc",
           "sourceId": "KS-001",
           "locator": {
-            "characterEnd": 835,
+            "characterEnd": 469,
             "characterStart": 0,
-            "label": "Page 4",
-            "pageEnd": 4,
-            "pageStart": 4,
+            "label": "Page 3",
+            "pageEnd": 3,
+            "pageStart": 3,
             "sectionPath": []
           },
-          "score": 0.22272330116516337
+          "score": 0.2244467739308348
         }
       ],
       "firstRelevantRank": null,
@@ -1217,7 +1219,7 @@
               "documents"
             ]
           },
-          "score": 0.43613590995148055
+          "score": 0.42219909787395743
         },
         {
           "id": "chk-ks-002-007-044cf2608b20",
@@ -1232,7 +1234,7 @@
               "contacts"
             ]
           },
-          "score": 0.29438580785843704
+          "score": 0.292656286667055
         },
         {
           "id": "chk-ks-002-010-dd45bf0a9307",
@@ -1247,7 +1249,7 @@
               "governance"
             ]
           },
-          "score": 0.291853262218965
+          "score": 0.2732154709157983
         }
       ],
       "firstRelevantRank": null,
@@ -1274,20 +1276,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.2148493914993337
-        },
-        {
-          "id": "chk-ks-001-008-009cd0b48bae",
-          "sourceId": "KS-001",
-          "locator": {
-            "characterEnd": 727,
-            "characterStart": 0,
-            "label": "Page 8",
-            "pageEnd": 8,
-            "pageStart": 8,
-            "sectionPath": []
-          },
-          "score": 0.1511584192776006
+          "score": 0.2263552938020035
         },
         {
           "id": "chk-ks-002-009-f55d9b96e0a9",
@@ -1302,7 +1291,20 @@
               "documents"
             ]
           },
-          "score": 0.14442886265536764
+          "score": 0.15340875935963422
+        },
+        {
+          "id": "chk-ks-001-008-009cd0b48bae",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 727,
+            "characterStart": 0,
+            "label": "Page 8",
+            "pageEnd": 8,
+            "pageStart": 8,
+            "sectionPath": []
+          },
+          "score": 0.14613933385835776
         }
       ],
       "firstRelevantRank": null,
@@ -1329,7 +1331,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.307570746402932
+          "score": 0.30765344525499805
         },
         {
           "id": "chk-ks-001-001-65446b652fac",
@@ -1342,7 +1344,7 @@
             "pageStart": 1,
             "sectionPath": []
           },
-          "score": 0.206940695642769
+          "score": 0.222266530541863
         },
         {
           "id": "chk-ks-002-001-1ed894f2a824",
@@ -1357,7 +1359,7 @@
               "project"
             ]
           },
-          "score": 0.20556431376560744
+          "score": 0.19894388549775588
         }
       ],
       "firstRelevantRank": null,
@@ -1386,7 +1388,20 @@
               "governance"
             ]
           },
-          "score": 0.17043870708537182
+          "score": 0.17028663783029493
+        },
+        {
+          "id": "chk-ks-001-006-245fd9199550",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 590,
+            "characterStart": 0,
+            "label": "Page 6",
+            "pageEnd": 6,
+            "pageStart": 6,
+            "sectionPath": []
+          },
+          "score": 0.12449929448364438
         },
         {
           "id": "chk-ks-001-005-69e156689389",
@@ -1399,22 +1414,7 @@
             "pageStart": 5,
             "sectionPath": []
           },
-          "score": 0.13130066248145505
-        },
-        {
-          "id": "chk-ks-002-002-504b1a47c55e",
-          "sourceId": "KS-002",
-          "locator": {
-            "characterEnd": 405,
-            "characterStart": 0,
-            "label": "JSON section: branding",
-            "pageEnd": null,
-            "pageStart": null,
-            "sectionPath": [
-              "branding"
-            ]
-          },
-          "score": 0.12800347282647695
+          "score": 0.12242129810600202
         }
       ],
       "firstRelevantRank": null,
@@ -1441,7 +1441,7 @@
             "pageStart": 9,
             "sectionPath": []
           },
-          "score": 0.15675800061559012
+          "score": 0.16767879875832922
         },
         {
           "id": "chk-ks-001-003-e21cff0810cc",
@@ -1454,20 +1454,20 @@
             "pageStart": 3,
             "sectionPath": []
           },
-          "score": 0.10717516931756696
+          "score": 0.09870666934728889
         },
         {
-          "id": "chk-ks-001-005-69e156689389",
+          "id": "chk-ks-001-002-0e6b0e7fe3dc",
           "sourceId": "KS-001",
           "locator": {
-            "characterEnd": 1387,
+            "characterEnd": 440,
             "characterStart": 0,
-            "label": "Page 5",
-            "pageEnd": 5,
-            "pageStart": 5,
+            "label": "Page 2",
+            "pageEnd": 2,
+            "pageStart": 2,
             "sectionPath": []
           },
-          "score": 0.09731298575837344
+          "score": 0.09453796972451217
         }
       ],
       "firstRelevantRank": null,
@@ -1496,22 +1496,7 @@
               "contacts"
             ]
           },
-          "score": 0.16087794125568294
-        },
-        {
-          "id": "chk-ks-002-003-e12283b6d722",
-          "sourceId": "KS-002",
-          "locator": {
-            "characterEnd": 673,
-            "characterStart": 0,
-            "label": "JSON section: villaTypes",
-            "pageEnd": null,
-            "pageStart": null,
-            "sectionPath": [
-              "villaTypes"
-            ]
-          },
-          "score": 0.1589227028997524
+          "score": 0.17902860385265212
         },
         {
           "id": "chk-ks-002-005-56dbd1de047c",
@@ -1526,13 +1511,380 @@
               "specifications"
             ]
           },
-          "score": 0.15487074796421255
+          "score": 0.17657880153621405
+        },
+        {
+          "id": "chk-ks-002-003-e12283b6d722",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 673,
+            "characterStart": 0,
+            "label": "JSON section: villaTypes",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "villaTypes"
+            ]
+          },
+          "score": 0.16960829997467256
         }
       ],
       "firstRelevantRank": null,
       "hitAt1": false,
       "hitAt3": false,
       "rejected": true,
+      "citationComplete": true
+    },
+    {
+      "id": "RET-027",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "ഗ്ലിറ്റ്സ് പ്രൈഡിൽ ബ്രോഷറിൽ പറയുന്ന സൗകര്യങ്ങൾ ഏതൊക്കെയാണ്?",
+      "expectedChunkIds": [
+        "chk-ks-001-004-e9a506cc6681",
+        "chk-ks-002-004-35d4edfc61ef"
+      ],
+      "topMatches": [
+        {
+          "id": "chk-ks-001-004-e9a506cc6681",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 835,
+            "characterStart": 0,
+            "label": "Page 4",
+            "pageEnd": 4,
+            "pageStart": 4,
+            "sectionPath": []
+          },
+          "score": 0.39145569523500384
+        },
+        {
+          "id": "chk-ks-002-006-1e42c142b310",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 1929,
+            "characterStart": 0,
+            "label": "JSON section: location",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "location"
+            ]
+          },
+          "score": 0.3749629698597378
+        },
+        {
+          "id": "chk-ks-002-007-044cf2608b20",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 1254,
+            "characterStart": 0,
+            "label": "JSON section: contacts",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "contacts"
+            ]
+          },
+          "score": 0.33788933350243394
+        }
+      ],
+      "firstRelevantRank": 1,
+      "hitAt1": true,
+      "hitAt3": true,
+      "rejected": false,
+      "citationComplete": true
+    },
+    {
+      "id": "RET-028",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "ഗ്ലിറ്റ്സ് പ്രൈഡ് എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+      "expectedChunkIds": [
+        "chk-ks-001-008-009cd0b48bae",
+        "chk-ks-002-006-1e42c142b310"
+      ],
+      "topMatches": [
+        {
+          "id": "chk-ks-001-001-65446b652fac",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 28,
+            "characterStart": 0,
+            "label": "Page 1",
+            "pageEnd": 1,
+            "pageStart": 1,
+            "sectionPath": []
+          },
+          "score": 0.35281608701683564
+        },
+        {
+          "id": "chk-ks-001-002-0e6b0e7fe3dc",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 440,
+            "characterStart": 0,
+            "label": "Page 2",
+            "pageEnd": 2,
+            "pageStart": 2,
+            "sectionPath": []
+          },
+          "score": 0.34007664069676935
+        },
+        {
+          "id": "chk-ks-001-008-009cd0b48bae",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 727,
+            "characterStart": 0,
+            "label": "Page 8",
+            "pageEnd": 8,
+            "pageStart": 8,
+            "sectionPath": []
+          },
+          "score": 0.3167437803667811
+        }
+      ],
+      "firstRelevantRank": 3,
+      "hitAt1": false,
+      "hitAt3": true,
+      "rejected": false,
+      "citationComplete": true
+    },
+    {
+      "id": "RET-029",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "विला का कुल फ़्लोर एरिया कितना है?",
+      "expectedChunkIds": [
+        "chk-ks-001-007-3e2e7a77ffca",
+        "chk-ks-002-003-e12283b6d722"
+      ],
+      "topMatches": [
+        {
+          "id": "chk-ks-002-003-e12283b6d722",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 673,
+            "characterStart": 0,
+            "label": "JSON section: villaTypes",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "villaTypes"
+            ]
+          },
+          "score": 0.19940409903112027
+        },
+        {
+          "id": "chk-ks-001-001-65446b652fac",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 28,
+            "characterStart": 0,
+            "label": "Page 1",
+            "pageEnd": 1,
+            "pageStart": 1,
+            "sectionPath": []
+          },
+          "score": 0.15892767861252105
+        },
+        {
+          "id": "chk-ks-001-009-81f0405c67ea",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 282,
+            "characterStart": 0,
+            "label": "Page 9",
+            "pageEnd": 9,
+            "pageStart": 9,
+            "sectionPath": []
+          },
+          "score": 0.13767786019912093
+        }
+      ],
+      "firstRelevantRank": 1,
+      "hitAt1": true,
+      "hitAt3": true,
+      "rejected": false,
+      "citationComplete": true
+    },
+    {
+      "id": "RET-030",
+      "kind": "positive",
+      "riskTier": "R0",
+      "query": "ग्लिट्ज़ प्राइड के आर्किटेक्ट कौन हैं?",
+      "expectedChunkIds": [
+        "chk-ks-001-005-69e156689389",
+        "chk-ks-002-001-1ed894f2a824"
+      ],
+      "topMatches": [
+        {
+          "id": "chk-ks-001-003-e21cff0810cc",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 469,
+            "characterStart": 0,
+            "label": "Page 3",
+            "pageEnd": 3,
+            "pageStart": 3,
+            "sectionPath": []
+          },
+          "score": 0.4457316271094727
+        },
+        {
+          "id": "chk-ks-002-001-1ed894f2a824",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 661,
+            "characterStart": 0,
+            "label": "JSON section: project",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "project"
+            ]
+          },
+          "score": 0.3475268057896883
+        },
+        {
+          "id": "chk-ks-001-005-69e156689389",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 1387,
+            "characterStart": 0,
+            "label": "Page 5",
+            "pageEnd": 5,
+            "pageStart": 5,
+            "sectionPath": []
+          },
+          "score": 0.2956459373071814
+        }
+      ],
+      "firstRelevantRank": 2,
+      "hitAt1": false,
+      "hitAt3": true,
+      "rejected": false,
+      "citationComplete": true
+    },
+    {
+      "id": "RET-031",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "أين يقع مشروع غليتز برايد؟",
+      "expectedChunkIds": [
+        "chk-ks-001-008-009cd0b48bae",
+        "chk-ks-002-006-1e42c142b310"
+      ],
+      "topMatches": [
+        {
+          "id": "chk-ks-001-001-65446b652fac",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 28,
+            "characterStart": 0,
+            "label": "Page 1",
+            "pageEnd": 1,
+            "pageStart": 1,
+            "sectionPath": []
+          },
+          "score": 0.34651690757840076
+        },
+        {
+          "id": "chk-ks-002-001-1ed894f2a824",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 661,
+            "characterStart": 0,
+            "label": "JSON section: project",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "project"
+            ]
+          },
+          "score": 0.2904470580915067
+        },
+        {
+          "id": "chk-ks-002-009-f55d9b96e0a9",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 561,
+            "characterStart": 0,
+            "label": "JSON section: documents",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "documents"
+            ]
+          },
+          "score": 0.2700988447377303
+        }
+      ],
+      "firstRelevantRank": 9,
+      "hitAt1": false,
+      "hitAt3": false,
+      "rejected": false,
+      "citationComplete": true
+    },
+    {
+      "id": "RET-032",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "ما هي المرافق المذكورة في الكتيب؟",
+      "expectedChunkIds": [
+        "chk-ks-001-004-e9a506cc6681",
+        "chk-ks-002-004-35d4edfc61ef"
+      ],
+      "topMatches": [
+        {
+          "id": "chk-ks-001-001-65446b652fac",
+          "sourceId": "KS-001",
+          "locator": {
+            "characterEnd": 28,
+            "characterStart": 0,
+            "label": "Page 1",
+            "pageEnd": 1,
+            "pageStart": 1,
+            "sectionPath": []
+          },
+          "score": 0.38028072691850756
+        },
+        {
+          "id": "chk-ks-002-003-e12283b6d722",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 673,
+            "characterStart": 0,
+            "label": "JSON section: villaTypes",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "villaTypes"
+            ]
+          },
+          "score": 0.33423284192839053
+        },
+        {
+          "id": "chk-ks-002-001-1ed894f2a824",
+          "sourceId": "KS-002",
+          "locator": {
+            "characterEnd": 661,
+            "characterStart": 0,
+            "label": "JSON section: project",
+            "pageEnd": null,
+            "pageStart": null,
+            "sectionPath": [
+              "project"
+            ]
+          },
+          "score": 0.3262561100087743
+        }
+      ],
+      "firstRelevantRank": 4,
+      "hitAt1": false,
+      "hitAt3": false,
+      "rejected": false,
       "citationComplete": true
     }
   ]

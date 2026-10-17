@@ -10,6 +10,7 @@ import vectorIndexData from "../../content/generated/vector-index.json";
 import {
   createAssistantService,
   createGeminiGenerator,
+  createGeminiQueryTranslator,
   ASSISTANT_MODEL,
   type AssistantRequest,
 } from "./assistant-service";
@@ -42,12 +43,16 @@ export async function answerAssistantQuestion(request: AssistantRequest) {
   const service = createAssistantService({
     model: ASSISTANT_MODEL,
     retrieve: async ({ query, minimumScore, topK, language }) => {
-      const embedding = await embedQuestion(query);
+      const retrievalQuery = await createGeminiQueryTranslator(apiKey)({
+        question: query,
+        language,
+      });
+      const embedding = await embedQuestion(retrievalQuery);
       return rankVectorRecords(
         embedding,
         vectorIndex.records,
-        { minimumScore, topK, languageCodes: [language] },
-        query,
+        { minimumScore, topK, languageCodes: ["en"] },
+        retrievalQuery,
       );
     },
     generate: createGeminiGenerator(apiKey),

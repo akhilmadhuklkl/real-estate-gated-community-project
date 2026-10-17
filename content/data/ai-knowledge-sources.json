@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "registerId": "glitz-pride-ai-knowledge-sources",
   "projectId": "glitz-pride",
-  "asOfDate": "2026-10-11",
+  "asOfDate": "2026-10-17",
   "governance": {
     "retrievalRule": "Only approved or approved-with-qualifications sources may support an answer. Qualifications must appear beside every affected claim.",
     "pendingRule": "Pending sources are catalogue placeholders and must not be indexed for answer generation.",
@@ -551,22 +551,27 @@
       "title": "Approved multilingual terminology and translations",
       "category": "translations",
       "authorityTier": "required-governed-derivative",
-      "decision": "pending",
-      "owner": "Glitz Pride content owner",
+      "decision": "approved-with-qualifications",
+      "owner": "AKHIL",
       "steward": "AKHIL",
-      "location": null,
-      "format": "versioned-translation-memory",
-      "effectiveDate": null,
-      "lastVerifiedOn": null,
+      "location": "content/data/approved-translations.json",
+      "format": "json",
+      "effectiveDate": "2026-10-17",
+      "lastVerifiedOn": "2026-10-17",
       "reviewCadenceDays": 90,
-      "allowedUses": [],
-      "prohibitedUses": [
-        "production Malayalam, Hindi, or Arabic factual answers",
-        "translated legal or commercial guarantees"
+      "allowedUses": [
+        "Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence",
+        "localized fixed safety and service messages",
+        "language direction and interface labels"
       ],
-      "approvalEvidence": null,
+      "prohibitedUses": [
+        "uncited translated factual claims",
+        "unverified legal or commercial translations",
+        "translation of unsupported price, availability, approval, or contractual claims"
+      ],
+      "approvalEvidence": "AKHIL approval recorded 2026-10-17",
       "reviewTrigger": "Human-reviewed translation set and cross-language evaluations approved",
-      "notes": "English remains the reference language until each language set is approved."
+      "notes": "AKHIL is the named reviewer. English remains the canonical evidence language; Malayalam, Hindi, and Arabic answers must preserve names, numbers, units, citations, and qualifications."
     },
     {
       "id": "KS-023",

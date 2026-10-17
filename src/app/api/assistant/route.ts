@@ -52,6 +52,7 @@ export async function POST(request: Request) {
         : null;
     const recommendation =
       preview?.kind === "recommendation" &&
+      parsed.data.language === "en" &&
       isRecommendationConversation(userConversation)
         ? recommendationAnswer(preview.recommendation)
         : null;

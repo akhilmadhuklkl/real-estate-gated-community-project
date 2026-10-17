@@ -124,24 +124,40 @@ describe("assistant service", () => {
     });
   });
 
-  it("fails closed when a requested translation is not approved", async () => {
-    const retrieve = vi.fn();
-    const generate = vi.fn();
+  it("uses approved Malayalam while preserving canonical evidence", async () => {
+    const retrieve = vi.fn().mockResolvedValue([evidence]);
+    const generate = vi
+      .fn()
+      .mockResolvedValue("ബ്രോഷറിൽ ക്ലബ് ഹൗസ് നൽകിയിട്ടുണ്ട്.");
     const answer = await createAssistantService({ retrieve, generate })({
       question: "വില്ലകളെക്കുറിച്ച് പറയാമോ?",
       language: "ml",
     });
 
-    expect(answer.status).toBe("insufficient-evidence");
-    expect(answer.policy).toMatchObject({
-      reason: "translation-not-approved",
-      riskTier: "R1",
-      humanHandoffRequired: true,
+    expect(answer.status).toBe("answered");
+    expect(retrieve).toHaveBeenCalledWith({
+      query: "വില്ലകളെക്കുറിച്ച് പറയാമോ?",
+      language: "ml",
+      minimumScore: ASSISTANT_MINIMUM_SCORE,
+      topK: 3,
     });
-    expect(answer.citations).toEqual([]);
-    expect(answer.model).toBeNull();
-    expect(retrieve).not.toHaveBeenCalled();
-    expect(generate).not.toHaveBeenCalled();
+    expect(generate).toHaveBeenCalledWith({
+      question: "വില്ലകളെക്കുറിച്ച് പറയാമോ?",
+      evidence: [evidence],
+      history: [],
+      language: "ml",
+    });
+    expect(answer.citations).toHaveLength(1);
+  });
+
+  it("localizes missing-evidence responses for Arabic", async () => {
+    const answer = await createAssistantService({
+      retrieve: vi.fn().mockResolvedValue([]),
+      generate: vi.fn(),
+    })({ question: "ما هو السعر الحالي؟", language: "ar" });
+
+    expect(answer.status).toBe("insufficient-evidence");
+    expect(answer.answer).toContain("غير مؤكدة");
   });
 
   it("refuses instruction extraction before retrieval or generation", async () => {
@@ -200,6 +216,7 @@ describe("assistant service", () => {
       question: "What about the clubhouse?",
       evidence: [evidence],
       history: [{ role: "user", text: "Which amenities are listed?" }],
+      language: "en",
     });
   });
 
