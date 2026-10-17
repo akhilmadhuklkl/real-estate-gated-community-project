@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   assistantPreviewSelectionSchema,
   resolveAssistantPreview,
+  selectAssistantPreview,
 } from "./assistant-preview";
 
 const evidence = new Set(["chk-source-one", "chk-source-two"]);
@@ -128,5 +129,52 @@ describe("assistant preview response schema", () => {
     expect(preview.actions.calls).toEqual([]);
     expect(preview.actions.email?.href).toMatch(/^mailto:/);
     expect(preview.actions.whatsapp.enabled).toBe(false);
+  });
+});
+
+describe("assistant preview intent selection", () => {
+  const citation = {
+    evidenceId: "chk-source-one",
+    sourceId: "KS-001",
+    documentId: "document-glitz-brochure",
+    sourceTitle: "Glitz Pride brochure",
+    locator: {
+      label: "Page 7",
+      pageStart: 7,
+      pageEnd: 7,
+      sectionPath: [],
+    },
+    effectiveDate: null,
+    reviewedAt: "2026-10-17",
+    validUntil: null,
+    qualification: "owner-provided",
+    href: "/reference/glitz-pride/brochure.pdf",
+    confidence: {
+      level: "high" as const,
+      score: 0.9,
+      basis: "retrieval-score" as const,
+    },
+  };
+
+  it.each([
+    ["Show me the floor plan", "floor-plan"],
+    ["Can I see project photos?", "gallery"],
+    ["Which hospitals are nearby?", "map"],
+    ["How can I contact the team?", "contact"],
+    ["Open the brochure", "document"],
+    ["What villa configuration is available?", "villa"],
+  ])("selects a trusted %s preview", (question, kind) => {
+    expect(selectAssistantPreview(question, [citation])?.kind).toBe(kind);
+  });
+
+  it("falls back to the approved villa when comparison inventory is insufficient", () => {
+    expect(selectAssistantPreview("Compare the villas", [citation])?.kind).toBe(
+      "villa",
+    );
+  });
+
+  it("returns no preview without answer-scoped evidence or a supported intent", () => {
+    expect(selectAssistantPreview("Show the floor plan", [])).toBeNull();
+    expect(selectAssistantPreview("Hello there", [citation])).toBeNull();
   });
 });

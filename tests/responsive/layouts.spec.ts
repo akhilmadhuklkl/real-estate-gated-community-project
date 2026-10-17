@@ -119,3 +119,81 @@ test("property guide opens without clipping its conversation surface", async ({
   expect(layout.top).toBeGreaterThanOrEqual(-1);
   expect(layout.bottom).toBeLessThanOrEqual(layout.viewportHeight + 1);
 });
+
+test("dynamic property preview stays within the conversation surface", async ({
+  page,
+}) => {
+  await page.route("**/api/assistant", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        sessionId: "responsive-preview",
+        status: "answered",
+        answer: "The approved source describes the available villa plan.",
+        citations: [],
+        model: "test-model",
+        policy: {
+          version: "test",
+          reason: "allowed",
+          riskTier: "R0",
+          humanHandoffRequired: false,
+        },
+        evidence: {
+          confidence: "high",
+          citationCount: 1,
+          minimumScore: 0.45,
+        },
+        preview: {
+          id: "preview-villa-test",
+          evidenceIds: ["chk-source-one"],
+          kind: "villa",
+          component: "villa-summary",
+          href: "/villas/villa-brochure-plan-01",
+          villa: {
+            id: "villa-brochure-plan-01",
+            name: "The Glitz Pride Villa",
+            totalAreaSqFt: 2180,
+            levels: 2,
+            floorAreas: [],
+            bedrooms: 3,
+            bathrooms: null,
+            availability: "unknown",
+            approvalState: "illustrative",
+            publicationNote: "Illustrative information requiring confirmation.",
+            image: "/media/glitz-pride/villa.jpg",
+            imageAlt: "Contemporary Glitz Pride villa",
+          },
+        },
+      }),
+    });
+  });
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Open Glitz Pride property guide" })
+    .click();
+  await page.getByLabel("Ask a property question").fill("Show the villa");
+  await page.getByRole("button", { name: /send/i }).click();
+  const preview = page.getByRole("complementary", {
+    name: "Visual property details",
+  });
+  await expect(preview).toBeVisible();
+  await preview.evaluate((element) =>
+    Promise.all(element.getAnimations().map((animation) => animation.finished)),
+  );
+
+  const bounds = await preview.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return {
+      left: rect.left,
+      right: rect.right,
+      top: rect.top,
+      bottom: rect.bottom,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+    };
+  });
+  expect(bounds.left).toBeGreaterThanOrEqual(-1);
+  expect(bounds.right).toBeLessThanOrEqual(bounds.viewportWidth + 1);
+  expect(bounds.top).toBeGreaterThanOrEqual(-1);
+  expect(bounds.bottom).toBeLessThanOrEqual(bounds.viewportHeight + 1);
+});

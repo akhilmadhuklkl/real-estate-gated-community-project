@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import type { AssistantCitation } from "./assistant-service";
 import { getContactActions } from "./contact-actions";
 import { galleryItems } from "./gallery-content";
 import { locationContent } from "./location-content";
@@ -7,6 +8,7 @@ import {
   buildVillaComparisonRows,
   getVillaById,
   MAX_COMPARISON_VILLAS,
+  villaCatalogue,
 } from "./villas-content";
 
 const evidenceIds = z
@@ -273,5 +275,90 @@ export function resolveAssistantPreview(
         downloadName: brochure.downloadName,
       };
     }
+  }
+}
+
+const intentPatterns = {
+  floorPlan: /\b(floor\s*plan|layout|ground floor|first floor)\b/i,
+  gallery: /\b(gallery|photos?|images?|pictures?|visuals?|renderings?)\b/i,
+  map: /\b(map|location|nearby|distance|hospital|school|college|city|reach|connected)\b/i,
+  comparison: /\b(compare|comparison|versus|\bvs\b|difference)\b/i,
+  contact: /\b(contact|call|phone|email|whats\s*app|enquir|schedule|visit)\b/i,
+  document: /\b(brochure|document|pdf|download)\b/i,
+  villa: /\b(villa|configuration|bedroom|bathroom|area|size|residence|home)\b/i,
+};
+
+export function selectAssistantPreview(
+  question: string,
+  citations: AssistantCitation[],
+): AssistantPreview | null {
+  const evidenceIds = citations.map(({ evidenceId }) => evidenceId).slice(0, 3);
+  if (!evidenceIds.length) return null;
+  const allowedEvidenceIds = new Set(evidenceIds);
+  let selection: AssistantPreviewSelection | null = null;
+
+  if (intentPatterns.floorPlan.test(question)) {
+    selection = {
+      kind: "floor-plan",
+      evidenceIds,
+      villaId: villaCatalogue[0]?.id ?? "",
+      mediaIds: galleryItems
+        .filter(({ category }) => category === "plans")
+        .slice(0, 2)
+        .map(({ id }) => id),
+    };
+  } else if (intentPatterns.gallery.test(question)) {
+    selection = {
+      kind: "gallery",
+      evidenceIds,
+      mediaIds: galleryItems
+        .filter(({ category }) => category !== "plans")
+        .slice(0, 4)
+        .map(({ id }) => id),
+    };
+  } else if (intentPatterns.map.test(question)) {
+    selection = {
+      kind: "map",
+      evidenceIds,
+      landmarkIds: locationContent.landmarks.slice(0, 6).map(({ id }) => id),
+    };
+  } else if (
+    intentPatterns.comparison.test(question) &&
+    villaCatalogue.length >= 2
+  ) {
+    selection = {
+      kind: "comparison",
+      evidenceIds,
+      villaIds: villaCatalogue.slice(0, 3).map(({ id }) => id),
+    };
+  } else if (intentPatterns.contact.test(question)) {
+    selection = {
+      kind: "contact",
+      evidenceIds,
+      channels: ["call", "email", "whatsapp"],
+    };
+  } else if (intentPatterns.document.test(question)) {
+    selection = {
+      kind: "document",
+      evidenceIds,
+      documentId: "document-glitz-brochure",
+      page: citations[0]?.locator.pageStart ?? null,
+    };
+  } else if (
+    intentPatterns.villa.test(question) ||
+    intentPatterns.comparison.test(question)
+  ) {
+    selection = {
+      kind: "villa",
+      evidenceIds,
+      villaId: villaCatalogue[0]?.id ?? "",
+    };
+  }
+
+  if (!selection) return null;
+  try {
+    return resolveAssistantPreview(selection, allowedEvidenceIds);
+  } catch {
+    return null;
   }
 }

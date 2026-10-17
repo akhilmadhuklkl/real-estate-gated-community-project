@@ -4,6 +4,7 @@ const touchContext = {
   hasTouch: true,
   isMobile: true,
 };
+const responsiveBaseUrl = "http://127.0.0.1:3100";
 
 export default defineConfig({
   testDir: "./tests/responsive",
@@ -11,12 +12,12 @@ export default defineConfig({
   workers: 2,
   reporter: "list",
   use: {
-    baseURL: "http://127.0.0.1:3000",
+    baseURL: responsiveBaseUrl,
     trace: "retain-on-failure",
   },
   webServer: {
-    command: "pnpm dev",
-    url: "http://127.0.0.1:3000",
+    command: "pnpm exec next dev -p 3100",
+    url: responsiveBaseUrl,
     reuseExistingServer: !process.env.CI,
   },
   projects: [

@@ -3,6 +3,9 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 
 import type { AssistantAnswer, AssistantTurn } from "@/lib/assistant-service";
+import type { AssistantPreview } from "@/lib/assistant-preview";
+
+import { DynamicPreviewPanel } from "./dynamic-preview-panel";
 
 type ChatMessage = AssistantTurn & {
   id: string;
@@ -30,6 +33,8 @@ export function ConciergeChat() {
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([greeting]);
   const [sessionId, setSessionId] = useState<string>();
+  const [preview, setPreview] = useState<AssistantPreview | null>(null);
+  const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -98,6 +103,8 @@ export function ConciergeChat() {
       .map(({ role, text }) => ({ role, text }));
     setMessages((current) => [...current, userMessage]);
     setQuestion("");
+    setPreview(null);
+    setMobilePreviewOpen(false);
     setLoading(true);
 
     try {
@@ -108,9 +115,12 @@ export function ConciergeChat() {
       });
       const result = (await response.json()) as AssistantAnswer & {
         error?: string;
+        preview?: AssistantPreview | null;
       };
       if (!response.ok) throw new Error(result.error);
       setSessionId(result.sessionId);
+      setPreview(result.preview ?? null);
+      setMobilePreviewOpen(Boolean(result.preview));
       setMessages((current) => [
         ...current,
         {
@@ -165,7 +175,12 @@ export function ConciergeChat() {
           <div
             ref={dialogRef}
             id="concierge-dialog"
-            className="concierge-dialog"
+            className={[
+              "concierge-dialog",
+              preview ? "concierge-dialog--with-preview" : null,
+            ]
+              .filter(Boolean)
+              .join(" ")}
             role="dialog"
             aria-modal="true"
             aria-labelledby="concierge-title"
@@ -188,91 +203,126 @@ export function ConciergeChat() {
               </button>
             </header>
 
-            <div
-              ref={messagesRef}
-              className="concierge-messages"
-              aria-live="polite"
-            >
-              {messages.map((message) => (
-                <article
-                  key={message.id}
-                  className={`concierge-message concierge-message--${message.role}`}
-                >
-                  <p>{message.text}</p>
-                  {message.citations?.length ? (
-                    <details>
-                      <summary>
-                        {message.citations.length} approved source
-                        {message.citations.length === 1 ? "" : "s"}
-                      </summary>
-                      <ul>
-                        {message.citations.map((citation) => (
-                          <li key={citation.evidenceId}>
-                            {citation.href ? (
-                              <a
-                                href={citation.href}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {citation.sourceTitle}
-                              </a>
-                            ) : (
-                              citation.sourceTitle
-                            )}
-                            <span>{citation.locator.label}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-                  ) : null}
-                </article>
-              ))}
-              {messages.length === 1 ? (
+            <div className="concierge-workspace">
+              <div className="concierge-conversation">
                 <div
-                  className="concierge-suggestions"
-                  aria-label="Suggested questions"
+                  ref={messagesRef}
+                  className="concierge-messages"
+                  aria-live="polite"
                 >
-                  {suggestions.map((suggestion) => (
-                    <button
-                      key={suggestion}
-                      type="button"
-                      onClick={() => void ask(suggestion)}
+                  {messages.map((message) => (
+                    <article
+                      key={message.id}
+                      className={`concierge-message concierge-message--${message.role}`}
                     >
-                      {suggestion}
-                    </button>
+                      <p>{message.text}</p>
+                      {message.citations?.length ? (
+                        <details>
+                          <summary>
+                            {message.citations.length} approved source
+                            {message.citations.length === 1 ? "" : "s"}
+                          </summary>
+                          <ul>
+                            {message.citations.map((citation) => (
+                              <li key={citation.evidenceId}>
+                                {citation.href ? (
+                                  <a
+                                    href={citation.href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    {citation.sourceTitle}
+                                  </a>
+                                ) : (
+                                  citation.sourceTitle
+                                )}
+                                <span>{citation.locator.label}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </details>
+                      ) : null}
+                    </article>
                   ))}
+                  {messages.length === 1 ? (
+                    <div
+                      className="concierge-suggestions"
+                      aria-label="Suggested questions"
+                    >
+                      {suggestions.map((suggestion) => (
+                        <button
+                          key={suggestion}
+                          type="button"
+                          onClick={() => void ask(suggestion)}
+                        >
+                          {suggestion}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                  {loading ? (
+                    <p className="concierge-thinking" role="status">
+                      Checking approved information
+                      <span aria-hidden="true">…</span>
+                    </p>
+                  ) : null}
                 </div>
-              ) : null}
-              {loading ? (
-                <p className="concierge-thinking" role="status">
-                  Checking approved information<span aria-hidden="true">…</span>
-                </p>
+
+                {preview ? (
+                  <button
+                    type="button"
+                    className="concierge-mobile-preview-button"
+                    onClick={() => setMobilePreviewOpen(true)}
+                  >
+                    View visual details <span aria-hidden="true">↑</span>
+                  </button>
+                ) : null}
+                <form className="concierge-composer" onSubmit={submit}>
+                  <label className="sr-only" htmlFor="concierge-question">
+                    Ask a property question
+                  </label>
+                  <input
+                    ref={inputRef}
+                    id="concierge-question"
+                    value={question}
+                    onChange={(event) => setQuestion(event.target.value)}
+                    placeholder="Ask about villas, amenities or location"
+                    maxLength={500}
+                    disabled={loading}
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading || question.trim().length < 2}
+                  >
+                    Send <span aria-hidden="true">→</span>
+                  </button>
+                  <p>
+                    Session-only conversation. Avoid sharing personal
+                    information.
+                  </p>
+                </form>
+              </div>
+              {preview ? (
+                <aside
+                  className={[
+                    "assistant-preview",
+                    mobilePreviewOpen ? "assistant-preview--mobile-open" : null,
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  aria-label="Visual property details"
+                >
+                  <button
+                    type="button"
+                    className="assistant-preview__mobile-close"
+                    onClick={() => setMobilePreviewOpen(false)}
+                  >
+                    Back to conversation <span aria-hidden="true">↓</span>
+                  </button>
+                  <DynamicPreviewPanel preview={preview} />
+                </aside>
               ) : null}
             </div>
-
-            <form className="concierge-composer" onSubmit={submit}>
-              <label className="sr-only" htmlFor="concierge-question">
-                Ask a property question
-              </label>
-              <input
-                ref={inputRef}
-                id="concierge-question"
-                value={question}
-                onChange={(event) => setQuestion(event.target.value)}
-                placeholder="Ask about villas, amenities or location"
-                maxLength={500}
-                disabled={loading}
-              />
-              <button
-                type="submit"
-                disabled={loading || question.trim().length < 2}
-              >
-                Send <span aria-hidden="true">→</span>
-              </button>
-              <p>
-                Session-only conversation. Avoid sharing personal information.
-              </p>
-            </form>
           </div>
         </div>
       ) : null}
