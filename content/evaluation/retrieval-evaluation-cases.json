@@ -244,6 +244,7 @@
       "kind": "positive",
       "riskTier": "R1",
       "query": "ഗ്ലിറ്റ്സ് പ്രൈഡിൽ ബ്രോഷറിൽ പറയുന്ന സൗകര്യങ്ങൾ ഏതൊക്കെയാണ്?",
+      "retrievalQuery": "Which amenities are listed in the Glitz Pride brochure?",
       "expectedChunkIds": [
         "chk-ks-001-004-e9a506cc6681",
         "chk-ks-002-004-35d4edfc61ef"
@@ -254,6 +255,7 @@
       "kind": "positive",
       "riskTier": "R1",
       "query": "ഗ്ലിറ്റ്സ് പ്രൈഡ് എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+      "retrievalQuery": "Where is Glitz Pride located?",
       "expectedChunkIds": [
         "chk-ks-001-008-009cd0b48bae",
         "chk-ks-002-006-1e42c142b310"
@@ -264,6 +266,7 @@
       "kind": "positive",
       "riskTier": "R1",
       "query": "विला का कुल फ़्लोर एरिया कितना है?",
+      "retrievalQuery": "What is the total villa floor area?",
       "expectedChunkIds": [
         "chk-ks-001-007-3e2e7a77ffca",
         "chk-ks-002-003-e12283b6d722"
@@ -274,6 +277,7 @@
       "kind": "positive",
       "riskTier": "R0",
       "query": "ग्लिट्ज़ प्राइड के आर्किटेक्ट कौन हैं?",
+      "retrievalQuery": "Who are the architects of Glitz Pride?",
       "expectedChunkIds": [
         "chk-ks-001-005-69e156689389",
         "chk-ks-002-001-1ed894f2a824"
@@ -284,6 +288,7 @@
       "kind": "positive",
       "riskTier": "R1",
       "query": "أين يقع مشروع غليتز برايد؟",
+      "retrievalQuery": "Where is Glitz Pride located?",
       "expectedChunkIds": [
         "chk-ks-001-008-009cd0b48bae",
         "chk-ks-002-006-1e42c142b310"
@@ -294,9 +299,76 @@
       "kind": "positive",
       "riskTier": "R1",
       "query": "ما هي المرافق المذكورة في الكتيب؟",
+      "retrievalQuery": "Which amenities are listed in the brochure?",
       "expectedChunkIds": [
         "chk-ks-001-004-e9a506cc6681",
         "chk-ks-002-004-35d4edfc61ef"
+      ]
+    },
+    {
+      "id": "RET-033",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "గ్లిట్జ్ ప్రైడ్ ఎక్కడ ఉంది?",
+      "retrievalQuery": "Where is Glitz Pride located?",
+      "expectedChunkIds": [
+        "chk-ks-001-008-009cd0b48bae",
+        "chk-ks-002-006-1e42c142b310"
+      ]
+    },
+    {
+      "id": "RET-034",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "బ్రోచర్‌లో ఏ సౌకర్యాలు ఉన్నాయి?",
+      "retrievalQuery": "Which amenities are listed in the brochure?",
+      "expectedChunkIds": [
+        "chk-ks-001-004-e9a506cc6681",
+        "chk-ks-002-004-35d4edfc61ef"
+      ]
+    },
+    {
+      "id": "RET-035",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "கிளிட்ஸ் பிரைடு எங்கு அமைந்துள்ளது?",
+      "retrievalQuery": "Where is Glitz Pride located?",
+      "expectedChunkIds": [
+        "chk-ks-001-008-009cd0b48bae",
+        "chk-ks-002-006-1e42c142b310"
+      ]
+    },
+    {
+      "id": "RET-036",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "வில்லாவின் மொத்த தளப் பரப்பளவு என்ன?",
+      "retrievalQuery": "What is the total villa floor area?",
+      "expectedChunkIds": [
+        "chk-ks-001-007-3e2e7a77ffca",
+        "chk-ks-002-003-e12283b6d722"
+      ]
+    },
+    {
+      "id": "RET-037",
+      "kind": "positive",
+      "riskTier": "R1",
+      "query": "ಗ್ಲಿಟ್ಜ್ ಪ್ರೈಡ್ ಎಲ್ಲಿದೆ?",
+      "retrievalQuery": "Where is Glitz Pride located?",
+      "expectedChunkIds": [
+        "chk-ks-001-008-009cd0b48bae",
+        "chk-ks-002-006-1e42c142b310"
+      ]
+    },
+    {
+      "id": "RET-038",
+      "kind": "positive",
+      "riskTier": "R0",
+      "query": "ಗ್ಲಿಟ್ಜ್ ಪ್ರೈಡ್‌ನ ವಾಸ್ತುಶಿಲ್ಪಿಗಳು ಯಾರು?",
+      "retrievalQuery": "Who are the architects of Glitz Pride?",
+      "expectedChunkIds": [
+        "chk-ks-001-005-69e156689389",
+        "chk-ks-002-001-1ed894f2a824"
       ]
     }
   ]

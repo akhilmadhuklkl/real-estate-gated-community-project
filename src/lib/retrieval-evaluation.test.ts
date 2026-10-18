@@ -10,6 +10,8 @@ const suite = load<{
     id: string;
     kind: string;
     riskTier: string;
+    query: string;
+    retrievalQuery?: string;
     expectedChunkIds: string[];
   }>;
   thresholds: Record<string, number>;
@@ -62,6 +64,17 @@ describe("retrieval evaluation release gate", () => {
       testCase.expectedChunkIds.forEach((id) =>
         expect(chunkIds.has(id), `${testCase.id}:${id}`).toBe(true),
       );
+    }
+  });
+
+  it("uses reviewed English retrieval queries for multilingual cases", () => {
+    const multilingualCases = suite.cases.filter(({ retrievalQuery }) =>
+      Boolean(retrievalQuery),
+    );
+    expect(multilingualCases).toHaveLength(12);
+    for (const testCase of multilingualCases) {
+      expect(testCase.retrievalQuery).toMatch(/[A-Za-z]/);
+      expect(testCase.retrievalQuery).not.toBe(testCase.query);
     }
   });
 

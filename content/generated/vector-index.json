@@ -2,8 +2,8 @@
   "schemaVersion": "1.0.0",
   "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
   "dimensions": 384,
-  "generatedAt": "2026-10-17T10:45:18.361Z",
-  "sourcePackageHash": "sha256:26e3ddaeb22a158ed7c597d420b5f32dbc70c2ff1c967d406694cf3863caf38a",
+  "generatedAt": "2026-10-18T15:27:35.794Z",
+  "sourcePackageHash": "sha256:e2165b8344d3cb4ced7cac2d142944295bf41d3d8b0a996b6f9fb4d449177002",
   "indexHash": "sha256:7db3660794c236faafb69b866077836fed705454f8e67f2d4aaac4da95c787b4",
   "usage": {
     "provider": "local",

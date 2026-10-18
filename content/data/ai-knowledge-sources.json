@@ -560,7 +560,7 @@
       "lastVerifiedOn": "2026-10-17",
       "reviewCadenceDays": 90,
       "allowedUses": [
-        "Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence",
+        "Malayalam, Hindi, Arabic, Telugu, Tamil, and Kannada assistant responses grounded in approved English evidence",
         "localized fixed safety and service messages",
         "language direction and interface labels"
       ],
@@ -571,7 +571,7 @@
       ],
       "approvalEvidence": "AKHIL approval recorded 2026-10-17",
       "reviewTrigger": "Human-reviewed translation set and cross-language evaluations approved",
-      "notes": "AKHIL is the named reviewer. English remains the canonical evidence language; Malayalam, Hindi, and Arabic answers must preserve names, numbers, units, citations, and qualifications."
+      "notes": "AKHIL is the named reviewer. English remains the canonical evidence language; Malayalam, Hindi, Arabic, Telugu, Tamil, and Kannada answers must preserve names, numbers, units, citations, and qualifications."
     },
     {
       "id": "KS-023",

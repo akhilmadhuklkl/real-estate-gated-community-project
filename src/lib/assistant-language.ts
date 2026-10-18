@@ -2,7 +2,15 @@ import { z } from "zod";
 
 import approvedTranslations from "../../content/data/approved-translations.json";
 
-export const assistantLanguageSchema = z.enum(["en", "ml", "hi", "ar"]);
+export const assistantLanguageSchema = z.enum([
+  "en",
+  "ml",
+  "hi",
+  "ar",
+  "te",
+  "ta",
+  "kn",
+]);
 export type AssistantLanguage = z.infer<typeof assistantLanguageSchema>;
 
 export type AssistantLanguageOption = {
@@ -47,6 +55,30 @@ export const assistantLanguageOptions: AssistantLanguageOption[] = [
     approvalState: "approved",
     reviewer: approvedTranslations.languages.ar.reviewer,
   },
+  {
+    code: "te",
+    label: "Telugu",
+    nativeLabel: "తెలుగు",
+    direction: "ltr",
+    approvalState: "approved",
+    reviewer: approvedTranslations.languages.te.reviewer,
+  },
+  {
+    code: "ta",
+    label: "Tamil",
+    nativeLabel: "தமிழ்",
+    direction: "ltr",
+    approvalState: "approved",
+    reviewer: approvedTranslations.languages.ta.reviewer,
+  },
+  {
+    code: "kn",
+    label: "Kannada",
+    nativeLabel: "ಕನ್ನಡ",
+    direction: "ltr",
+    approvalState: "approved",
+    reviewer: approvedTranslations.languages.kn.reviewer,
+  },
 ];
 
 const optionByCode = new Map(
@@ -57,11 +89,17 @@ const scriptPatterns: Array<[AssistantLanguage, RegExp]> = [
   ["ml", /[\u0d00-\u0d7f]/u],
   ["hi", /[\u0900-\u097f]/u],
   ["ar", /[\u0600-\u06ff]/u],
+  ["te", /[\u0c00-\u0c7f]/u],
+  ["ta", /[\u0b80-\u0bff]/u],
+  ["kn", /[\u0c80-\u0cff]/u],
 ];
 const namedLanguagePatterns: Array<[AssistantLanguage, RegExp]> = [
   ["ml", /\b(?:malayalam|മലയാളം)\b/iu],
   ["hi", /\b(?:hindi|हिन्दी|हिंदी)\b/iu],
   ["ar", /\b(?:arabic|العربية)\b/iu],
+  ["te", /\b(?:telugu|తెలుగు)\b/iu],
+  ["ta", /\b(?:tamil|தமிழ்)\b/iu],
+  ["kn", /\b(?:kannada|ಕನ್ನಡ)\b/iu],
   ["en", /\benglish\b/i],
 ];
 

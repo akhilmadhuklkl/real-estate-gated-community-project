@@ -8,7 +8,10 @@ describe("approved translation memory", () => {
     expect(Object.keys(translations.languages).sort()).toEqual([
       "ar",
       "hi",
+      "kn",
       "ml",
+      "ta",
+      "te",
     ]);
     for (const language of Object.values(translations.languages)) {
       expect(language.reviewer).toBe("AKHIL");

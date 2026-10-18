@@ -21,7 +21,7 @@ const extractor = await pipeline("feature-extraction", index.model, {
 let vectors;
 try {
   const tensor = await extractor(
-    suite.cases.map(({ query }) => query),
+    suite.cases.map(({ query, retrievalQuery }) => retrievalQuery ?? query),
     { pooling: "mean", normalize: true },
   );
   vectors = tensor.tolist();
@@ -71,13 +71,14 @@ const hybridScore = (query, record, semanticScore) => {
 const positive = suite.cases.filter(({ kind }) => kind === "positive");
 const negative = suite.cases.filter(({ kind }) => kind === "negative");
 const results = suite.cases.map((testCase, caseIndex) => {
+  const evaluatedQuery = testCase.retrievalQuery ?? testCase.query;
   const ranked = index.records
     .map((record) => ({
       id: record.id,
       sourceId: record.sourceId,
       locator: record.locator,
       score: hybridScore(
-        testCase.query,
+        evaluatedQuery,
         record,
         dot(vectors[caseIndex], record.vector),
       ),
@@ -92,6 +93,7 @@ const results = suite.cases.map((testCase, caseIndex) => {
     kind: testCase.kind,
     riskTier: testCase.riskTier,
     query: testCase.query,
+    retrievalQuery: testCase.retrievalQuery ?? null,
     expectedChunkIds: testCase.expectedChunkIds,
     topMatches: ranked.slice(0, 3),
     firstRelevantRank: firstRelevantRank || null,

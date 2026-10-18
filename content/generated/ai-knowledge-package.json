@@ -6,7 +6,7 @@
       "afterHash": "sha256:9a3770926a29570de8fe832282c3028cd107c3dcc7312fe6d17f6b75bbdab308",
       "beforeHash": null,
       "id": "evt-ks-001-activated-9a377092",
-      "occurredAt": "2026-10-17T00:00:00.000Z",
+      "occurredAt": "2026-10-18T00:00:00.000Z",
       "reason": "Approved local source passed format, path, parser, and text-quality gates.",
       "recordId": "doc-ks-001-9a3770926a29",
       "recordType": "document"
@@ -17,7 +17,7 @@
       "afterHash": "sha256:33f94ddf042612ed13e08d6ea470d6d4b51833ff292a2b6d0ea269e2e1fa0cb4",
       "beforeHash": null,
       "id": "evt-ks-002-activated-33f94ddf",
-      "occurredAt": "2026-10-17T00:00:00.000Z",
+      "occurredAt": "2026-10-18T00:00:00.000Z",
       "reason": "Approved local source passed format, path, parser, and text-quality gates.",
       "recordId": "doc-ks-002-33f94ddf0426",
       "recordType": "document"
@@ -25,12 +25,12 @@
     {
       "action": "activated",
       "actor": "AKHIL",
-      "afterHash": "sha256:d13f1a3ba470bbd823717f0ee7de5bdd2a3e8c48c8fe3f6f419c7f5b94cf573d",
+      "afterHash": "sha256:76d042fdee13bc943430367598d7782459f034c2d33ca90c7c6adf0da54c742c",
       "beforeHash": null,
-      "id": "evt-ks-022-activated-d13f1a3b",
-      "occurredAt": "2026-10-17T00:00:00.000Z",
+      "id": "evt-ks-022-activated-76d042fd",
+      "occurredAt": "2026-10-18T00:00:00.000Z",
       "reason": "Approved local source passed format, path, parser, and text-quality gates.",
-      "recordId": "doc-ks-022-d13f1a3ba470",
+      "recordId": "doc-ks-022-76d042fdee13",
       "recordType": "document"
     }
   ],
@@ -1274,7 +1274,7 @@
     {
       "claimIds": [],
       "contentHash": "sha256:94543f821d924a853ea80339cf1ffc301dd49539692ec179b092c6b1164f8fd5",
-      "documentId": "doc-ks-022-d13f1a3ba470",
+      "documentId": "doc-ks-022-76d042fdee13",
       "embedding": {
         "dimensions": null,
         "embeddedAt": null,
@@ -1286,7 +1286,7 @@
         "approvedAt": "2026-10-17T00:00:00.000Z",
         "approvedBy": "AKHIL approval recorded 2026-10-17",
         "owner": "AKHIL",
-        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "qualification": "Use only for: Malayalam, Hindi, Arabic, Telugu, Tamil, and Kannada assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
         "retrievalEligible": false,
         "reviewCadenceDays": 90,
         "reviewedAt": "2026-10-17T00:00:00.000Z",
@@ -1333,8 +1333,8 @@
     },
     {
       "claimIds": [],
-      "contentHash": "sha256:fcbaa750989928da4aafc493bee5c79bfe9e4695c3989b3c4b0adf4bccfddd44",
-      "documentId": "doc-ks-022-d13f1a3ba470",
+      "contentHash": "sha256:b7248a283f47a702b2946845f4f5572baa974797a150d108c25c4a0357222ca0",
+      "documentId": "doc-ks-022-76d042fdee13",
       "embedding": {
         "dimensions": null,
         "embeddedAt": null,
@@ -1346,7 +1346,7 @@
         "approvedAt": "2026-10-17T00:00:00.000Z",
         "approvedBy": "AKHIL approval recorded 2026-10-17",
         "owner": "AKHIL",
-        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "qualification": "Use only for: Malayalam, Hindi, Arabic, Telugu, Tamil, and Kannada assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
         "retrievalEligible": false,
         "reviewCadenceDays": 90,
         "reviewedAt": "2026-10-17T00:00:00.000Z",
@@ -1356,7 +1356,7 @@
         "validFrom": "2026-10-17T00:00:00.000Z",
         "validUntil": "2027-01-15T00:00:00.000Z"
       },
-      "id": "chk-ks-022-002-fcbaa7509899",
+      "id": "chk-ks-022-002-b7248a283f47",
       "language": {
         "code": "en",
         "isReferenceLanguage": true,
@@ -1364,7 +1364,7 @@
         "translationState": "original"
       },
       "locator": {
-        "characterEnd": 3029,
+        "characterEnd": 6240,
         "characterStart": 0,
         "label": "JSON section: languages",
         "pageEnd": null,
@@ -1386,7 +1386,7 @@
         "purposeRestriction": "Qualified project-information assistance"
       },
       "sourceId": "KS-022",
-      "text": "{\"ar\": {\"direction\": \"rtl\", \"messages\": {\"humanConfirmation\": \"يتطلب هذا الطلب تأكيدًا من مختص مؤهل أو ممثل المشروع. لا يمكنني تقديم سوى حقائق العقار المعتمدة.\", \"insufficientEvidence\": \"هذه المعلومة غير مؤكدة في مواد المشروع المعتمدة. يرجى التواصل مع ممثل المشروع للحصول على تحديث.\", \"invalidQuestion\": \"يرجى طرح سؤال قصير ومحدد عن غليتز برايد.\", \"policyBoundary\": \"لا يمكنني المساعدة في هذا الطلب. يمكنني المساعدة بالمعلومات العامة المعتمدة عن غليتز برايد.\", \"removePersonalData\": \"لحماية الخصوصية، يرجى إزالة أرقام الهاتف وعناوين البريد الإلكتروني وأي معرّفات شخصية قبل طرح السؤال.\", \"serviceUnavailable\": \"دليل العقار غير متاح مؤقتًا. يرجى المحاولة بعد قليل أو التواصل مع ممثل المشروع.\", \"unsupportedAnswer\": \"تعذر إعداد إجابة مدعومة من مواد المشروع المعتمدة. يرجى التواصل مع ممثل المشروع للتأكيد.\"}, \"name\": \"Arabic\", \"nativeName\": \"العربية\", \"reviewer\": \"AKHIL\"}, \"hi\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"इस अनुरोध के लिए योग्य विशेषज्ञ या परियोजना प्रतिनिधि की पुष्टि आवश्यक है। मैं केवल स्वीकृत संपत्ति संबंधी तथ्य दे सकता हूँ।\", \"insufficientEvidence\": \"स्वीकृत परियोजना सामग्री में इस जानकारी की पुष्टि नहीं हुई है। नवीन जानकारी के लिए परियोजना प्रतिनिधि से संपर्क करें।\", \"invalidQuestion\": \"कृपया ग्लिट्ज़ प्राइड के बारे में एक छोटा और स्पष्ट प्रश्न पूछें।\", \"policyBoundary\": \"मैं इस अनुरोध में सहायता नहीं कर सकता। मैं ग्लिट्ज़ प्राइड की स्वीकृत सार्वजनिक जानकारी में सहायता कर सकता हूँ।\", \"removePersonalData\": \"गोपनीयता के लिए, प्रश्न पूछने से पहले फ़ोन नंबर, ईमेल पते या व्यक्तिगत पहचान संबंधी जानकारी हटा दें।\", \"serviceUnavailable\": \"प्रॉपर्टी गाइड अभी अस्थायी रूप से उपलब्ध नहीं है। कृपया थोड़ी देर बाद फिर प्रयास करें या परियोजना प्रतिनिधि से संपर्क करें।\", \"unsupportedAnswer\": \"स्वीकृत परियोजना सामग्री से समर्थित उत्तर तैयार नहीं किया जा सका। पुष्टि के लिए परियोजना प्रतिनिधि से संपर्क करें।\"}, \"name\": \"Hindi\", \"nativeName\": \"हिन्दी\", \"reviewer\": \"AKHIL\"}, \"ml\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"ഈ അഭ്യർത്ഥനയ്ക്ക് യോഗ്യനായ വിദഗ്ധന്റെയോ പ്രോജക്റ്റ് പ്രതിനിധിയുടെയോ സ്ഥിരീകരണം ആവശ്യമാണ്. അംഗീകരിച്ച പ്രോപ്പർട്ടി വിവരങ്ങൾ മാത്രമേ എനിക്ക് നൽകാനാകൂ.\", \"insufficientEvidence\": \"അംഗീകരിച്ച പ്രോജക്റ്റ് രേഖകളിൽ ഈ വിവരം സ്ഥിരീകരിച്ചിട്ടില്ല. പുതുക്കിയ വിവരങ്ങൾക്ക് പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുക.\", \"invalidQuestion\": \"ഗ്ലിറ്റ്സ് പ്രൈഡിനെക്കുറിച്ച് ചുരുക്കവും വ്യക്തവുമായ ഒരു ചോദ്യം ചോദിക്കൂ.\", \"policyBoundary\": \"ഈ അഭ്യർത്ഥനയിൽ എനിക്ക് സഹായിക്കാനാകില്ല. അംഗീകരിച്ച പൊതുവായ ഗ്ലിറ്റ്സ് പ്രൈഡ് വിവരങ്ങളിൽ ഞാൻ സഹായിക്കാം.\", \"removePersonalData\": \"സ്വകാര്യതയ്ക്കായി, ചോദ്യം ചോദിക്കുന്നതിന് മുമ്പ് ഫോൺ നമ്പറുകൾ, ഇമെയിൽ വിലാസങ്ങൾ, വ്യക്തിഗത തിരിച്ചറിയൽ വിവരങ്ങൾ എന്നിവ നീക്കം ചെയ്യുക.\", \"serviceUnavailable\": \"പ്രോപ്പർട്ടി ഗൈഡ് ഇപ്പോൾ താൽക്കാലികമായി ലഭ്യമല്ല. കുറച്ച് കഴിഞ്ഞ് വീണ്ടും ശ്രമിക്കുകയോ പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുകയോ ചെയ്യുക.\", \"unsupportedAnswer\": \"അംഗീകരിച്ച പ്രോജക്റ്റ് രേഖകളിൽ നിന്ന് പിന്തുണയുള്ള മറുപടി തയ്യാറാക്കാനായില്ല. സ്ഥിരീകരണത്തിനായി പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുക.\"}, \"name\": \"Malayalam\", \"nativeName\": \"മലയാളം\", \"reviewer\": \"AKHIL\"}}",
+      "text": "{\"ar\": {\"direction\": \"rtl\", \"messages\": {\"humanConfirmation\": \"يتطلب هذا الطلب تأكيدًا من مختص مؤهل أو ممثل المشروع. لا يمكنني تقديم سوى حقائق العقار المعتمدة.\", \"insufficientEvidence\": \"هذه المعلومة غير مؤكدة في مواد المشروع المعتمدة. يرجى التواصل مع ممثل المشروع للحصول على تحديث.\", \"invalidQuestion\": \"يرجى طرح سؤال قصير ومحدد عن غليتز برايد.\", \"policyBoundary\": \"لا يمكنني المساعدة في هذا الطلب. يمكنني المساعدة بالمعلومات العامة المعتمدة عن غليتز برايد.\", \"removePersonalData\": \"لحماية الخصوصية، يرجى إزالة أرقام الهاتف وعناوين البريد الإلكتروني وأي معرّفات شخصية قبل طرح السؤال.\", \"serviceUnavailable\": \"دليل العقار غير متاح مؤقتًا. يرجى المحاولة بعد قليل أو التواصل مع ممثل المشروع.\", \"unsupportedAnswer\": \"تعذر إعداد إجابة مدعومة من مواد المشروع المعتمدة. يرجى التواصل مع ممثل المشروع للتأكيد.\"}, \"name\": \"Arabic\", \"nativeName\": \"العربية\", \"reviewer\": \"AKHIL\"}, \"hi\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"इस अनुरोध के लिए योग्य विशेषज्ञ या परियोजना प्रतिनिधि की पुष्टि आवश्यक है। मैं केवल स्वीकृत संपत्ति संबंधी तथ्य दे सकता हूँ।\", \"insufficientEvidence\": \"स्वीकृत परियोजना सामग्री में इस जानकारी की पुष्टि नहीं हुई है। नवीन जानकारी के लिए परियोजना प्रतिनिधि से संपर्क करें।\", \"invalidQuestion\": \"कृपया ग्लिट्ज़ प्राइड के बारे में एक छोटा और स्पष्ट प्रश्न पूछें।\", \"policyBoundary\": \"मैं इस अनुरोध में सहायता नहीं कर सकता। मैं ग्लिट्ज़ प्राइड की स्वीकृत सार्वजनिक जानकारी में सहायता कर सकता हूँ।\", \"removePersonalData\": \"गोपनीयता के लिए, प्रश्न पूछने से पहले फ़ोन नंबर, ईमेल पते या व्यक्तिगत पहचान संबंधी जानकारी हटा दें।\", \"serviceUnavailable\": \"प्रॉपर्टी गाइड अभी अस्थायी रूप से उपलब्ध नहीं है। कृपया थोड़ी देर बाद फिर प्रयास करें या परियोजना प्रतिनिधि से संपर्क करें।\", \"unsupportedAnswer\": \"स्वीकृत परियोजना सामग्री से समर्थित उत्तर तैयार नहीं किया जा सका। पुष्टि के लिए परियोजना प्रतिनिधि से संपर्क करें।\"}, \"name\": \"Hindi\", \"nativeName\": \"हिन्दी\", \"reviewer\": \"AKHIL\"}, \"kn\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"ಈ ವಿನಂತಿಗೆ ಅರ್ಹ ವೃತ್ತಿಪರ ಅಥವಾ ಯೋಜನಾ ಪ್ರತಿನಿಧಿಯ ದೃಢೀಕರಣ ಅಗತ್ಯವಿದೆ. ನಾನು ಅನುಮೋದಿತ ಆಸ್ತಿ ಮಾಹಿತಿಯನ್ನು ಮಾತ್ರ ನೀಡಬಹುದು.\", \"insufficientEvidence\": \"ಅನುಮೋದಿತ ಯೋಜನಾ ಮಾಹಿತಿಯಲ್ಲಿ ಈ ವಿಷಯ ದೃಢೀಕರಿಸಲ್ಪಟ್ಟಿಲ್ಲ. ನವೀಕೃತ ಮಾಹಿತಿಗಾಗಿ ಯೋಜನಾ ಪ್ರತಿನಿಧಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.\", \"invalidQuestion\": \"ಗ್ಲಿಟ್ಜ್ ಪ್ರೈಡ್ ಕುರಿತು ಚಿಕ್ಕ ಮತ್ತು ಸ್ಪಷ್ಟವಾದ ಪ್ರಶ್ನೆಯನ್ನು ಕೇಳಿ.\", \"policyBoundary\": \"ಈ ವಿನಂತಿಗೆ ನಾನು ಸಹಾಯ ಮಾಡಲಾಗುವುದಿಲ್ಲ. ಗ್ಲಿಟ್ಜ್ ಪ್ರೈಡ್ ಕುರಿತು ಅನುಮೋದಿತ ಸಾರ್ವಜನಿಕ ಮಾಹಿತಿಯಲ್ಲಿ ಸಹಾಯ ಮಾಡಬಹುದು.\", \"removePersonalData\": \"ಗೌಪ್ಯತೆಗಾಗಿ, ಪ್ರಶ್ನೆ ಕೇಳುವ ಮೊದಲು ಫೋನ್ ಸಂಖ್ಯೆಗಳು, ಇಮೇಲ್ ವಿಳಾಸಗಳು ಅಥವಾ ವೈಯಕ್ತಿಕ ಗುರುತು ವಿವರಗಳನ್ನು ತೆಗೆದುಹಾಕಿ.\", \"serviceUnavailable\": \"ಪ್ರಾಪರ್ಟಿ ಗೈಡ್ ತಾತ್ಕಾಲಿಕವಾಗಿ ಲಭ್ಯವಿಲ್ಲ. ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಯೋಜನಾ ಪ್ರತಿನಿಧಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.\", \"unsupportedAnswer\": \"ಅನುಮೋದಿತ ಯೋಜನಾ ಮಾಹಿತಿಯಿಂದ ಬೆಂಬಲಿತ ಉತ್ತರವನ್ನು ಸಿದ್ಧಪಡಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದೃಢೀಕರಣಕ್ಕಾಗಿ ಯೋಜನಾ ಪ್ರತಿನಿಧಿಯನ್ನು ಸಂಪರ್ಕಿಸಿ.\"}, \"name\": \"Kannada\", \"nativeName\": \"ಕನ್ನಡ\", \"reviewer\": \"AKHIL\"}, \"ml\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"ഈ അഭ്യർത്ഥനയ്ക്ക് യോഗ്യനായ വിദഗ്ധന്റെയോ പ്രോജക്റ്റ് പ്രതിനിധിയുടെയോ സ്ഥിരീകരണം ആവശ്യമാണ്. അംഗീകരിച്ച പ്രോപ്പർട്ടി വിവരങ്ങൾ മാത്രമേ എനിക്ക് നൽകാനാകൂ.\", \"insufficientEvidence\": \"അംഗീകരിച്ച പ്രോജക്റ്റ് രേഖകളിൽ ഈ വിവരം സ്ഥിരീകരിച്ചിട്ടില്ല. പുതുക്കിയ വിവരങ്ങൾക്ക് പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുക.\", \"invalidQuestion\": \"ഗ്ലിറ്റ്സ് പ്രൈഡിനെക്കുറിച്ച് ചുരുക്കവും വ്യക്തവുമായ ഒരു ചോദ്യം ചോദിക്കൂ.\", \"policyBoundary\": \"ഈ അഭ്യർത്ഥനയിൽ എനിക്ക് സഹായിക്കാനാകില്ല. അംഗീകരിച്ച പൊതുവായ ഗ്ലിറ്റ്സ് പ്രൈഡ് വിവരങ്ങളിൽ ഞാൻ സഹായിക്കാം.\", \"removePersonalData\": \"സ്വകാര്യതയ്ക്കായി, ചോദ്യം ചോദിക്കുന്നതിന് മുമ്പ് ഫോൺ നമ്പറുകൾ, ഇമെയിൽ വിലാസങ്ങൾ, വ്യക്തിഗത തിരിച്ചറിയൽ വിവരങ്ങൾ എന്നിവ നീക്കം ചെയ്യുക.\", \"serviceUnavailable\": \"പ്രോപ്പർട്ടി ഗൈഡ് ഇപ്പോൾ താൽക്കാലികമായി ലഭ്യമല്ല. കുറച്ച് കഴിഞ്ഞ് വീണ്ടും ശ്രമിക്കുകയോ പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുകയോ ചെയ്യുക.\", \"unsupportedAnswer\": \"അംഗീകരിച്ച പ്രോജക്റ്റ് രേഖകളിൽ നിന്ന് പിന്തുണയുള്ള മറുപടി തയ്യാറാക്കാനായില്ല. സ്ഥിരീകരണത്തിനായി പ്രോജക്റ്റ് പ്രതിനിധിയെ ബന്ധപ്പെടുക.\"}, \"name\": \"Malayalam\", \"nativeName\": \"മലയാളം\", \"reviewer\": \"AKHIL\"}, \"ta\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"இந்தக் கோரிக்கைக்கு தகுதியான நிபுணர் அல்லது திட்டப் பிரதிநிதியின் உறுதிப்படுத்தல் தேவை. அங்கீகரிக்கப்பட்ட சொத்து விவரங்களை மட்டுமே நான் வழங்க முடியும்.\", \"insufficientEvidence\": \"அங்கீகரிக்கப்பட்ட திட்டத் தகவலில் இந்த விவரம் உறுதிப்படுத்தப்படவில்லை. புதுப்பிக்கப்பட்ட தகவலுக்கு திட்டப் பிரதிநிதியைத் தொடர்புகொள்ளுங்கள்.\", \"invalidQuestion\": \"கிளிட்ஸ் பிரைடு குறித்து சுருக்கமான மற்றும் தெளிவான கேள்வியைக் கேளுங்கள்.\", \"policyBoundary\": \"இந்தக் கோரிக்கையில் நான் உதவ முடியாது. கிளிட்ஸ் பிரைடு பற்றிய அங்கீகரிக்கப்பட்ட பொதுத் தகவலில் உதவ முடியும்.\", \"removePersonalData\": \"தனியுரிமைக்காக, கேள்வியைக் கேட்பதற்கு முன் தொலைபேசி எண்கள், மின்னஞ்சல் முகவரிகள் அல்லது தனிப்பட்ட அடையாள விவரங்களை அகற்றுங்கள்.\", \"serviceUnavailable\": \"சொத்து வழிகாட்டி தற்போது தற்காலிகமாகக் கிடைக்கவில்லை. சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும் அல்லது திட்டப் பிரதிநிதியைத் தொடர்புகொள்ளவும்.\", \"unsupportedAnswer\": \"அங்கீகரிக்கப்பட்ட திட்டத் தகவலிலிருந்து ஆதரிக்கப்பட்ட பதிலை உருவாக்க முடியவில்லை. உறுதிப்படுத்த திட்டப் பிரதிநிதியைத் தொடர்புகொள்ளுங்கள்.\"}, \"name\": \"Tamil\", \"nativeName\": \"தமிழ்\", \"reviewer\": \"AKHIL\"}, \"te\": {\"direction\": \"ltr\", \"messages\": {\"humanConfirmation\": \"ఈ అభ్యర్థనకు అర్హత కలిగిన నిపుణుడు లేదా ప్రాజెక్ట్ ప్రతినిధి నిర్ధారణ అవసరం. నేను ఆమోదించబడిన ప్రాపర్టీ వివరాలను మాత్రమే అందించగలను.\", \"insufficientEvidence\": \"ఆమోదించబడిన ప్రాజెక్ట్ సమాచారంలో ఈ విషయం నిర్ధారించబడలేదు. తాజా సమాచారం కోసం ప్రాజెక్ట్ ప్రతినిధిని సంప్రదించండి.\", \"invalidQuestion\": \"గ్లిట్జ్ ప్రైడ్ గురించి చిన్న మరియు స్పష్టమైన ప్రశ్న అడగండి.\", \"policyBoundary\": \"ఈ అభ్యర్థనకు నేను సహాయం చేయలేను. గ్లిట్జ్ ప్రైడ్‌కు సంబంధించిన ఆమోదించబడిన ప్రజా సమాచారంతో సహాయం చేయగలను.\", \"removePersonalData\": \"గోప్యత కోసం, ప్రశ్న అడిగే ముందు ఫోన్ నంబర్లు, ఇమెయిల్ చిరునామాలు లేదా వ్యక్తిగత గుర్తింపు వివరాలను తొలగించండి.\", \"serviceUnavailable\": \"ప్రాపర్టీ గైడ్ ప్రస్తుతం తాత్కాలికంగా అందుబాటులో లేదు. కొద్దిసేపటి తర్వాత మళ్లీ ప్రయత్నించండి లేదా ప్రాజెక్ట్ ప్రతినిధిని సంప్రదించండి.\", \"unsupportedAnswer\": \"ఆమోదించబడిన ప్రాజెక్ట్ సమాచారంతో సమర్థిత సమాధానం రూపొందించలేకపోయాము. నిర్ధారణ కోసం ప్రాజెక్ట్ ప్రతినిధిని సంప్రదించండి.\"}, \"name\": \"Telugu\", \"nativeName\": \"తెలుగు\", \"reviewer\": \"AKHIL\"}}",
       "topics": [
         "translations"
       ]
@@ -1394,7 +1394,7 @@
     {
       "claimIds": [],
       "contentHash": "sha256:6ae88f1d4cc4e6c8b2ba427ad945cb9665d917446e4a6e1eb3b1004e328b7b6b",
-      "documentId": "doc-ks-022-d13f1a3ba470",
+      "documentId": "doc-ks-022-76d042fdee13",
       "embedding": {
         "dimensions": null,
         "embeddedAt": null,
@@ -1406,7 +1406,7 @@
         "approvedAt": "2026-10-17T00:00:00.000Z",
         "approvedBy": "AKHIL approval recorded 2026-10-17",
         "owner": "AKHIL",
-        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "qualification": "Use only for: Malayalam, Hindi, Arabic, Telugu, Tamil, and Kannada assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
         "retrievalEligible": false,
         "reviewCadenceDays": 90,
         "reviewedAt": "2026-10-17T00:00:00.000Z",
@@ -1475,7 +1475,7 @@
       },
       "id": "doc-ks-001-9a3770926a29",
       "ingestion": {
-        "ingestedAt": "2026-10-17T00:00:00.000Z",
+        "ingestedAt": "2026-10-18T00:00:00.000Z",
         "parser": "pypdf",
         "parserVersion": "1.0.0",
         "status": "accepted-with-warnings",
@@ -1532,7 +1532,7 @@
       },
       "id": "doc-ks-002-33f94ddf0426",
       "ingestion": {
-        "ingestedAt": "2026-10-17T00:00:00.000Z",
+        "ingestedAt": "2026-10-18T00:00:00.000Z",
         "parser": "python-json",
         "parserVersion": "1.0.0",
         "status": "accepted-with-warnings",
@@ -1570,14 +1570,14 @@
     },
     {
       "canonicalLocation": "content/data/approved-translations.json",
-      "contentHash": "sha256:d13f1a3ba470bbd823717f0ee7de5bdd2a3e8c48c8fe3f6f419c7f5b94cf573d",
+      "contentHash": "sha256:76d042fdee13bc943430367598d7782459f034c2d33ca90c7c6adf0da54c742c",
       "documentType": "structured-data",
       "effectiveDate": "2026-10-17",
       "governance": {
         "approvedAt": "2026-10-17T00:00:00.000Z",
         "approvedBy": "AKHIL approval recorded 2026-10-17",
         "owner": "AKHIL",
-        "qualification": "Use only for: Malayalam, Hindi, and Arabic assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
+        "qualification": "Use only for: Malayalam, Hindi, Arabic, Telugu, Tamil, and Kannada assistant responses grounded in approved English evidence, localized fixed safety and service messages, language direction and interface labels. Do not use for: uncited translated factual claims, unverified legal or commercial translations, translation of unsupported price, availability, approval, or contractual claims.",
         "retrievalEligible": false,
         "reviewCadenceDays": 90,
         "reviewedAt": "2026-10-17T00:00:00.000Z",
@@ -1587,9 +1587,9 @@
         "validFrom": "2026-10-17T00:00:00.000Z",
         "validUntil": "2027-01-15T00:00:00.000Z"
       },
-      "id": "doc-ks-022-d13f1a3ba470",
+      "id": "doc-ks-022-76d042fdee13",
       "ingestion": {
-        "ingestedAt": "2026-10-17T00:00:00.000Z",
+        "ingestedAt": "2026-10-18T00:00:00.000Z",
         "parser": "python-json",
         "parserVersion": "1.0.0",
         "status": "accepted-with-warnings",
@@ -1621,8 +1621,8 @@
     }
   ],
   "entities": [],
-  "generatedAt": "2026-10-17T00:00:00.000Z",
-  "packageId": "kp-ingestion-2026-10-17",
+  "generatedAt": "2026-10-18T00:00:00.000Z",
+  "packageId": "kp-ingestion-2026-10-18",
   "projectId": "glitz-pride",
   "schemaVersion": "1.0.0"
 }

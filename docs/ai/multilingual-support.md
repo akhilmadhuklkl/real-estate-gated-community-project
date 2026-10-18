@@ -2,19 +2,21 @@
 
 ## Current release state
 
-English is the canonical evidence language. Malayalam, Hindi, and Arabic are
-approved production response languages, reviewed by AKHIL on 17 October 2026.
+English is the canonical evidence language. Malayalam, Hindi, Arabic, Telugu,
+Tamil, and Kannada are approved production response languages, reviewed by
+AKHIL. Telugu, Tamil, and Kannada were added on 18 October 2026.
 
-For Malayalam, Hindi, and Arabic, a constrained provider step translates only
-the question into concise English for retrieval. The multilingual embedding
-model then retrieves canonical English evidence. The generation layer answers
-in the selected language while preserving names, numbers, units, citations,
-qualifications, and unknowns. Localized fixed safety messages are stored in a
-versioned translation memory.
+For every approved non-English language, a constrained provider step translates
+only the question into concise English for retrieval. The multilingual
+embedding model then retrieves canonical English evidence. The generation layer
+answers in the selected language while preserving names, numbers, units,
+citations, qualifications, and unknowns. Localized fixed safety messages are
+stored in a versioned translation memory.
 
 ## Implemented foundation
 
-- Explicit language selection for English, Malayalam, Hindi, and Arabic.
+- Explicit language selection for English, Malayalam, Hindi, Arabic, Telugu,
+  Tamil, and Kannada.
 - Script and language-name detection for typed questions.
 - Language carried through the API and retrieval contracts.
 - Multilingual retrieval against canonical English evidence.
@@ -31,6 +33,9 @@ versioned translation memory.
 | ml   | Malayalam | LTR       | AKHIL    | Approved |
 | hi   | Hindi     | LTR       | AKHIL    | Approved |
 | ar   | Arabic    | RTL       | AKHIL    | Approved |
+| te   | Telugu    | LTR       | AKHIL    | Approved |
+| ta   | Tamil     | LTR       | AKHIL    | Approved |
+| kn   | Kannada   | LTR       | AKHIL    | Approved |
 
 The approval record and localized fixed messages are maintained in
 `content/data/approved-translations.json` under source KS-022.

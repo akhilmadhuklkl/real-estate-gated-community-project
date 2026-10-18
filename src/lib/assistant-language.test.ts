@@ -12,6 +12,9 @@ describe("assistant language support", () => {
     expect(detectAssistantLanguage("വില്ല വിവരങ്ങൾ")).toBe("ml");
     expect(detectAssistantLanguage("विला की जानकारी")).toBe("hi");
     expect(detectAssistantLanguage("معلومات الفيلا")).toBe("ar");
+    expect(detectAssistantLanguage("విల్లా వివరాలు")).toBe("te");
+    expect(detectAssistantLanguage("வில்லா விவரங்கள்")).toBe("ta");
+    expect(detectAssistantLanguage("ವಿಲ್ಲಾ ವಿವರಗಳು")).toBe("kn");
     expect(detectAssistantLanguage("Please answer in Malayalam")).toBe("ml");
     expect(detectAssistantLanguage("Tell me about the villas")).toBeNull();
   });
@@ -27,7 +30,14 @@ describe("assistant language support", () => {
     });
   });
 
-  it("marks English approved and Arabic right-to-left", () => {
+  it("marks all seven languages approved and Arabic right-to-left", () => {
+    expect(assistantLanguageOptions).toHaveLength(7);
+    expect(
+      assistantLanguageOptions.every(
+        ({ approvalState, reviewer }) =>
+          approvalState === "approved" && reviewer === "AKHIL",
+      ),
+    ).toBe(true);
     expect(
       assistantLanguageOptions.find(({ code }) => code === "en")?.approvalState,
     ).toBe("approved");
