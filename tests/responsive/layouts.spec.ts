@@ -95,6 +95,9 @@ test("property guide opens without clipping its conversation surface", async ({
   const dialog = page.getByRole("dialog", { name: "Property guide" });
   await expect(dialog).toBeVisible();
   await expect(page.getByLabel("Ask a property question")).toBeFocused();
+  await expect(
+    page.getByRole("button", { name: "Start voice input" }),
+  ).toBeVisible();
   await dialog.evaluate(async (element) => {
     await Promise.all(
       element.getAnimations().map((animation) => animation.finished),

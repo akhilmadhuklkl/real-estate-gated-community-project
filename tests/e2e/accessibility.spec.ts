@@ -123,4 +123,16 @@ test("keeps open menus and dialogs free of detectable violations", async ({
         .analyze()
     ).violations,
   ).toEqual([]);
+
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Open Glitz Pride property guide" })
+    .click();
+  expect(
+    (
+      await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+        .analyze()
+    ).violations,
+  ).toEqual([]);
 });

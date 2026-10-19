@@ -220,6 +220,26 @@
   white-space: pre-wrap;
   line-height: 1.6;
 }
+.concierge-speak {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.65rem;
+  padding: 0.35rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--forest-700);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.concierge-speak:hover,
+.concierge-speak:focus-visible {
+  color: var(--forest-950);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
 .concierge-message details {
   margin-top: 0.7rem;
   font-size: 0.75rem;
@@ -268,7 +288,7 @@
 
 .concierge-composer {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   gap: 0.65rem;
   padding: 1rem clamp(1rem, 3vw, 2rem) max(1rem, env(safe-area-inset-bottom));
   border-top: 1px solid rgb(31 73 59 / 14%);
@@ -297,15 +317,47 @@
   font-weight: 700;
   cursor: pointer;
 }
+.concierge-composer .concierge-voice-button {
+  display: grid;
+  width: 3rem;
+  padding: 0;
+  place-items: center;
+  border: 1px solid rgb(31 73 59 / 24%);
+  background: #d9e4d7;
+  color: var(--forest-900);
+}
+.concierge-composer .concierge-voice-button[aria-pressed="true"] {
+  border-color: #9d432e;
+  background: #9d432e;
+  color: #fff;
+  box-shadow: 0 0 0 0.3rem rgb(157 67 46 / 12%);
+}
 .concierge-composer button:disabled {
   cursor: not-allowed;
   opacity: 0.45;
 }
-.concierge-composer p {
+.concierge-voice-status {
   grid-column: 1 / -1;
+  min-height: 1.1rem;
+}
+.concierge-voice-status p {
   margin: 0;
   color: rgb(14 52 42 / 60%);
   font-size: 0.68rem;
+}
+.concierge-voice-status p[role="alert"] {
+  color: #8e3f2e;
+}
+.concierge-voice-status button {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .concierge-mobile-preview-button,
@@ -730,6 +782,12 @@
   }
   .concierge-message {
     max-width: 92%;
+  }
+  .concierge-composer {
+    grid-template-columns: minmax(0, 1fr) 3rem;
+  }
+  .concierge-composer > button[type="submit"] {
+    grid-column: 1 / -1;
   }
   .concierge-dialog__header {
     padding-top: max(1.15rem, env(safe-area-inset-top));
