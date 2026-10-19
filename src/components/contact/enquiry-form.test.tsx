@@ -18,6 +18,7 @@ describe("EnquiryForm assistant draft", () => {
         message: "Interested in a morning visit.",
         preferredDate: "2026-11-12",
         timeWindow: "morning",
+        handoffRoute: "visit",
       }),
     );
     render(<EnquiryForm />);

@@ -117,6 +117,7 @@ describe("DynamicPreviewPanel", () => {
       preferredDate: "2026-11-12",
       timeWindow: "morning",
       message: "Interested in a morning visit.",
+      handoffRoute: "visit",
     });
   });
 
@@ -134,5 +135,30 @@ describe("DynamicPreviewPanel", () => {
     expect(screen.getByRole("status")).toHaveTextContent("Summary cleared");
     expect(screen.getByLabelText("Relevant context")).toHaveValue("");
     expect(sessionStorage.getItem(LEAD_DRAFT_STORAGE_KEY)).toBeNull();
+  });
+
+  it("shows explicit human ownership and lets the user correct the route", () => {
+    const preview = resolveAssistantPreview(
+      {
+        kind: "enquiry-summary",
+        evidenceIds,
+        conversation: "Please arrange a site visit",
+      },
+      allowedEvidenceIds,
+    );
+    render(<DynamicPreviewPanel preview={preview} />);
+    const route = screen.getByRole("article", { name: "Handoff route" });
+    expect(route).toHaveTextContent("Visit coordination");
+    expect(route).toHaveTextContent("Visit coordinator");
+    expect(route).toHaveTextContent("Working hoursNot confirmed");
+    expect(route).toHaveTextContent("Response timeNot confirmed");
+
+    fireEvent.change(screen.getByRole("combobox", { name: "Handoff route" }), {
+      target: { value: "architecture" },
+    });
+    expect(
+      screen.getByRole("heading", { name: "Architecture question" }),
+    ).toBeInTheDocument();
+    expect(route).toHaveTextContent("architecture triage");
   });
 });

@@ -1,6 +1,12 @@
 import { z } from "zod";
 
-export const LEAD_DRAFT_STORAGE_KEY = "glitz-pride-enquiry-draft:v1";
+import {
+  handoffRouteSchema,
+  routeHumanHandoff,
+  type HumanHandoff,
+} from "./human-handoff";
+
+export const LEAD_DRAFT_STORAGE_KEY = "glitz-pride-enquiry-draft:v2";
 
 export const leadDraftSchema = z
   .object({
@@ -12,6 +18,7 @@ export const leadDraftSchema = z
       .trim()
       .refine((value) => !value || /^\d{4}-\d{2}-\d{2}$/.test(value)),
     timeWindow: z.enum(["morning", "afternoon", "any-time"]),
+    handoffRoute: handoffRouteSchema,
   })
   .strict();
 
@@ -22,6 +29,7 @@ export type LeadQualification = {
   captured: string[];
   missing: string[];
   privacyNotice: string;
+  handoff: HumanHandoff;
 };
 
 const handoffPattern =
@@ -54,6 +62,7 @@ function extractPreferredDate(value: string) {
 }
 
 export function qualifyLead(value: string): LeadQualification {
+  const handoff = routeHumanHandoff(value);
   const intent = siteVisitPattern.test(value)
     ? ("site-visit" as const)
     : ("general-enquiry" as const);
@@ -72,6 +81,7 @@ export function qualifyLead(value: string): LeadQualification {
     villaInterest ? `Villa interest: ${villaInterest}.` : null,
     preferredDate ? `Preferred date: ${preferredDate}.` : null,
     timeWindow !== "any-time" ? `Preferred time: ${timeWindow}.` : null,
+    `Requested route: ${handoff.routeLabel}.`,
   ]
     .filter((item): item is string => Boolean(item))
     .join(" ");
@@ -80,6 +90,7 @@ export function qualifyLead(value: string): LeadQualification {
     villaInterest ? "Villa interest" : null,
     preferredDate ? "Preferred date" : null,
     timeWindow !== "any-time" ? "Preferred time" : null,
+    "Handoff route",
   ].filter((item): item is string => Boolean(item));
   const missing = [
     "Full name",
@@ -95,10 +106,12 @@ export function qualifyLead(value: string): LeadQualification {
       message: summary,
       preferredDate,
       timeWindow,
+      handoffRoute: handoff.route,
     },
     captured,
     missing,
     privacyNotice:
       "No personal contact details are inferred, stored, or sent from this summary. Review it, then enter the minimum reply details and consent in the enquiry form.",
+    handoff,
   };
 }

@@ -10,6 +10,7 @@ import {
   leadDraftSchema,
   type LeadQualification,
 } from "../../lib/lead-qualification";
+import { buildHumanHandoff } from "../../lib/human-handoff";
 
 function PreviewImage({ src, alt }: { src: string; alt: string }) {
   const [failed, setFailed] = useState(false);
@@ -54,6 +55,7 @@ function EnquirySummaryPanel({
 }) {
   const [draft, setDraft] = useState(qualification.draft);
   const [cleared, setCleared] = useState(false);
+  const handoff = buildHumanHandoff(draft.handoffRoute);
 
   function continueToForm() {
     const parsed = leadDraftSchema.safeParse(draft);
@@ -73,6 +75,7 @@ function EnquirySummaryPanel({
       message: "",
       preferredDate: "",
       timeWindow: "any-time",
+      handoffRoute: "sales",
     });
     setCleared(true);
   }
@@ -86,6 +89,25 @@ function EnquirySummaryPanel({
       <p className="assistant-preview__privacy">
         {qualification.privacyNotice}
       </p>
+      <article
+        className="assistant-preview__handoff"
+        aria-label="Handoff route"
+      >
+        <p>Human ownership</p>
+        <h4>{handoff.routeLabel}</h4>
+        <strong>{handoff.ownerLabel}</strong>
+        <span>{handoff.reason}</span>
+        <dl>
+          <div>
+            <dt>Working hours</dt>
+            <dd>{handoff.workingHours}</dd>
+          </div>
+          <div>
+            <dt>Response time</dt>
+            <dd>{handoff.serviceLevel}</dd>
+          </div>
+        </dl>
+      </article>
       <div className="assistant-preview__summary-status">
         <div>
           <strong>Captured</strong>
@@ -119,6 +141,23 @@ function EnquirySummaryPanel({
           >
             <option value="general-enquiry">General enquiry</option>
             <option value="site-visit">Site visit</option>
+          </select>
+        </label>
+        <label>
+          Handoff route
+          <select
+            value={draft.handoffRoute}
+            onChange={(event) =>
+              setDraft((current) => ({
+                ...current,
+                handoffRoute: event.target.value as typeof current.handoffRoute,
+              }))
+            }
+          >
+            <option value="sales">Sales enquiry</option>
+            <option value="visit">Visit coordination</option>
+            <option value="architecture">Architecture question</option>
+            <option value="support">Request support</option>
           </select>
         </label>
         <label>
@@ -190,6 +229,16 @@ function EnquirySummaryPanel({
         </p>
       ) : null}
       <div className="assistant-preview__summary-actions">
+        {handoff.whatsappHref ? (
+          <a
+            className="assistant-preview__action"
+            href={handoff.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Review WhatsApp draft <span aria-hidden="true">↗</span>
+          </a>
+        ) : null}
         <Link
           className="assistant-preview__action"
           href={href}
@@ -205,6 +254,11 @@ function EnquirySummaryPanel({
         Continuing does not submit anything. The form requires your review and
         explicit consent, and this preview does not confirm delivery.
       </p>
+      <ul className="assistant-preview__handoff-limits">
+        {handoff.limitations.map((limitation) => (
+          <li key={limitation}>{limitation}</li>
+        ))}
+      </ul>
     </section>
   );
 }

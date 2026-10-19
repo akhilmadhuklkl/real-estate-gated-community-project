@@ -234,7 +234,7 @@ test("validates and completes the preview enquiry flow", async ({ page }) => {
 
   await page.getByLabel("Full name").fill("Akhil");
   await page.getByLabel("Email address").fill("akhil@example.com");
-  await page.getByLabel(/I agree to send/).check();
+  await page.getByLabel(/I agree to prepare/).check();
   await page.waitForTimeout(3_000);
   await page.getByRole("button", { name: "Prepare enquiry" }).click();
 

@@ -31,9 +31,10 @@ describe("lead qualification", () => {
       intent: "site-visit",
       villaInterest: "Brochure villa plan",
       message:
-        "Site-visit request. Villa interest: Brochure villa plan. Preferred date: 2026-11-12. Preferred time: morning.",
+        "Site-visit request. Villa interest: Brochure villa plan. Preferred date: 2026-11-12. Preferred time: morning. Requested route: Visit coordination.",
       preferredDate: "2026-11-12",
       timeWindow: "morning",
+      handoffRoute: "visit",
     });
     expect(result.missing).toEqual([
       "Full name",
@@ -53,7 +54,10 @@ describe("lead qualification", () => {
 
   it("never treats form-only identity and consent fields as captured", () => {
     const result = qualifyLead("Call me back about the villa");
-    expect(result.captured).toEqual(["General enquiry intent"]);
+    expect(result.captured).toEqual([
+      "General enquiry intent",
+      "Handoff route",
+    ]);
     expect(result.missing).toContain("Full name");
     expect(result.missing).toContain("Email address or phone number");
     expect(result.missing).toContain("Explicit consent");

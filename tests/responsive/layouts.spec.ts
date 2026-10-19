@@ -266,6 +266,7 @@ test("lead qualification summary remains editable inside the viewport", async ({
               message: "Please arrange a site visit on 2026-11-12 morning.",
               preferredDate: "2026-11-12",
               timeWindow: "morning",
+              handoffRoute: "visit",
             },
             captured: ["Site-visit intent", "Preferred date"],
             missing: [

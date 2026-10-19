@@ -82,6 +82,7 @@ export function EnquiryForm() {
       phone: readText("phone"),
       preferredDate: readText("preferredDate"),
       timeWindow: readText("timeWindow") || undefined,
+      handoffRoute: readText("handoffRoute") || undefined,
       villaInterest: readText("villaInterest"),
       message: readText("message"),
       consent: form.get("consent") === "on",
@@ -175,10 +176,14 @@ export function EnquiryForm() {
       ) : null}
 
       {assistantDraft ? (
-        <p className="field-help" role="status">
-          Your reviewed assistant summary has been added below. Check every
-          field before giving consent.
-        </p>
+        <div className="form-alert" role="status">
+          <strong>Handoff route: {assistantDraft.handoffRoute}</strong>
+          <p>
+            Your reviewed assistant summary has been added below. Check every
+            field before giving consent. Working hours and response times are
+            not confirmed.
+          </p>
+        </div>
       ) : null}
 
       <form
@@ -187,6 +192,11 @@ export function EnquiryForm() {
         onSubmit={handleSubmit}
         noValidate
       >
+        <input
+          type="hidden"
+          name="handoffRoute"
+          value={assistantDraft?.handoffRoute ?? ""}
+        />
         <fieldset className="intent-options">
           <legend>How can we help?</legend>
           {(Object.keys(intentLabels) as Intent[]).map((value) => (
@@ -338,9 +348,9 @@ export function EnquiryForm() {
             aria-describedby={fieldErrors.consent ? "consent-error" : undefined}
           />
           <span>
-            I agree to send these details for this request and have read the{" "}
-            <Link href="/privacy">preview privacy information</Link>.{" "}
-            <span aria-hidden="true">*</span>
+            I agree to prepare these details for this request and have read the{" "}
+            <Link href="/privacy">preview privacy information</Link>. This
+            preview does not send a message. <span aria-hidden="true">*</span>
           </span>
         </label>
         {fieldErrors.consent ? (

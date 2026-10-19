@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { handoffRouteSchema } from "./human-handoff";
+
 export const enquiryIntentValues = ["general-enquiry", "site-visit"] as const;
 
 const optionalText = (maximum: number) =>
@@ -24,6 +26,7 @@ export const enquirySchema = z
       "Choose a valid date.",
     ),
     timeWindow: z.enum(["morning", "afternoon", "any-time"]).optional(),
+    handoffRoute: handoffRouteSchema.optional(),
     villaInterest: optionalText(100),
     message: optionalText(1000),
     consent: z.boolean().refine((value) => value, {

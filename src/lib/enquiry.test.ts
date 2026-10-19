@@ -26,6 +26,17 @@ describe("enquiry contract", () => {
     expect(enquirySchema.safeParse(validInput).success).toBe(true);
   });
 
+  it("accepts only a governed handoff route", () => {
+    expect(
+      enquirySchema.safeParse({ ...validInput, handoffRoute: "architecture" })
+        .success,
+    ).toBe(true);
+    expect(
+      enquirySchema.safeParse({ ...validInput, handoffRoute: "unapproved" })
+        .success,
+    ).toBe(false);
+  });
+
   it("requires a preferred date for a site visit", () => {
     const result = enquirySchema.safeParse({
       ...validInput,
