@@ -1,7 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { resolveAssistantPreview } from "../../lib/assistant-preview";
+import { LEAD_DRAFT_STORAGE_KEY } from "../../lib/lead-qualification";
 
 import { DynamicPreviewPanel } from "./dynamic-preview-panel";
 
@@ -9,6 +10,8 @@ const evidenceIds = ["chk-source-one"];
 const allowedEvidenceIds = new Set(evidenceIds);
 
 describe("DynamicPreviewPanel", () => {
+  beforeEach(() => sessionStorage.clear());
+  afterEach(cleanup);
   it.each([
     [
       "villa",
@@ -73,9 +76,63 @@ describe("DynamicPreviewPanel", () => {
       },
       "Villa recommendation",
     ],
+    [
+      "enquiry summary",
+      {
+        kind: "enquiry-summary",
+        evidenceIds,
+        conversation: "Please arrange a site visit on 2026-11-12 morning",
+      },
+      "Enquiry summary",
+    ],
   ])("renders the trusted %s component", (_, selection, label) => {
     const preview = resolveAssistantPreview(selection, allowedEvidenceIds);
     render(<DynamicPreviewPanel preview={preview} />);
     expect(screen.getByRole("region", { name: label })).toBeInTheDocument();
+  });
+
+  it("stores only the reviewed non-sensitive draft after explicit continuation", () => {
+    const preview = resolveAssistantPreview(
+      {
+        kind: "enquiry-summary",
+        evidenceIds,
+        conversation:
+          "Arrange a site visit on 2026-11-12 morning. Call +91 90000 00000.",
+      },
+      allowedEvidenceIds,
+    );
+    render(<DynamicPreviewPanel preview={preview} />);
+    const notes = screen.getByLabelText("Relevant context");
+    expect((notes as HTMLTextAreaElement).value).not.toContain("90000");
+    fireEvent.change(notes, {
+      target: { value: "Interested in a morning visit." },
+    });
+    fireEvent.click(
+      screen.getByRole("link", { name: /continue to enquiry form/i }),
+    );
+    const stored = sessionStorage.getItem(LEAD_DRAFT_STORAGE_KEY);
+    expect(stored).not.toBeNull();
+    expect(JSON.parse(stored ?? "{}")).toMatchObject({
+      intent: "site-visit",
+      preferredDate: "2026-11-12",
+      timeWindow: "morning",
+      message: "Interested in a morning visit.",
+    });
+  });
+
+  it("lets the user clear the prepared summary", () => {
+    const preview = resolveAssistantPreview(
+      {
+        kind: "enquiry-summary",
+        evidenceIds,
+        conversation: "Please call me back about the villa",
+      },
+      allowedEvidenceIds,
+    );
+    render(<DynamicPreviewPanel preview={preview} />);
+    fireEvent.click(screen.getByRole("button", { name: "Clear summary" }));
+    expect(screen.getByRole("status")).toHaveTextContent("Summary cleared");
+    expect(screen.getByLabelText("Relevant context")).toHaveValue("");
+    expect(sessionStorage.getItem(LEAD_DRAFT_STORAGE_KEY)).toBeNull();
   });
 });

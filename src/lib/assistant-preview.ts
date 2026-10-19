@@ -5,6 +5,10 @@ import { getContactActions } from "./contact-actions";
 import { galleryItems } from "./gallery-content";
 import { locationContent } from "./location-content";
 import {
+  isLeadQualificationConversation,
+  qualifyLead,
+} from "./lead-qualification";
+import {
   collectRecommendationPreferences,
   evaluateVillaRecommendation,
 } from "./villa-recommendations";
@@ -97,6 +101,13 @@ const recommendationSelection = z
     preferences: recommendationPreferences,
   })
   .strict();
+const enquirySummarySelection = z
+  .object({
+    kind: z.literal("enquiry-summary"),
+    ...base,
+    conversation: z.string().trim().min(2).max(3000),
+  })
+  .strict();
 
 export const assistantPreviewSelectionSchema = z.discriminatedUnion("kind", [
   villaSelection,
@@ -107,6 +118,7 @@ export const assistantPreviewSelectionSchema = z.discriminatedUnion("kind", [
   contactSelection,
   documentSelection,
   recommendationSelection,
+  enquirySummarySelection,
 ]);
 
 export type AssistantPreviewSelection = z.infer<
@@ -174,6 +186,12 @@ export type AssistantPreview =
       component: "villa-recommendation";
       recommendation: ReturnType<typeof evaluateVillaRecommendation>;
       href: "/contact";
+    })
+  | (PreviewBase & {
+      kind: "enquiry-summary";
+      component: "enquiry-summary";
+      qualification: ReturnType<typeof qualifyLead>;
+      href: "/contact#schedule-visit";
     });
 
 function unique(values: string[], field: string) {
@@ -322,6 +340,14 @@ export function resolveAssistantPreview(
         href: "/contact",
       };
     }
+    case "enquiry-summary":
+      return {
+        ...previewBase,
+        kind: selection.kind,
+        component: "enquiry-summary",
+        qualification: qualifyLead(selection.conversation),
+        href: "/contact#schedule-visit",
+      };
   }
 }
 
@@ -346,7 +372,13 @@ export function selectAssistantPreview(
   const allowedEvidenceIds = new Set(evidenceIds);
   let selection: AssistantPreviewSelection | null = null;
 
-  if (intentPatterns.recommendation.test(question)) {
+  if (isLeadQualificationConversation(question)) {
+    selection = {
+      kind: "enquiry-summary",
+      evidenceIds,
+      conversation: question.slice(-3000),
+    };
+  } else if (intentPatterns.recommendation.test(question)) {
     selection = {
       kind: "recommendation",
       evidenceIds,

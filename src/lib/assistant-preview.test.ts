@@ -74,6 +74,15 @@ describe("assistant preview response schema", () => {
       },
       "villa-recommendation",
     ],
+    [
+      "enquiry-summary",
+      {
+        kind: "enquiry-summary",
+        ...base,
+        conversation: "Please arrange a site visit on 2026-11-12 morning",
+      },
+      "enquiry-summary",
+    ],
   ])(
     "resolves the %s selector to a trusted component",
     (_, input, component) => {
@@ -183,6 +192,8 @@ describe("assistant preview intent selection", () => {
     ["Open the brochure", "document"],
     ["What villa configuration is available?", "villa"],
     ["Recommend a 3 bedroom villa", "recommendation"],
+    ["Please arrange a site visit", "enquiry-summary"],
+    ["Can someone call me back?", "enquiry-summary"],
   ])("selects a trusted %s preview", (question, kind) => {
     expect(selectAssistantPreview(question, [citation])?.kind).toBe(kind);
   });

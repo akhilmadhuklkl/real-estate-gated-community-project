@@ -228,3 +228,80 @@ test("dynamic property preview stays within the conversation surface", async ({
   expect(bounds.top).toBeGreaterThanOrEqual(-1);
   expect(bounds.bottom).toBeLessThanOrEqual(bounds.viewportHeight + 1);
 });
+
+test("lead qualification summary remains editable inside the viewport", async ({
+  page,
+}) => {
+  await page.route("**/api/assistant", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        sessionId: "responsive-lead-summary",
+        status: "answered",
+        answer:
+          "I prepared a minimal summary for your review. Nothing has been submitted.",
+        citations: [],
+        model: "test-model",
+        policy: {
+          version: "test",
+          reason: "allowed",
+          riskTier: "R1",
+          humanHandoffRequired: true,
+        },
+        evidence: {
+          confidence: "high",
+          citationCount: 1,
+          minimumScore: 0.45,
+        },
+        preview: {
+          id: "preview-enquiry-summary-test",
+          evidenceIds: ["chk-source-one"],
+          kind: "enquiry-summary",
+          component: "enquiry-summary",
+          href: "/contact#schedule-visit",
+          qualification: {
+            draft: {
+              intent: "site-visit",
+              villaInterest: "Brochure villa plan",
+              message: "Please arrange a site visit on 2026-11-12 morning.",
+              preferredDate: "2026-11-12",
+              timeWindow: "morning",
+            },
+            captured: ["Site-visit intent", "Preferred date"],
+            missing: [
+              "Full name",
+              "Email address or phone number",
+              "Explicit consent",
+            ],
+            privacyNotice:
+              "No personal contact details are inferred, stored, or sent from this summary.",
+          },
+        },
+      }),
+    });
+  });
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Open Glitz Pride property guide" })
+    .click();
+  await page
+    .getByLabel("Ask a property question")
+    .fill("Please arrange a site visit on 2026-11-12 morning");
+  await page.getByRole("button", { name: /send/i }).click();
+  const summary = page.getByRole("region", { name: "Enquiry summary" });
+  await expect(summary).toBeVisible();
+  await expect(summary.getByLabel("Relevant context")).toBeEditable();
+  await expect(
+    summary.getByRole("link", { name: /continue to enquiry form/i }),
+  ).toBeVisible();
+  const bounds = await summary.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return {
+      left: rect.left,
+      right: rect.right,
+      viewportWidth: window.innerWidth,
+    };
+  });
+  expect(bounds.left).toBeGreaterThanOrEqual(-1);
+  expect(bounds.right).toBeLessThanOrEqual(bounds.viewportWidth + 1);
+});

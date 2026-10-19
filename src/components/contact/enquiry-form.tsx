@@ -9,6 +9,12 @@ import {
   useState,
 } from "react";
 
+import {
+  LEAD_DRAFT_STORAGE_KEY,
+  leadDraftSchema,
+  type LeadDraft,
+} from "../../lib/lead-qualification";
+
 type Intent = "general-enquiry" | "site-visit";
 type FieldErrors = Record<string, string>;
 
@@ -25,6 +31,7 @@ const intentLabels: Record<Intent, string> = {
 
 export function EnquiryForm() {
   const [intent, setIntent] = useState<Intent>("general-enquiry");
+  const [assistantDraft, setAssistantDraft] = useState<LeadDraft | null>(null);
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [submission, setSubmission] = useState<SubmissionState>({
     status: "idle",
@@ -37,6 +44,27 @@ export function EnquiryForm() {
       summaryRef.current?.focus();
     }
   }, [submission]);
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem(LEAD_DRAFT_STORAGE_KEY);
+    if (!stored) return;
+    sessionStorage.removeItem(LEAD_DRAFT_STORAGE_KEY);
+    let active = true;
+    try {
+      const parsed = leadDraftSchema.safeParse(JSON.parse(stored));
+      if (!parsed.success) return;
+      queueMicrotask(() => {
+        if (!active) return;
+        setAssistantDraft(parsed.data);
+        setIntent(parsed.data.intent);
+      });
+    } catch {
+      // Ignore malformed browser-session drafts and leave the form empty.
+    }
+    return () => {
+      active = false;
+    };
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -146,7 +174,19 @@ export function EnquiryForm() {
         </div>
       ) : null}
 
-      <form ref={formRef} onSubmit={handleSubmit} noValidate>
+      {assistantDraft ? (
+        <p className="field-help" role="status">
+          Your reviewed assistant summary has been added below. Check every
+          field before giving consent.
+        </p>
+      ) : null}
+
+      <form
+        key={assistantDraft ? JSON.stringify(assistantDraft) : "empty"}
+        ref={formRef}
+        onSubmit={handleSubmit}
+        noValidate
+      >
         <fieldset className="intent-options">
           <legend>How can we help?</legend>
           {(Object.keys(intentLabels) as Intent[]).map((value) => (
@@ -226,6 +266,7 @@ export function EnquiryForm() {
                   id="preferredDate"
                   name="preferredDate"
                   type="date"
+                  defaultValue={assistantDraft?.preferredDate}
                   aria-invalid={Boolean(fieldErrors.preferredDate)}
                   aria-describedby={
                     fieldErrors.preferredDate
@@ -238,7 +279,7 @@ export function EnquiryForm() {
                 <select
                   id="timeWindow"
                   name="timeWindow"
-                  defaultValue="any-time"
+                  defaultValue={assistantDraft?.timeWindow ?? "any-time"}
                 >
                   <option value="any-time">Any time</option>
                   <option value="morning">Morning</option>
@@ -253,7 +294,11 @@ export function EnquiryForm() {
           ) : null}
 
           <Field id="villaInterest" label="Villa interest" optional>
-            <select id="villaInterest" name="villaInterest" defaultValue="">
+            <select
+              id="villaInterest"
+              name="villaInterest"
+              defaultValue={assistantDraft?.villaInterest ?? ""}
+            >
               <option value="">No specific villa selected</option>
               <option value="Brochure villa plan">Brochure villa plan</option>
             </select>
@@ -270,6 +315,7 @@ export function EnquiryForm() {
               name="message"
               rows={5}
               maxLength={1000}
+              defaultValue={assistantDraft?.message}
               aria-invalid={Boolean(fieldErrors.message)}
               aria-describedby={
                 fieldErrors.message ? "message-error" : undefined

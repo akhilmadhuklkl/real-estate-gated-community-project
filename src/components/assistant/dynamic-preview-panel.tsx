@@ -5,6 +5,11 @@ import Link from "next/link";
 import { useState, type CSSProperties } from "react";
 
 import type { AssistantPreview } from "@/lib/assistant-preview";
+import {
+  LEAD_DRAFT_STORAGE_KEY,
+  leadDraftSchema,
+  type LeadQualification,
+} from "../../lib/lead-qualification";
 
 function PreviewImage({ src, alt }: { src: string; alt: string }) {
   const [failed, setFailed] = useState(false);
@@ -37,6 +42,170 @@ function PanelHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
       <p>{eyebrow}</p>
       <h3>{title}</h3>
     </header>
+  );
+}
+
+function EnquirySummaryPanel({
+  qualification,
+  href,
+}: {
+  qualification: LeadQualification;
+  href: "/contact#schedule-visit";
+}) {
+  const [draft, setDraft] = useState(qualification.draft);
+  const [cleared, setCleared] = useState(false);
+
+  function continueToForm() {
+    const parsed = leadDraftSchema.safeParse(draft);
+    if (parsed.success) {
+      sessionStorage.setItem(
+        LEAD_DRAFT_STORAGE_KEY,
+        JSON.stringify(parsed.data),
+      );
+    }
+  }
+
+  function clearSummary() {
+    sessionStorage.removeItem(LEAD_DRAFT_STORAGE_KEY);
+    setDraft({
+      intent: "general-enquiry",
+      villaInterest: "",
+      message: "",
+      preferredDate: "",
+      timeWindow: "any-time",
+    });
+    setCleared(true);
+  }
+
+  return (
+    <section
+      className="assistant-preview__content assistant-preview__enquiry"
+      aria-label="Enquiry summary"
+    >
+      <PanelHeader eyebrow="Your review" title="Enquiry summary" />
+      <p className="assistant-preview__privacy">
+        {qualification.privacyNotice}
+      </p>
+      <div className="assistant-preview__summary-status">
+        <div>
+          <strong>Captured</strong>
+          <ul>
+            {qualification.captured.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <strong>Needed in the form</strong>
+          <ul>
+            {qualification.missing.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <fieldset className="assistant-preview__summary-fields">
+        <legend>Review or correct before continuing</legend>
+        <label>
+          Request type
+          <select
+            value={draft.intent}
+            onChange={(event) =>
+              setDraft((current) => ({
+                ...current,
+                intent: event.target.value as typeof current.intent,
+              }))
+            }
+          >
+            <option value="general-enquiry">General enquiry</option>
+            <option value="site-visit">Site visit</option>
+          </select>
+        </label>
+        <label>
+          Villa interest
+          <select
+            value={draft.villaInterest}
+            onChange={(event) =>
+              setDraft((current) => ({
+                ...current,
+                villaInterest: event.target.value,
+              }))
+            }
+          >
+            <option value="">No specific villa selected</option>
+            <option value="Brochure villa plan">Brochure villa plan</option>
+          </select>
+        </label>
+        {draft.intent === "site-visit" ? (
+          <>
+            <label>
+              Preferred date
+              <input
+                type="date"
+                value={draft.preferredDate}
+                onChange={(event) =>
+                  setDraft((current) => ({
+                    ...current,
+                    preferredDate: event.target.value,
+                  }))
+                }
+              />
+            </label>
+            <label>
+              Preferred time
+              <select
+                value={draft.timeWindow}
+                onChange={(event) =>
+                  setDraft((current) => ({
+                    ...current,
+                    timeWindow: event.target.value as typeof current.timeWindow,
+                  }))
+                }
+              >
+                <option value="any-time">Any time</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+              </select>
+            </label>
+          </>
+        ) : null}
+        <label className="assistant-preview__summary-notes">
+          Relevant context
+          <textarea
+            rows={5}
+            maxLength={1000}
+            value={draft.message}
+            onChange={(event) =>
+              setDraft((current) => ({
+                ...current,
+                message: event.target.value,
+              }))
+            }
+          />
+        </label>
+      </fieldset>
+      {cleared ? (
+        <p className="assistant-preview__cleared" role="status">
+          Summary cleared. Nothing will be carried to the enquiry form.
+        </p>
+      ) : null}
+      <div className="assistant-preview__summary-actions">
+        <Link
+          className="assistant-preview__action"
+          href={href}
+          onClick={continueToForm}
+        >
+          Continue to enquiry form <span aria-hidden="true">→</span>
+        </Link>
+        <button type="button" onClick={clearSummary}>
+          Clear summary
+        </button>
+      </div>
+      <p className="assistant-preview__note">
+        Continuing does not submit anything. The form requires your review and
+        explicit consent, and this preview does not confirm delivery.
+      </p>
+    </section>
   );
 }
 
@@ -338,5 +507,13 @@ export function DynamicPreviewPanel({
         </section>
       );
     }
+    case "enquiry-summary":
+      return (
+        <EnquirySummaryPanel
+          key={preview.id}
+          qualification={preview.qualification}
+          href={preview.href}
+        />
+      );
   }
 }
