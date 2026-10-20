@@ -36,6 +36,9 @@ jobs:
       - name: Run release checks
         run: pnpm check
 
+      - name: Run AI evaluation release gate
+        run: pnpm evaluate:ai
+
       - name: Install browser
         run: pnpm exec playwright install --with-deps chromium
 

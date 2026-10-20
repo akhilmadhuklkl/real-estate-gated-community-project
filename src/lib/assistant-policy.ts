@@ -52,7 +52,7 @@ const highStakesDecisionPatterns = [
 ];
 
 const investmentGuaranteePatterns = [
-  /\b(?:guarantee|promise|certain)\b.{0,45}\b(?:appreciation|rental yield|return on investment|resale value|profit)\b/i,
+  /\b(?:guarantee|promise|certain)\b.{0,45}\b(?:appreciation|rental yield|investment returns?|return on investment|resale value|profit)\b/i,
   /\b(?:predict|forecast)\b.{0,35}\b(?:appreciation|rental yield|resale price|investment return)\b/i,
 ];
 
@@ -63,11 +63,11 @@ const riskPatterns: Array<[AssistantRiskTier, RegExp]> = [
   ],
   [
     "R2",
-    /\b(?:recommend|accessib|construction|current contact|customi[sz]ation|visit)\b/i,
+    /\b(?:recommend\w*|accessib\w*|construction|contact\w*|customi[sz]\w*|visit\w*)\b/i,
   ],
   [
     "R1",
-    /\b(?:villa|amenit|location|distance|brochure|floor plan|master plan|specification)\b/i,
+    /\b(?:villa\w*|amenit\w*|locat\w*|distance\w*|brochure\w*|floor plans?|master plans?|specification\w*)\b/i,
   ],
 ];
 

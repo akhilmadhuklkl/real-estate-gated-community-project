@@ -21,6 +21,8 @@
     "ingest:knowledge:check": "python scripts/ingest_ai_knowledge.py --repo . --as-of 2026-10-17 --check",
     "index:knowledge": "node scripts/build-vector-index.mjs",
     "evaluate:retrieval": "node scripts/run-retrieval-evaluation.mjs",
+    "evaluate:assistant": "vitest run src/lib/assistant-evaluation.test.ts",
+    "evaluate:ai": "node scripts/run-ai-evaluation.mjs",
     "admin:knowledge": "node --experimental-strip-types scripts/knowledge-admin.ts",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"*.{json,ts,mjs,yaml}\" \"docs/architecture/**/*.md\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"*.{json,ts,mjs,yaml}\" \"docs/architecture/**/*.md\"",

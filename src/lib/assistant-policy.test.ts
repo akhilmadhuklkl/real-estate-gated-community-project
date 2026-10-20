@@ -69,4 +69,24 @@ describe("assistant prompt and guardrail policy", () => {
       classifyAssistantRisk("What is today's price and availability?"),
     ).toBe("R3");
   });
+
+  it("classifies inflected property terms without falling back to R0", () => {
+    expect(classifyAssistantRisk("Where is the community located?")).toBe("R1");
+    expect(classifyAssistantRisk("Which amenities are listed?")).toBe("R1");
+    expect(classifyAssistantRisk("How can I contact the project team?")).toBe(
+      "R2",
+    );
+  });
+
+  it("escalates guaranteed investment-return claims", () => {
+    expect(
+      evaluateAssistantPolicy(
+        "Guarantee my investment return from this villa.",
+      ),
+    ).toMatchObject({
+      action: "escalate",
+      reason: "investment-guarantee",
+      riskTier: "R3",
+    });
+  });
 });

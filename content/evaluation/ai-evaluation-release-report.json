@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "evaluatedAt": "2026-10-20T16:46:01.094Z",
+  "suites": {
+    "behaviouralCatalogue": {
+      "passed": true,
+      "caseCount": 500
+    },
+    "retrieval": {
+      "passed": true,
+      "caseCount": 38,
+      "metrics": {
+        "totalCases": 38,
+        "positiveCases": 30,
+        "negativeCases": 8,
+        "hitAt1": 0.8,
+        "hitAt3": 0.9,
+        "meanReciprocalRank": 0.875,
+        "negativeRejectionRate": 1,
+        "citationCompleteness": 1
+      }
+    },
+    "assistantResponse": {
+      "passed": true,
+      "caseCount": 22,
+      "metrics": {
+        "structuredOutputRate": 1,
+        "policyAccuracyRate": 1,
+        "citationCorrectnessRate": 1,
+        "groundedClaimRate": 1,
+        "previewValidityRate": 1,
+        "multilingualConsistencyRate": 1,
+        "failureRecoveryRate": 1,
+        "callBudgetRate": 1,
+        "latencyPassRate": 1,
+        "maximumLatencyMs": 9.948,
+        "maximumEstimatedTokens": 56,
+        "externalModelCalls": 0
+      }
+    }
+  },
+  "passed": true
+}
