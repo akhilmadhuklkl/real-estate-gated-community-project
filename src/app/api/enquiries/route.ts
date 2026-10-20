@@ -1,64 +1,59 @@
-import { NextResponse } from "next/server";
-
 import {
   createEnquiryReference,
   enquirySchema,
   getFieldErrors,
   isLikelyAutomatedSubmission,
 } from "@/lib/enquiry";
+import {
+  bodyErrorResponse,
+  enforceApiSecurity,
+  enquiryApiPolicy,
+  readLimitedJson,
+  recordSecurityEvent,
+  secureJson,
+} from "@/lib/api-security";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  const origin = request.headers.get("origin");
-  const host = request.headers.get("host");
-  const contentLength = Number(request.headers.get("content-length") ?? 0);
-
-  if (origin && host && new URL(origin).host !== host) {
-    return NextResponse.json(
-      { message: "The request origin could not be verified." },
-      { status: 403 },
-    );
-  }
-
-  if (contentLength > 16_384) {
-    return NextResponse.json(
-      { message: "The request is larger than the form allows." },
-      { status: 413 },
-    );
-  }
-
+  const security = enforceApiSecurity(request, enquiryApiPolicy);
+  if (!security.ok) return security.response;
+  const { context } = security;
   let body: unknown;
 
   try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json(
-      { message: "The request could not be read. Please review the form." },
-      { status: 400 },
-    );
+    body = await readLimitedJson(request, enquiryApiPolicy.maxBodyBytes);
+  } catch (error) {
+    return bodyErrorResponse(context, error);
   }
 
   const result = enquirySchema.safeParse(body);
 
   if (!result.success) {
-    return NextResponse.json(
+    return secureJson(
+      context,
       {
         message: "Please correct the highlighted fields.",
         fieldErrors: getFieldErrors(result.error),
+        requestId: context.requestId,
       },
       { status: 400 },
     );
   }
 
   if (isLikelyAutomatedSubmission(result.data)) {
-    return NextResponse.json(
-      { message: "The request could not be accepted. Please try again." },
+    recordSecurityEvent(context, "automated-enquiry-blocked");
+    return secureJson(
+      context,
+      {
+        message: "The request could not be accepted. Please try again.",
+        requestId: context.requestId,
+      },
       { status: 422 },
     );
   }
 
-  return NextResponse.json({
+  return secureJson(context, {
     reference: createEnquiryReference(),
     deliveryState: "preview-only",
   });

@@ -1,10 +1,16 @@
-import { NextResponse } from "next/server";
-
 import { assistantLanguageSchema } from "../../../../lib/assistant-language";
 import {
   createGoogleVoiceProvider,
   transcribeVoiceQuestion,
 } from "../../../../lib/voice-interaction";
+import {
+  bodyErrorResponse,
+  enforceApiSecurity,
+  readLimitedFormData,
+  recordSecurityEvent,
+  secureJson,
+  transcriptionApiPolicy,
+} from "../../../../lib/api-security";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -14,13 +20,28 @@ function isUploadedAudio(value: unknown): value is File {
 }
 
 export async function POST(request: Request) {
-  const form = await request.formData().catch(() => null);
+  const security = enforceApiSecurity(request, transcriptionApiPolicy);
+  if (!security.ok) return security.response;
+  const { context } = security;
+  let form: FormData;
+  try {
+    form = await readLimitedFormData(
+      request,
+      transcriptionApiPolicy.maxBodyBytes,
+    );
+  } catch (error) {
+    return bodyErrorResponse(context, error);
+  }
   const audio = form?.get("audio");
   const language = assistantLanguageSchema.safeParse(form?.get("language"));
 
   if (!isUploadedAudio(audio) || !language.success) {
-    return NextResponse.json(
-      { error: "Please provide a supported recording and language." },
+    return secureJson(
+      context,
+      {
+        error: "Please provide a supported recording and language.",
+        requestId: context.requestId,
+      },
       { status: 400 },
     );
   }
@@ -28,8 +49,12 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim();
   if (!apiKey) {
-    return NextResponse.json(
-      { error: "Voice transcription is temporarily unavailable." },
+    return secureJson(
+      context,
+      {
+        error: "Voice transcription is temporarily unavailable.",
+        requestId: context.requestId,
+      },
       { status: 503 },
     );
   }
@@ -40,9 +65,7 @@ export async function POST(request: Request) {
       language.data,
       createGoogleVoiceProvider(apiKey),
     );
-    return NextResponse.json(result, {
-      headers: { "Cache-Control": "no-store" },
-    });
+    return secureJson(context, result);
   } catch (error) {
     const message =
       error instanceof Error
@@ -50,12 +73,15 @@ export async function POST(request: Request) {
         : "The recording could not be transcribed.";
     const invalidRecording =
       /empty|large|unsupported|clear speech|too long/i.test(message);
-    if (!invalidRecording) console.error("Voice transcription failed", error);
-    return NextResponse.json(
+    if (!invalidRecording)
+      recordSecurityEvent(context, "transcription-provider-failure", error);
+    return secureJson(
+      context,
       {
         error: invalidRecording
           ? message
           : "The recording could not be transcribed. Please try again or type your question.",
+        requestId: context.requestId,
       },
       { status: invalidRecording ? 400 : 503 },
     );

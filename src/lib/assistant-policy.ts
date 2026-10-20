@@ -1,4 +1,4 @@
-export const ASSISTANT_POLICY_VERSION = "2026-10-16.1";
+export const ASSISTANT_POLICY_VERSION = "2026-10-20.1";
 
 export type AssistantRiskTier = "R0" | "R1" | "R2" | "R3" | "R4";
 
@@ -23,6 +23,9 @@ const promptInjectionPatterns = [
   /\b(?:ignore|disregard|override|bypass)\b.{0,50}\b(?:instructions?|polic(?:y|ies)|guardrails?|restrictions?|sources?)\b/i,
   /\b(?:reveal|show|print|repeat|expose)\b.{0,40}\b(?:system prompt|developer message|hidden instructions?|internal instructions?)\b/i,
   /\b(?:retrieved|uploaded|attached)\b.{0,30}\b(?:text|document|file)\b.{0,30}\b(?:command|instruction)\b/i,
+  /\b(?:act as|pretend to be|role[ -]?play as)\b.{0,40}\b(?:system|developer|administrator|unrestricted)\b/i,
+  /\b(?:decode|decrypt|deobfuscate|base64)\b.{0,45}\b(?:instruction|prompt|secret|credential)\b/i,
+  /\b(?:exfiltrate|send|post|upload)\b.{0,50}\b(?:prompt|secret|credential|private data|internal data)\b/i,
 ];
 
 const privateDataPatterns = [
@@ -69,7 +72,10 @@ const riskPatterns: Array<[AssistantRiskTier, RegExp]> = [
 ];
 
 function matchesAny(value: string, patterns: RegExp[]): boolean {
-  return patterns.some((pattern) => pattern.test(value));
+  const normalized = value
+    .normalize("NFKC")
+    .replace(/[\u200B-\u200D\uFEFF]/g, "");
+  return patterns.some((pattern) => pattern.test(normalized));
 }
 
 export function classifyAssistantRisk(value: string): AssistantRiskTier {

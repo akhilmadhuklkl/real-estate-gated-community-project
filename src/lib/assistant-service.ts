@@ -283,7 +283,12 @@ export function createAssistantService(dependencies: {
       };
     }
 
-    const policyDecision = evaluateAssistantPolicy(question);
+    const policyDecision =
+      [
+        ...history.map(({ text }) => evaluateAssistantPolicy(text)),
+        evaluateAssistantPolicy(question),
+      ].find(({ action }) => action !== "allow") ??
+      evaluateAssistantPolicy(question);
     const policy = {
       version: ASSISTANT_POLICY_VERSION,
       reason: policyDecision.reason,

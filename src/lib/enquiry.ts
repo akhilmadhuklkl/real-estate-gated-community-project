@@ -33,7 +33,7 @@ export const enquirySchema = z
       message: "Confirm consent before preparing the request.",
     }),
     sourcePath: z.string().trim().max(200).default("/contact"),
-    website: z.string().max(0).default(""),
+    website: z.string().max(200).default(""),
     startedAt: z.number().int().positive(),
   })
   .superRefine((value, context) => {

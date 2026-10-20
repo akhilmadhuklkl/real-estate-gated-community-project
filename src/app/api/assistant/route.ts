@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { answerAssistantQuestion } from "@/lib/assistant-runtime";
@@ -8,6 +7,14 @@ import {
   isRecommendationConversation,
   recommendationAnswer,
 } from "@/lib/villa-recommendations";
+import {
+  assistantApiPolicy,
+  bodyErrorResponse,
+  enforceApiSecurity,
+  readLimitedJson,
+  recordSecurityEvent,
+  secureJson,
+} from "@/lib/api-security";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -28,12 +35,23 @@ const requestSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  const parsed = requestSchema.safeParse(
-    await request.json().catch(() => null),
-  );
+  const security = enforceApiSecurity(request, assistantApiPolicy);
+  if (!security.ok) return security.response;
+  const { context } = security;
+  let body: unknown;
+  try {
+    body = await readLimitedJson(request, assistantApiPolicy.maxBodyBytes);
+  } catch (error) {
+    return bodyErrorResponse(context, error);
+  }
+  const parsed = requestSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Please ask a short, specific property question." },
+    return secureJson(
+      context,
+      {
+        error: "Please ask a short, specific property question.",
+        requestId: context.requestId,
+      },
       { status: 400 },
     );
   }
@@ -56,17 +74,22 @@ export async function POST(request: Request) {
       isRecommendationConversation(userConversation)
         ? recommendationAnswer(preview.recommendation)
         : null;
-    return NextResponse.json({
+    if (answer.policy.reason === "prompt-injection") {
+      recordSecurityEvent(context, "prompt-injection-blocked");
+    }
+    return secureJson(context, {
       ...answer,
       answer: recommendation ?? answer.answer,
       preview,
     });
   } catch (error) {
-    console.error("Assistant request failed", error);
-    return NextResponse.json(
+    recordSecurityEvent(context, "assistant-provider-failure", error);
+    return secureJson(
+      context,
       {
         error:
           "The property guide is temporarily unavailable. Please try again shortly.",
+        requestId: context.requestId,
       },
       { status: 503 },
     );
