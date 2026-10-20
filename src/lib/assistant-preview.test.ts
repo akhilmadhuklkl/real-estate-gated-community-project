@@ -43,7 +43,7 @@ describe("assistant preview response schema", () => {
     [
       "contact",
       { kind: "contact", ...base, channels: ["call", "whatsapp"] },
-      "contact-actions",
+      "contact-reference-cards",
     ],
     [
       "document",
@@ -147,16 +147,34 @@ describe("assistant preview response schema", () => {
     ).toThrow("disallowed media ID");
   });
 
-  it("returns only the requested trusted contact channels", () => {
+  it("withholds requested channels that lack publication consent", () => {
     const preview = resolveAssistantPreview(
       { kind: "contact", ...base, channels: ["email"] },
       evidence,
     );
     expect(preview.kind).toBe("contact");
     if (preview.kind !== "contact") throw new Error("Unexpected preview kind");
-    expect(preview.actions.calls).toEqual([]);
-    expect(preview.actions.email?.href).toMatch(/^mailto:/);
-    expect(preview.actions.whatsapp.enabled).toBe(false);
+    expect(preview.directory.cards).toEqual([]);
+    expect(preview.directory.unavailableChannels).toEqual(["email"]);
+  });
+
+  it("returns the approved contact card with source provenance", () => {
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER = "+91 98954 68235";
+    try {
+      const preview = resolveAssistantPreview(
+        { kind: "contact", ...base, channels: ["whatsapp"] },
+        evidence,
+      );
+      expect(preview.kind).toBe("contact");
+      if (preview.kind !== "contact")
+        throw new Error("Unexpected preview kind");
+      expect(preview.directory.cards[0]?.source).toMatchObject({
+        id: "KS-004",
+        approvalId: "APR-004",
+      });
+    } finally {
+      delete process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+    }
   });
 });
 

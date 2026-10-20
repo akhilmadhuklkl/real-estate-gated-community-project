@@ -341,7 +341,7 @@
 }
 .concierge-voice-status p {
   margin: 0;
-  color: rgb(14 52 42 / 60%);
+  color: #49675f;
   font-size: 0.68rem;
 }
 .concierge-voice-status p[role="alert"] {
@@ -382,7 +382,7 @@
 }
 .assistant-preview__header p {
   margin: 0 0 0.45rem;
-  color: #a6593d;
+  color: #8f4933;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.2em;
@@ -585,22 +585,90 @@
   gap: 0.7rem;
   margin-bottom: 1.2rem;
 }
-.assistant-preview__contact-list a {
+.assistant-preview__contact-card {
   display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
   padding: 1rem;
   border: 1px solid rgb(31 73 59 / 16%);
   background: #f7f3e9;
   color: var(--forest-950);
-  text-decoration: none;
 }
-.assistant-preview__contact-list span {
-  color: rgb(14 52 42 / 60%);
+.assistant-preview__contact-avatar {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--forest-900);
+  color: #fff;
+  font-family: var(--font-display);
+}
+.assistant-preview__contact-card > div:nth-child(2) span {
+  color: #49675f;
   font-size: 0.63rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.assistant-preview__contact-list strong {
-  margin-top: 0.25rem;
+.assistant-preview__contact-card h4 {
+  margin: 0.2rem 0 0.1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.assistant-preview__contact-card strong {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.assistant-preview__contact-card dl,
+.assistant-preview__contact-card > a,
+.assistant-preview__contact-card > p,
+.assistant-preview__contact-card > ul {
+  grid-column: 1 / -1;
+}
+.assistant-preview__contact-card dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0;
+}
+.assistant-preview__contact-card dt {
+  color: #49675f;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.assistant-preview__contact-card dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.72rem;
+}
+.assistant-preview__contact-card > a {
+  padding: 0.75rem 0.9rem;
+  background: var(--forest-900);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+.assistant-preview__contact-source,
+.assistant-preview__contact-card > ul,
+.assistant-preview__contact-unavailable {
+  margin: 0;
+  color: #49675f;
+  font-size: 0.67rem;
+  line-height: 1.55;
+}
+.assistant-preview__contact-card > ul {
+  padding-left: 1rem;
+}
+.assistant-preview__contact-unavailable {
+  margin: 0 0 1rem;
+  padding: 0.8rem;
+  border-left: 3px solid #a6593d;
+  background: rgb(166 89 61 / 8%);
+}
+@media (max-width: 440px) {
+  .assistant-preview__contact-card dl {
+    grid-template-columns: 1fr;
+  }
 }
 .assistant-preview__document {
   text-align: center;

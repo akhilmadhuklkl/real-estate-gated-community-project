@@ -2,6 +2,10 @@ import { z } from "zod";
 
 import type { AssistantCitation } from "./assistant-service";
 import { getContactActions } from "./contact-actions";
+import {
+  contactChannelSchema,
+  getApprovedContactDirectory,
+} from "./contact-directory";
 import { galleryItems } from "./gallery-content";
 import { locationContent } from "./location-content";
 import {
@@ -65,10 +69,7 @@ const contactSelection = z
   .object({
     kind: z.literal("contact"),
     ...base,
-    channels: z
-      .array(z.enum(["call", "email", "whatsapp"]))
-      .min(1)
-      .max(3),
+    channels: z.array(contactChannelSchema).min(1).max(3),
   })
   .strict();
 const documentSelection = z
@@ -165,12 +166,8 @@ export type AssistantPreview =
     })
   | (PreviewBase & {
       kind: "contact";
-      component: "contact-actions";
-      actions: {
-        calls: ReturnType<typeof getContactActions>["office"]["phones"];
-        email: ReturnType<typeof getContactActions>["office"]["email"];
-        whatsapp: ReturnType<typeof getContactActions>["whatsapp"];
-      };
+      component: "contact-reference-cards";
+      directory: ReturnType<typeof getApprovedContactDirectory>;
       href: "/contact";
     })
   | (PreviewBase & {
@@ -295,22 +292,11 @@ export function resolveAssistantPreview(
     }
     case "contact": {
       unique(selection.channels, "channels");
-      const trusted = getContactActions();
       return {
         ...previewBase,
         kind: selection.kind,
-        component: "contact-actions",
-        actions: {
-          calls: selection.channels.includes("call")
-            ? trusted.office.phones
-            : [],
-          email: selection.channels.includes("email")
-            ? trusted.office.email
-            : null,
-          whatsapp: selection.channels.includes("whatsapp")
-            ? trusted.whatsapp
-            : { enabled: false as const, href: null },
-        },
+        component: "contact-reference-cards",
+        directory: getApprovedContactDirectory(selection.channels),
         href: "/contact",
       };
     }

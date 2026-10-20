@@ -1,3 +1,4 @@
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const routes = [
@@ -227,6 +228,113 @@ test("dynamic property preview stays within the conversation surface", async ({
   expect(bounds.right).toBeLessThanOrEqual(bounds.viewportWidth + 1);
   expect(bounds.top).toBeGreaterThanOrEqual(-1);
   expect(bounds.bottom).toBeLessThanOrEqual(bounds.viewportHeight + 1);
+});
+
+test("approved contact card remains usable inside the conversation surface", async ({
+  page,
+}) => {
+  await page.route("**/api/assistant", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        sessionId: "responsive-contact-card",
+        status: "answered",
+        answer: "The approved project enquiry channel is available.",
+        citations: [],
+        model: "test-model",
+        policy: {
+          version: "test",
+          reason: "allowed",
+          riskTier: "R0",
+          humanHandoffRequired: false,
+        },
+        evidence: {
+          confidence: "high",
+          citationCount: 1,
+          minimumScore: 0.45,
+        },
+        preview: {
+          id: "preview-contact-test",
+          evidenceIds: ["chk-source-one"],
+          kind: "contact",
+          component: "contact-reference-cards",
+          href: "/contact",
+          directory: {
+            directoryNotice:
+              "Only professional contact details with recorded publication consent appear here. Unconfirmed details stay hidden.",
+            unavailableChannels: ["email"],
+            cards: [
+              {
+                id: "contact-project-enquiries-whatsapp",
+                displayName: "Glitz Pride project enquiries",
+                personName: null,
+                photo: null,
+                role: "Project enquiry coordinator",
+                languages: ["Not confirmed"],
+                workingHours: "Not confirmed",
+                responseTime: "Not confirmed",
+                channels: [
+                  {
+                    type: "whatsapp",
+                    label: "Review WhatsApp message",
+                    href: "https://wa.me/919895468235",
+                  },
+                ],
+                source: {
+                  id: "KS-004",
+                  approvalId: "APR-004",
+                  label: "Owner-approved WhatsApp destination",
+                  reviewedOn: "2026-10-11",
+                },
+                limitations: [
+                  "No individual contact name or photograph is approved for publication.",
+                  "Opening WhatsApp does not confirm delivery, availability, or a response time.",
+                  "The message remains under your control and is not sent automatically.",
+                ],
+              },
+            ],
+          },
+        },
+      }),
+    });
+  });
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Open Glitz Pride property guide" })
+    .click();
+  await page
+    .getByLabel("Ask a property question")
+    .fill("How can I contact you?");
+  await page.getByRole("button", { name: /send/i }).click();
+
+  const preview = page.getByRole("complementary", {
+    name: "Visual property details",
+  });
+  await expect(preview).toBeVisible();
+  await expect(
+    preview.getByRole("heading", { name: "Glitz Pride project enquiries" }),
+  ).toBeVisible();
+  const layout = await preview.evaluate((element) => {
+    const rect = element.getBoundingClientRect();
+    return {
+      left: rect.left,
+      right: rect.right,
+      viewportWidth: window.innerWidth,
+      scrollWidth: element.scrollWidth,
+      clientWidth: element.clientWidth,
+    };
+  });
+  expect(layout.left).toBeGreaterThanOrEqual(-1);
+  expect(layout.right).toBeLessThanOrEqual(layout.viewportWidth + 1);
+  expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1);
+  expect(
+    (
+      await new AxeBuilder({ page })
+        .include('[aria-label="Contact reference cards"]')
+        .withTags(["wcag2a", "wcag2aa"])
+        .analyze()
+    ).violations,
+  ).toEqual([]);
 });
 
 test("lead qualification summary remains editable inside the viewport", async ({

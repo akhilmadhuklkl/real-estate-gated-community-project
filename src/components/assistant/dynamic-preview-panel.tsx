@@ -427,33 +427,74 @@ export function DynamicPreviewPanel({
       return (
         <section
           className="assistant-preview__content"
-          aria-label="Contact options"
+          aria-label="Contact reference cards"
         >
-          <PanelHeader eyebrow="Talk to us" title="Continue with a person" />
+          <PanelHeader
+            eyebrow="Approved directory"
+            title="Continue with a person"
+          />
+          <p className="assistant-preview__privacy">
+            {preview.directory.directoryNotice}
+          </p>
           <div className="assistant-preview__contact-list">
-            {preview.actions.calls.map((call) => (
-              <a key={call.href} href={call.href}>
-                <span>Call</span>
-                <strong>{call.label}</strong>
-              </a>
-            ))}
-            {preview.actions.email ? (
-              <a href={preview.actions.email.href}>
-                <span>Email</span>
-                <strong>{preview.actions.email.label}</strong>
-              </a>
-            ) : null}
-            {preview.actions.whatsapp.enabled ? (
-              <a
-                href={preview.actions.whatsapp.href ?? undefined}
-                target="_blank"
-                rel="noreferrer"
+            {preview.directory.cards.map((card) => (
+              <article
+                key={card.id}
+                className="assistant-preview__contact-card"
               >
-                <span>Message</span>
-                <strong>WhatsApp</strong>
-              </a>
-            ) : null}
+                <div
+                  className="assistant-preview__contact-avatar"
+                  aria-hidden="true"
+                >
+                  GP
+                </div>
+                <div>
+                  <span>Department contact</span>
+                  <h4>{card.displayName}</h4>
+                  <strong>{card.role}</strong>
+                </div>
+                <dl>
+                  <div>
+                    <dt>Languages</dt>
+                    <dd>{card.languages.join(", ")}</dd>
+                  </div>
+                  <div>
+                    <dt>Working hours</dt>
+                    <dd>{card.workingHours}</dd>
+                  </div>
+                  <div>
+                    <dt>Response time</dt>
+                    <dd>{card.responseTime}</dd>
+                  </div>
+                </dl>
+                {card.channels.map((channel) => (
+                  <a
+                    key={channel.type}
+                    href={channel.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {channel.label} <span aria-hidden="true">↗</span>
+                  </a>
+                ))}
+                <p className="assistant-preview__contact-source">
+                  Source: {card.source.label} · {card.source.approvalId} ·
+                  reviewed {card.source.reviewedOn}
+                </p>
+                <ul>
+                  {card.limitations.map((limitation) => (
+                    <li key={limitation}>{limitation}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
+          {preview.directory.unavailableChannels.length ? (
+            <p className="assistant-preview__contact-unavailable" role="status">
+              No approved {preview.directory.unavailableChannels.join(" or ")}{" "}
+              contact card is available yet.
+            </p>
+          ) : null}
           <Link className="assistant-preview__action" href={preview.href}>
             All contact options <span aria-hidden="true">→</span>
           </Link>

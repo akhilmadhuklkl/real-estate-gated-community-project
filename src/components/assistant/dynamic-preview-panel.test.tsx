@@ -45,7 +45,7 @@ describe("DynamicPreviewPanel", () => {
     [
       "contact",
       { kind: "contact", evidenceIds, channels: ["call", "email"] },
-      "Contact options",
+      "Contact reference cards",
     ],
     [
       "document",
@@ -89,6 +89,30 @@ describe("DynamicPreviewPanel", () => {
     const preview = resolveAssistantPreview(selection, allowedEvidenceIds);
     render(<DynamicPreviewPanel preview={preview} />);
     expect(screen.getByRole("region", { name: label })).toBeInTheDocument();
+  });
+
+  it("renders only the approved contact card with explicit provenance and unknowns", () => {
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER = "+91 98954 68235";
+    try {
+      const preview = resolveAssistantPreview(
+        { kind: "contact", evidenceIds, channels: ["whatsapp", "email"] },
+        allowedEvidenceIds,
+      );
+      render(<DynamicPreviewPanel preview={preview} />);
+
+      const card = screen.getByRole("article");
+      expect(card).toHaveTextContent("Glitz Pride project enquiries");
+      expect(card).toHaveTextContent("Project enquiry coordinator");
+      expect(card).toHaveTextContent("LanguagesNot confirmed");
+      expect(card).toHaveTextContent("Working hoursNot confirmed");
+      expect(card).toHaveTextContent("Response timeNot confirmed");
+      expect(card).toHaveTextContent("APR-004");
+      expect(screen.getByRole("status")).toHaveTextContent(
+        "No approved email contact card",
+      );
+    } finally {
+      delete process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+    }
   });
 
   it("stores only the reviewed non-sensitive draft after explicit continuation", () => {
