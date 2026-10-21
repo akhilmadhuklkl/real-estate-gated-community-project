@@ -48,17 +48,21 @@ export function EnquiryForm() {
   useEffect(() => {
     const stored = sessionStorage.getItem(LEAD_DRAFT_STORAGE_KEY);
     if (!stored) return;
-    sessionStorage.removeItem(LEAD_DRAFT_STORAGE_KEY);
     let active = true;
     try {
       const parsed = leadDraftSchema.safeParse(JSON.parse(stored));
-      if (!parsed.success) return;
+      if (!parsed.success) {
+        sessionStorage.removeItem(LEAD_DRAFT_STORAGE_KEY);
+        return;
+      }
       queueMicrotask(() => {
         if (!active) return;
         setAssistantDraft(parsed.data);
         setIntent(parsed.data.intent);
+        sessionStorage.removeItem(LEAD_DRAFT_STORAGE_KEY);
       });
     } catch {
+      sessionStorage.removeItem(LEAD_DRAFT_STORAGE_KEY);
       // Ignore malformed browser-session drafts and leave the form empty.
     }
     return () => {

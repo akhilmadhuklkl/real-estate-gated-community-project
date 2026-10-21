@@ -15,6 +15,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:ai-integration": "playwright test tests/e2e/ai-integration.spec.ts",
     "test:performance": "playwright test --config=playwright.performance.config.ts",
     "test:responsive": "playwright test --config=playwright.responsive.config.ts",
     "ingest:knowledge": "python scripts/ingest_ai_knowledge.py --repo .",
