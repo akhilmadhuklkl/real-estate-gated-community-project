@@ -1,4 +1,5 @@
 import { assistantLanguageSchema } from "../../../../lib/assistant-language";
+import { recordVoiceObservation } from "../../../../lib/ai-observability";
 import {
   createGoogleVoiceProvider,
   transcribeVoiceQuestion,
@@ -23,6 +24,7 @@ export async function POST(request: Request) {
   const security = enforceApiSecurity(request, transcriptionApiPolicy);
   if (!security.ok) return security.response;
   const { context } = security;
+  const startedAt = performance.now();
   let form: FormData;
   try {
     form = await readLimitedFormData(
@@ -30,12 +32,24 @@ export async function POST(request: Request) {
       transcriptionApiPolicy.maxBodyBytes,
     );
   } catch (error) {
+    recordVoiceObservation({
+      durationMs: performance.now() - startedAt,
+      outcome: "invalid",
+      language: "unknown",
+      audioBytes: 0,
+    });
     return bodyErrorResponse(context, error);
   }
   const audio = form?.get("audio");
   const language = assistantLanguageSchema.safeParse(form?.get("language"));
 
   if (!isUploadedAudio(audio) || !language.success) {
+    recordVoiceObservation({
+      durationMs: performance.now() - startedAt,
+      outcome: "invalid",
+      language: language.success ? language.data : "unknown",
+      audioBytes: isUploadedAudio(audio) && "size" in audio ? audio.size : 0,
+    });
     return secureJson(
       context,
       {
@@ -49,6 +63,12 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim();
   if (!apiKey) {
+    recordVoiceObservation({
+      durationMs: performance.now() - startedAt,
+      outcome: "unavailable",
+      language: language.data,
+      audioBytes: audioFile.size,
+    });
     return secureJson(
       context,
       {
@@ -65,6 +85,12 @@ export async function POST(request: Request) {
       language.data,
       createGoogleVoiceProvider(apiKey),
     );
+    recordVoiceObservation({
+      durationMs: performance.now() - startedAt,
+      outcome: "success",
+      language: language.data,
+      audioBytes: audioFile.size,
+    });
     return secureJson(context, result);
   } catch (error) {
     const message =
@@ -75,6 +101,12 @@ export async function POST(request: Request) {
       /empty|large|unsupported|clear speech|too long/i.test(message);
     if (!invalidRecording)
       recordSecurityEvent(context, "transcription-provider-failure", error);
+    recordVoiceObservation({
+      durationMs: performance.now() - startedAt,
+      outcome: invalidRecording ? "invalid" : "provider-failure",
+      language: language.data,
+      audioBytes: audioFile.size,
+    });
     return secureJson(
       context,
       {

@@ -99,6 +99,68 @@ describe("ConciergeChat", () => {
     expect(screen.getByText("Glitz Pride brochure")).toBeInTheDocument();
   });
 
+  it("submits only categorical feedback without conversation content", async () => {
+    const fetchMock = vi
+      .spyOn(globalThis, "fetch")
+      .mockResolvedValueOnce(
+        new Response(
+          JSON.stringify({
+            sessionId: "session-feedback",
+            status: "answered",
+            answer: "The approved plan describes a 2,180 sq ft villa.",
+            citations: [],
+            model: "test-model",
+            policy: {
+              version: "1",
+              reason: "allowed",
+              riskTier: "R0",
+              humanHandoffRequired: false,
+            },
+            evidence: {
+              confidence: "high",
+              citationCount: 1,
+              minimumScore: 0.45,
+            },
+            preview: null,
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+      )
+      .mockResolvedValueOnce(
+        new Response(JSON.stringify({ accepted: true }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }),
+      );
+
+    render(<ConciergeChat />);
+    fireEvent.click(
+      screen.getByRole("button", { name: "Open Glitz Pride property guide" }),
+    );
+    fireEvent.change(screen.getByLabelText("Ask a property question"), {
+      target: { value: "What is the villa area?" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /send/i }));
+    fireEvent.click(await screen.findByRole("button", { name: "Helpful" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(fetchMock.mock.calls[1][0]).toBe("/api/assistant/feedback");
+    const feedbackRequest = fetchMock.mock.calls[1][1] as RequestInit;
+    const feedbackBody = JSON.parse(String(feedbackRequest.body));
+    expect(feedbackBody).toEqual({
+      rating: "helpful",
+      language: "en",
+      answerStatus: "answered",
+      riskTier: "R0",
+      previewKind: "none",
+    });
+    expect(JSON.stringify(feedbackBody)).not.toContain("villa area");
+    expect(JSON.stringify(feedbackBody)).not.toContain("2,180");
+    expect(
+      await screen.findByText("Thank you for the feedback."),
+    ).toBeInTheDocument();
+  });
+
   it("shows a safe recovery message when the service is unavailable", async () => {
     vi.spyOn(globalThis, "fetch").mockRejectedValue(new Error("offline"));
     render(<ConciergeChat />);

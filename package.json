@@ -33,6 +33,7 @@
     "@ai-sdk/google": "^4.0.95",
     "@google/genai": "2.30.0",
     "@huggingface/transformers": "^4.3.1",
+    "@vercel/functions": "^3.10.1",
     "ai": "^7.0.137",
     "next": "16.3.8",
     "react": "19.3.0",

@@ -1,7 +1,8 @@
 import { createHash, randomUUID } from "node:crypto";
 
 export type ApiSecurityPolicy = {
-  route: "assistant" | "assistant-transcription" | "enquiry";
+  route:
+    "assistant" | "assistant-feedback" | "assistant-transcription" | "enquiry";
   maxBodyBytes: number;
   allowedContentTypes: string[];
   rateLimit: number;
@@ -337,6 +338,14 @@ export const transcriptionApiPolicy: ApiSecurityPolicy = {
   maxBodyBytes: 4_500_000,
   allowedContentTypes: ["multipart/form-data"],
   rateLimit: 6,
+  windowMs: 60_000,
+};
+
+export const assistantFeedbackApiPolicy: ApiSecurityPolicy = {
+  route: "assistant-feedback",
+  maxBodyBytes: 2_048,
+  allowedContentTypes: ["application/json"],
+  rateLimit: 12,
   windowMs: 60_000,
 };
 

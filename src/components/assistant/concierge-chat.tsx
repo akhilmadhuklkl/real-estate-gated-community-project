@@ -15,7 +15,15 @@ import { DynamicPreviewPanel } from "./dynamic-preview-panel";
 type ChatMessage = AssistantTurn & {
   id: string;
   citations?: AssistantAnswer["citations"];
+  feedbackContext?: {
+    language: AssistantLanguage;
+    answerStatus: AssistantAnswer["status"];
+    riskTier: AssistantAnswer["policy"]["riskTier"];
+    previewKind: AssistantPreview["kind"] | "none";
+  };
 };
+
+type FeedbackState = "idle" | "submitting" | "submitted" | "error";
 
 type VoiceState =
   "idle" | "requesting" | "recording" | "transcribing" | "review" | "error";
@@ -49,6 +57,9 @@ export function ConciergeChat() {
   const [voiceSeconds, setVoiceSeconds] = useState(0);
   const [voiceError, setVoiceError] = useState("");
   const [speakingMessageId, setSpeakingMessageId] = useState<string>();
+  const [feedbackByMessage, setFeedbackByMessage] = useState<
+    Record<string, FeedbackState>
+  >({});
   const launcherRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -365,13 +376,20 @@ export function ConciergeChat() {
       setSessionId(result.sessionId);
       setPreview(result.preview ?? null);
       setMobilePreviewOpen(Boolean(result.preview));
+      const assistantMessageId = messageId();
       setMessages((current) => [
         ...current,
         {
-          id: messageId(),
+          id: assistantMessageId,
           role: "assistant",
           text: result.answer,
           citations: result.citations,
+          feedbackContext: {
+            language,
+            answerStatus: result.status,
+            riskTier: result.policy.riskTier,
+            previewKind: result.preview?.kind ?? "none",
+          },
         },
       ]);
     } catch {
@@ -385,6 +403,34 @@ export function ConciergeChat() {
       ]);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function sendFeedback(
+    message: ChatMessage,
+    rating: "helpful" | "needs-improvement",
+  ) {
+    if (!message.feedbackContext) return;
+    setFeedbackByMessage((current) => ({
+      ...current,
+      [message.id]: "submitting",
+    }));
+    try {
+      const response = await fetch("/api/assistant/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rating, ...message.feedbackContext }),
+      });
+      if (!response.ok) throw new Error("Feedback was not accepted.");
+      setFeedbackByMessage((current) => ({
+        ...current,
+        [message.id]: "submitted",
+      }));
+    } catch {
+      setFeedbackByMessage((current) => ({
+        ...current,
+        [message.id]: "error",
+      }));
     }
   }
 
@@ -531,6 +577,51 @@ export function ConciergeChat() {
                             ))}
                           </ul>
                         </details>
+                      ) : null}
+                      {message.feedbackContext ? (
+                        <div
+                          className="concierge-feedback"
+                          aria-label="Was this answer helpful?"
+                        >
+                          {feedbackByMessage[message.id] === "submitted" ? (
+                            <p role="status">Thank you for the feedback.</p>
+                          ) : (
+                            <>
+                              <span>Was this helpful?</span>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  void sendFeedback(message, "helpful")
+                                }
+                                disabled={
+                                  feedbackByMessage[message.id] === "submitting"
+                                }
+                              >
+                                Helpful
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  void sendFeedback(
+                                    message,
+                                    "needs-improvement",
+                                  )
+                                }
+                                disabled={
+                                  feedbackByMessage[message.id] === "submitting"
+                                }
+                              >
+                                Needs improvement
+                              </button>
+                              {feedbackByMessage[message.id] === "error" ? (
+                                <p role="status">
+                                  Feedback could not be recorded. You can try
+                                  again.
+                                </p>
+                              ) : null}
+                            </>
+                          )}
+                        </div>
                       ) : null}
                     </article>
                   ))}

@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+import {
+  classifyAssistantTopic,
+  recordAssistantObservation,
+} from "@/lib/ai-observability";
 import { answerAssistantQuestion } from "@/lib/assistant-runtime";
 import { assistantLanguageSchema } from "@/lib/assistant-language";
 import { selectAssistantPreview } from "@/lib/assistant-preview";
@@ -38,14 +42,43 @@ export async function POST(request: Request) {
   const security = enforceApiSecurity(request, assistantApiPolicy);
   if (!security.ok) return security.response;
   const { context } = security;
+  const startedAt = performance.now();
   let body: unknown;
   try {
     body = await readLimitedJson(request, assistantApiPolicy.maxBodyBytes);
   } catch (error) {
+    recordAssistantObservation({
+      durationMs: performance.now() - startedAt,
+      status: "invalid-request",
+      language: "en",
+      topic: "other",
+      riskTier: "unknown",
+      policyReason: "unknown",
+      humanHandoffRequired: false,
+      previewKind: "none",
+      citationCount: 0,
+      inputCharacters: 0,
+      outputCharacters: 0,
+      modelUsed: false,
+    });
     return bodyErrorResponse(context, error);
   }
   const parsed = requestSchema.safeParse(body);
   if (!parsed.success) {
+    recordAssistantObservation({
+      durationMs: performance.now() - startedAt,
+      status: "invalid-request",
+      language: "en",
+      topic: "other",
+      riskTier: "unknown",
+      policyReason: "unknown",
+      humanHandoffRequired: false,
+      previewKind: "none",
+      citationCount: 0,
+      inputCharacters: 0,
+      outputCharacters: 0,
+      modelUsed: false,
+    });
     return secureJson(
       context,
       {
@@ -77,6 +110,25 @@ export async function POST(request: Request) {
     if (answer.policy.reason === "prompt-injection") {
       recordSecurityEvent(context, "prompt-injection-blocked");
     }
+    recordAssistantObservation({
+      durationMs: performance.now() - startedAt,
+      status: answer.status,
+      language: parsed.data.language,
+      topic: classifyAssistantTopic(parsed.data.question),
+      riskTier: answer.policy.riskTier,
+      policyReason: answer.policy.reason,
+      humanHandoffRequired: answer.policy.humanHandoffRequired,
+      previewKind: preview?.kind ?? "none",
+      citationCount: answer.citations.length,
+      inputCharacters:
+        parsed.data.question.length +
+        (parsed.data.history ?? []).reduce(
+          (total, turn) => total + turn.text.length,
+          0,
+        ),
+      outputCharacters: (recommendation ?? answer.answer).length,
+      modelUsed: Boolean(answer.model),
+    });
     return secureJson(context, {
       ...answer,
       answer: recommendation ?? answer.answer,
@@ -84,6 +136,25 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     recordSecurityEvent(context, "assistant-provider-failure", error);
+    recordAssistantObservation({
+      durationMs: performance.now() - startedAt,
+      status: "service-unavailable",
+      language: parsed.data.language,
+      topic: classifyAssistantTopic(parsed.data.question),
+      riskTier: "unknown",
+      policyReason: "unknown",
+      humanHandoffRequired: false,
+      previewKind: "none",
+      citationCount: 0,
+      inputCharacters:
+        parsed.data.question.length +
+        (parsed.data.history ?? []).reduce(
+          (total, turn) => total + turn.text.length,
+          0,
+        ),
+      outputCharacters: 0,
+      modelUsed: false,
+    });
     return secureJson(
       context,
       {

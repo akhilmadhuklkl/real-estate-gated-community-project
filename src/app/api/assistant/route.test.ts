@@ -5,8 +5,13 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { resetApiSecurityStateForTests } from "@/lib/api-security";
 
 const answerAssistantQuestion = vi.fn();
+const recordAssistantObservation = vi.fn();
 
 vi.mock("@/lib/assistant-runtime", () => ({ answerAssistantQuestion }));
+vi.mock("@/lib/ai-observability", () => ({
+  classifyAssistantTopic: () => "amenities",
+  recordAssistantObservation,
+}));
 
 const request = (body: unknown, origin = "https://example.test") =>
   new Request("https://example.test/api/assistant", {
@@ -22,6 +27,7 @@ const request = (body: unknown, origin = "https://example.test") =>
 
 afterEach(() => {
   answerAssistantQuestion.mockReset();
+  recordAssistantObservation.mockReset();
   resetApiSecurityStateForTests();
 });
 
@@ -50,6 +56,14 @@ describe("POST /api/assistant", () => {
     expect(response.headers.get("Cache-Control")).toContain("no-store");
     expect(response.headers.get("X-Request-ID")).toBeTruthy();
     expect(response.headers.get("RateLimit-Limit")).toBe("12");
+    expect(recordAssistantObservation).toHaveBeenCalledWith(
+      expect.objectContaining({
+        status: "insufficient-evidence",
+        language: "en",
+        topic: "amenities",
+        citationCount: 0,
+      }),
+    );
   });
 
   it("rejects cross-site calls before invoking the assistant", async () => {
