@@ -8,7 +8,7 @@ export function GET() {
     {
       status: "ok",
       service: "glitz-pride-web",
-      phase: "phase-1-mvp",
+      phase: "phase-2-mvp",
     },
     {
       headers: {

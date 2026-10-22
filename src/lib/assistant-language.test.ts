@@ -5,6 +5,7 @@ import {
   detectAssistantLanguage,
   languageUnavailableMessage,
   resolveAssistantLanguage,
+  shouldTranslateAssistantQuery,
 } from "./assistant-language";
 
 describe("assistant language support", () => {
@@ -28,6 +29,18 @@ describe("assistant language support", () => {
       approvalState: "approved",
       reviewer: "AKHIL",
     });
+  });
+
+  it("uses translation only when the query text is actually non-English", () => {
+    expect(shouldTranslateAssistantQuery("Where is Glitz Pride?", "ml")).toBe(
+      false,
+    );
+    expect(
+      shouldTranslateAssistantQuery("ഗ്ലിറ്റ്സ് പ്രൈഡ് എവിടെയാണ്?", "ml"),
+    ).toBe(true);
+    expect(
+      shouldTranslateAssistantQuery("ഗ്ലിറ്റ്സ് പ്രൈഡ് എവിടെയാണ്?", "en"),
+    ).toBe(false);
   });
 
   it("marks all seven languages approved and Arabic right-to-left", () => {

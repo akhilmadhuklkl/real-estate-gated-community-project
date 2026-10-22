@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   isRetrievalEligible,
+  rankLexicalRecords,
   rankVectorRecords,
   type KnowledgeChunk,
   type VectorRecord,
@@ -111,6 +112,16 @@ describe("vector retrieval governance", () => {
     const results = rankVectorRecords([1, 0], records, { topK: 2 });
     expect(results.map(({ id }) => id)).toEqual(["chk-villa", "chk-location"]);
     expect(results[0].score).toBeCloseTo(1);
+  });
+
+  it("ranks translated text lexically without loading a native embedding runtime", () => {
+    const results = rankLexicalRecords("villa garden", records, {
+      minimumScore: 0.45,
+      topK: 2,
+    });
+    expect(results.map(({ id }) => id)).toEqual(["chk-villa"]);
+    expect(results[0].score).toBe(1);
+    expect(results[0]).not.toHaveProperty("vector");
   });
 
   it("applies source, document, topic, score, and top-k filters before returning evidence", () => {

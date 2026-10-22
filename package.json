@@ -24,6 +24,7 @@
     "evaluate:retrieval": "node scripts/run-retrieval-evaluation.mjs",
     "evaluate:assistant": "vitest run src/lib/assistant-evaluation.test.ts",
     "evaluate:ai": "node scripts/run-ai-evaluation.mjs",
+    "pilot:ai": "node scripts/run-ai-pilot.mjs",
     "admin:knowledge": "node --experimental-strip-types scripts/knowledge-admin.ts",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"*.{json,ts,mjs,yaml}\" \"docs/architecture/**/*.md\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"tests/**/*.ts\" \"*.{json,ts,mjs,yaml}\" \"docs/architecture/**/*.md\"",

@@ -201,6 +201,48 @@ export function rankVectorRecords(
     .slice(0, topK);
 }
 
+export function rankLexicalRecords(
+  queryText: string,
+  records: VectorRecord[],
+  filters: RetrievalFilters = {},
+): RetrievalMatch[] {
+  const query = queryText.trim();
+  if (!query) return [];
+  const sourceIds = filters.sourceIds ? new Set(filters.sourceIds) : null;
+  const documentIds = filters.documentIds ? new Set(filters.documentIds) : null;
+  const topics = filters.topics ? new Set(filters.topics) : null;
+  const languageCodes = filters.languageCodes
+    ? new Set(filters.languageCodes)
+    : null;
+  const minimumScore = filters.minimumScore ?? 0;
+  const topK = Math.min(Math.max(filters.topK ?? 5, 1), 20);
+
+  return records
+    .filter((record) => !sourceIds || sourceIds.has(record.sourceId))
+    .filter((record) => !documentIds || documentIds.has(record.documentId))
+    .filter(
+      (record) => !topics || record.topics.some((topic) => topics.has(topic)),
+    )
+    .filter(
+      (record) =>
+        !languageCodes || languageCodes.has(record.language?.code ?? "en"),
+    )
+    .map((record) => {
+      const { vector, ...metadata } = record;
+      void vector;
+      return {
+        ...metadata,
+        score: lexicalSimilarity(query, metadata),
+      };
+    })
+    .filter(({ score }) => Number.isFinite(score) && score >= minimumScore)
+    .sort(
+      (left, right) =>
+        right.score - left.score || left.id.localeCompare(right.id),
+    )
+    .slice(0, topK);
+}
+
 const stopWords = new Set([
   "the",
   "this",
@@ -224,6 +266,13 @@ function lexicalBoost(
   query: string,
   record: Omit<VectorRecord, "vector">,
 ): number {
+  return 0.25 * lexicalSimilarity(query, record);
+}
+
+function lexicalSimilarity(
+  query: string,
+  record: Omit<VectorRecord, "vector">,
+): number {
   const tokenize = (value: string) =>
     new Set(
       value
@@ -239,5 +288,5 @@ function lexicalBoost(
   const overlap = [...queryTokens].filter((token) =>
     evidenceTokens.has(token),
   ).length;
-  return 0.25 * (overlap / queryTokens.size);
+  return overlap / queryTokens.size;
 }

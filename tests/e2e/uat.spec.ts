@@ -15,6 +15,20 @@ const publicRoutes = [
   "/privacy",
 ] as const;
 
+const isHostedPreview = new URL(
+  process.env.BASE_URL ?? "http://127.0.0.1:3000",
+).hostname.endsWith(".vercel.app");
+
+function isPreviewToolbarCspNoise(message: string) {
+  // The hosting preview toolbar injects this script. The application CSP is
+  // expected to block it, so only this exact platform-generated error is noise.
+  return (
+    isHostedPreview &&
+    message.includes("https://vercel.live/_next-live/feedback/feedback.js") &&
+    message.includes("Content Security Policy")
+  );
+}
+
 async function collectInternalLinks(page: Page) {
   return page.locator('a[href^="/"]').evaluateAll((links) =>
     Array.from(
@@ -37,7 +51,10 @@ test("passes the published-route UAT audit", async ({ page, request }) => {
     failures.push(`Browser error: ${error.message}`),
   );
   page.on("console", (message) => {
-    if (message.type() === "error") {
+    if (
+      message.type() === "error" &&
+      !isPreviewToolbarCspNoise(message.text())
+    ) {
       failures.push(`Console error: ${message.text()}`);
     }
   });

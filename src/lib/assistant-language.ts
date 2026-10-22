@@ -115,6 +115,14 @@ export function detectAssistantLanguage(
   return null;
 }
 
+export function shouldTranslateAssistantQuery(
+  value: string,
+  targetLanguage: AssistantLanguage,
+): boolean {
+  const detected = detectAssistantLanguage(value);
+  return targetLanguage !== "en" && Boolean(detected && detected !== "en");
+}
+
 export function resolveAssistantLanguage(
   question: string,
   explicitLanguage: AssistantLanguage = "en",

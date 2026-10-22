@@ -11,7 +11,7 @@ describe("health endpoint", () => {
     await expect(response.json()).resolves.toEqual({
       status: "ok",
       service: "glitz-pride-web",
-      phase: "phase-1-mvp",
+      phase: "phase-2-mvp",
     });
   });
 });
