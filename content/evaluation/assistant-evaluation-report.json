@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "evaluatedAt": "2026-10-21T09:03:19.640Z",
+  "evaluatedAt": "2026-10-22T09:08:44.011Z",
   "datasetReview": {
     "reviewedBy": "AKHIL",
     "reviewedAt": "2026-10-20T00:00:00.000Z",
@@ -16,7 +16,7 @@
     "failureRecoveryRate": 1,
     "callBudgetRate": 1,
     "latencyPassRate": 1,
-    "maximumLatencyMs": 23.909,
+    "maximumLatencyMs": 9.913,
     "maximumEstimatedTokens": 56,
     "externalModelCalls": 0
   },
@@ -56,7 +56,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": false
       },
-      "latencyMs": 23.006,
+      "latencyMs": 8.802,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -83,7 +83,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": false
       },
-      "latencyMs": 15.996,
+      "latencyMs": 6.449,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -110,7 +110,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": false
       },
-      "latencyMs": 16.874,
+      "latencyMs": 6.844,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -137,7 +137,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": false
       },
-      "latencyMs": 18.242,
+      "latencyMs": 7.418,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -164,7 +164,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": false
       },
-      "latencyMs": 19.232,
+      "latencyMs": 7.825,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -191,7 +191,7 @@
         "riskTier": "R2",
         "humanHandoffRequired": false
       },
-      "latencyMs": 19.339,
+      "latencyMs": 7.875,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -218,7 +218,7 @@
         "riskTier": "R2",
         "humanHandoffRequired": false
       },
-      "latencyMs": 20.236,
+      "latencyMs": 8.266,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -245,7 +245,7 @@
         "riskTier": "R0",
         "humanHandoffRequired": false
       },
-      "latencyMs": 23.909,
+      "latencyMs": 9.913,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -272,7 +272,7 @@
         "riskTier": "R0",
         "humanHandoffRequired": false
       },
-      "latencyMs": 22.68,
+      "latencyMs": 9.566,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -299,7 +299,7 @@
         "riskTier": "R0",
         "humanHandoffRequired": false
       },
-      "latencyMs": 22.669,
+      "latencyMs": 9.578,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -326,7 +326,7 @@
         "riskTier": "R0",
         "humanHandoffRequired": false
       },
-      "latencyMs": 22.667,
+      "latencyMs": 9.608,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -353,7 +353,7 @@
         "riskTier": "R0",
         "humanHandoffRequired": false
       },
-      "latencyMs": 22.636,
+      "latencyMs": 9.604,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -380,7 +380,7 @@
         "riskTier": "R0",
         "humanHandoffRequired": false
       },
-      "latencyMs": 22.598,
+      "latencyMs": 9.599,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -407,7 +407,7 @@
         "riskTier": "R3",
         "humanHandoffRequired": true
       },
-      "latencyMs": 5.155,
+      "latencyMs": 1.931,
       "retrieveCalls": 1,
       "generateCalls": 0,
       "checks": {
@@ -434,7 +434,7 @@
         "riskTier": "R4",
         "humanHandoffRequired": false
       },
-      "latencyMs": 1.142,
+      "latencyMs": 0.393,
       "retrieveCalls": 0,
       "generateCalls": 0,
       "checks": {
@@ -461,7 +461,7 @@
         "riskTier": "R4",
         "humanHandoffRequired": false
       },
-      "latencyMs": 3.968,
+      "latencyMs": 1.434,
       "retrieveCalls": 0,
       "generateCalls": 0,
       "checks": {
@@ -488,7 +488,7 @@
         "riskTier": "R4",
         "humanHandoffRequired": true
       },
-      "latencyMs": 3.998,
+      "latencyMs": 1.442,
       "retrieveCalls": 0,
       "generateCalls": 0,
       "checks": {
@@ -515,7 +515,7 @@
         "riskTier": "R3",
         "humanHandoffRequired": true
       },
-      "latencyMs": 3.978,
+      "latencyMs": 1.447,
       "retrieveCalls": 0,
       "generateCalls": 0,
       "checks": {
@@ -542,7 +542,7 @@
         "riskTier": "R4",
         "humanHandoffRequired": false
       },
-      "latencyMs": 3.985,
+      "latencyMs": 1.45,
       "retrieveCalls": 0,
       "generateCalls": 0,
       "checks": {
@@ -569,7 +569,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": false
       },
-      "latencyMs": 4.605,
+      "latencyMs": 1.729,
       "retrieveCalls": 1,
       "generateCalls": 0,
       "checks": {
@@ -596,7 +596,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": false
       },
-      "latencyMs": 21.72,
+      "latencyMs": 9.273,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {
@@ -623,7 +623,7 @@
         "riskTier": "R1",
         "humanHandoffRequired": true
       },
-      "latencyMs": 21.636,
+      "latencyMs": 9.265,
       "retrieveCalls": 1,
       "generateCalls": 1,
       "checks": {

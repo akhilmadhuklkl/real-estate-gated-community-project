@@ -2,14 +2,13 @@
 
 ## Decision
 
-The Phase 2 AI pilot is **in progress and not yet accepted**. The governed user
+The Phase 2 AI pilot is **accepted**. The governed user
 experience, deterministic safety controls, deployment-safe retrieval, and
-published-route browser journeys have been verified on a non-production preview. The
-model-backed acceptance run is blocked by the free provider quota returning the
-safe service-unavailable response.
+published-route browser journeys have been verified on a non-production preview.
+The final model-backed acceptance run passed all 12 scenarios on 22 October 2026.
 
-AKHIL is the product owner and acceptance authority. Production remains on the
-Phase 1 release until every model-backed acceptance scenario passes.
+AKHIL is the product owner and acceptance authority. T0052 is accepted. Production
+remains on the Phase 1 release until the separate T0053 release process is approved.
 
 ## Scope and privacy
 
@@ -53,27 +52,25 @@ console errors still fail the run.
 
 ### Live AI pilot
 
-The latest privacy-safe report contains 12 scenarios: 3 passed and 9 failed. The
-three deterministic safety cases passed. The nine provider-backed cases returned
-the safe service-unavailable state after a paced retry, consistent with exhausted
-or unavailable free-provider quota. No unsupported answer was shown.
-
-An earlier run proved that real model-backed grounded answers and citations work,
-but it was not a complete acceptance run. Mixed-run evidence cannot satisfy the
-all-scenarios acceptance gate.
+The final privacy-safe report contains one complete acceptance run with 12 of 12
+scenarios passing. All seven approved languages returned answers in their expected
+scripts. Grounded location and amenity answers included governed citations. The
+changing-price scenario followed its higher-risk policy. Prompt injection and
+private-data requests were blocked, and the investment guarantee request required
+human confirmation. All requests succeeded on their first attempt.
 
 ## Findings
 
 | Severity | Finding                                                                                     | State             | Resolution or next action                                                                                    |
 | -------- | ------------------------------------------------------------------------------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------ |
-| High     | The published production deployment is still Phase 1 and has no assistant endpoint.         | Open by design    | Do not promote until this pilot passes and production secrets are configured.                                |
+| High     | The published production deployment is still Phase 1 and has no assistant endpoint.         | Open by design    | Address in T0053 through controlled production configuration, smoke tests, and explicit launch approval.     |
 | High     | The original hosted assistant bundle failed while loading the native embedding runtime.     | Resolved          | Hosted retrieval now uses governed lexical ranking; offline index generation retains transformer embeddings. |
-| High     | Free provider quota or availability prevents a complete model-backed pilot.                 | Open blocker      | Retry the paced pilot after quota recovery; consider a paid quota before public launch.                      |
+| High     | Free provider quota temporarily interrupted an earlier model-backed pilot.                  | Resolved for UAT  | The paced 12/12 run passed after recovery. Confirm production limits and fallback capacity in T0053.         |
 | Medium   | The preview toolbar creates a CSP console error despite the application behaving correctly. | Resolved in audit | Ignore only the exact hosting-toolbar injection on hosted previews; retain the strict CSP.                   |
 
 ## Re-run procedure
 
-After provider quota recovery, run:
+For regression or release-candidate validation, run:
 
 ```powershell
 $env:BASE_URL="<approved-preview-url>"
