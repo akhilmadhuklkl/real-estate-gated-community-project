@@ -6,6 +6,7 @@ import {
   containsSensitivePersonalData,
   createAssistantService,
   evidenceConfidence,
+  runWithModelFallback,
 } from "./assistant-service";
 import type { RetrievalMatch } from "./vector-retrieval";
 
@@ -285,5 +286,27 @@ describe("assistant service", () => {
     expect(evidenceConfidence(0.799)).toBe("moderate");
     expect(evidenceConfidence(0.6)).toBe("moderate");
     expect(evidenceConfidence(0.599)).toBe("limited");
+  });
+
+  it("uses the approved fallback only after the primary model fails", async () => {
+    const operation = vi
+      .fn()
+      .mockRejectedValueOnce(new Error("primary unavailable"))
+      .mockResolvedValueOnce("fallback answer");
+
+    await expect(runWithModelFallback(operation)).resolves.toBe(
+      "fallback answer",
+    );
+    expect(operation).toHaveBeenNthCalledWith(1, "gemini-3.5-flash-lite");
+    expect(operation).toHaveBeenNthCalledWith(2, "gemini-3.8-flash");
+  });
+
+  it("fails safely when both approved models are unavailable", async () => {
+    const operation = vi.fn().mockRejectedValue(new Error("unavailable"));
+
+    await expect(runWithModelFallback(operation)).rejects.toThrow(
+      "unavailable",
+    );
+    expect(operation).toHaveBeenCalledTimes(2);
   });
 });

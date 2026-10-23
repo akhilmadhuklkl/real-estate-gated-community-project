@@ -99,7 +99,9 @@ test("passes the published-route UAT audit", async ({ page, request }) => {
   }
 
   for (const href of internalLinks) {
-    const response = await request.get(href);
+    const response = href.toLowerCase().endsWith(".pdf")
+      ? await request.head(href)
+      : await request.get(href);
     expect(
       response.status(),
       `${href} should be a valid internal destination`,

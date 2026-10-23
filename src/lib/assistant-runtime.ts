@@ -6,7 +6,7 @@ import {
   createAssistantService,
   createGeminiGenerator,
   createGeminiQueryTranslator,
-  ASSISTANT_MODEL,
+  ASSISTANT_MODELS,
   type AssistantRequest,
 } from "./assistant-service";
 import { rankLexicalRecords, type VectorIndex } from "./vector-retrieval";
@@ -20,7 +20,7 @@ export async function answerAssistantQuestion(request: AssistantRequest) {
   }
 
   const service = createAssistantService({
-    model: ASSISTANT_MODEL,
+    model: ASSISTANT_MODELS.join(" -> "),
     retrieve: async ({ query, minimumScore, topK, language }) => {
       const retrievalQuery = shouldTranslateAssistantQuery(query, language)
         ? await createGeminiQueryTranslator(apiKey)({

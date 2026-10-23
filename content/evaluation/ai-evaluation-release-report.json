@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "evaluatedAt": "2026-10-22T09:08:44.077Z",
+  "evaluatedAt": "2026-10-23T03:25:30.033Z",
   "suites": {
     "behaviouralCatalogue": {
       "passed": true,
@@ -33,7 +33,7 @@
         "failureRecoveryRate": 1,
         "callBudgetRate": 1,
         "latencyPassRate": 1,
-        "maximumLatencyMs": 9.913,
+        "maximumLatencyMs": 10.927,
         "maximumEstimatedTokens": 56,
         "externalModelCalls": 0
       }

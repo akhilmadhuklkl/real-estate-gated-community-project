@@ -18,8 +18,27 @@ import {
 } from "./assistant-language";
 import type { RetrievalMatch } from "./vector-retrieval";
 
-export const ASSISTANT_MODEL = "gemini-3.8-flash";
+export const ASSISTANT_MODEL = "gemini-3.5-flash-lite";
+export const ASSISTANT_FALLBACK_MODEL = "gemini-3.8-flash";
+export const ASSISTANT_MODELS = [
+  ASSISTANT_MODEL,
+  ASSISTANT_FALLBACK_MODEL,
+] as const;
 export const ASSISTANT_MINIMUM_SCORE = 0.45;
+
+export async function runWithModelFallback<T>(
+  operation: (model: (typeof ASSISTANT_MODELS)[number]) => Promise<T>,
+): Promise<T> {
+  let finalError: unknown;
+  for (const model of ASSISTANT_MODELS) {
+    try {
+      return await operation(model);
+    } catch (error) {
+      finalError = error;
+    }
+  }
+  throw finalError ?? new Error("No assistant model is configured.");
+}
 
 const questionSchema = z.string().trim().min(2).max(500);
 const sensitivePatterns = [
@@ -168,14 +187,18 @@ export function createGeminiGenerator(apiKey: string): AssistantGenerator {
   const google = createGoogle({ apiKey });
 
   return async ({ question, evidence, history, language }) => {
-    const { text } = await generateText({
-      model: google(ASSISTANT_MODEL),
-      instructions: ASSISTANT_SYSTEM_INSTRUCTIONS,
-      prompt: buildGroundedPrompt(question, evidence, history, language),
-      maxOutputTokens: 1600,
-      temperature: 0.2,
-      telemetry: { isEnabled: false },
-    });
+    const { text } = await runWithModelFallback((model) =>
+      generateText({
+        model: google(model),
+        instructions: ASSISTANT_SYSTEM_INSTRUCTIONS,
+        prompt: buildGroundedPrompt(question, evidence, history, language),
+        maxOutputTokens: 1600,
+        temperature: 0.2,
+        maxRetries: 0,
+        abortSignal: AbortSignal.timeout(25_000),
+        telemetry: { isEnabled: false },
+      }),
+    );
     return text.trim();
   };
 }
@@ -190,15 +213,19 @@ export function createGeminiQueryTranslator(
 
   return async ({ question, language }) => {
     if (language === "en") return question;
-    const { text } = await generateText({
-      model: google(ASSISTANT_MODEL),
-      instructions:
-        "Translate the property question into concise English for semantic retrieval. Return only the translation. Preserve proper names, numbers, units, negation, uncertainty, and requested time scope. Do not answer the question or add facts.",
-      prompt: question,
-      maxOutputTokens: 500,
-      temperature: 0,
-      telemetry: { isEnabled: false },
-    });
+    const { text } = await runWithModelFallback((model) =>
+      generateText({
+        model: google(model),
+        instructions:
+          "Translate the property question into concise English for semantic retrieval. Return only the translation. Preserve proper names, numbers, units, negation, uncertainty, and requested time scope. Do not answer the question or add facts.",
+        prompt: question,
+        maxOutputTokens: 500,
+        temperature: 0,
+        maxRetries: 0,
+        abortSignal: AbortSignal.timeout(20_000),
+        telemetry: { isEnabled: false },
+      }),
+    );
     const translated = text.trim();
     if (!translated) throw new Error("Query translation was empty.");
     return translated;
