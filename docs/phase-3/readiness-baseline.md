@@ -168,8 +168,8 @@ owner-approved remediation date and compensating control.
 - [x] Environment separation and synthetic-data requirements are defined.
 - [x] Security baseline and service-selection criteria are defined.
 - [x] Purchasing and budget authority are defined.
-- [ ] AKHIL explicitly authorizes implementation of the first active task.
-- [ ] T0056 records the selected architecture and threat model.
+- [x] AKHIL explicitly authorizes implementation of the first active task.
+- [x] T0056 records the selected architecture and threat model.
 - [ ] T0057 records approved services, regions, limits, and costs before provisioning.
 
 ## Phase 3 release gate

@@ -73,6 +73,12 @@ The grounded assistant service, Gemini provider boundary, evidence-only response
 
 The approved navigation structure and visitor flows are documented in [`docs/information-architecture/sitemap-and-user-journeys.md`](docs/information-architecture/sitemap-and-user-journeys.md).
 
+The approved Phase 3 platform boundaries, trust model, service decision, recovery
+strategy, and threat register are documented in
+[`docs/phase-3/secure-architecture.md`](docs/phase-3/secure-architecture.md),
+[`docs/phase-3/threat-model.md`](docs/phase-3/threat-model.md), and
+[`docs/phase-3/service-decision-record.md`](docs/phase-3/service-decision-record.md).
+
 The working creative concept and implementation guidance are documented in [`docs/design/visual-direction.md`](docs/design/visual-direction.md).
 
 Reusable tokens and component contracts are maintained in [`design-system/tokens.json`](design-system/tokens.json) and [`docs/design/design-system.md`](docs/design/design-system.md).
