@@ -18,7 +18,7 @@ tracker task.
 
 ## Current decision
 
-T0054 through T0057 are complete. T0058 is next. The approved service and
+T0054 through T0058 are complete. T0059 is next. The approved service and
 trust-boundary decisions are documented below; no production personal information
 collection is enabled.
 
@@ -32,3 +32,5 @@ collection is enabled.
   choices and alternatives.
 - [`database-storage-configuration.md`](database-storage-configuration.md) defines
   the T0057 regions, limits, credentials, storage boundaries, and provisioning gate.
+- [`data-schema-and-migrations.md`](data-schema-and-migrations.md) defines the T0058
+  private schema, domain tables, migration workflow, rollback strategy, and evidence.
