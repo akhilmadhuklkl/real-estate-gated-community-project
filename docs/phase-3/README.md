@@ -18,6 +18,17 @@ tracker task.
 
 ## Current decision
 
-T0054 and T0055 are complete. T0056 and every later implementation task remain
-Planned. No service has been selected or provisioned, no paid plan has been approved,
-no production data collection has been enabled, and no application code has changed.
+T0054 through T0057 are complete. T0058 is next. The approved service and
+trust-boundary decisions are documented below; no production personal information
+collection is enabled.
+
+## Architecture and configuration
+
+- [`secure-architecture.md`](secure-architecture.md) defines system boundaries,
+  service responsibilities, environment separation, failure handling, and recovery
+  objectives.
+- [`threat-model.md`](threat-model.md) records the Phase 3 abuse cases and controls.
+- [`service-decision-record.md`](service-decision-record.md) records the provider
+  choices and alternatives.
+- [`database-storage-configuration.md`](database-storage-configuration.md) defines
+  the T0057 regions, limits, credentials, storage boundaries, and provisioning gate.
